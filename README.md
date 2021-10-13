@@ -81,8 +81,7 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 This app is for anyone who wants to display seVersional metrics on a small area of a dashboard.
 
 ## **How does the app work?**
-This app provides a visualization that you can use in your own apps and dashboards.
-
+This app provides a visualization that you can use in your own apps and dashboards.<br>
 To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
 
 ## **Limits**
