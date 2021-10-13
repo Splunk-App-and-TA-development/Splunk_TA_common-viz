@@ -122,7 +122,7 @@ List of the Active Visualization addons within this release.
 - **Number Display Viz** version 1.6.8
 - **Parallel Coordinates Viz** version 1.4.0
 - **Performance Analysis** version 1.3.0
-- **Punchcard - Custom Visualization** version 1.4.0
+- **Punchcard - Custom Visualization** version 1.5.0
 - **Region Chart Viz** version 1.0.5
 - **Sankey Diagram Viz** version 1.5.0
 - **Semicircle Donut Chart Viz** version 1.2.3
@@ -1018,12 +1018,15 @@ A sample data set is included with the app:
 
 
 ## **Punchcard - Custom Visualization** 
-- Version 1.4.0
+- Version 1.5.0
 - Author: Splunk Inc.
 - https://splunkbase.splunk.com/app/3129/
 
 ### How to use *Punchcard
 Punchcards can visualize cyclical trends in your data. This visualization shows circles representing a metric aggregated over two dimensions, such as hours of the day and days of the week. Using a punchcard, you can see relative values for a metric where the dimensions intersect.
+
+**Documentation:**
+* http://docs.splunk.com/Documentation/Punchcard/1.2.0/PunchcardViz/PunchcardIntro
 
 #### Use case examples
 - Website or network activity
@@ -1038,9 +1041,15 @@ Use this syntax to generate a punchcard.
 
 ### Search example
 Here is a search that analyzes bicycle rental popularity by hours and days.
-```
-inputlookup bikeshare.csv | stats count by date_hour date_wday
-```
+
+`inputlookup bikeshare.csv | stats count by date_hour date_wday`
+
+`index=_internal | head 100000 | stats count by date_hour sourcetype`
+
+`index=_internal | head 100000 | stats count by date_minute sourcetype`
+
+`index=_internal | head 100000 | stats count, avg(date_minute) by date_minute sourcetype`
+
 ![Punchcard-viz](https://prod.cdn.apps.splunk.com/media/public/screenshots/9a7b80ac-01e2-11e6-b676-06a7b631375d.png)
 
 
