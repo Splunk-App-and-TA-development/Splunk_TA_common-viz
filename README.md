@@ -1410,8 +1410,9 @@ https://splunkbase.splunk.com/app/3674/
 
 
 ## **Support**
-Please use Github to refeer to issues: https://github.com/Splunk-App-and-TA-development/Splunk_TA_common-viz/issues<br>
-This app is supported by SwissTXT/Patrick Vanreck. Contact us under: **[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)**.
+Please use Github to open issues or feature requests:
+- **https://github.com/Splunk-App-and-TA-development/Splunk_TA_common-viz/issues**
+
 
 #### Splunk Version Support
 
@@ -1421,10 +1422,10 @@ This app is supported by SwissTXT/Patrick Vanreck. Contact us under: **[yoyonet-
 
 
 #### Credits
-Security SwissTXT Splunk App Development
+This app is supported by Patrick Vanreck (SwissTXT). Contact us under: **[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)**.
 
 - Find us under **[SECLAB Splunk App & TA Development](https://github.com/Splunk-App-and-TA-development "SECLAB Splunk App & TA Development")**
-- Send requests or questions to  _[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)_
+- Send questions to ***[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)***
 - Developped by **Patrick Vanreck**
 
 
