@@ -1115,9 +1115,35 @@ index=_internal
 - https://splunkbase.splunk.com/app/4550/
 
 ##### How to use Sunburst
+This visualisation expects tabular data, with any amount of text/category columns, but the last column must be a numerical value.  Null or blank columns are allowed before the final column to create a more "sunburst-y" visualization.
+
+The typical search uses `stats` command like so:
+```
+index=* | stats count BY index sourcetype source
+```
+
+Sidenote: a much faster search to do the same thing is 
+```
+|tstats count where index=* BY index sourcetype source
+```
+
+Note that `stats` does not return rows when the group BY field is `null`. Use this one simple trick to convert nulls to be an empty string instead:
+
+```
+index=_internal | eval component = coalesce(component,"") | eval log_level = coalesce(log_level,"") | stats count BY sourcetype component log_level
+```
+
+Add more fields after the "BY" keyword to increase the depth of the sunburst
 
 
 
+###### **Formatting options**
+![screenshot](https://raw.githubusercontent.com/ChrisYounger/sunburst_viz/master/appserver/static/formatting.png)
+
+The "Color overrides" field accepts either a JSON object (in curly braces) or comma separated pairs. For example to make sure that "INFO" values are green, WARN's are orange and ERROR's are red, set the value like so:
+```
+INFO,#1a9035,ERROR,#b22b32,WARN,#AF5300
+```
 
 
 
@@ -1128,10 +1154,12 @@ index=_internal
 - https://splunkbase.splunk.com/app/3120/
 
 ##### How to use Timeline
+A timeline visualization shows activity time intervals and discrete events for a resource set. 
+Activity for each resource appears in a separate timeline lane. 
+- If an activity start time and duration are available for a particular resource, the timeline shows a duration interval as a horizontal bar in the lane.
+- If only the start time is available, the timeline shows a circle at that time.
 
-
-
-
+![example-Timeline](https://https://prod.cdn.apps.splunk.com/media/public/screenshots/7f7eaf5c-f8a2-11e5-bf53-064614758881.png)
 
 
 
@@ -1142,10 +1170,42 @@ index=_internal
 - https://splunkbase.splunk.com/app/3118/
 
 ##### How to use Treemap
+A treemap represents data patterns and hierarchy. Each treemap divides a single space into multiple rectangles to show data values and category relationships.
+
+###### Use cases
+Use a treemap to visualize how a general metric divides across different areas or categories.
+
+- Budgets and expenses** 
+- Data center server status
+- University departments and courses offered
+
+###### Data for treemaps
+A treemap data set includes metric and category information for all events. Use events with fields representing the common metric value, child, and parent categories.
+See the use case examples for more details.
 
 
+###### Create a treemap query
+To generate a treemap, write a query that returns events in the correct data format.
 
+###### Query syntax
+To generate a treemap visualization, use this query syntax.
 
+```
+... | stats <stats_function>(<metric_field>) [<stats_function>(<color_field>)] by <parent_category_field> <child_category_field>
+```
+
+###### Results table columns
+| First | Second | Third | Fourth |
+|---|---|---|---|
+| Parent category | Child category | Rectangle size | Rectangle color |
+
+###### Query example
+Here is part of a query tracking files and directories.
+```
+... | stats sum(size) as size by parent_directory, child_directory
+```
+
+![example-treemap](https://prod.cdn.apps.splunk.com/media/public/screenshots/ef308d84-f898-11e5-b9b0-02bfcab93f6d.png)
 
 
 
