@@ -9,6 +9,3 @@
 # Declare Local App Permissions.        #
 #########################################
 
-[app/install/install_source_checksum]
-version = 8.0.9
-modtime = 1621354974.917512000

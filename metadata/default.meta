@@ -11,27 +11,23 @@
 
 ### GLOBAL PERMISSIONS
 []
-access = read : [ * ], write : [ admin, splunk-system-role ]
+access = read : [ * ], write : [ admin, power, splunk-system-role ]
 export = system
 
 ### EVENT TYPES
 [eventtypes]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### PROPS
 [props]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### TRANSFORMS
 [transforms]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### LOOKUPS
 [lookups]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### VIEWSTATES: even normal users should be able to create shared viewstates
@@ -41,16 +37,13 @@ export = system
 
 ### COMMANDS
 [commands]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### SEARCHBNF
 [searchbnf]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 
 ### VISUALIZATIONS
 [visualizations]
-access = read : [ * ], write : [ admin, splunk-system-role ]
 export = system
 

@@ -120,7 +120,7 @@ List of the Active Visualization addons within this release.
 - **Missile Map** version 1.2.3
 - **Network Diagram Viz** version 2.0.0
 - **Number Display Viz** version 1.6.8
-- **Parallel Coordinates Viz** version 1.4.0
+- **Parallel Coordinates Viz** version 1.5.0
 - **Performance Analysis** version 1.3.0
 - **Punchcard - Custom Visualization** version 1.5.0
 - **Region Chart Viz** version 1.0.5
@@ -947,7 +947,7 @@ These are the fields that can be overridden in data:
 
  
 ## **Parallel Coordinates Viz** 
-- Version 1.4.0
+- Version 1.5.0
 - Author: Splunk Inc.
 - https://splunkbase.splunk.com/app/3137/
 
