@@ -1,0 +1,66 @@
+/*
+ * CSS rules for visualization.
+ * Class namespacing is good practice.
+ */
+@import url('https://fonts.googleapis.com/css?family=Orbitron:700');
+@import url('https://fonts.googleapis.com/css?family=Aldrich');
+
+.clock_viz-wrap-parent{
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center;
+}
+.clock_viz-wrap {
+    font-size: 14px;
+    line-height: 100px;
+    text-align: center;
+    color: rgb(51, 51, 51);
+    position: relative;   
+}
+.clock_viz-part-colon{
+    opacity: 0.9;
+}
+.clock_viz-part-ss{
+    font-variant-numeric: tabular-nums;
+}
+/*.clock_viz-digitalwrap { 
+    font-variant-numeric: tabular-nums;
+}*/
+.clock_viz-digitalwrap {
+    line-height: 1.1;
+    white-space: nowrap;
+}
+.clock_viz-wrap-d .clock_viz-dateoverlay,
+.clock_viz-wrap-d .clock_viz-caption {
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1.1;
+    text-shadow: 0 0 1px white, 0 0 1px white, 0 0 2px white;
+}
+.clock_viz-wrap-a .clock_viz-dateoverlay {
+    color: rgb(51, 51, 51);
+    text-shadow: 0 0 1px white, 0 0 1px white, 0 0 2px white;       
+    text-align: center;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1.1;
+    top: 0px;
+    position: absolute;
+    z-index: 2;
+}
+.clock_viz-wrap-a .clock_viz-caption {
+    text-align: center;
+    font-size: 10px;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 2;  
+}
+.clock_viz-darkmodez .clock_viz-wrap {
+    color: white;
+}
+.clock_viz-darkmodez .clock_viz-wrap-d .clock_viz-dateoverlay,
+.clock_viz-darkmodez .clock_viz-wrap-d .clock_viz-caption {
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 2px black;
+}

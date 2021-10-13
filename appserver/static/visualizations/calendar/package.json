@@ -1,0 +1,23 @@
+{
+  "name": "calendar_app",
+  "version": "1.0.0",
+  "description": "Custom Visualization.",
+  "main": "visualization.js",
+  "scripts": {
+    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "devbuild": "node ./node_modules/webpack/bin/webpack.js --progress",
+    "watch": "node ./node_modules/webpack/bin/webpack.js -d --watch --progress"
+  },
+  "author": "Jason Conger",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.12.6"
+  },
+  "dependencies": {
+    "fullcalendar": "^2.9.1",
+    "jquery": "^2.2.4",
+    "moment": "^2.15.2",
+    "underscore": "^1.8.3",
+    "webpack": "^1.13.1"
+  }
+}

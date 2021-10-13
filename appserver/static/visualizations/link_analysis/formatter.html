@@ -1,0 +1,37 @@
+<form class="splunk-formatter-section" section-label="Vizualization Style">
+    <splunk-control-group label="Layout Style">
+        <splunk-select name="{{VIZ_NAMESPACE}}.layoutStyle" value="fcose">
+            <option value="fcose">fcose</option>
+            <option value="grid">grid</option>
+            <option value="circle">circle</option>
+            <option value="klay">klay</option>
+            <option value="dagre">dagre</option>
+            <option value="concentric">concentric</option>
+            <option value="breadthfirst">breadthfirst</option>
+            <option value="cose">cose</option>
+            <option value="cose-bilkent">cose-bilkent</option>
+        </splunk-select>
+    </splunk-control-group>
+    <splunk-control-group label="Path Selection Algorithm">
+        <splunk-select name="{{VIZ_NAMESPACE}}.pathAlgo" value="dijkstra">
+            <option value="dijkstra">dijkstra</option>
+            <option value="aStar">aStar</option>
+            <option value="floydWarshall">floydWarshall</option>
+            <option value="bellmanFord">bellmanFord</option>
+        </splunk-select>
+    </splunk-control-group>
+    <splunk-control-group label="Path Selection Directed">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.directed" value="false">
+            <option value="false">false</option>
+            <option value="true">true</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Recursive Graph Addition">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.recursiveLookup" value="false">
+            <option value="false">false</option>
+            <option value="true">true</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+
+
+</form>

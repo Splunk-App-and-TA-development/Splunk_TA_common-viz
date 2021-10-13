@@ -1,0 +1,63 @@
+= Splunk Visualization - markdown
+
+The Markdown Visualization allows you to specify a Markdown (`md`) or AsciiDoc (`adoc`) file to render within a panel on a Splunk dashboard.
+
+This can be useful on a dashboard to describe what is being displayed, relevant external links about the dashboard, or other instructions.
+
+:toc:
+
+== Getting Started
+
+When creating a visualization, a search must be performed.
+As the exact search does not matter for this visualization we recommend utilizing the '| makeresults' search.
+This is a simple search within Splunk which, when run without options, returns one result based on the `_time` field.
+Once the search has returned, the Markdown visualization may be selected.
+
+. Click on the Visualization tab.
+. From the Visualization tab, click the Visualizations drop-down and select the Markdown visualization from the 'More' section.
+. The README file is displayed by default.
+. To customize the visualization, select the Format drop-down to open the configuration window.
+
+== Format Options
+
+The Markdown Visualization has a few configuration options after opening the format window.
+The tabs are listed on the left of the window as Render, Local File, and Debug.
+
+=== Render
+
+The Render tab has three options in a drop-down menu; Maruku, Gruber, and Asciidoctor.
+The first two are dialects of Markdown and the latter is for processing Asciidoc markup.
+
+Markdown files must end with an `.md` extension while the Asciidoc files must end with `.adoc`.
+
+Select the option appropriate to the file being rendered.
+
+The other option on this page is the Location. This determines where the visualization will look for the markdown source.
+
+=== Local File
+
+The Local File tab has three options to configure; App Name, Path, and File Name.
+
+==== App Name
+
+The App Name field is populated with the name of the Splunk app where the target file is located.
+
+==== Path
+
+The Path field is used to add the path to the target file if it does not reside in the default `$APP_HOME/appserver/static` directory.
+This target file must be at or below `$APP_HOME/appserver/static` in the file structure.
+When entering the path information, omit any leading or trailing slashes.
+
+==== File Name
+
+The File Name field is populated with the name of the file to be rendered without a file extension, though it must end with either `.md` or `.adoc` on the server.
+
+=== Debug
+
+The Debug tab is used to enable (yes) or disable (no) the JavasScript Logging option for the app view.
+
+== Support
+
+Please ask a question on Answers.
+
+Tag the question with `aplura_viz` to get noticed promptly.

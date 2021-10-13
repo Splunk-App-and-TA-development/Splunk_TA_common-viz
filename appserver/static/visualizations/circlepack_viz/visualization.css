@@ -1,0 +1,28 @@
+.circlepack_viz-container {
+    position:relative;
+}
+.circlepack_viz-container svg {
+    margin: 10px auto;
+    display: block;
+}
+.circlepack_viz-tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background-color: #F2F4F5;
+    border: 1px solid #C6C6C6;
+    text-align: center;
+    padding: 6px;
+    border-radius: 4px;
+    color: #5E5E5E;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.circlepack_viz-tooltip-divider {
+    color: black;
+    font-weight: bold;
+}
+.circlepack_viz-bad_data {
+    text-align: center;
+    color: #818d99;
+    line-height: 3;
+}

@@ -1,0 +1,205 @@
+<!-- ---------------------  Options Form ---------------------------->
+
+<form class="splunk-formatter-section" section-label="General">
+	
+	 <!-- Shape -->
+	 <splunk-control-group label="Shape" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.shape" value="square">
+			<option value="square">Square</option>
+			<option value="rounded">Rounded</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+
+	<!-- Show Values? -->
+	<splunk-control-group label="Show Values" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showValues" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+		<!-- Show Values? -->
+	<splunk-control-group label="Hide Cell Borders" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.hideCellBorders" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	
+		<!-- y axis width -->
+	<splunk-control-group label="Label Width" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.yaxiswidth" value="auto">
+			<option value="auto">Auto</option>
+			<option value="custom">Custom</option>
+		</splunk-radio-input>
+		<splunk-text-input name="{{VIZ_NAMESPACE}}.yaxiswidthpx" value="250"></splunk-text-input>
+	</splunk-control-group>
+	
+		<!-- Font size -->
+	<splunk-control-group label="Label Font Size" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.labelFontSize" value="18">
+			<option value="24">24px</option>
+			<option value="18">18px</option>
+			<option value="14">14px</option>
+			<option value="12">12px</option>
+			<option value="10">10px</option>
+			<option value="8">8px</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+		<!-- Animations?-->
+	<splunk-control-group label="Enable Animations" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.enableAnimation" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	<!-- Date in Tooltip? -->
+	<splunk-control-group label="Date in Tooltip" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showDateInTooltip" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	<!-- Date Format -->
+	<splunk-control-group label="Tooltip Date Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.tooltipDateFormat" value="auto">
+			<option value="dd-mmm-yyyy hh:mm:ss">dd-mmm-yyyy hh:mm:ss</option>
+			<option value="dd-mm-yyyy hh:mm:ss">dd-mm-yyyy hh:mm:ss</option>
+			<option value="dd-mm-yyyy">dd-mm-yyyy</option>
+			<option value="mm-dd-yyyy hh:mm:ss">mm-dd-yyyy hh:mm:ss</option>
+			<option value="mm-dd-yyyy">mm-dd-yyyy</option>
+			<option value="hh:mm:ss">hh:mm:ss</option>
+			<option value="hh:mm">hh:mm</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+	<!-- Date in Tooltip? -->
+	<splunk-control-group label="Convert Time to UTC" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.convertTimeToUTC" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Colors">
+   <!-- slidesToShow -->
+	<splunk-control-group label="Low" help=" ">
+		<splunk-color-picker type="splunkSemantic" name="{{VIZ_NAMESPACE}}.colorLow" value="#53A051"></splunk-color-picker>
+		<splunk-text-input name="{{VIZ_NAMESPACE}}.valLow" value="10"></splunk-text-input>
+	</splunk-control-group>
+	<splunk-control-group label="Medium" help=" ">
+		<splunk-color-picker type="splunkSemantic" name="{{VIZ_NAMESPACE}}.colorMedium" value="#F8BE34"></splunk-color-picker>
+		<splunk-text-input name="{{VIZ_NAMESPACE}}.valMedium" value="40"></splunk-text-input>
+	</splunk-control-group>
+	<splunk-control-group label="High" help=" ">
+		<splunk-color-picker type="splunkSemantic" name="{{VIZ_NAMESPACE}}.colorHigh" value="#F1813F"></splunk-color-picker>
+		<splunk-text-input name="{{VIZ_NAMESPACE}}.valHigh" value="75"></splunk-text-input>
+	</splunk-control-group>
+	<splunk-control-group label="Critical" help=" ">
+		<splunk-color-picker type="splunkSemantic" name="{{VIZ_NAMESPACE}}.colorCritical" value="#DC4E41"></splunk-color-picker>
+	</splunk-control-group>
+	
+	
+		<!-- Show Values? -->
+	<splunk-control-group label="Enable Shades" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.enableShades" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+			<!-- reverseNegativeShade? -->
+	<splunk-control-group label="Reverse Negative Shade" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.reverseNegativeShade" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-select>
+	</splunk-control-group>
+	</form>
+
+
+	
+	<form class="splunk-formatter-section" section-label="Legend">
+		
+		<!-- Show Legend? -->
+	<splunk-control-group label="Show Legend" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showLegend" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	<!-- Legend Position -->
+	<splunk-control-group label="Legend Position" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.legendPosition" value="top">
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+		
+	<!-- Show Values? -->
+	<splunk-control-group label="Legend Text" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.legendText" value="categories">
+			<option value="categories">Categories</option>
+			<option value="ranges">Ranges</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+
+	<!-- Low -->
+	<splunk-control-group label="Low label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.labelLow" value="Low"></splunk-text-input>
+    </splunk-control-group>	
+	
+	
+	<!-- Medium -->
+	<splunk-control-group label="Medium label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.labelMedium" value="Medium"></splunk-text-input>
+    </splunk-control-group>	
+	
+	
+	<!-- High -->
+	<splunk-control-group label="High label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.labelHigh" value="High"></splunk-text-input>
+    </splunk-control-group>	
+	
+	
+	<!-- Critical -->
+	<splunk-control-group label="Critical label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.labelCritical" value="Critical"></splunk-text-input>
+    </splunk-control-group>	
+	
+
+	</form>
+
+<!-- ---------------------  Tokens Form ---------------------------->
+<form class="splunk-formatter-section" section-label="Tokens">
+		
+	<!-- Time -->
+	<splunk-control-group label="Time" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenTime" value="hm_token_time"></splunk-text-input>
+    </splunk-control-group>	
+
+	<!-- Label -->
+	<splunk-control-group label="Label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenLabel" value="hm_token_label"></splunk-text-input>
+    </splunk-control-group>	
+			
+	
+	<!-- Value -->
+	<splunk-control-group label="Value" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenValue" value="hm_token_value"></splunk-text-input>
+    </splunk-control-group>
+		
+</form>

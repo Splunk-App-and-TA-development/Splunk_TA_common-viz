@@ -1,0 +1,63 @@
+<form class="splunk-formatter-section" section-label="Clusters">
+    <label class="control-label" for="viz_clustermap-clustermap-radius">Icon Size</label>
+    <div class="controls controls-block control-group">
+        <input type="range" style="width: 100%"
+               name="display.visualizations.custom.viz_clustermap.clustermap.size"
+               id="viz_clustermap-clustermap-radius"
+               min="0" max="100" value="40" />
+       <div style="font-size:8px">
+         <div style="float:right;">Largest</div>
+         <div style="float:left;">Smallest</div>
+       </div>
+    </div>
+    <label class="control-label" for="viz_clustermap-clustermap-max-clusters">Max Clusters</label>
+    <div class="controls controls-block control-group">
+        <input type="range" style="width: 100%"
+               name="display.visualizations.custom.viz_clustermap.clustermap.maxClusters"
+               id="viz_clustermap-clustermap-max-clusters"
+               min="32" max="1024" value="500" />
+        <div style="font-size:8px">
+          <div style="float:right;">1024</div>
+          <div style="float:left;">32</div>
+        </div>
+    </div>
+  <label class="control-label">Colors</label>
+  <div class="controls controls-block control-group">
+    <splunk-color-picker name="display.visualizations.custom.viz_clustermap.clustermap.markerColor1" style="float: left; margin-right: 3px;"></splunk-color-picker>
+    <splunk-color-picker name="display.visualizations.custom.viz_clustermap.clustermap.markerColor2" style="float: left; margin-right: 3px;"></splunk-color-picker>
+    <splunk-color-picker name="display.visualizations.custom.viz_clustermap.clustermap.markerColor3" style="float: left; margin-right: 3px;"></splunk-color-picker>
+    <splunk-color-picker name="display.visualizations.custom.viz_clustermap.clustermap.markerColor4" style="float: left; margin-right: 3px;"></splunk-color-picker>
+    <span style="clear: left;" class="help-block">Define color palette for cluster icons.</span>
+  </div>
+
+</form>
+<form class="splunk-formatter-section" section-label="Map">
+  <label class="control-label">Map Tiles</label>
+  <div class="controls controls-fill control-group">
+      <splunk-radio-input name="display.visualizations.custom.viz_clustermap.clustermap.tiles">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="custom">Custom</option>
+      </splunk-radio-input>
+  </div>
+  <label class="control-label">Custom URL</label>
+  <div class="controls controls-fill control-group">
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.tiles_url" placeholder="http://mytiles.local/{z}/{x}/{y}.png" style="width: 98%" />
+  </div>
+  <label class="control-label">Min/Max Zoom</label>
+  <div class="controls controls-fill control-group">
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.tiles_min_zoom" placeholder="0" style="width: 49%" />
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.tiles_max_zoom" placeholder="18" style="width: 49%" />
+  </div>
+  <div class="divider" />
+  <label class="control-label">Center</label>
+  <div class="controls controls-fill control-group">
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.lat" placeholder="Latitude" style="width: 49%" />
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.lng" placeholder="Longitude" style="width: 49%" />
+  </div>
+  <label class="control-label">Zoom</label>
+  <div class="controls controls-fill control-group">
+      <input type="text" name="display.visualizations.custom.viz_clustermap.clustermap.zoom" placeholder="Zoom" style="width: 49%" />
+  </div>
+
+</form>

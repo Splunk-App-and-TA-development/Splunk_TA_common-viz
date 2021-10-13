@@ -1,0 +1,98 @@
+<form class="splunk-formatter-section" section-label="General">
+    
+    <splunk-control-group label="Clock style" help="">
+        <splunk-select name="{{VIZ_NAMESPACE}}.style" value="d">
+            <option value="d">Digital</option>
+            <option value="a">Analog</option>
+        </splunk-select> 
+    </splunk-control-group>
+
+    <splunk-control-group label="Timezone" help="Leave blank for the current timezone">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.timezone" value=""></splunk-text-input>
+    </splunk-control-group>
+    
+    <splunk-control-group label="Base size" help="Leave blank to auto-fit available space">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.size" value=""></splunk-text-input>
+    </splunk-control-group>
+
+    <splunk-control-group label="Caption" help="">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.caption" value=""></splunk-text-input>
+    </splunk-control-group>
+
+   <splunk-control-group label="Caption size" help="As a multiple of base size">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.captsize" value="0.3"></splunk-text-input>
+    </splunk-control-group>
+
+   <splunk-control-group label="Show date" help="">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.showdate" value="false">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+
+   <splunk-control-group label="Date format" help="See help tab">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.datefmt" value="Do MMMM YYYY"></splunk-text-input>
+    </splunk-control-group>
+
+   <splunk-control-group label="Date size" help="As a multiple of base size">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.datesize" value="0.2"></splunk-text-input>
+    </splunk-control-group>
+</form>
+
+
+<!-- Analog clock options -->
+<form class="splunk-formatter-section" section-label="Analog">
+
+   <splunk-control-group label="Seconds hand" help="">
+        <splunk-select name="{{VIZ_NAMESPACE}}.seconds" value="bounce">
+            <option value="hidden">Hide</option>
+            <option value="smooth">Smooth</option>
+            <option value="tick">Tick</option>
+            <option value="bounce">Bounce</option>
+        </splunk-select> 
+    </splunk-control-group>
+
+   <splunk-control-group label="Show numerals" help="">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.numerals" value="false">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+</form>
+
+
+<!-- Digital clock options -->
+<form class="splunk-formatter-section" section-label="Digital">
+
+   <splunk-control-group label="Format" help="See help tab">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.format" value="h:mm:ss a"></splunk-text-input>
+    </splunk-control-group>
+
+    <splunk-control-group label="Font" help="">
+        <splunk-select name="{{VIZ_NAMESPACE}}.font" value="bold" style="margin-right:8px;">
+            <option value="normal">Normal</option>
+            <option value="bold">Bold</option>
+            <option value="orbitron">Orbitron</option>
+            <option value="aldrich">Aldrich</option>
+        </splunk-select> 
+    </splunk-control-group>
+
+</form>
+
+<!-- Help -->
+<form class="splunk-formatter-section" section-label="Help">
+	<splunk-control-group label=" " help="">
+        <div style="margin:40px 10px 10px -100px">
+            <p>Date formats are <a href="https://momentjs.com/docs/#/displaying/format/" target="_blank">Moment.js syntax</a></p>
+            <p>Examples:</p>
+            <p>
+                <code style='display:inline-block; width: 90px; margin-right:10px;'>HH:mm:ss</code> 15:30:10<br />
+                <code style='display:inline-block; width: 90px; margin-right:10px;'>h:mm:ss a</code> 3:30:10 pm<br />
+                <code style='display:inline-block; width: 90px; margin-right:10px;'>Do MMMM YYYY</code> 23rd February 2019<br />
+                <code style='display:inline-block; width: 90px; margin-right:10px;'>D MMM</code> 23 Feb<br />
+                <code style='display:inline-block; width: 90px; margin-right:10px;'>MM/D/YY</code> 02/23/19
+            </p>
+            <div style="margin-top:40px;">By Chris Younger - <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds" target="_blank">My other apps</a></div>
+        </div>
+	</splunk-control-group>
+</form>

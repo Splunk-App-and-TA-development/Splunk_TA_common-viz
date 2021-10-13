@@ -1,0 +1,58 @@
+<form class="splunk-formatter-section" section-label="General">
+    <splunk-control-group label="Show results as">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.splitMonths" value="true">
+            <option value="true">Months</option>
+            <option value="false">Years</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <div>
+        <span style="display: block; margin: 15px 0px 5px 5px; font-size: 85%; color: #999;">
+            Calendar display for 1 day span
+        </span>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Color and legend">
+    <splunk-control-group label="Show legend">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.showLegend" value="true">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Series color scale">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.legendType" value="uniform">
+            <option value="uniform">Uniform</option>
+            <option value="independent">Independent</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Min color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.minColor" value="#dae667"></splunk-color-picker>
+    </splunk-control-group>
+    <splunk-control-group label="Max color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.maxColor" value="#269489"></splunk-color-picker>
+    </splunk-control-group>
+    <splunk-control-group label="Number of bins">
+        <splunk-select name="{{VIZ_NAMESPACE}}.numOfBins" value="5">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </splunk-select>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Style">
+    <splunk-control-group label="Cell width (px)">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.cellSize" value="10"></splunk-text-input>
+    </splunk-control-group>
+    <splunk-control-group label="Padding (px)">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.cellPadding" value="2"></splunk-text-input>
+    </splunk-control-group>
+    <splunk-control-group label="Shape">
+        <splunk-select name="{{VIZ_NAMESPACE}}.cellStyle" value="square">
+            <option value="square">Square</option>
+            <option value="circle">Circle</option>
+        </splunk-select>
+    </splunk-control-group>
+</form>

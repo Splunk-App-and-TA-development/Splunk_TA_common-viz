@@ -1,0 +1,25 @@
+{
+  "name": "radar_chart",
+  "version": "1.1.1",
+  "description": "Visualization app template. Put a description here.",
+  "main": "visualization.js",
+  "scripts": {
+    "build": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js",
+    "build-local": "node ./node_modules/webpack/bin/webpack.js",
+    "devbuild": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js --progress",
+    "watch": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js -d --watch --progress"
+  },
+  "author": "Scott Haskell",
+  "license": "MIT",
+  "devDependencies": {
+    "imports-loader": "^0.6.5",
+    "webpack": "^1.12.6",
+    "babel-polyfill": "^6.26.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "underscore": "^1.8.3",
+    "d3": "^3.5.12",
+    "brfs": "^1.4.3"
+  }
+}

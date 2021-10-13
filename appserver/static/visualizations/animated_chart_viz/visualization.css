@@ -1,0 +1,28 @@
+div.animatedChartContainer{
+	height: 100%;
+	padding: 15px 15px 5px 15px!important;
+}
+
+/* CSS for the options menu */
+
+
+
+/* Make the text box appear top-aligned with the dropdown */
+.shared-vizcontrols-format-dialog splunk-control-group splunk-text-input:not(:first-child) {margin-left: 15px;}
+.shared-vizcontrols-format-dialog splunk-control-group splunk-text-input:not(:first-child) input[type="text"] {margin-top:0px;}
+
+/* Hide the custom option if you don't choose Custom */
+splunk-select[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMin"][value="none"] ~ splunk-text-input[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMinCustom"] {
+	display:none;
+} 
+splunk-select[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMin"][value="dataMin"] ~ splunk-text-input[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMinCustom"] {
+	display:none;
+} 
+
+splunk-select[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMax"][value="none"] ~ splunk-text-input[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMaxCustom"] {
+	display:none;
+} 
+splunk-select[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMax"][value="dataMax"] ~ splunk-text-input[name="display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMaxCustom"] {
+	display:none;
+} 
+

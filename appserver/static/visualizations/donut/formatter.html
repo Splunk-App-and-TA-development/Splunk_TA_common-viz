@@ -1,0 +1,153 @@
+<form class="splunk-formatter-section" section-label="Format">
+    <div class="control-group">
+        <label class="control-label">Chart Type</label>
+        <div class="controls controls-block">
+            <splunk-select name="display.visualizations.custom.aplura_viz_donut.donut.chartType" value="2D">
+                <option value="2D">2D</option>
+                <option value="3D">3D</option>
+            </splunk-select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Min Percent (%)</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.min_percent" value="1">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Use Min Percent</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.aplura_viz_donut.donut.use_min_percent" value="true">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Colors">
+    <div class="control-group">
+        <label class="control-label">Color Scheme</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.aplura_viz_donut.donut.color_scheme" value="predefined">
+                <option value="predefined">D3 Scale</option>
+                <option value="custom">Custom</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">D3 Scale</label>
+        <div class="controls controls-block">
+            <splunk-select name="display.visualizations.custom.aplura_viz_donut.donut.color_category">
+                <option value="10">category10</option>
+                <option value="20">category20</option>
+                <option value="20b">category20b</option>
+                <option value="20c">category20c</option>
+            </splunk-select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Custom color palette</label>
+        <div class="controls controls-block">
+            <splunk-text-area name="display.visualizations.custom.aplura_viz_donut.donut.color_csv">
+            </splunk-text-area>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Legend">
+    <div class="control-group">
+        <label class="control-label">Show Legend</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.aplura_viz_donut.donut.show_legend" value="true">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Text Size (px)</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.legend_text_size" value="12">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Legend Item Width (px)</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.legend_item_width" value="200">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Position</label>
+        <div class="controls controls-fill">
+            <splunk-select name="display.visualizations.custom.aplura_viz_donut.donut.legend_position" value="right">
+                <option value="left">left</option>
+                <option value="right">right</option>
+                <option value="top">top</option>
+                <option value="bottom">bottom</option>
+            </splunk-select>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="2D Chart">
+    <div class="control-group">
+        <label class="control-label">Donut Width</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.donutWidth" value="20">
+            </splunk-text-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="3D Chart">
+    <div class="control-group">
+        <label class="control-label">X Radius</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.xradius" value="30">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Y Radius</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.yradius" value="30">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Height</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.height" value="20">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Inner Radius</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="display.visualizations.custom.aplura_viz_donut.donut.iradius" value="0.8">
+            </splunk-text-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Drilldown">
+    <div class="control-group">
+        <label class="control-label">Drilldown</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.aplura_viz_donut.donut.drilldown" value="Yes">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Debug">
+    <div class="control-group">
+        <label class="control-label">JavaScript Logging</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.aplura_viz_donut.donut.log" value="No">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>

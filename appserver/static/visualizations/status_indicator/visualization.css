@@ -1,0 +1,12 @@
+@import url('./contrib/font-awesome/css/font-awesome.min.css');
+
+.splunk-status-indicator { 
+    text-align: center;
+    font-weight: bold; 
+    line-height: 140%;
+    white-space: nowrap;
+}
+.splunk-status-indicator i:after{ 
+    content:'\202F';
+}
+

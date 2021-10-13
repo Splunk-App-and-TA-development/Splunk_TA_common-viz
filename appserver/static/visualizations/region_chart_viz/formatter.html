@@ -1,0 +1,179 @@
+<form class="splunk-formatter-section" section-label="General">
+        <splunk-control-group label="Type" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.type" value="curve">
+                        <option value="straight">Straight</option>
+                        <option value="curve">Curve</option>
+                        <option value="step">Step</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Null values" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.nulls" value="gap">
+                        <option value="gap">Gap</option>
+                        <option value="zero">Zero</option>
+                        <option value="connect">Connect</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Dots" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.status_dots" value="hide">
+                        <option value="show">Show</option>
+                        <option value="hide">Hide</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Line size" help="">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.line_size" value="3" style="width:64px; vertical-align:top; display:inline-block; flex:none; margin-right:4px;"></splunk-text-input>
+                <span style="display:inline-block; margin:5px 15px 5px 5px;">px</span>
+        </splunk-control-group>
+
+        <splunk-control-group label="Line shadow opacity" help="0 to disable">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.shadow" value="0" style="width:64px; vertical-align:top; display:inline-block; flex:none; margin-right:4px;"></splunk-text-input>
+                <span style="display:inline-block; margin:5px 15px 5px 5px;">%</span>
+        </splunk-control-group>
+
+        <splunk-control-group label="Line color" help="">
+                <splunk-color-picker name="{{VIZ_NAMESPACE}}.line_color" value="#000000" type="splunkCategorical" style="vertical-align:top; display:inline-block;">
+                        <splunk-color>#ffffff</splunk-color>
+                        <splunk-color>#C6C6C6</splunk-color>
+                        <splunk-color>#919191</splunk-color>
+                        <splunk-color>#5E5E5E</splunk-color>
+                        <splunk-color>#000000</splunk-color>
+                        <splunk-color>#53a051</splunk-color>
+                        <splunk-color>#dc4d41</splunk-color>
+                        <splunk-color>#d16f18</splunk-color>
+                        <splunk-color>#009DD9</splunk-color>
+                        <splunk-color>#ebb839</splunk-color>
+                        <splunk-color>#1a9035</splunk-color>
+                        <splunk-color>#b22b32</splunk-color>
+                        <splunk-color>#AF5300</splunk-color>
+                        <splunk-color>#0178c7</splunk-color>
+                        <splunk-color>#ecbc1b</splunk-color>
+                </splunk-color-picker>
+        </splunk-control-group>
+
+        <splunk-control-group label="Region opacity" help="">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.region_opacity" value="35" style="width:64px; vertical-align:top; display:inline-block; flex:none; margin-right:4px;"></splunk-text-input>
+                <span style="display:inline-block; margin:5px 15px 5px 5px;">%</span>
+        </splunk-control-group>
+
+        <splunk-control-group label="Comparison" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.region_comparison" value="">
+                        <option value="">&gt;=</option>
+                        <option value="gt">&gt;</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Subsequent lines" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.multi_series" value="shaded">
+                        <option value="shaded">Dim &amp; dashed</option>
+                        <option value="colored">Colored</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label=" " help="Requires multiple series of data">
+        </splunk-control-group>
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Text">
+        <splunk-control-group label="Last value text" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.last_text" value="hide">
+                        <option value="show">Show</option>
+                        <option value="hide">Hide</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Summary text" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.summ_text" value="hide">
+                        <option value="avg">Avg</option>
+                        <option value="sum">Sum</option>
+                        <option value="hide">Hide</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="  " help="Text formatting settings are also used in tooltips">
+        </splunk-control-group>
+
+        <splunk-control-group label="Precision" help="">
+                <splunk-select name="{{VIZ_NAMESPACE}}.text_precision" value="-1">
+                        <option value="-1">Not set</option>
+                        <option value="1">0</option>
+                        <option value="2">0.0</option>
+                        <option value="3">0.00</option>
+                        <option value="4">0.000</option>
+                        <option value="5">0.0000</option>
+                        <option value="6">0.00000</option>
+                </splunk-select>
+        </splunk-control-group>
+
+        <splunk-control-group label="Thousand seperators" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.text_thousands" value="no">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Unit" help="">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.text_unit" value=""></splunk-text-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Unit position" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.text_unit_position" value="after">
+                        <option value="before">Before</option>
+                        <option value="after">After</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Bottom axis">
+        <splunk-control-group label="Title" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.xtitle_show" value="hide">
+                        <option value="show">Show</option>
+                        <option value="hide">Hide</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+        <splunk-control-group label="Text" help="Leave blank for auto">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.xtitle_text" value=""></splunk-text-input>
+        </splunk-control-group> 
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Left axis">
+        <splunk-control-group label="Title" help="">
+                <splunk-radio-input name="{{VIZ_NAMESPACE}}.ytitle_show" value="hide">
+                        <option value="show">Show</option>
+                        <option value="hide">Hide</option>
+                </splunk-radio-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Text" help="Leave blank for auto">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.ytitle_text" value=""></splunk-text-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Min value" help="">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.min" value="" style="width:64px; vertical-align:top; display:inline-block; flex:none; margin-right:4px;"></splunk-text-input>
+        </splunk-control-group>
+
+        <splunk-control-group label="Max value" help="">
+                <splunk-text-input name="{{VIZ_NAMESPACE}}.max" value="" style="width:64px; vertical-align:top; display:inline-block; flex:none; margin-right:4px;"></splunk-text-input>
+        </splunk-control-group>
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Help">
+        <splunk-control-group label=" " help="">
+                <div style="margin:40px 10px 10px -100px">
+                        <div>Expects data from timechart command. Regions should be in a field named <code>regions</code>. See documentation for more details.</div>
+                        <div style="margin-top:30px;">Example query:</div>
+                        <div style="margin-top:10px;"><code>... | timechart count </br> | eval regions = "normal=#99D18B,50,Warning=#FCB64E,70,Error=#B50101"</code></div>
+                        <div style="margin-top:30px;"><a href="/app/region_chart_viz/documentation?hideAppBar=true" target="_blank">Examples and Documentation</a></div>
+                        <div style="margin-top:40px;">By Chris Younger - <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds" target="_blank">My other apps</a></div>
+                </div> 
+        </splunk-control-group>
+</form>

@@ -1,0 +1,50 @@
+/*
+ * CSS rules for visualization.
+ * Class namespacing is good practice.
+ */
+
+.scatterplot svg {
+  font-size: 14px;
+}
+
+.scatterplot .axis {
+  shape-rendering: crispEdges;
+}
+
+.scatterplot .axis line {
+  stroke: #555;
+  stroke-width: 1px;
+  opacity: .9;
+}
+
+.scatterplot .axis path {
+  display: none;
+}
+
+.scatterplot rect.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+
+.scatterplot rect.frame {
+  fill: #fff;
+  fill-opacity: .7;
+  stroke: #aaa;
+}
+
+.scatterplot circle {
+  fill-opacity: .5;
+}
+
+.scatterplot .legend circle {
+  fill-opacity: 1;
+}
+
+.scatterplot .legend text {
+  font-style: oblique;
+}
+
+.scatterplot .cell text {
+  pointer-events: none;
+}

@@ -1,0 +1,56 @@
+<form class="splunk-formatter-section" section-label="Animation">
+    <splunk-control-group label="Auto Rotation">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.rotateEnabled" value="true">
+            <option value="true">Enabled</option>
+            <option value="false">Disabled</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Auto Rotation Speed">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.rotateSpeed" value="0.1">
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Point-to-Point Animation">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.ptpEnabled" value="true">
+            <option value="true">Enabled</option>
+            <option value="false">Disabled</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Point-to-Point Speed (seconds)">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.ptpSpeed" value="1">
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Point-to-Point Delay (seconds)">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.ptpDelay" value="5">
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Point-to-Point Camera Elevation">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.ptpElevation" value="2">
+        </splunk-radio-input>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Earth Texture">
+    <splunk-radio-input name="{{VIZ_NAMESPACE}}.textureName" value="true">
+            <option value="night">Night Marble</option>
+            <option value="day">Day Marble</option>
+        </splunk-radio-input>
+</form>
+<form class="splunk-formatter-section" section-label="Defaults">
+    <splunk-control-group label="Default Arc Color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.defaultColor" value="#f1813f">
+        </splunk-color-picker>
+    </splunk-control-group>
+    <splunk-control-group label="Default Label Text Size">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.defaultLabelSize" value="3">
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Default Latitude">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.defaultLat" value="-33.86">
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Default Longitude">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.defaultLng" value="150.933">
+        </splunk-radio-input>
+    </splunk-control-group>
+</form>
+
+

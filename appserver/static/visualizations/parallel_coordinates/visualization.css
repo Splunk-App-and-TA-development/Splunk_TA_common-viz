@@ -1,0 +1,101 @@
+.splunk-parcoords-viz {
+  padding: 15px;
+}
+.splunk-parcoords-viz text {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica;
+  font-size:11px;
+  text-shadow: 0 0 3px #fff;
+}
+.splunk-parcoords-viz.cat-max-35 text {
+  font-size:10px;
+}
+.splunk-parcoords-viz .filter-line {
+  position:absolute;
+  bottom:9px;
+  left:0;
+}
+.splunk-parcoords-viz .data-length {
+  display:inline-block;
+  margin-right:15px;
+  margin-left:15px;
+}
+.splunk-parcoords-viz .clear-filters {
+  margin-right:15px;
+}
+.splunk-parcoords-viz > svg, .splunk-parcoords-viz > canvas {
+  position: absolute;
+}
+.splunk-parcoords-viz > canvas {
+  pointer-events: none;
+}
+
+.splunk-parcoords-viz text.label {
+  font-size: 12px;
+  text-transform:none;
+  cursor:pointer;
+}
+
+.splunk-parcoords-viz rect.background {
+  fill: transparent;
+}
+.splunk-parcoords-viz rect.background:hover {
+  fill: rgba(120,120,120,0.2);
+}
+.splunk-parcoords-viz .resize rect {
+  fill: rgba(0,0,0,0.1);
+}
+.splunk-parcoords-viz rect.extent {
+  fill: rgba(255,255,255,0.25);
+  stroke: rgba(0,0,0,0.6);
+}
+.splunk-parcoords-viz .axis line, .splunk-parcoords-viz .axis path {
+  fill: none;
+  stroke: #333;
+  shape-rendering: crispEdges;
+}
+.splunk-parcoords-viz canvas {
+  opacity: 1;
+  -moz-transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+}
+.splunk-parcoords-viz canvas.faded {
+  opacity: 0.25;
+}
+.splunk-parcoords-viz {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.splunk-parcoords-viz.no-ticks .axis g {
+    display: none;
+}
+
+/* Dark Theme Styles to override default settings */
+
+.splunk-parcoords-viz.dark text {
+    fill: #fff;
+}
+
+.splunk-parcoords-viz.dark .axis line, .splunk-parcoords-viz.dark .axis path {
+    stroke: #FFFFFF;
+}
+
+.splunk-parcoords-viz.dark .clear-filters{
+    background-color: #5C6773;
+    border-color: #32414C;
+    color: #FFFFFF;
+    box-shadow: inset 0px -1px 0 #3C444D;
+}
+
+.splunk-parcoords-viz.dark .clear-filters[disabled="disabled"]{
+    background-color: #3C444D;
+    border-color: transparent;
+    color: #5C6773;
+    box-shadow: none;
+    cursor: not-allowed;
+}

@@ -1,0 +1,14 @@
+/*
+ * CSS rules for visualization.
+ * Class namespacing is good practice.
+ */
+
+ #cy {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  active-bg-opacity: 0.333;
+}

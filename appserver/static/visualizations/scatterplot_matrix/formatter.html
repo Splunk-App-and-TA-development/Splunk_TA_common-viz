@@ -1,0 +1,92 @@
+<form class="splunk-formatter-section" section-label="Legend">
+    <div class="control-group">
+        <label class="control-label">Show Legend</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.show_legend"
+                                value="false">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Position</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.legend_position"
+                                value="left">
+                <option value="left">left</option>
+                <option value="right">right</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Trendline">
+    <div class="control-group">
+        <label class="control-label">Show Trendlines</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.show_trend"
+                                value="false">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Show R-Value</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.show_r" value="false">
+                <option value="false">No</option>
+                <option value="r">R</option>
+                <option value="rsq">R²</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Show One-to-One Data</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.show_self"
+                                value="true">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Trendline Width</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.trendline_width"
+                               value="1">
+            </splunk-text-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Trendline Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker name="{{VIZ_NAMESPACE}}.trendline_color"
+                                 value="#000000">
+            </splunk-color-picker>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Debug">
+    <div class="control-group">
+        <label class="control-label">JavaScript Logging</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.log" value="false">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Override Trellis Size</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.override_trellis"
+                                value="false">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,64 @@
+.splunk-punchcard .axis path,.axis line {
+  fill: none;
+  stroke: #b6b6b6;
+  shape-rendering: crispEdges;
+}
+
+.splunk-punchcard .tick text {
+  fill: #555;
+  font-size:10px;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica;
+}
+
+.splunk-punchcard text.label {
+  fill: #555;
+  font-size:12px;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica;
+  text-transform:none;
+}
+
+.splunk-punchcard text.label,
+.splunk-punchcard punch.label,
+.splunk-punchcard .tick text,
+.splunk-punchcard g.dimension.active {
+  cursor: default;
+}
+
+.splunk-punchcard.punchcard-drilldown text.label,
+.splunk-punchcard.punchcard-drilldown .punch-label,
+.splunk-punchcard.punchcard-drilldown .tick text,
+.splunk-punchcard.punchcard-drilldown g.dimension.active {
+  cursor: pointer;
+}
+
+.splunk-punchcard text.value {
+  cursor: default;
+  font-size: 12px;
+  text-shadow: 2px 0 0 white, 0 2px 0 white, -2px 0 0 white, 0 -2px 0 white;
+}
+
+.splunk-punchcard.punchcard-drilldown text.value {
+  cursor: pointer;
+}
+
+.splunk-punchcard svg {
+  margin: 0px auto;
+  display: block;
+}
+
+.splunk-punchcard {
+  margin: auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+/* Dark Theme */
+
+.splunk-punchcard.dark .tick text,
+.splunk-punchcard.dark text.label {
+    fill: #E1E6EB;
+}
+
+.splunk-punchcard.dark text.value {
+    text-shadow: none;
+}

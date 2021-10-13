@@ -1,0 +1,28 @@
+<form class="splunk-formatter-section" section-label="General">
+
+    <splunk-control-group label="Type" help="">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.type" value="half">
+            <option value="half">Semicircle</option>
+            <option value="full">Circle</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    
+    <splunk-control-group label="Legend position" help="">
+        <splunk-select name="{{VIZ_NAMESPACE}}.legendPosition" value="top">
+            <option value="right">Right</option>
+            <option value="bottom">Bottom</option>
+            <option value="left">Left</option>
+            <option value="top">Top</option>
+            <option value="none">None</option>
+        </splunk-select> 
+    </splunk-control-group>
+    
+    <splunk-control-group label="Cutout percentage" help="">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.cutoutPercentage" value="50"></splunk-text-input>
+    </splunk-control-group>
+
+    <splunk-control-group label="Color names field" help="Optional. Specify the column containing colours to use">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.colorField" value=""></splunk-text-input>
+    </splunk-control-group> 
+
+</form>

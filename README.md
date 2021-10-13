@@ -22,7 +22,7 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 
 
 
-## **Implemented Visualization addons**
+# **Implemented Visualization addons**
 This TA contains a collection of Visualization addons for Splunk 8.0.x to 8.2.x Enterprise Versions.
 The following List below shows which Visualization addons are integred and their Versionsion.
 
@@ -1188,21 +1188,6 @@ https://splunkbase.splunk.com/app/3674/
 - ***--> Archived!! Do not use anymore !!***
 
 
-
-### Search Peers
-Accorting to the Splunk Infrastructure, the TA is installed on the following search Peers:
-
-    Search Peer:        sh1.logcentral.media.int
-						sh2.logcentral.media.int
-						shc1.logcentral.media.int
-						shc2.logcentral.media.int
-						shc3.logcentral.media.int
-						shc4.logcentral.media.int
-						shc5.logcentral.media.int
-						mon1.logcentral.media.int
-						dsh1.logcentral.media.int
-						dsh2.logcentral.media.int
-						dsh3.logcentral.media.int
 
 
 

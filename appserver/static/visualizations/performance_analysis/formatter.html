@@ -1,0 +1,83 @@
+<form class="splunk-formatter-section" section-label="Default Thresholds">
+    <splunk-control-group label="Warning Threshold" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.warningThreshold" value="12"></splunk-text-input>
+	</splunk-control-group>
+	<splunk-control-group label="Critical Threshold" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.criticalThreshold" value="18"></splunk-text-input>
+	</splunk-control-group>
+	 <splunk-control-group label="Threshold Direction" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.OKIsLowOrHigh" value="low" section-label="Direction">
+			<option value="low">OK is Lowest Value</option>
+			<option value="high">Critical is Lowest Value</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+</form>
+
+<form class="splunk-formatter-section" section-label="Options">
+    <splunk-control-group label="Granularity" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.granularity" value="5"></splunk-text-input>
+    </splunk-control-group>
+	 <splunk-control-group label="Show Legend" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.showLegend" value="true" section-label="Show Legend">
+			<option value="true">Show Legend</option>
+			<option value="false">Hide Legend</option>
+		</splunk-select>
+	</splunk-control-group>
+	<splunk-control-group label="Status Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.showStatusAsText" value="true" section-label="Status as Text">
+			<option value="true">Text Values</option>
+			<option value="false">Numerical Values</option>
+		</splunk-select>
+	</splunk-control-group>
+	 <splunk-control-group label="Sort Order" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.sortOrder" value="true" section-label="Sort Names">
+			<option value="default">Default</option>
+			<option value="az">A-Z</option>
+			<option value="za">Z-A</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+</form>
+
+<form class="splunk-formatter-section" section-label="Colours">
+    <splunk-control-group label="Ok Colour" help=" ">		<splunk-color-picker name="{{VIZ_NAMESPACE}}.okColour" value="#78B24A">			</splunk-color-picker></splunk-control-group>
+	<splunk-control-group label="Warning Colour" help=" ">	<splunk-color-picker name="{{VIZ_NAMESPACE}}.warningColour" value="#E0C135">	</splunk-color-picker></splunk-control-group>
+	<splunk-control-group label="Critical Colour" help=" ">	<splunk-color-picker name="{{VIZ_NAMESPACE}}.criticalColour" value="#DD0000">	</splunk-color-picker></splunk-control-group>
+	<splunk-control-group label="No Data Colour" help=" ">	<splunk-color-picker name="{{VIZ_NAMESPACE}}.noDataColour" value="#5EBFC6">		</splunk-color-picker></splunk-control-group>
+</form>
+
+<form class="splunk-formatter-section" section-label="Downtime Range">
+    <splunk-control-group label="Downtime Start" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.downTimeStart" value="0"></splunk-text-input>
+	</splunk-control-group>
+	<splunk-control-group label="Downtime End" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.downTimeEnd" value="7"></splunk-text-input>
+	</splunk-control-group>
+</form>
+
+<form class="splunk-formatter-section" section-label="Time Format">
+    <splunk-control-group label="Time Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.timeFormat" value="h:mm A" section-label="Time Format">
+			<option value="h:mm A">10:35 PM</option>
+			<option value="H:mm">22:35</option>
+			<option value="hA">10PM</option>
+			<option value="H">22</option>
+			<option value="h:mm:ss A">10:35:06 PM</option>
+			<option value="H:mm:ss">22:35:06</option>
+		</splunk-select>
+	</splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Tokens">
+    <splunk-control-group label="Earliest Timestamp" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenEarliest" value="pa_earliest"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Latest Timestamp" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenLatest" value="pa_latest"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Row Name" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenName" value="pa_name"></splunk-text-input>
+    </splunk-control-group>
+</form>

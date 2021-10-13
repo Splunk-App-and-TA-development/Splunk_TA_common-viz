@@ -1,0 +1,82 @@
+<form class="splunk-formatter-section" section-label="Render">
+    <div class="control-group">
+        <label class="control-label">Dialect</label>
+        <div class="controls controls-fill">
+            <splunk-select name="{{VIZ_NAMESPACE}}.dalek"
+                                value="Maruku">
+                <option value="Gruber">Gruber</option>
+                <option value="Maruku">Maruku</option>
+                <option value="asciidoc">ASCIIDoctor</option>
+            </splunk-select>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Location</label>
+        <div class="controls controls-fill">
+            <splunk-select name="{{VIZ_NAMESPACE}}.sonic_screwdriver"
+                                value="local_file">
+                <option value="local_file">Local File</option>
+                <option value="html">Panel HTML</option>
+                <option value="search">Inline Search</option>
+            </splunk-select>
+        </div>
+    </div>
+    </form>
+<form class="splunk-formatter-section" section-label="Panel HTML">
+<div class="control-group">
+        <label class="control-label">HTML ID</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.html_id"
+                               value="aplura_viz_markdown">
+            </splunk-text-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Inline Search">
+<div class="control-group">
+        <label class="control-label">Search Field</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.search_field"
+                               value="markdown">
+            </splunk-text-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Local File">
+<div class="control-group">
+        <label class="control-label">App Name</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.app_name"
+                               value="aplura_viz_markdown">
+            </splunk-text-input>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label">Path (no leading or following slashes)</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.path_name"
+                               value="visualizations/markdown">
+            </splunk-text-input>
+        </div>
+    </div>
+        <div class="control-group">
+        <label class="control-label">File Name (no extension)</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.file_name"
+                               value="README">
+            </splunk-text-input>
+        </div>
+    </div>
+    </form>
+<form class="splunk-formatter-section" section-label="Debug">
+    <div class="control-group">
+        <label class="control-label">JavaScript Logging</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.log" value="false">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>

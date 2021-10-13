@@ -1,0 +1,104 @@
+.splunk-horizon-chart .group {
+  margin-bottom: 1em;
+  color: #555;
+}
+
+.splunk-horizon-chart .axis {
+  fill: #555;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica;
+  font-size: 12px;
+  z-index: 2;
+}
+
+.splunk-horizon-chart .axis text {
+  -webkit-transition: fill-opacity 250ms linear;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica;
+}
+
+.splunk-horizon-chart .axis path {
+  display: none;
+}
+
+.splunk-horizon-chart .axis line {
+  stroke: #555;
+  shape-rendering: crispEdges;
+}
+
+.splunk-horizon-chart .axis.top {
+  top: 0px;
+}
+
+.splunk-horizon-chart .axis.bottom {
+  bottom: 0px;
+}
+
+.splunk-horizon-chart .horizon {
+  border-bottom: solid 1px #555;
+  overflow: hidden;
+  position: relative;
+}
+
+.splunk-horizon-chart .horizon {
+  border-top: solid 1px #555;
+  border-bottom: solid 1px #555;
+}
+
+.splunk-horizon-chart .horizon + .horizon {
+  border-top: none;
+}
+
+.splunk-horizon-chart .horizon canvas {
+  display: block;
+}
+
+.splunk-horizon-chart .horizon .title,
+.splunk-horizon-chart .horizon .value {
+  bottom: 0;
+  line-height: 30px;
+  margin: 0 6px;
+  position: absolute;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.splunk-horizon-chart .horizon .title {
+  left: 0;
+}
+
+.splunk-horizon-chart .horizon .value {
+  right: 0;
+}
+
+.splunk-horizon-chart .line {
+  background: #555;
+  z-index: 2;
+}
+
+.splunk-horizon-chart .chart-area {
+  position: absolute;
+}
+
+.splunk-horizon-chart .lane-container {
+  overflow: auto;
+  position: absolute;
+}
+
+/* Dark Theme */
+
+.splunk-horizon-chart.dark .axis {
+    fill: #E1E6EB;
+}
+
+.splunk-horizon-chart.dark .axis line {
+    stroke: #E1E6EB;
+}
+
+.splunk-horizon-chart.dark .line {
+    background: #E1E6EB;
+}
+
+.splunk-horizon-chart.dark .horizon .title,
+.splunk-horizon-chart.dark .horizon .value {
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}

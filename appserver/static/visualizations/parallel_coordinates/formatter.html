@@ -1,0 +1,41 @@
+<form class="splunk-formatter-section" section-label="General">
+    <splunk-control-group label="Hide ticks and labels">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.hideTicks" value="false">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <div style="padding-bottom:8px">
+        <span style="margin: 15px 0px 15px 13px">Categories per dimension</span>
+    </div>
+    <splunk-control-group label="Maximum number">
+        <splunk-select name="{{VIZ_NAMESPACE}}.maxCategories" value="25">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+        </splunk-select>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Color">
+    <splunk-control-group label="Color mode">
+        <splunk-select name="{{VIZ_NAMESPACE}}.colorMode" value="categorical">
+            <option value="categorical">Categorical</option>
+            <option value="sequencial">Sequential</option>
+         </splunk-radio-input>
+    </splunk-control-group>
+    <div>
+        <span style="display: block; margin: 15px 0px 15px 20px; font-size: 85%; color: #999;">
+            Sequential mode settings
+        </span>
+    </div>
+    <splunk-control-group label="Min color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.minColor" value="#d93f3c"></splunk-color-picker>
+    </splunk-control-group>
+    <splunk-control-group label="Max color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.maxColor" value="#3fc77a"></splunk-color-picker>
+    </splunk-control-group>
+</form>

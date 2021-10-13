@@ -1,0 +1,164 @@
+<form class="splunk-formatter-section" section-label="General">
+	 <splunk-control-group label="Chart Type" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.chartType" value="bar">
+			<option value="bar">Bar</option>
+			<option value="line">Line</option>
+			<option value="pie">Pie</option>
+			<option value="doughnut">Doughnut</option>
+			<option value="area">Area</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+		 <splunk-control-group label="Color Theme" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.colorTheme" value="Splunk Categorical">
+			<option value="splunkdefault">Splunk Default</option>
+			<option value="bright">Bright</option>
+			<option value="blues">Blues</option>
+			<option value="greys">Greys</option>
+			<option value="fall">Fall</option>
+			<option value="custom">Custom</option>
+			
+		</splunk-select>
+	</splunk-control-group>
+
+	<splunk-control-group label="Custom Colors" help=" ">
+		  <splunk-text-input name="{{VIZ_NAMESPACE}}.customColors" value=""></splunk-text-input>
+    </splunk-control-group>
+	
+	
+	 <splunk-control-group label="Auto Play" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.autoPlay" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	 <splunk-control-group label="Show Timeline" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showTimeline" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+
+	 <splunk-control-group label="Play Speed" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.playSpeed" value="normal">
+			<option value="veryfast">Very Fast</option>
+			<option value="fast">Fast</option>
+			<option value="moderate">Moderate</option>
+			<option value="normal">Normal</option>
+			<option value="slow">Slow</option>
+			<option value="veryslow">Very Slow</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Date Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.dateFormat" value="dd-mmm-yyyy HH:MM:SS">
+			<option value="dd-mmm-yyyy HH:MM:SS">dd-mmm-yyyy HH:MM:SS</option>
+			<option value="dd-mm-yyyy HH:MM:SS">dd-mm-yyyy HH:MM:SS</option>
+			<option value="dd-mm-yyyy">dd-mm-yyyy</option>
+			<option value="mm-dd-yyyy HH:MM:SS">mm-dd-yyyy HH:MM:SS</option>
+			<option value="mm-dd-yyyy">mm-dd-yyyy</option>
+			<option value="HH:MM:SS">HH:MM:SS</option>
+			<option value="HH:MM">HH:MM</option>
+			
+			<option value="dd-mm">dd-mm</option>
+			<option value="mm-dd">mm-dd</option>
+			<option value="dd-mmm">dd-mmm</option>
+			<option value="mmm-dd">mmm-dd</option>
+			
+			<option value="a">A</option>
+			
+			
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+
+	
+</form>
+
+<form class="splunk-formatter-section" section-label="Title">
+
+	<splunk-control-group label="Title">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.title" value=""></splunk-text-input>
+    </splunk-control-group>
+	
+	 <splunk-control-group label="Title Align" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.alignTitle" value="center">
+			<option value="left">Left</option>
+			<option value="center">Center</option>
+			<option value="right">right</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	
+	 <splunk-control-group label="Show Time Slice" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showTimeSlice" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+</form>
+
+
+
+
+<form class="splunk-formatter-section" section-label="Y Axis">
+	
+	<splunk-control-group label="Label">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.yAxisLabel" value=""></splunk-text-input>
+    </splunk-control-group>
+	
+	
+	<splunk-control-group label="Y Axis Min" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.yAxisMin" value="none">
+			<option value="none">None</option>
+			<option value="dataMin">Data Min</option>
+			<option value="custom">Custom</option>
+		</splunk-select>
+		 <splunk-text-input name="{{VIZ_NAMESPACE}}.yAxisMinCustom" value="100"></splunk-text-input>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Y Axis Max" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.yAxisMax" value="none">
+			<option value="none">None</option>
+			<option value="dataMax">Data Max</option>
+			<option value="custom">Custom</option>
+		</splunk-select>
+		 <splunk-text-input name="{{VIZ_NAMESPACE}}.yAxisMaxCustom" value="100"></splunk-text-input>
+	</splunk-control-group>
+	
+		
+	
+	
+</form>
+
+
+<form class="splunk-formatter-section" section-label="X Axis">
+	<splunk-control-group label="Label">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.xAxisLabel" value=""></splunk-text-input>
+    </splunk-control-group>
+	
+	
+	
+
+	
+</form>
+
+<form class="splunk-formatter-section" section-label="Tokens">
+    <splunk-control-group label="Name" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenName" value="ac_name_token"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Value" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenValue" value="ac_value_token"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Time Slice" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenTime" value="ac_time_token"></splunk-text-input>
+    </splunk-control-group>
+</form>
+
+

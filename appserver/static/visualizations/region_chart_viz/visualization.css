@@ -1,0 +1,84 @@
+.region_chart_viz-container {
+    position:relative;
+}
+.region_chart_viz-container svg {
+    display: block;
+    position: absolute;
+}
+.region_chart_viz-bad_data {
+    text-align: center;
+    color: #818d99;
+    line-height: 3;
+}
+.region_chart_viz-xaxis,
+.region_chart_viz-yaxis {
+    font-family: inherit;
+    font-size: 11px;
+}
+.region_chart_viz-xaxis .domain,
+.region_chart_viz-yaxis .tick:first-of-type line {
+    stroke: #c3cbd4;
+}
+.region_chart_viz-yaxis .domain {
+    display: none;
+}
+.region_chart_viz-tooltip {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    background-color: black;
+    text-align: left;
+    padding: 6px;
+    border-radius: 1px;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.region_chart_viz-tooltip_name,
+.region_chart_viz-tooltip_sev,
+.region_chart_viz-tooltip_value {
+    font-weight: bold;
+}
+.region_chart_viz-tooltip_hr td {
+    height: 10px;
+    content: "\00a0";
+}
+.region_chart_viz-tooltip_value,
+.region_chart_viz-tooltip_tcell ,
+.region_chart_viz-tooltip_sev{
+    padding-left: 20px;
+}
+.region_chart_viz-tooltip_colorbox {
+    width: 10px;
+    height:10px;
+    display: inline-block;
+}
+.region_chart_viz-tooltip_th {
+    text-align:right;
+}
+.region_chart_viz-bad_data {
+    text-align: center;
+    color: #818d99;
+    line-height: 3;
+}
+.region_chart_viz-overlaytext_light {
+    font-weight: bold;
+    fill: black;
+    text-shadow: rgba(255, 255, 255,0.5) -1px -1px 0px, rgba(255, 255, 255,0.5) 1px -1px 0px, rgba(255, 255, 255,0.5) -1px 1px 0px, rgba(255, 255, 255,0.5) 1px 1px 0px;
+}
+.region_chart_viz-overlaytext_dark {
+    font-weight: bold;
+    fill: white;
+    text-shadow: rgba(0,0,0,0.5) -1px -1px 0px, rgba(0,0,0,0.5) 1px -1px 0px, rgba(0,0,0,0.5) -1px 1px 0px, rgba(0,0,0,0.5) 1px 1px 0px;
+}
+.region_chart_viz-pulse1 {
+    transform-box: fill-box;
+    transform: scale(0.5);
+    transform-origin: center center;
+    animation: region_chart_viz-pulsekeyframe 3s linear infinite;
+}
+@keyframes region_chart_viz-pulsekeyframe {
+    0% { stroke-width: 3; transform: scale(0.1); opacity: 1; }
+    60% { stroke-width: 0; transform: scale(4); opacity: 0; }
+    100% { stroke-width: 0; transform: scale(4); opacity: 0; }
+}

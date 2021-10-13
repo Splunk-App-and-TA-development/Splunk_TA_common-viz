@@ -1,0 +1,464 @@
+/*
+ * CSS rules for visualization.
+ * Class namespacing is good practice.
+ */
+
+/* Slider */
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+        height: max-content;
+    margin: 0px 20px 17px 20px!important;
+    padding: 0px 0px 0px 0px!important;
+}
+
+
+.carousel-viz-container.drilldown .slick-slide{cursor:pointer;}
+
+
+.slick-arrow.slick-hidden {
+    display: none;
+}
+   .slider {
+        width: 90%;
+        margin: 15px auto;
+    }
+
+    .slick-slide {
+      margin: 0px 20px;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+	      <!-- opacity: .75; -->
+    }
+
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+   <!--   opacity: .2;-->
+    }
+    
+    .slick-active {
+    <!--  opacity: .5;-->
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
+	
+	
+	
+	
+	
+	@charset 'UTF-8';
+
+/* Icons */
+@font-face
+{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('/static/app/carousel-viz/fonts/slick.eot');
+    src: url('/static/app/carousel-viz/fonts/slick.eot?#iefix') format('embedded-opentype'), url('/static/app/carousel-viz/fonts/slick.woff') format('woff'), url('/static/app/carousel-viz/fonts/slick.ttf') format('truetype'), url('/static/app/carousel-viz/fonts/slick.svg#slick') format('svg');
+}
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: black;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    <!--opacity: .75;-->
+    color: black!important;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '→';
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '←';
+}
+
+/* Dots */
+.slick-dotted.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -20px; /* was -25 */
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
+
+	
+	
+	
+/* Visualization CSS */
+
+.xsmall{height:  75px; width: 100px; padding-right: 5px;}
+.small{height:  100px; width: 200px; padding-right: 10px;}
+.medium{height: 150px; width: 300px; padding-right: 15px;}	
+.large{height:  200px; width: 400px; padding-right: 20px;}
+.xlarge{height: 230px; width: 500px; padding-right: 25px;}
+.automatic{}
+
+div.carousel-viz-container{height:-webkit-fill-available;    padding: 15px 15px 15px 15px;}
+
+div.singlevaluebox{
+	font-family:Splunk Platform Sans,Proxima Nova,Roboto,Droid,Helvetica Neue,Helvetica,Arial,sans-serif;
+	text-align:center;
+	padding: 0px 5px 0px 5px;
+	border-radius: 5px 5px 5px 5px;
+	
+}
+div.yellowBlock{background-color:#F7BC38;	
+	color: white;
+	border: 1px solid F7BC38;
+}
+
+div.greenBlock{
+	background-color:#65A637;
+	color: white;
+	border: 1px solid 65A637;
+}
+
+div.redBlock{
+	background-color:#D93F3C;
+	color: white;
+	border: 1px solid #D93F3C;
+}
+
+div.yellowNoBackground {
+	color: #F7BC38;
+	border: 1px solid #F7BC38;
+}
+
+div.greenNoBackground {
+	color: #65A637;
+	border: 1px solid #65A637;
+}
+div.redNoBackground {
+	color: #D93F3C;
+	border: 1px solid #D93F3C;
+}
+
+
+div.blueBlock{
+	background-color: #6EB9D9;
+	color: white;
+	border: 1px solid #3691C4;
+}
+
+div.blueNoBackground{
+	color: #3691C4;
+	border: 1px solid #3691C4;
+	
+}
+
+
+div.value{
+	font-family: Splunk Platform Sans,Proxima Nova,Roboto,Droid,Helvetica Neue,Helvetica,Arial,sans-serif;
+	height: 80%;
+	min-height: 12px;
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	overflow:hidden;
+	font-weight: bold;
+}
+div.value span{white-space:nowrap;text-overflow: ellipsis;}
+div.caption{
+	font-weight:bold;
+	height: 20%;
+	min-height: 12px;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	margin: -5px 0px 0px 0px;
+	overflow: hidden;
+}
+div.caption span{white-space:nowrap;text-overflow: ellipsis;}

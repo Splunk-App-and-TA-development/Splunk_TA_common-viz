@@ -1,0 +1,177 @@
+<!-- ---------------------  Options Form ---------------------------->
+<form class="splunk-formatter-section" section-label="General">
+  	 <!-- Event Orientation? -->
+	 <splunk-control-group label="Time Location" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.orientation" value="top">
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+			<option value="both">Both</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+
+
+	 <!-- Event Overlap -->
+	 <splunk-control-group label="Group Sorting" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.sortGroupsBy" value="name">
+			<option value="name">Group Name</option>
+			<option value="time">Time</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	 <!-- Event Overlap -->
+	 <splunk-control-group label="Prevent Overlap" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.stack" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	<!-- Tooltip Date Format -->
+	<splunk-control-group label="Tooltip Date Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.tooltipDateFormat" value="DD-MMM-YYYY">
+			<option value="YYYY-MM-DD">2019-10-13</option>
+			<option value="MM-DD-YYYY">10-13-2019</option>
+			<option value="DD-MMM-YYYY">13-OCT-2019</option>
+			<option value="DD-MMM-YY">13-OCT-19</option>
+			<option value="DD-MM-YYYY">13-10-2019</option>
+			<option value="MM-DD-YYYY">10-13-2019</option>
+			<option value="DD MMMM YYYY">13 October 2019</option>
+			<option value="DD MMMM YY">13 October 19</option>
+			<option value="DD MMMM">13 October</option>
+			<option value="X">1570971665</option>
+		</splunk-select>
+	</splunk-control-group>
+		
+	<!-- Tooltip Time Format -->
+	<splunk-control-group label="Tooltip Time Format" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.tooltipTimeFormat" value="">
+			<option value="">Don't display time</option>
+			<option value="hh:mm:ss">13:01:05</option>
+			<option value="h:mm:ss A">1:01:05 PM</option>
+			<option value="hh:mm:ss Z">13:01:05 +07:00</option>
+			<option value="hh:mm:ss.SSS">13:01:05.123</option>
+			<option value="X">1570971665</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	<!-- Minimum Zoom -->
+	<splunk-control-group label="Mininum Zoom" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.minZoom" value="1">
+			<option value="1">No Limit</option>
+			<option value="10">10ms</option>
+			<option value="60000">Minute</option>
+			<option value="3600000">Hour</option>
+			<option value="86400000">Day</option>
+			<option value="604800000">Week</option>
+			<option value="2629746000">Month</option>
+			<option value="10518984000">Quarter</option>
+			<option value="31556952000">Year</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	<!-- Maximum Zoom -->
+	<splunk-control-group label="Maximum Zoom" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.maxZoom" value="315360000000000">
+			<option value="315360000000000">No Limit</option>
+			<option value="10">10ms</option>
+			<option value="60000">Minute</option>
+			<option value="3600000">Hour</option>
+			<option value="86400000">Day</option>
+			<option value="604800000">Week</option>
+			<option value="2629746000">Month</option>
+			<option value="10518984000">Quarter</option>
+			<option value="31556952000">Year</option>
+		</splunk-select>
+	</splunk-control-group>
+		
+			 <!-- Event Overlap -->
+	 <splunk-control-group label="Show Current Time" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showCurrentTime" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+</form>
+
+
+<!-- ---------------------  Color Form ---------------------------->
+<form class="splunk-formatter-section" section-label="Colors">
+  <splunk-control-group label="Background" help=" ">
+        <splunk-color-picker type="custom" value="#ffffff" name="{{VIZ_NAMESPACE}}.backgroundColor" >
+		 <splunk-color>#ffeafe</splunk-color>
+		 <splunk-color>#fff8ea</splunk-color>
+		 <splunk-color>#3ffea</splunk-color>
+		 <splunk-color>#eafffc</splunk-color>
+		 <splunk-color>#eceaff</splunk-color>
+		 
+		 <splunk-color>#ffffff</splunk-color>
+		 <splunk-color>#ffeaea</splunk-color>
+		 <splunk-color>#f1f1f1</splunk-color>
+		 <splunk-color>#efefef</splunk-color>
+		 <splunk-color>#c9c9c9</splunk-color>
+		 <splunk-color>#000000</splunk-color>
+		</splunk-color-picker>
+    </splunk-control-group>
+  
+  <splunk-control-group label="Event Color" help=" ">
+        <splunk-color-picker type="custom" value="#d5ddf6" name="{{VIZ_NAMESPACE}}.eventColor">
+		<splunk-color>#9EF19C</splunk-color>
+		<splunk-color>#d5ddf6</splunk-color>
+		<splunk-color>#F9E5B5</splunk-color>
+		<splunk-color>#FAD4BD</splunk-color>
+		<splunk-color>#F7C4BF</splunk-color>
+			
+		<splunk-color>#53a051</splunk-color>
+		<splunk-color>#006d9c</splunk-color>
+		<splunk-color>#f8be34</splunk-color>
+		<splunk-color>#f1813f</splunk-color>
+		<splunk-color>#dc4e41</splunk-color>
+		
+		<splunk-color>#ffffff</splunk-color>
+		<splunk-color>#D7DBDD</splunk-color>
+		<splunk-color>#BFC9CA</splunk-color>
+		<splunk-color>#B2BABB</splunk-color>
+		<splunk-color>#000000</splunk-color>
+		
+		
+		</splunk-color-picker>
+    </splunk-control-group>
+	
+	<splunk-control-group label="Text Color" help=" ">
+        <splunk-color-picker type="custom" name="{{VIZ_NAMESPACE}}.textColor">
+		    <<splunk-color>#ffffff</splunk-color>
+		<splunk-color>#D7DBDD</splunk-color>
+		<splunk-color>#BFC9CA</splunk-color>
+		<splunk-color>#B2BABB</splunk-color>
+		<splunk-color>#000000</splunk-color>
+	</splunk-color-picker>
+		
+		
+    </splunk-control-group>
+	
+</form>
+
+
+
+<!-- ---------------------  Tokens Form ---------------------------->
+<form class="splunk-formatter-section" section-label="Tokens">
+    <splunk-control-group label="Start Timestamp" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenStart" value="tok_et_start"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="End Timestamp" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenEnd" value="tok_et_end"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Event Data" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenData" value="tok_et_data"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Event Label" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenLabel" value="tok_et_label"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="All Visible Events' Data" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenAllVisible" value="tok_et_all_visible"></splunk-text-input>
+    </splunk-control-group>
+</form>

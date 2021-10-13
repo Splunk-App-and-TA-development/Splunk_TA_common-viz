@@ -1,0 +1,21 @@
+{
+  "name": "ArcGlobe",
+  "version": "1.0.0",
+  "description": "Displays arcs on a 3D Globe.",
+  "main": "visualization.js",
+  "scripts": {
+    "build": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js",
+    "devbuild": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js --progress",
+    "watch": "$SPLUNK_HOME/bin/splunk cmd node ./node_modules/webpack/bin/webpack.js -d --watch --progress"
+  },
+  "author": "Lachlan McEwen",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.12.6"
+  },
+  "dependencies": {
+    "globe.gl": "^2.5.1",
+    "jquery": "^2.2.0",
+    "underscore": "^1.8.3"
+  }
+}

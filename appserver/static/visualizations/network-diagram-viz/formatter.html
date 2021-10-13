@@ -1,0 +1,254 @@
+<form class="splunk-formatter-section" section-label="General">
+	 
+	 <splunk-control-group label="Enable Physics" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.enablePhysics" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+			<option value="partial">Partial</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	 
+	 <splunk-control-group label="Draggable Nodes" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.draggableNodes" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	 
+	 <splunk-control-group label="Enable Zoom" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.canZoom" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	 <splunk-control-group label="Node Text Size" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.nodeTextSize" value="medium">
+			<option value="small">Small</option>
+			<option value="medium">Medium</option>
+			<option value="large">Large</option>
+			<option value="extraLarge">Extra Large</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	
+	
+	 
+	 <splunk-control-group label="Clustering" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.clusterBy" value="none">
+			<option value="none">None</option>
+			<option value="color">Color</option>
+			<option value="group">Group</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	 <splunk-control-group label="Default Node Type" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.defaultNodeType" value="circle">
+			<option value="ad">ad</option> 
+			<option value="adobe">adobe</option>
+			<option value="aws">aws</option>
+			<option value="bell">bell</option> 
+			<option value="box">box</option> 
+			<option value="bucket">bucket</option>
+			<option value="circle">circle</option> 
+			<option value="cloud">cloud</option>
+			<option value="code">code</option> 
+			<option value="code-branch">code-branch</option>
+			<option value="comment">comment</option> 
+			<option value="database">database</option> 
+			<option value="deployment-server">deployment-server</option>
+			<option value="desktop">desktop</option> 
+			<option value="diamond">diamond</option> 
+			<option value="dot">dot</option> 
+			<option value="ellipse">ellipse</option> 
+			<option value="envelope">envelope</option>
+			<option value="exclamation-circle">exclamation-circle</option> 
+			<option value="file">file</option> 
+			<option value="firewall">firewall</option>
+			<option value="folder">folder</option>
+			<option value="forwarder">forwarder</option>
+			<option value="git">git</option>
+			<option value="globe">globe</option> 
+			<option value="google">google</option>
+			<option value="googledrive">googledrive</option>
+			<option value="harddrive">harddrive</option> 
+			<option value="heavy-forwarder">heavy-forwarder</option>
+			<option value="hexagon">hexagon</option> 
+			<option value="image">image</option> 
+			<option value="index">index</option>
+			<option value="indexer">indexer</option>
+			<option value="info">info</option> 
+			<option value="java">java</option>
+			<option value="jenkins">jenkins</option>
+			<option value="laptop">laptop</option> 
+			<option value="license-master">license-master</option>
+			<option value="linux">linux</option>
+			<option value="load-balancer">load-balancer</option>
+			<option value="manager-node">manager-node</option>
+			<option value="money">money</option> 
+			<option value="nodejs">nodejs</option>
+			<option value="paypal">paypal</option>
+			<option value="php">php</option>
+			<option value="printer">printer</option> 
+			<option value="search-head">search-head</option>
+			<option value="server">server</option> 
+			<option value="shopping-cart">shopping-cart</option>
+			<option value="sitemap">sitemap</option> 
+			<option value="skype">skype</option>
+			<option value="slack">slack</option>
+			<option value="square">square</option> 
+			<option value="star">star</option>
+			<option value="triangle">triangle</option>
+			<option value="twitter">twitter</option>
+			<option value="usergroups">usergroups</option>
+			<option value="users">users</option> 
+			<option value="wifi">wifi</option> 
+			<option value="windows">windows</option>
+			<option value="wordpress">wordpress</option>
+		</splunk-select> 
+	</splunk-control-group>
+	
+	
+		 <splunk-control-group label="Drilldown using" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.drilldownClick" value="singleOrDouble">
+			<option value="single">Double Click</option>
+			<option value="singleOrDouble">Single or Double click</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+</form>
+
+
+
+
+<form class="splunk-formatter-section" section-label="Links">
+
+ <splunk-control-group label="Link Text Position" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.linkTextLocation" value="bottom">
+			<option value="top">Top</option>
+			<option value="horizontal">Horizontal</option>
+			<option value="middle">Middle</option>
+			<option value="bottom">Bottom</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	 <splunk-control-group label="Link Text Size" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.linkTextSize" value="medium">
+			<option value="small">Small</option>
+			<option value="medium">Medium</option>
+			<option value="large">Large</option>
+			<option value="extraLarge">Extra Large</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	
+	 <splunk-control-group label="Smooth Edges" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.smoothEdges" value="true">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Smooth Edge Type" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.smoothEdgeType" value="dynamic">
+			<option value="dyanmic">Dynamic</option>
+			<option value="continuous">Continuous</option>
+			<option value="discrete">Discrete</option>
+			<option value="diagonalcross">Diagonal Cross</option>
+			<option value="straightcross">Straight Cross</option>
+			<option value="cubicbezier">Cubic Bezier</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	
+	
+	
+	
+	 <splunk-control-group label="Arrow Location" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.arrowLocation" value="none">
+			<option value="none">None</option>
+			<option value="start">Start</option>
+			<option value="middle">Middle</option>
+			<option value="end">End</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Default Link Length" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.defaultLinkLength" value="100"></splunk-text-input>
+    </splunk-control-group>
+	
+</form>
+
+
+
+
+
+
+<form class="splunk-formatter-section" section-label="Hierarchy">
+
+	 <splunk-control-group label="Hierarchy View" help=" ">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.hierarchy" value="false">
+			<option value="true">True</option>
+			<option value="false">False</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	 
+
+	 <splunk-control-group label="Hierarchy Direction" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.hierarchyDirection" value="Top-Down">
+			<option value="Top-Down">Top-Down</option>
+			<option value="Bottom-Up">Bottom-Up</option>
+			<option value="Left-Right">Left-Right</option>
+			<option value="Right-Left">Right-Left</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+
+	 <splunk-control-group label="Sort Method" help=" ">
+		<splunk-select name="{{VIZ_NAMESPACE}}.hierarchySortMethod" value="directed">
+			<option value="directed">Directed</option>
+			<option value="hubsize">Hub Size</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+
+	 <splunk-control-group label="Shake Towards" help="When sort method is directed">
+		<splunk-select name="{{VIZ_NAMESPACE}}.shakeTowards" value="roots">
+			<option value="roots">Roots</option>
+			<option value="leaves">Leaves</option>
+		</splunk-select>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Level Separation" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.levelSeparation" value="150"></splunk-text-input>
+    </splunk-control-group>
+	
+	<splunk-control-group label="Node Spacing" help="Only when physics is disabled">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.nodeSpacing" value="100"></splunk-text-input>
+    </splunk-control-group>
+	
+</form>
+
+
+
+<form class="splunk-formatter-section" section-label="Tokens">
+    <splunk-control-group label="Node or link text" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenValue" value="nd_value_token"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Node (from)" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenNode" value="nd_node_token"></splunk-text-input>
+    </splunk-control-group>
+	<splunk-control-group label="Node (to)" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenToNode" value="nd_to_node_token"></splunk-text-input>
+    </splunk-control-group>
+		<splunk-control-group label="Tool Tip" help=" ">
+        <splunk-text-input name="{{VIZ_NAMESPACE}}.tokenToolTip" value="nd_tooltip_token"></splunk-text-input>
+    </splunk-control-group>
+	
+</form>
+
+

@@ -1,0 +1,66 @@
+.dendrogram_viz-container {
+    position:relative;
+}
+.dendrogram_viz-container svg {
+    margin: 10px auto;
+    display: block;
+}
+.dendrogram_viz-tooltip {
+    position: absolute;
+    z-index: 10;
+    visibility: hidden;
+    background-color: #F2F4F5;
+    border: 1px solid #C6C6C6;
+    text-align: center;
+    padding: 6px;
+    border-radius: 4px;
+    color: #5E5E5E;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.dendrogram_viz-tooltip-divider {
+    color: black;
+    font-weight: bold;
+}
+.dendrogram_viz-breakcrumbs {
+    position:absolute;
+    top: 20px;
+    left: 20px;
+    padding: 4px 30px 4px 4px;
+}
+.dendrogram_viz-first {
+    height: 40px;
+    position: relative;
+    background: #C6C6C6;
+    line-height: 40px;
+    display: inline-block;
+    margin-left: -12px;
+    width: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    clip-path: polygon(calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%, 0 50%, 0% 0%);
+}
+.dendrogram_viz-crumb {
+    height: 40px;
+    position: relative;
+    background: #C6C6C6;
+    color: black;
+    line-height: 40px;
+    padding-left: 27px;
+    padding-right: 20px;
+    display: inline-block;
+    margin-left: -12px;
+    max-width: 300px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    clip-path: polygon(calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%, 20px 50%, 0% 0%);
+    white-space: nowrap;
+}
+.dendrogram_viz-bad_data {
+    text-align: center;
+    color: #818d99;
+    line-height: 3;
+}
+.dendrogram_viz-nodes circle,
+.dendrogram_viz-labels text {
+    cursor: pointer;
+}

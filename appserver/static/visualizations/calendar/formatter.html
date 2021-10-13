@@ -1,0 +1,23 @@
+<form class="splunk-formatter-section" section-label="General">
+	<splunk-control-group label="Default View">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.calendarView" value="month">
+			<option value="month">Month</option>
+			<option value="agendaWeek">Week</option>
+			<option value="agendaDay">Day</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+	
+	<splunk-control-group label="Show Weekends">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showWeekends" value="true">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+
+	<splunk-control-group label="Show Week Numbers">
+		<splunk-radio-input name="{{VIZ_NAMESPACE}}.showWeekNumbers" value="false">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</splunk-radio-input>
+	</splunk-control-group>
+</form>

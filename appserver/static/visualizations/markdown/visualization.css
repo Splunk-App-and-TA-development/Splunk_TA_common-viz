@@ -1,0 +1,8 @@
+/*
+ * CSS rules for visualization.
+ * Class namespacing is good practice.
+ */
+
+.markdown {
+    overflow: scroll;
+}

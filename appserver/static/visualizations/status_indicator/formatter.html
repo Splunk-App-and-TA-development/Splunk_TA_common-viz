@@ -1,0 +1,89 @@
+<form class="splunk-formatter-section" section-label="Icon">
+    <splunk-control-group>
+        <splunk-select name="{{VIZ_NAMESPACE}}.showOption" value="3">
+            <option value="1">Show value and icon</option>
+            <option value="2">Show icon only</option>
+            <option value="3">Show value only</option>
+        </splunk-select>
+    </splunk-control-group>
+    <splunk-control-group label="Icon">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.icon" value="fix_icon">
+            <option value="fix_icon">Static icon</option>
+            <option value="field_value">Field value</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Static icon">
+        <splunk-select name="{{VIZ_NAMESPACE}}.fixIcon" value="warning">
+            <option value="warning">warning</option>
+            <option value="times-circle">times-circle (error)</option>
+            <option value="info">info</option>
+            <option value="info-circle">info-circle</option>
+            <option value="check">check</option>
+            <option value="code">code</option>
+            <option value="bug">bug</option>
+            <option value="cloud">cloud</option>
+            <option value="credit-card">credit-card</option>
+            <option value="crosshairs">crosshairs</option>
+            <option value="database">database</option>
+            <option value="desktop">desktop</option>
+            <option value="envelope">envelope</option>
+            <option value="globe">globe</option>
+            <option value="hdd-o">hdd-o (hard drive)</option>
+            <option value="inbox">inbox</option>
+            <option value="location-arrow">location-arrow</option>
+            <option value="map-marker">map-marker</option>
+            <option value="mobile">mobile</option>
+            <option value="money">money</option>
+            <option value="power-off">power-off</option>
+            <option value="question">question</option>
+            <option value="question-circle">question-circle</option>
+            <option value="search">search</option>
+            <option value="server">server</option>
+            <option value="sitemap">sitemap</option>
+            <option value="star">star</option>
+            <option value="user">user</option>
+            <option value="users">users</option>
+        </splunk-select>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Colors">
+    <splunk-control-group label="Use colors">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.useColors" value="true">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Color by">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.colorBy" value="static_color">
+            <option value="static_color">Static color</option>
+            <option value="field_value">Field value</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+    <splunk-control-group label="Static color">
+        <splunk-color-picker name="{{VIZ_NAMESPACE}}.staticColor" value="#555">
+        </splunk-color-picker>
+    </splunk-control-group>
+    <splunk-control-group label="Color mode">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.fillTarget" value="text">
+            <option value="text">Text</option>
+            <option value="background">Background</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+</form>
+<form class="splunk-formatter-section" section-label="Number format">
+    <splunk-control-group label="Precision">
+        <splunk-select name="{{VIZ_NAMESPACE}}.precision" value="0">
+            <option value="0">0</option>
+            <option value="1">0.0</option>
+            <option value="2">0.00</option>
+            <option value="3">0.000</option>
+            <option value="4">0.0000</option>
+        </splunk-select>
+    </splunk-control-group>
+    <splunk-control-group label="Use thousands separator">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.useThousandSeparator" value="true">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </splunk-radio-input>
+    </splunk-control-group>
+</form>

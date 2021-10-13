@@ -1,0 +1,197 @@
+<form class="splunk-formatter-section" section-label="General">
+    <div class="control-group">
+        <label class="control-label">Height</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.chartHeight" value="500"></splunk-text-input>
+            <span class="help-block ">Specify chart height.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Width</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.chartWidth" value="500"></splunk-text-input>
+            <span class="help-block ">Specify chart width.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Circles Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.circlesColor" value="#CDCDCD"></splunk-color-picker>
+            <span class="help-block ">Specify color for cicles</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Circles Fill Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.circlesFillColor" value="#CDCDCD"></splunk-color-picker>
+            <span class="help-block ">Specify color for cicles</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Max Value</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.maxValue" value="1"></splunk-text-input>
+            <span class="help-block ">Specify maximum value for chart.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Levels</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.levels" value="8"></splunk-text-input>
+            <span class="help-block ">Specify number of levels for chart.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Format</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.format" value=""></splunk-text-input>
+            <span class="help-block ">Specify number format - see https://github.com/d3/d3-format.</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Areas Opacity</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.areasOpacity" value="0.35"></splunk-text-input>
+            <span class="help-block ">Specify areas opacity (range: 0 - 1.0)</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Circles Opacity</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.circlesOpacity" value="0.1"></splunk-text-input>
+            <span class="help-block ">Specify circles opacity (range: 0 - 1.0)</span>
+        </div>
+        </div>
+    <div class="control-group">
+        <label class="control-label">Rounded</label>
+        <div class="controls controls-block">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.isRounded" value="1">
+                <option value="1">Enabled</option>
+                <option value="0">Disabled</option>
+            </splunk-radio-input>
+            <span class="help-block ">Enable or disable rounding of lines between connecting points</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Full Screen Mode</label>
+        <div class="controls controls-block">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.fullScreen" value="0">
+                <option value="1">Enabled</option>
+                <option value="0">Disabled</option>
+            </splunk-radio-input>
+            <span class="help-block ">Enable or disable full screen mode. Dynamically adjust chart size from browser resize.</span>
+        </div>
+    </div>
+<!--
+    <splunk-control-group label="Drilldown">
+        <splunk-radio-input name="{{VIZ_NAMESPACE}}.drilldown" value="0">
+            <option value="1">Enabled</option>
+            <option value="0">Disabled</option>
+        </splunk-radio-input>
+        <span class="help-block ">Enable or disable drilldown behavior for markers. Double-click marker to drilldown</span>
+    </splunk-control-group>
+-->
+</form>
+<form class="splunk-formatter-section" section-label="Legend">
+    <div class="control-group">
+        <label class="control-label">Legend</label>
+        <div class="controls controls-block">
+            <splunk-radio-input name="{{VIZ_NAMESPACE}}.legendEnabled" value="1">
+                <option value="1">Enabled</option>
+                <option value="0">Disabled</option>
+            </splunk-radio-input>
+            <span class="help-block ">Enable or disable legend</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Legend Font Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.legendFontColor" value="#000000"></splunk-color-picker>
+            <span class="help-block ">Specify color for legend text</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Legend Symbol</label>
+        <div class="controls controls-block">
+            <splunk-select name="{{VIZ_NAMESPACE}}.legendSymbol" value="cross">
+                <option value="cross">Cross</option>
+                <option value="circle">Circle</option>
+                <option value="diamond">Diamond</option>
+                <option value="triangle-up">Triangle-Up</option>
+                <option value="triangle-down">Triangle-Down</option>
+            </splunk-select>
+            <span class="help-block ">Select legend symbol</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Legend Toggle Symbol</label>
+        <div class="controls controls-block">
+            <splunk-select name="{{VIZ_NAMESPACE}}.legendToggleSymbol" value="circle">
+                <option value="circle">Circle</option>
+                <option value="cross">Cross</option>
+                <option value="diamond">Diamond</option>
+                <option value="triangle-up">Triangle-Up</option>
+                <option value="triangle-down">Triangle-Down</option>
+            </splunk-select>
+            <span class="help-block ">Select legend toggle symbol</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Font Size</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.legendFontSize" value="12"></splunk-text-input>
+            <span class="help-block ">Specify legend font size in pixels</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Position X</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.legendPositionX" value="25"></splunk-text-input>
+            <span class="help-block ">Specify legend position X</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Position Y</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.legendPositionY" value="25"></splunk-text-input>
+            <span class="help-block ">Specify legend position Y</span>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Axes">
+    <div class="control-group">
+        <label class="control-label">Axes Legend Font Size</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.axesLegendFontSize" value="12"></splunk-text-input>
+            <span class="help-block ">Specify axes legend font size in pixels</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Axes Label Font Size</label>
+        <div class="controls controls-block">
+            <splunk-text-input name="{{VIZ_NAMESPACE}}.axesLabelFontSize" value="12"></splunk-text-input>
+            <span class="help-block ">Specify axes label font size in pixels</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Axes Line Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.axesLineColor" value="#FFFFFF"></splunk-color-picker>
+            <span class="help-block ">Specify line color for Axes</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Axes Legend Font Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.axesLegendFontColor" value="#000000"></splunk-color-picker>
+            <span class="help-block ">Specify color for axes legend text</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Axes Label Font Color</label>
+        <div class="controls controls-block">
+            <splunk-color-picker type="splunkCategorical" name="{{VIZ_NAMESPACE}}.axesLabelFontColor" value="#737373"></splunk-color-picker>
+            <span class="help-block ">Specify color for axes label text</span>
+        </div>
+    </div>
+</form>
