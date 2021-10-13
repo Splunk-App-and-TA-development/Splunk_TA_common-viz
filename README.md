@@ -24,14 +24,16 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 ### Table of content
 {:toc}
 
+_TOC_
+
 
 <!--ts-->
-   * [Status of Active/Inactive Visualization addons](#Status of Active/Inactive Visualization addons)
-      * [Active Visualization addons](#Active Visualization addons)
-      * [Inactive Visualization addons](#Inactive Visualization addons)
+   * [Status_of_Active/Inactive_Visualization_addons](#Status of Active/Inactive Visualization addons)
+      * [Active_Visualization_addons](#Active Visualization addons)
+      * [Inactive_Visualization_addons](#Inactive Visualization addons)
    * [How to use the Visualization addons](#How to use the Visualization addons)
-      * [Animated Chart Viz](#Animated Chart Viz)
-	  * [Arc Globe Visualisation](#Arc Globe Visualisation)
+      * [Animated_Chart_Viz](#Animated Chart Viz)
+	  * [Arc_Globe_Visualisation](#Arc Globe Visualisation)
 	  * [Bullet Graph - Custom Visualization](#Bullet Graph - Custom Visualization)
 	  * [Calendar Custom Viz](#Calendar Custom Viz)
 	  * [Calendar Heat Map](#Calendar Heat Map)
