@@ -22,7 +22,74 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 
 
 ### Table of content
-TOC {:toc}
+{:toc}
+
+
+<!--ts-->
+   * [Status of Active/Inactive Visualization addons](#Status of Active/Inactive Visualization addons)
+      * [Active Visualization addons](#Active Visualization addons)
+      * [Inactive Visualization addons](#Inactive Visualization addons)
+   * [How to use the Visualization addons](#How to use the Visualization addons)
+      * [Animated Chart Viz](#Animated Chart Viz)
+	  * [Arc Globe Visualisation](#Arc Globe Visualisation)
+	  * [Bullet Graph - Custom Visualization](#Bullet Graph - Custom Visualization)
+	  * [Calendar Custom Viz](#Calendar Custom Viz)
+	  * [Calendar Heat Map](#Calendar Heat Map)
+	  * [Carousel Viz](#Carousel Viz)
+	  * [Circlepack Viz](#Circlepack Viz)
+	  * [Clock Viz](#Clock Viz)
+	  * [Cluster Map Viz](#Cluster Map Viz)
+	  * [Custom Radar Chart Visualization](#Custom Radar Chart Visualization)
+	  * [Custom Viz - Donut](#Custom Viz - Donut)
+	  * [Custom Viz - Markdown Renderer](#Custom Viz - Markdown Renderer)
+	  * [Custom Viz - Scatterplot Matrix](#Custom Viz - Scatterplot Matrix)
+	  * [Dendrogram Viz](#Dendrogram Viz)
+	  * [Departures Board Viz](#Departures Board Viz)
+	  * [Event Timeline Viz](#Event Timeline Viz)
+	  * [Flow Map Viz](#Flow Map Viz)
+	  * [Force Directed App For Splunk](#Force Directed App For Splunk)
+	  * [Heat Map Viz](#Heat Map Viz)
+	  * [Horizon Chart](#Horizon Chart)
+	  * [Link Analysis App For Splunk](#Link Analysis App For Splunk)
+	  * [Missile Map](#Missile Map)
+	  * [Network Diagram Viz](#Network Diagram Viz)
+	  * [Number Display Viz](#Number Display Viz)
+	  * [Parallel Coordinates Viz](#Parallel Coordinates Viz)
+	  * [Performance Analysis](#Performance Analysis)
+	  * [Punchcard - Custom Visualization](#Punchcard - Custom Visualization)
+	  * [Region Chart Viz](#Region Chart Viz)
+	  * [Sankey Diagram Viz](#Sankey Diagram Viz)
+	  * [Semicircle Donut Chart Viz](#Semicircle Donut Chart Viz)
+	  * [Status Indicator Viz](#Status Indicator Viz)
+	  * [Sunburst Viz](#Sunburst Viz)
+	  * [Timeline Viz](#Timeline Viz)
+	  * [Treemap - Custom Visualization](#Treemap - Custom Visualization)
+   * [Deprecated Visualization addons](#Deprecated Visualization addons)
+	  * [Donut Viz C3](#Donut Viz C3)
+	  * [Force Directed Visualisation App](#Force Directed Visualisation App)
+	  * [Jointjs Diagram](#Jointjs Diagram)
+	  * [Network Topology Viz](#Network Topology Viz)
+	  * [Timewrap](#Timewrap)
+	  * [WebGL Globe Viz](#WebGL Globe Viz)
+   * [Tests](#tests)
+   * [Dependency](#dependency)
+   * [Docker](#docker)
+     * [Local](#local)
+     * [Public](#public)
+<!--te-->
+
+
+## **Who is this app for?**
+This app is for anyone who wants to display seVersional metrics on a small area of a dashboard.
+
+## **How does the app work?**
+This app provides a visualization that you can use in your own apps and dashboards.
+
+To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
+
+## **Limits**
+- The visualization is bound by the follwoing limits:
+- Total results: 1000
 
 
 # **Status of Active/Inactive Visualization addons**
@@ -68,7 +135,7 @@ List of the Active Visualization addons within this release.
 - **Treemap - Custom Visualization** version 1.4.0
 
   
-### **Deprecated Visualization addons**
+### **Inactive Visualization addons**
 The following List below shows which Visualization addons are not more integrated within this Versionsion.
 
 - **Donut Viz C3** version 1.02
@@ -80,7 +147,7 @@ The following List below shows which Visualization addons are not more integrate
 
 
 
-# **Explanation of Active Visualization addons**
+# **How to use the Visualization addons**
 The following List explains in short how to use the visualisation addons within this release.
 Please refeer to the TA after installing it to see how each visualization is working in detail. 
 
@@ -1311,29 +1378,6 @@ https://splunkbase.splunk.com/app/3674/
 
 
 
-## Author
-**Patrick Vanreck (STXT)**
-`yoyonet-info@gmx.net`
-
-## Splunk Version Supported
-8.2.x, 8.1.x, 8.0.x, 7.3.9, 7.3.6
-
-### Splunk Version not Supported
-7.3.5 and lower, 6.6.x, 6.5.x, 6.4, 6.3, 6.2, older
-
-## Who is this app for?
-This app is for anyone who wants to display seVersional metrics on a small area of a dashboard.
-
-## How does the app work?
-This app provides a visualization that you can use in your own apps and dashboards.
-
-To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
-
-
-## Limits
-- The visualization is bound by the follwoing limits:
-- Total results: 1000
-
 ## **Release Notes**
 
 #### v 2.0.0
@@ -1356,9 +1400,15 @@ To use it in your dashboards, simply install the app, and create a search that p
 -Initial Versionsion
 
 
-### **Support**
+## **Support**
 Please use Github to place incidents. 
 This app is supported by SwissTXT/Patrick Vanreck. Contact us under: **[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)**.
+
+#### Splunk Version Support
+
+| Supported Splunk Versions  | Unsupported or Deprecated  |
+| --- | --- |
+|  8.2.x, 8.1.x, 8.0.x, 7.3.9, 7.3.6 | 7.3.5 and lower, 6.6.x, 6.5.x, 6.4, 6.3, 6.2, older  |
 
 
 #### Credits
