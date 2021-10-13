@@ -113,9 +113,9 @@ List of the Active Visualization addons within this release.
 - **Departures Board Viz** version 1.1.0
 - **Event Timeline Viz** version 1.5.0
 - **Flow Map Viz** version 1.4.1.1
-- **Force Directed App For Splunk** version 3.03
+- **Force Directed App For Splunk** version 3.1.0
 - **Heat Map Viz** version 1.3.1
-- **Horizon Chart** version 1.4.0
+- **Horizon Chart** version 1.5.0
 - **Link Analysis App For Splunk** 
 - **Missile Map** version 1.2.3
 - **Network Diagram Viz** version 2.0.0
@@ -136,7 +136,6 @@ List of the Active Visualization addons within this release.
 The following List below shows which Visualization addons are not more integrated within this Versionsion.
 
 - **Donut Viz C3** version 1.02
-- **Force Directed Visualisation App** version 3.0.1
 - **Jointjs Diagram** version 1.0.5
 - **Network Topology Viz** version 1.1
 - **Timewrap** version 2.4
@@ -682,7 +681,7 @@ existing search | append [ |inputlookup my_table_of_nodes_and_links.csv ]
 
 
 ## **Force Directed App For Splunk** 
-- Version 3.03
+- Version 3.1.0
 - Author: Splunk Inc.
 - https://splunkbase.splunk.com/app/3767/
 
@@ -742,7 +741,7 @@ Tokens are generated each time you click a cell. This can be useful if you want 
 
 
 ## **Horizon Chart** 
-- Version 1.4.0
+- Version 1.5.0
 - Author: Splunk Inc.
 - https://splunkbase.splunk.com/app/3117/
 - http://docs.splunk.com/Documentation/HorizonChart/1.3.0/HorizonChartViz/HorizonChartReleaseNotes
@@ -1351,11 +1350,6 @@ The most of them uses python 2.7 or are only compatible until Splunk 7.3.x
 - Version 1.02
 - Author: Martin Zerbib
 - https://splunkbase.splunk.com/app/3238/
-- ***--> Archived!! Do not use anymore !!***
-
-### **Force Directed Visualisation App** 
-- Version 3.0.1
-- Author: Domenico Perre
 - ***--> Archived!! Do not use anymore !!***
 
 ### **Jointjs Diagram** 
