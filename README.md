@@ -22,7 +22,7 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 
 
 ### Table of content
-(__TOC__)
+TOC {:toc}
 
 
 # **Status of Active/Inactive Visualization addons**
