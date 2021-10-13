@@ -24,7 +24,7 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 ### Table of content
 <!--ts-->
    * [Who is this app for?](#Who-is-this-app-for?)
-   * [How does the app work?](#How does the app work?)
+   * [How does the app work?](#How-does-the-app-work?)
    * [Limits](#Limits)
    * [Status of Active/Inactive Visualization addons](#Status-of-Active/Inactive-Visualization-addons)
       * [Active_Visualization_addons](#Active-Visualization-addons)
@@ -71,7 +71,7 @@ Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/Re
 	  * [Network Topology Viz](#Network-Topology-Viz)
 	  * [Timewrap](#Timewrap)
 	  * [WebGL Globe Viz](#WebGL-Globe-Viz)
-   * [Release Notes](#Release Notes)
+   * [Release Notes](#Release-Notes)
    * [Support](#Support)
 <!--te-->
 
