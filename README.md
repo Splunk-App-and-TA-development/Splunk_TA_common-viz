@@ -1,7 +1,8 @@
 # **splunk TA - Splunk_TA_common-viz**
 
 ## Synopsis
-This is an collection of multiple Splunk Visualizations packed all in one TA. The Repository contains all Data in ***/opt/splunk/etc/apps/Splunk_TA_common-viz***.
+This TA represents a collection of diverse Splunk visualizations packed all into one app. The advantage of this is the ease of installation and management of all visualizations through one TA.
+The Repository contains all Data in ***/opt/splunk/etc/apps/Splunk_TA_common-viz***. The installed versions of the visualizations are listed below.
 Install this TA on all Search Heads you want to use with more than the standard Visualizations.
 
 Visualizations make it easier to analyze and interact with data during investigations or within dashboards and reports.
