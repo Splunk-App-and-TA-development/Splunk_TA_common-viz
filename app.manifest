@@ -10,7 +10,7 @@
     "author": [
       {
         "name": "Patrick Vanreck", 
-        "email": "patrick.vanreck@swisstxt.ch", 
+        "email": "yoyonet-info@gmx.net", 
         "company": "SwissTXT AG"
       }
     ], 
@@ -42,7 +42,7 @@
   "tasks": null, 
   "inputGroups": null, 
   "incompatibleApps": null, 
-  "platformRequirements": "8.1, 8.0, 7.3, 7.2", 
+  "platformRequirements": "8.2, 8.1, 8.0, 7.3, 7.2", 
   "supportedDeployments": ["*"], 
   "targetWorkloads": ["_search_heads"]
 }
