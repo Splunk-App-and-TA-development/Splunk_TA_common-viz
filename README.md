@@ -2,12 +2,12 @@
 
 ## Synopsis
 This TA represents a collection of diverse Splunk visualizations packed all into one app. The advantage of this is the ease of installation and management of all visualizations through one TA.
-The Repository contains all Data in ***/opt/splunk/etc/apps/Splunk_TA_common-viz***. The installed versions of the visualizations are listed below.
+The Repository contains all Data in ***/opt/splunk/etc/apps/Splunk_TA_common-viz***. The installed versions of the visualizations are listed below.<br>
 Install this TA on all Search Heads you want to use with more than the standard Visualizations.
 
-Visualizations make it easier to analyze and interact with data during investigations or within dashboards and reports.
-The right visual goes a long way to understanding the results of the analysis of your most complex data.
-With rich visualization you can easily find the right diagram to make your results known across your organization—in the boardroom or in the war room.
+Visualizations make it easier to analyze and interact with data during investigations or within dashboards and reports.<br>
+The right visual goes a long way to understanding the results of the analysis of your most complex data.<br>
+With rich visualization you can easily find the right diagram to make your results known across your organization—in the boardroom or in the war room.<br>
 Splunkbase contains a wide array of Splunk-built visuals, and a development framework that makes it simple for customers and partners to create new visuals and make them available to the community.
 
 Take a deeper look to https://docs.splunk.com/Documentation/SplunkLight/7.3.6/References/Datavisualizationlibrary
@@ -144,7 +144,7 @@ The following List below shows which Visualization addons are not more integrate
 
 
 # **How to use the Visualization addons**
-The following List explains in short how to use the visualisation addons within this release.
+The following List explains in short how to use the visualisation addons within this release.<br>
 Please refeer to the TA after installing it to see how each visualization is working in detail. 
 
 ## **Animated Chart Viz** 
@@ -153,8 +153,7 @@ Please refeer to the TA after installing it to see how each visualization is wor
 - https://splunkbase.splunk.com/app/5465/
 
 ### How to use Animated Chart Viz
-This app provides a visualization that you can use in your own apps and dashboards.
-
+This app provides a visualization that you can use in your own apps and dashboards.<br>
 To use it in your dashboards, simply install the app, and create a search using timechart to provide the values to display.
 
 Usecases for the Animated Chart Visualization:
@@ -178,7 +177,8 @@ index=_internal earliest=-24h@h latest=now
 ```
 
 #### **Tokens**
-Tokens are generated each time you click an item. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
+Tokens are generated each time you click an item.<br>
+This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
 
 | ***Name*** | This is the name of the selected item. | Default value: `$ac_name_token$` |
 | ***Value*** | This is the value of the selected item you clicked. | Default value: `$ac_value_token$` |
@@ -224,7 +224,8 @@ Options can be overwritten, so if type or color is set multiple times in the sea
 ```
 
 #### Tokens
-Tokens are generated each time you click an item. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
+Tokens are generated each time you click an item.<br>
+This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
 
 - **Label text**: This is the name of the selected group. Default value: `$pc_label_token$`
 - **Value**: This is the value of the selected group you clicked. Default value: `$pc_value_token$`
@@ -237,7 +238,7 @@ Tokens are generated each time you click an item. This can be useful if you want
 - https://splunkbase.splunk.com/app/3144/
 
 ### How to use Bullet Graph
-Use a bullet graph to show a key performance indicator (KPI) and its context.
+Use a bullet graph to show a key performance indicator (KPI) and its context.<br>
 A bullet graph can help you measure a current metric against contextual markers including past results or a target value.
 
 ![example-bullet-graph](https://prod.cdn.apps.splunk.com/media/public/screenshots/2a9246e6-0d94-11e6-a6d4-0650c31fd3af.png)
@@ -275,8 +276,8 @@ This visualization shows a metric over a configured time span. The time span app
 - https://splunkbase.splunk.com/app/4342/
   
 ### How to use Carousel Viz
-This app is for anyone who wants to display several metrics on a small area of a dashboard.
-This app provides a visualization that you can use in your own apps and dashboards.
+This app is for anyone who wants to display several metrics on a small area of a dashboard.<br>
+This app provides a visualization that you can use in your own apps and dashboards.<br>
 To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
 
 #### Usecases for the Departures Board Visualization
@@ -320,7 +321,7 @@ Tokens are generated eacht time you click a slide. This can be useful if you wan
 - https://splunkbase.splunk.com/app/4574/
 
 ### How to use Circlepack Viz
-Circle packing / Pack layout / bubble chart visualization built with D3.  Optional click-to-zoom and plenty of color themes.
+Circle packing / Pack layout / bubble chart visualization built with D3. Optional click-to-zoom and plenty of color themes.
 
 #### Search Examples
 The typical search uses stats command like so:
@@ -351,7 +352,7 @@ Add more fields after the "BY" keyword to increase the depth
 - https://splunkbase.splunk.com/app/4407/
 
 ### How to use Clock Viz
-A simple digital or analog Clock vizualisation for your dashboards. Useful when your Splunk dashboards are on a big TV.
+A simple digital or analog Clock vizualisation for your dashboards. Useful when your Splunk dashboards are on a big TV.<br>
 To use this vizualisation, you should use the following search:
 
 `|makeresults`
@@ -370,12 +371,14 @@ To use this vizualisation, you should use the following search:
 - https://splunkbase.splunk.com/app/3122/
 
 ### How to use Cluster Map Viz
-This app adds a custom cluster-map visualization to your Splunk instance. It shows styled radiation icons in different colors for each cluster of geographical results, including the numerical value as a label.
+This app adds a custom cluster-map visualization to your Splunk instance.<br>
+It shows styled radiation icons in different colors for each cluster of geographical results, including the numerical value as a label.
 
 The custom cluster map visualization displays numeric values on a map. Both cluster icon size and color are determined by the numeric value automatically.
 
 #### Example Usage
-The visualization expects search results produced by the geostats search command. Results are postprocessed automatically using the geofilter command in order to retrieve results for the visible map area and zoom level.
+The visualization expects search results produced by the geostats search command.<br>
+Results are postprocessed automatically using the geofilter command in order to retrieve results for the visible map area and zoom level.
 
 Note: it does support a split-by clause, only a single numeric value by location can be processed.
 ```
@@ -424,9 +427,8 @@ Plot multivariate data on a two dimensional chart across axes.
 - https://splunkbase.splunk.com/app/3150/
 
 ### How to use Donut Chart
-The donut chart is a variation of the standard pie chart. This chart will display results as a percentage of the whole.
-
-This chart has the ability to be displayed as either a two-dimensional or three-dimensional chart.
+The donut chart is a variation of the standard pie chart. This chart will display results as a percentage of the whole.<br>
+This chart has the ability to be displayed as either a two-dimensional or three-dimensional chart.<br>
 This chart provides some interactivity. Mouseover a section of the chart to display the associated results. Click on a slice to drill down into the raw results.
 
 #### Configuration Options
@@ -461,9 +463,9 @@ The donut chart has many different configuration options and is resizable. The o
 - https://splunkbase.splunk.com/app/3148/
 
 ### How to use Markdown Renderer
-The Markdown Visualization allows you to specify a Markdown (md) or AsciiDoc (adoc) file to render in the browser as HTML.
-Once configured, you can place a `markdown_style.css` file in the `$APP_HOME/appserver/static` folder of the app the 
-visualization is configured to use. The starting class is `markdown`. A sample has been provided. 
+The Markdown Visualization allows you to specify a Markdown (md) or AsciiDoc (adoc) file to render in the browser as HTML.<br>
+Once configured, you can place a `markdown_style.css` file in the `$APP_HOME/appserver/static` folder of the app the visualization is configured to use.<br>
+The starting class is `markdown`. A sample has been provided. 
 
 #### Example Search
 1. `| makeresults`
@@ -479,8 +481,8 @@ visualization is configured to use. The starting class is `markdown`. A sample h
 - https://splunkbase.splunk.com/app/3149/
 
 ### How to use Scatterplot Matrix
-The scatterplot matrix visualization allows comparison between numeric sets of data, giving a rough idea if there is a linear correlation between multiple fields.
-The scatterplot matrix consists of Rows and Columns of individual Scatterplots that plot an X and a Y value.
+The scatterplot matrix visualization allows comparison between numeric sets of data, giving a rough idea if there is a linear correlation between multiple fields.<br>
+The scatterplot matrix consists of Rows and Columns of individual Scatterplots that plot an X and a Y value.<br>
 These values come from the fields sent from the search bar.
 
 #### **Example Search**
@@ -499,8 +501,8 @@ These values come from the fields sent from the search bar.
 - https://splunkbase.splunk.com/app/5153/
 
 ### How to use Dendrogram
-This visualisation expects a table of data with specific field names.
-There are two main data formats, one with a column called "path" or a second format with fields "child" and "parent".
+This visualisation expects a table of data with specific field names.<br>
+There are two main data formats, one with a column called "path" or a second format with fields "child" and "parent".<br>
 Additional optional columns are listed below.
 
 - `path` - this column/field should be forward-slash delimited, but you can change the delimiter in the formatting options.
@@ -530,7 +532,8 @@ Here is an example of how the "path" data format should look
 - https://splunkbase.splunk.com/app/4292/
 
 ### How to use Departures Board
-The Departures Board Viz is a single value animated visualization in the style of airport departure boards. Drop it into your own dashboards to display places, users, timestamps or any other important information in an eye catching and fun way
+The Departures Board Viz is a single value animated visualization in the style of airport departure boards.<br>
+Drop it into your own dashboards to display places, users, timestamps or any other important information in an eye catching and fun way
 - This app is for anyone who wants a single-value panel display for both text and numerical search results.
 - To use it in your dashboards, simply install the app, and create a search that provides the following fields: `_time`, `name`, `value`, `status`
 
@@ -571,7 +574,7 @@ Token names are customizable.
 - https://splunkbase.splunk.com/app/4370/
 
 ### How to use Event Timeline
-The Event Timeline Viz shows multiple events on an interactive timeline.
+The Event Timeline Viz shows multiple events on an interactive timeline.<br>
 You can use the Event Timeline Viz to show the relationship between several time-based events in a dashboard panel or report.
 
 The following fields can be used in the search:
@@ -620,11 +623,11 @@ Note: all token names are customisable in the visualization settings menu.
 - https://splunkbase.splunk.com/app/4657/
 
 ### How to use Flow Map
-A visualization used to show the volume of traffic across links.
-By default, this addon will normalise the traffic flows so the proportion of traffic can be shown, however this can be disabled.
+A visualization used to show the volume of traffic across links.<br>
+By default, this addon will normalise the traffic flows so the proportion of traffic can be shown, however this can be disabled.<br>
 Optionally show marching ants lines to indicate direction. Optionally allows embedded HTML which enables endless customisation. AKA force-directed or network graph.
 
-This visualisation expects tabular data, with specific field names. There are two kinds of row data that should be supplied: links and nodes.
+This visualisation expects tabular data, with specific field names. There are two kinds of row data that should be supplied: links and nodes.<br>
 The link data is identified by having both a from and to field, or a path field. The path field is delimited by three hyphens "---" and can include hops through multiple nodes.
 The node data will have a node field.
 
@@ -686,7 +689,7 @@ existing search | append [ |inputlookup my_table_of_nodes_and_links.csv ]
 - https://splunkbase.splunk.com/app/3767/
 
 ### How to use Force Directed App
-This app was created to allow IT Operations administrators and the security team to visualize there networks, attack paths inside an environment, connections between objects.
+This app was created to allow IT Operations administrators and the security team to visualize there networks, attack paths inside an environment, connections between objects.<br>
 The limits are endless. Some of the features that are supported in this app are:
 
 - Customisation to Attract and Repel Forces
@@ -728,7 +731,8 @@ The Heat Map Viz shows a grid of related measurements, with the color intensity 
 ```
 
 #### Tokens
-Tokens are generated each time you click a cell. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carrying across.
+Tokens are generated each time you click a cell.<br>
+This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carrying across.
 
 - **Value:** This is the numeric field for the cell you clicked. Default value: $hm_token_value$
 - **Label:** This is the field name for the cell you clicked. Default value: $hm_token_label$
@@ -792,7 +796,7 @@ This app provides a seperate visualisation framework for doing force directed vi
 - https://splunkbase.splunk.com/app/3511/
 
 ### How to use Missile Map
-This visualisation will show connected arcs on a map. Each arc is defined by two geographic points, and can have a color assigned.
+This visualisation will show connected arcs on a map. Each arc is defined by two geographic points, and can have a color assigned.<br>
 Additionally the arcs can be animated, with the pulsing animation being either at the start or the end of the arc.
 
 #### **Search and data formatting**
@@ -843,9 +847,11 @@ The following options are available to customise:
 - https://splunkbase.splunk.com/app/4438/
 
 ### How to use Network Diagram
-This app gives you a new way to visualize your data, allowing you to better communicate information in dashboards and reports. After installing this app you will see Network Diagram Viz as an additional item in the visualization picker in Search and Dashboard.
+This app gives you a new way to visualize your data, allowing you to better communicate information in dashboards and reports.<br>
+After installing this app you will see Network Diagram Viz as an additional item in the visualization picker in Search and Dashboard.
 
-The Network Diagram Viz lets you visualize how different monitored end-points relate to one another. You can use the Network Diagram Viz to show the relationship between servers, services, or people in a dashboard panel or report.
+The Network Diagram Viz lets you visualize how different monitored end-points relate to one another.<br>
+You can use the Network Diagram Viz to show the relationship between servers, services, or people in a dashboard panel or report.
 
 As seen in the Splunk blog post: https://www.splunk.com/en_us/blog/security/visual-link-analysis-with-splunk-part-2-the-visual-part.html
 
@@ -864,7 +870,8 @@ As seen in the Splunk blog post: https://www.splunk.com/en_us/blog/security/visu
 - `color` (optional): Used to set the color of the text and icon (except for Splunk icons).
 - `linktext` (optional): Text to display on the link between the from and to entities.
 
-Options can be overwritten, so if type or color is set multiple times in the search results, the last value will be used. This is useful if you wish to set the icon types and values via a lookup table at the end of your search.
+Options can be overwritten, so if type or color is set multiple times in the search results, the last value will be used.<br>
+This is useful if you wish to set the icon types and values via a lookup table at the end of your search.
 
 #### **Example Search**
 ```
@@ -878,7 +885,8 @@ Options can be overwritten, so if type or color is set multiple times in the sea
 ```
 
 #### **Tokens**
-Tokens are generated each time you click a node. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
+Tokens are generated each time you click a node.<br>
+This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
 
 - **Node:** This is the unique node name (e.g. the server name). Default value: `$nd_node_token$`
 - **Value:** This is the value/tooltip as it was defined in the search results. Default value: `$nd_value_token$`
@@ -900,9 +908,11 @@ To use it in your dashboards, simply install the app, and create a search that p
 - https://splunkbase.splunk.com/app/4537/
 
 ### How to use Number Display
-A collection of ultra-configurable, single-statistic visualizations for Splunk. Includes the following styles: gauge, horseshoe, spinner, shapes (rectangle, hexagon, circle, ring, donut). Make dashboards come alive with animated number changes and subtle pulse animations.
+A collection of ultra-configurable, single-statistic visualizations for Splunk.<br>
+Includes the following styles: gauge, horseshoe, spinner, shapes (rectangle, hexagon, circle, ring, donut). Make dashboards come alive with animated number changes and subtle pulse animations.
 
-This visualization can deal with most datasets you want to throw at it. However for the most reliable results, use a search where the field names are exactly "value", "title" and "sparkline".
+This visualization can deal with most datasets you want to throw at it.<br>
+However for the most reliable results, use a search where the field names are exactly "value", "title" and "sparkline".
 ```
 |stats sparkline(avg(SOME_VALUE)) as sparkline latest(SOME_VALUE) as value
 ```
@@ -985,7 +995,9 @@ Here is a parallel coordinates query tracking fat and calorie information for di
 - https://splunkbase.splunk.com/app/4258/
 
 ### How to use Performance Analysis
-The Performance Analysis Visualization allows you to compare two related metrics over time in a tabular format. Use cases include comparing your infrastructure and application health, showing performance and availability of synthetic monitoring scripts, and tracking build status vs code commits over time. This app provides a visualization that you can use in your own apps and dashboards. 
+The Performance Analysis Visualization allows you to compare two related metrics over time in a tabular format.<br>
+Use cases include comparing your infrastructure and application health, showing performance and availability of synthetic monitoring scripts, and tracking build status vs code commits over time.<br>
+This app provides a visualization that you can use in your own apps and dashboards. 
 
 #### Usecases for the Performance Analysis Visualization
 1. Displaying both infrastructure and application health over time
@@ -1022,7 +1034,9 @@ A sample data set is included with the app:
 - https://splunkbase.splunk.com/app/3129/
 
 ### How to use *Punchcard
-Punchcards can visualize cyclical trends in your data. This visualization shows circles representing a metric aggregated over two dimensions, such as hours of the day and days of the week. Using a punchcard, you can see relative values for a metric where the dimensions intersect.
+Punchcards can visualize cyclical trends in your data.<br>
+This visualization shows circles representing a metric aggregated over two dimensions, such as hours of the day and days of the week.<br>
+Using a punchcard, you can see relative values for a metric where the dimensions intersect.
 
 **Documentation:**
 * http://docs.splunk.com/Documentation/Punchcard/1.2.0/PunchcardViz/PunchcardIntro
@@ -1061,7 +1075,9 @@ Here is a search that analyzes bicycle rental popularity by hours and days.
 - https://splunkbase.splunk.com/app/4911/
 
 ### How to use Region Chart
-This visualisation should work with any data that works with the Splunk built-in line chart. The first column (which is often "_time") will be the X-axis and subsequent columns will be rendered as lines (so they should be numeric values). A column with the specific name "regions" should be supplied which defines the regions to draw behind the chart.
+This visualisation should work with any data that works with the Splunk built-in line chart.<br>
+The first column (which is often "_time") will be the X-axis and subsequent columns will be rendered as lines (so they should be numeric values).<br>
+A column with the specific name "regions" should be supplied which defines the regions to draw behind the chart.
 
 **This is how the data should look:**
 
@@ -1146,8 +1162,7 @@ Calculate the historical average and standard deviation of the data. Then mark r
 - http://docs.splunk.com/Documentation/SankeyDiagram/1.3.0/SankeyDiagramViz/SankeyReleaseNotes
 
 ### How to use Sankey Diagram
-Sankey diagrams show metric flows and category relationships. You can use a Sankey diagram to visualize relationship density and trends.
-
+Sankey diagrams show metric flows and category relationships. You can use a Sankey diagram to visualize relationship density and trends.<br>
 A Sankey diagram shows category nodes on vertical axes. Fluid lines show links between source and target categories. Link width indicates relationship strength between a source and target.
 
 ## **Query syntax**
@@ -1174,27 +1189,23 @@ To generate a Sankey diagram, use this query syntax.
 A simple donut/pie chart that can be displayed as a semicircle and supports multiple series on a single chart.
 
 #### Example search query with one dimention:  
-
 `index=_internal |stats count by log_level `
 
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/semicircle_donut/master/static/example1.png)
 
 
 #### Example search with two dimentions: 
-
 `index=_internal sourcetype=splunkd_ui_access| stats avg(spent) as spend avg(bytes) as bytes by method`
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/semicircle_donut/master/static/example2.png)
 
 
 #### Example of how to explicity set colours:
-
 `index=_internal | eval len = len(_raw) |stats count by log_level | eval color = case(log_level=="ERROR", "#af575a", log_level=="WARN", "#ed995f", log_level=="INFO", "#4fa484", true(), "#cccccc")`
 You then need to go into the "Format" options and type the field name "color".
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/semicircle_donut/master/static/example3.png)
 
 
 #### There are a few other configuration options:
-
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/semicircle_donut/master/static/options.png)
 
 
@@ -1245,7 +1256,8 @@ index=_internal
 - https://splunkbase.splunk.com/app/4550/
 
 ### How to use Sunburst
-This visualisation expects tabular data, with any amount of text/category columns, but the last column must be a numerical value.  Null or blank columns are allowed before the final column to create a more "sunburst-y" visualization.
+This visualisation expects tabular data, with any amount of text/category columns, but the last column must be a numerical value.<br>
+Null or blank columns are allowed before the final column to create a more "sunburst-y" visualization.
 
 The typical search uses `stats` command like so:
 ```
@@ -1258,7 +1270,6 @@ Sidenote: a much faster search to do the same thing is
 ```
 
 Note that `stats` does not return rows when the group BY field is `null`. Use this one simple trick to convert nulls to be an empty string instead:
-
 ```
 index=_internal | eval component = coalesce(component,"") | eval log_level = coalesce(log_level,"") | stats count BY sourcetype component log_level
 ```
@@ -1270,7 +1281,8 @@ Add more fields after the "BY" keyword to increase the depth of the sunburst
 #### **Formatting options**
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/sunburst_viz/master/appserver/static/formatting.png)
 
-The "Color overrides" field accepts either a JSON object (in curly braces) or comma separated pairs. For example to make sure that "INFO" values are green, WARN's are orange and ERROR's are red, set the value like so:
+The "Color overrides" field accepts either a JSON object (in curly braces) or comma separated pairs.<br>
+For example to make sure that "INFO" values are green, WARN's are orange and ERROR's are red, set the value like so:
 ```
 INFO,#1a9035,ERROR,#b22b32,WARN,#AF5300
 ```
@@ -1305,22 +1317,19 @@ A treemap represents data patterns and hierarchy. Each treemap divides a single 
 
 #### Use cases
 Use a treemap to visualize how a general metric divides across different areas or categories.
-
 - Budgets and expenses** 
 - Data center server status
 - University departments and courses offered
 
 #### Data for treemaps
-A treemap data set includes metric and category information for all events. Use events with fields representing the common metric value, child, and parent categories.
+A treemap data set includes metric and category information for all events. Use events with fields representing the common metric value, child, and parent categories.<br>
 See the use case examples for more details.
-
 
 #### Create a treemap query
 To generate a treemap, write a query that returns events in the correct data format.
 
 #### Query syntax
 To generate a treemap visualization, use this query syntax.
-
 ```
 ... | stats <stats_function>(<metric_field>) [<stats_function>(<color_field>)] by <parent_category_field> <child_category_field>
 ```
@@ -1343,7 +1352,7 @@ Here is part of a query tracking files and directories.
 
 
 ### **Deprecated Visualization addons**
-The following List below shows which Visualization addons are not more integrated within this Version.
+The following List below shows which Visualization addons are not more integrated within this Version.<br>
 The most of them uses python 2.7 or are only compatible until Splunk 7.3.x
 
 ### **Donut Viz C3** 
@@ -1401,7 +1410,7 @@ https://splunkbase.splunk.com/app/3674/
 
 
 ## **Support**
-Please use Github to place incidents. 
+Please use Github to refeer to issues: https://github.com/Splunk-App-and-TA-development/Splunk_TA_common-viz/issues<br>
 This app is supported by SwissTXT/Patrick Vanreck. Contact us under: **[yoyonet-info@gmx.net](mailto:yoyonet-info@gmx.net)**.
 
 #### Splunk Version Support
