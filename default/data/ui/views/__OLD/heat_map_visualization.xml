@@ -1,0 +1,179 @@
+<dashboard theme="light">
+  <label>Heat Map Visualization</label>
+  <row>
+    <panel>
+      <html>
+      <h2>Heat Map Visualization</h2>
+      <h4>Version: 1.3.1</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.net">daniel@spavin.net</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <title>Heat Map Viz - v1.3.1</title>
+        <search>
+          <query>| inputlookup heat-map_sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| timechart eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="heat-map-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="heat-map-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="heat-map-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="heat-map-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="heat-map-viz.heat-map-viz.enableAnimation">true</option>
+        <option name="heat-map-viz.heat-map-viz.enableShades">true</option>
+        <option name="heat-map-viz.heat-map-viz.hideCellBorders">false</option>
+        <option name="heat-map-viz.heat-map-viz.labelCritical">Critical</option>
+        <option name="heat-map-viz.heat-map-viz.labelFontSize">18</option>
+        <option name="heat-map-viz.heat-map-viz.labelHigh">High</option>
+        <option name="heat-map-viz.heat-map-viz.labelLow">Low</option>
+        <option name="heat-map-viz.heat-map-viz.labelMedium">Medium</option>
+        <option name="heat-map-viz.heat-map-viz.legendPosition">top</option>
+        <option name="heat-map-viz.heat-map-viz.legendText">categories</option>
+        <option name="heat-map-viz.heat-map-viz.reverseNegativeShade">false</option>
+        <option name="heat-map-viz.heat-map-viz.shape">square</option>
+        <option name="heat-map-viz.heat-map-viz.showDateInTooltip">false</option>
+        <option name="heat-map-viz.heat-map-viz.showLegend">true</option>
+        <option name="heat-map-viz.heat-map-viz.showValues">false</option>
+        <option name="heat-map-viz.heat-map-viz.tokenLabel">hm_token_label</option>
+        <option name="heat-map-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="heat-map-viz.heat-map-viz.tokenValue">hm_token_value</option>
+        <option name="heat-map-viz.heat-map-viz.tooltipDateFormat">auto</option>
+        <option name="heat-map-viz.heat-map-viz.valHigh">70</option>
+        <option name="heat-map-viz.heat-map-viz.valLow">40</option>
+        <option name="heat-map-viz.heat-map-viz.valMedium">60</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidth">auto</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidthpx">250</option>
+        <option name="height">215</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    
+    
+	
+<h1>Version Support</h1>
+<p>8.1, 8.0, 7.3, 7.2, 7.1, 7.0</p>
+
+
+<h1>Who is this app for?</h1>
+<p>This app is for anyone who wants to display several metrics on a small area of a dashboard.</p>
+
+
+<h1>How does the app work?</h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p>
+<p>To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.</p>
+
+
+<h1>Usecases for the Heat Map Visualization:</h1>
+<ol>
+  <li>Displaying server metrics like CPU, Memory, I/O, and Disk usage over time</li>
+  <li>Comparing sales volume by category over time</li>
+  <li>Showing related application metrics in a discreet dashboard panel</li>
+  <li>Highlighting any metrics relative to other entities</li>
+</ol>
+
+
+<h1>The following fields can be used in the search:</h1>
+<ul>
+  <li>_time (required): The easiest way to construct a search is to use the <code>| timechart</code> command, with a <code>by</code> clause.</li>
+  <li>category fields (required): Each field name will become a label on the side, with the values being used to set the color based on thresholds. The order of the fields determines the order shown in the viz.</li>
+</ul>
+
+<h1>Example Search</h1>
+<p>
+  <code>| gentimes start=-7 increment=4h <br/>
+| eval "Server Availability"=random()%100, "Customer Satisfaction"=random()%100,"Server Performance"=random()%100, _time=starttime  <br/>
+| table _time, "Server Availability","Customer Satisfaction","Server Performance"</code>
+</p>
+
+
+
+<h1>Tokens</h1>
+<p>Tokens are generated each time you click a cell. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carrying across.</p>
+ <ul>
+<li>Value: This is the numeric field for the cell you clicked. Default value: $$hm_token_value$$</li>
+<li>Label: This is the field name for the cell you clicked. Default value: $$hm_token_label$$</li>
+<li>Time: This is the '_time' field for the selection. Default value: $$hm_token_time$$</li>
+</ul>
+
+<h1>Limits</h1>
+<p>The visualization is bound by the following limits:</p>
+<ul>
+  <li>Total results: 50,000</li>
+</ul>
+
+
+<h1>Release Notes</h1>
+<h2>v 1.3.1</h2>
+<ul>
+  <li>Added option to convert time to UTC. This is off by default to allow timechart results to match the visualization timestamps.</li>
+</ul>
+
+<h2>v 1.3.0</h2>
+<ul>
+  <li>Updated Apex Charts to version 3.22.0</li>
+  <li>Fixed label colors in dark mode</li>
+  <li>Added ability to download a CSV Export in addition to image exports</li>
+  <li>Set the low/medium/high/critical text labels to a custom value - Legend: Low/Medium/High/Critical</li>
+  <li>Fix for shading negative values in charts - Colors: Reverse Negative Shade</li>
+  <li>Optionally hide the white border on cells - General: Hide Cell Borders</li>
+  <li>Reorganised options menu</li>
+  
+</ul>
+
+<h2>v 1.2.0</h2>
+<ul>
+  <li>Label font size is now customizable.</li>
+  <li>Fixed issue with Splunk 7.3.x showing 'undefined' on visualization options screen.</li>
+</ul>
+
+<h2>v 1.1.0</h2>
+<ul>
+  <li>Added the option of putting the date in the tooltip. Several date formats are available to use.</li>
+  <li>You can now turn off animation in the options menu.</li>
+  <li>The visualization now resizes when you resize the panel.</li>
+  
+</ul>
+
+<h2>v 1.0.0</h2>
+<ul>
+  <li>Initial version</li>
+</ul>
+
+
+<h1>Issues and Limitations</h1>
+<p>If you have a bug report or feature request, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+
+
+<h1>Privacy</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualization.</p>
+
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+    
+<h1>Third-Party Libraries</h1>    
+<p>This visualization uses <a href="https://apexcharts.com/">ApexCharts</a>
+        </p>
+    
+
+  </html>
+    </panel>
+  </row>
+</dashboard>

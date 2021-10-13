@@ -1,0 +1,135 @@
+<form script="table2list.js">
+  <label>Example Three: Splunk Admin</label>
+  <search id="map_search">
+    <query>| inputlookup example-splunk-alerts.csv | table app, id, title, description, author, chron_schedule, qualifiedSearch | rename app as App, title as Title, description as Description, author as "Alert Author", cron_schedule as "Cron Schedule", qualifiedSearch as "Alert SPL"| search id=$tok_tv_data$| fields - id</query>
+  </search>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel id="third_1">
+      <html>
+        <h1>Triggered Alerts</h1>
+  <p>The following examples shows the Event Timeline Viz displaying triggered alerts.</p>
+  
+  <p>Sample query:</p>
+  <code>
+    index=_audit action="alert_fired"<br/>
+| rename ss_name AS title<br/>
+| join title<br/>
+    [| rest /services/saved/searches | fields title, author, description, cron_schedule, eai:acl.app, id,qualifiedSearch | rename id as URL, eai:acl.app as app]<br/>
+| fields  _time, title, severity, author, description, cron_schedule, app, id,qualifiedSearch<br/>
+| eval color=case(severity=1,"red",severity=2,"amber",tonumber(severity)&gt;2, "green")<br/>
+| eval data = title<br/>
+| rename _time as start, title as label
+</code>
+  
+  <br/>
+        <br/>
+    <strong>Splunk Alert Details</strong>
+        <br/>
+      <div id="list-view">
+          <p>Click on a triggered alert to view the alert details.</p>
+        </div>
+  
+  
+  
+   <style>
+     .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33.33%!important;}
+    div#third_2{width: 33.33%!important;}
+    div#third_3{width: 33.33%!important;}
+    div#twothirds_1{width: 66.66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+
+
+  span.grey{color: #b3b3b3;font-style:italic;}
+    </style>
+  </html>
+    </panel>
+    <panel id="twothirds_1">
+      <input type="link" token="orientation" searchWhenChanged="true">
+        <label>Orientation</label>
+        <choice value="top">Top</choice>
+        <choice value="bottom">Bottom</choice>
+        <choice value="both">Both</choice>
+        <default>top</default>
+        <initialValue>top</initialValue>
+      </input>
+      <input type="link" token="group" searchWhenChanged="true">
+        <label>Group by</label>
+        <choice value="app">App</choice>
+        <choice value="range">Severity</choice>
+        <default>range</default>
+        <initialValue>range</initialValue>
+        <change>
+          <set token="group_label">$label$</set>
+        </change>
+      </input>
+      <viz type="Splunk_TA_common-viz.event-timeline-viz">
+        <title>Triggered Splunk Alerts Grouped by $group_label$</title>
+        <search>
+          <query>| makeresults count=50 
+| eval _time = _time-random()%(60*60*24*14)
+| eval id = random()%49 +1
+| lookup example-splunk-alerts.csv id as id output URL, app, author, cron_schedule, title, description, qualifiedSearch
+| eval start = _time
+| eval label = app
+| eval data = id
+| eval severity = random()%4+1
+| rangemap field=severity debug=4-4 low=3-3 elevated=2-2 severe=1-1
+| eval group = $group$
+| eval tooltip=title
+| eval tooltip = if(isnull(description), tooltip , tooltip . ": " . description)
+| table group, label, start, data, range, tooltip</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="event-timeline-viz.event-timeline-viz.maxZoom">315360000000000</option>
+        <option name="event-timeline-viz.event-timeline-viz.minZoom">10</option>
+        <option name="event-timeline-viz.event-timeline-viz.orientation">$orientation$</option>
+        <option name="event-timeline-viz.event-timeline-viz.stack">true</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenAllVisible">tok_tv_all_visible</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenData">tok_tv_data</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenEnd">tok_tv_end</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenLabel">tok_tv_label</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenStart">tok_tv_start</option>
+        <option name="event-timeline-viz.event-timeline-viz.tooltipDateFormat">DD-MMM-YYYY</option>
+        <option name="height">710</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

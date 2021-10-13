@@ -1,0 +1,55 @@
+<dashboard>
+  <label>Horizon Chart Gallery</label>
+  <row>
+    <panel>
+      <title>Stock Data for 10 companies</title>
+      <viz type="Splunk_TA_common-viz.horizon_chart">
+        <title>Smoothing</title>
+        <search>
+          <query>| inputlookup stocks.csv | eval _time = strptime(date, "%Y-%m-%d")| timechart useother="f" span=1d limit=10 latest(open) by ticker_symbol | filldown</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="Splunk_TA_common-viz.horizon_chart.numBands">3</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.relative">true</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.showChangeInPercent">true</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.smoothen">true</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.negativeColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.positiveColor">#6db7c6</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Stock Data for 10 companies</title>
+      <viz type="Splunk_TA_common-viz.horizon_chart">
+        <title>No Smoothing, More Bands, Color Changed</title>
+        <search>
+          <query>| inputlookup stocks.csv | eval _time = strptime(date, "%Y-%m-%d")| timechart useother="f" span=1d limit=10 latest(open) by ticker_symbol | filldown</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="Splunk_TA_common-viz.horizon_chart.numBands">4</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.relative">true</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.showChangeInPercent">true</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.smoothen">false</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.negativeColor">#f7bc38</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.positiveColor">#65a637</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Monitoring CPU usage for 10 servers</title>
+      <viz type="Splunk_TA_common-viz.horizon_chart">
+        <search>
+          <query>| inputlookup firewall_data.csv   | eval _time = timestamp  | eval bytes_out = -bytes_out                                         | timechart span=5s sum(bytes_in) sum(bytes_out) by host      | table _time *host111 *host18 *host19 *host2 *host241 *host248 *host254 *host8</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.horizon_chart.negativeColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.numBands">3</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.positiveColor">#6db7c6</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.relative">false</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.showChangeInPercent">false</option>
+        <option name="Splunk_TA_common-viz.horizon_chart.smoothen">true</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

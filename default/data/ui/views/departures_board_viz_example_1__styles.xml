@@ -1,0 +1,338 @@
+<dashboard theme="light">
+  <init>
+    <set token="menuItem">default-thresholds</set>
+  </init>
+  <label>Example #1 - Styles</label>
+  <row>
+    <panel>
+      <html>
+        <style> div.html h1, div.html p{color:#333333!important;}
+          div.html{ background-color: #d1d1d1; border-radius:15px 15px 0px 0px;}
+          div.panel-element-row,div.dashboard-panel{border-radius: 15px 15px 0px 0px;}</style>
+      <h1>Departures Board Visualization</h1>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.net">daniel@spavin.net</a>)</h4>
+	  <h4>Integrated in <b>Splunk_TA_common-viz</b> by Patrick Vanreck (<a href="mailto:yoyonet-info@gmx.ch">yoyonet-info@gmx.ch</a>)</h4>
+      <p>This dashboard shows some of the customiszation options available. You can customise the length, alignment, size, caption, and token names.</p>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Light Theme</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">Light Theme</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">113</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Dark Theme</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">Dark Theme</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">dark</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">114</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Left Aligned</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults count=1 | eval text="Left" | table text</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.customColor">#009933</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">8</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">M</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">custom</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">89</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Center Aligned</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults count=1 | eval text="center" | table text</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.customColor">#f8be34</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">8</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">M</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">custom</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">94</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Right Aligned</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults count=1 | eval text="Right" | table text</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.customColor">#b30000</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">8</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">M</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">right</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">custom</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id1</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term1</option>
+        <option name="drilldown">all</option>
+        <option name="height">90</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Size: XS to XXL</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <title>XXL</title>
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">XX-Large</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">XXL</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">176</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <title>XL</title>
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">X-Large</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">XL</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">138</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <title>L</title>
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">Large</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">111</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <title>M</title>
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">Medium</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">M</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">87</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <title>S</title>
+        <search>
+          <query>| makeresults count=10 | streamstats count as id| eval text=case(id==1,"Canberra",id==2,"Wellington",id==3,"Washington",id==4,"London",id==5,"Tokyo",id==6,"Ottawa",id==7,"New Delhi",id==8,"Beijing",id==9,"Paris",id==10,"Berlin") | table text, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">center</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.animated">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.label">Small</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">XS</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">light</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">all</option>
+        <option name="height">89</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

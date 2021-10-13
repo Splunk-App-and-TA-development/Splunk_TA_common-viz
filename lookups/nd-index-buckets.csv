@@ -1,0 +1,61 @@
+from,to,value,color,type,linktext
+cold(_audit),_audit,cold buckets: 250,blue,bucket,250
+cold(apache_data),apache_data,cold buckets: 98,blue,bucket,98
+cold(os),os,cold buckets: 178,blue,bucket,178
+hot(_audit),_audit,hot buckets: 1,red,bucket,1
+hot(_internal),_internal,hot buckets: 1,red,bucket,1
+hot(_introspection),_introspection,hot buckets: 1,red,bucket,1
+hot(_telemetry),_telemetry,hot buckets: 1,red,bucket,1
+hot(apache_data),apache_data,hot buckets: 1,red,bucket,1
+hot(apps),apps,hot buckets: 1,red,bucket,1
+hot(moneytrader),moneytrader,hot buckets: 1,red,bucket,1
+hot(os),os,hot buckets: 1,red,bucket,1
+hot(flighttracker),flighttracker,hot buckets: 1,red,bucket,1
+warm(_audit),_audit,warm buckets: 300,yellow,bucket,300
+warm(_internal),_internal,warm buckets: 115,yellow,bucket,115
+warm(_introspection),_introspection,warm buckets: 40,yellow,bucket,40
+warm(_telemetry),_telemetry,warm buckets: 103,yellow,bucket,103
+warm(advancetech),advancetech,warm buckets: 83,yellow,bucket,83
+warm(apache_data),apache_data,warm buckets: 300,yellow,bucket,300
+warm(apps),apps,warm buckets: 113,yellow,bucket,113
+warm(os),os,warm buckets: 300,yellow,bucket,300
+warm(os_summary),os_summary,warm buckets: 92,yellow,bucket,92
+warm(hangouts),hangouts,warm buckets: 3,yellow,bucket,3
+warm(main),main,warm buckets: 266,yellow,bucket,266
+warm(moneytrader),moneytrader,warm buckets: 77,yellow,bucket,77
+warm(moneytrader_script_output),moneytrader_script_output,warm buckets: 2,yellow,bucket,2
+warm(notfoundindex),notfoundindex,warm buckets: 1,yellow,bucket,1
+warm(osx),osx,warm buckets: 113,yellow,bucket,113
+warm(flighttracker),flighttracker,warm buckets: 22,yellow,bucket,22
+warm(se2),se2,warm buckets: 11,yellow,bucket,11
+warm(fitnesstracker_test),fitnesstracker_test,warm buckets: 2,yellow,bucket,2
+warm(fitnesstracker_tmp2),fitnesstracker_tmp2,warm buckets: 1,yellow,bucket,1
+warm(splunkbase),splunkbase,warm buckets: 6,yellow,bucket,6
+warm(webindex),webindex,warm buckets: 1,yellow,bucket,1
+_audit,splunk,Index: _audit,green,index,
+_internal,splunk,Index: _internal,green,index,
+_introspection,splunk,Index: _introspection,green,index,
+_telemetry,splunk,Index: _telemetry,green,index,
+_thefishbucket,splunk,Index: _thefishbucket,green,index,
+advancetech,splunk,Index: advancetech,green,index,
+apache_data,splunk,Index: apache_data,green,index,
+apps,splunk,Index: apps,green,index,
+os,splunk,Index: os,green,index,
+os_summary,splunk,Index: os_summary,green,index,
+car_data,splunk,Index: car_data,green,index,
+hangouts,splunk,Index: hangouts,green,index,
+history,splunk,Index: history,green,index,
+main,splunk,Index: main,green,index,
+moneytrader,splunk,Index: moneytrader,green,index,
+moneytrader_script_output,splunk,Index: moneytrader_script_output,green,index,
+notfoundindex,splunk,Index: notfoundindex,green,index,
+osx,splunk,Index: osx,green,index,
+server_inventory,splunk,Index: server_inventory,green,index,
+flighttracker,splunk,Index: flighttracker,green,index,
+se2,splunk,Index: se2,green,index,
+fitnesstracker_test,splunk,Index: fitnesstracker_test,green,index,
+fitnesstracker_tmp2,splunk,Index: fitnesstracker_tmp2,green,index,
+splunkbase,splunk,Index: splunkbase,green,index,
+summary,splunk,Index: summary,green,index,
+webindex,splunk,Index: webindex,green,index,
+splunk,,Splunk Indexer,,indexer,

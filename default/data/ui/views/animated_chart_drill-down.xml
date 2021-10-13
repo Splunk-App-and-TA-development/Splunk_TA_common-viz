@@ -1,0 +1,104 @@
+<dashboard>
+  <label>Drill Down</label>
+  <row>
+    <panel>
+
+      <html>
+        <h1>Drill Down Options</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| inputlookup sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| timechart span=4h eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">center</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">$type$</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">HH:MM</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#2f4554</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Bar Chart - time slice:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Percent CPU (%)</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="drilldown">all</option>
+        <option name="height">282</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <drilldown>
+          <set token="click_name">$click.name$</set>
+          <set token="click_value">$click.value$</set>
+          <set token="click_name2">$click.name2$</set>
+          <set token="click_value2">$click.value2$</set>
+        </drilldown>
+      </viz>
+    </panel>
+    <panel rejects="$click.name$">
+      <html>
+        <h1>Click on a bar to see the generated tokens.</h1>
+      </html>
+    </panel>
+    <panel depends="$click.name$">
+      <html>
+        <h1>Available Tokens</h1>
+    <table class="thetable" cellpadding="5">
+      <tr>
+            <td>Token</td>
+            <td>Value</td>
+            <td>Description</td>
+          </tr>
+      
+      <tr>
+            <td>$$ac_name_token$$</td>
+            <td>
+              <code>$ac_name_token$</code>
+            </td>
+            <td>The name of the selected bar (x-axis). Change the token name in the options menu.</td>
+          </tr>
+      <tr>
+            <td>$$ac_value_token$$</td>
+            <td>
+              <code>$ac_value_token$</code>
+            </td>
+            <td>The current value of the selected bar (y-axis). Change the token name in the options menu.</td>
+          </tr>
+      <tr>
+            <td>$$ac_time_token$$</td>
+            <td>
+              <code>$ac_time_token$</code>
+            </td>
+            <td>The current timeslice. Change the token name in the options menu.</td>
+          </tr>
+    </table>
+    
+    
+    </html>
+    </panel>
+  </row>
+  <row depends="$CSSONLY$">
+    <panel>
+      <html>
+      <style>table.thetable{border:1px solid #efefef;width: 80%;border-collapse:collapse;}
+    table.thetable tr:nth-child(1) td{padding: 5px; background-color: #efefef;}
+    table.thetable tr:last-child td{padding: 5px; border-bottom:none;}
+    table.thetable td{padding: 5px; border-bottom: 2px solid #cccccc;}</style>
+    </html>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,127 @@
+<nav search_view="search" color="#67B5D9">
+ <collection label="Animated Chart Viz">  
+  <view name="animated_chart_about" />
+  <view name="animated_chart_examples" />
+  <view name="animated_chart_dark_mode" />
+  <view name="animated_chart_drill-down" />
+  <view name="animated_chart_settings" />
+ </collection>
+ <collection label="Bullet Graph Viz">
+  <view name="bullet_graph_gallery" />
+ </collection>
+ <collection label="Calendar Custom Viz">
+  <view name="calendar_gallery" />
+ </collection>
+ <collection label="Calendar Heatmap Viz">
+  <view name="calendar_heatmap_gallery" />
+ </collection>
+ <collection label="Carousel Viz">
+  <view name="carousel_visualization" />
+  <view name="carousel_viz_example_one_static" />
+  <view name="carousel_viz_example_two_animated" />
+  <view name="carousel_viz_example_three_drill_down" />
+  <view name="carousel_viz_example_four_tokens" />
+  <view name="carousel_viz_example_five_dark_theme" />
+  <view name="carousel_viz_settings" />
+ </collection>
+ <collection label="Circlepack Viz">
+  <view name="circlepack_viz_documentation" />
+ </collection>
+ <collection label="Donut Chart Viz">
+  <view name="aplura_viz_donut" />
+ </collection>
+ <collection label="Markdown Viz">
+  <view name="aplura_viz_markdown" />
+ </collection>
+ <collection label="Scatterplot Matrix Viz">
+  <view name="aplura_viz_scatterplot_matrix" />
+ </collection>
+ <collection label="Dendrogram Viz">
+  <view name="dendrogram_viz_documentation" />
+ </collection>
+ <collection label="Departures Board Viz">
+  <view name="departures_board_viz_about" />
+  <view name="departures_board_viz_example_1__styles" />
+  <view name="departures_board_viz_visualisation_examples" />
+  <view name="departures_board_viz_settings" />
+ </collection>
+ <collection label="Event Timeline Viz">
+  <view name="event_timeline_viz" />
+  <view name="event_timeline_viz_example_one_operations" />
+  <view name="event_timeline_viz_example_two_server_metrics" />
+  <view name="event_timeline_viz_example_three_splunk_admin" />
+  <view name="event_timeline_viz_settings" />
+ </collection>
+ <collection label="Flow Map Viz">
+  <view name="flow_map_viz_documentation" />
+ </collection>
+ <collection label="Heat Map Viz">
+  <view name="heat_map_visualization" />
+  <view name="heat_map_viz_examples" />
+  <view name="heat_map_viz_drill_down" />
+  <view name="heat_map_viz_dark_theme" />
+  <view name="heat_map_viz_settings" />
+ </collection>
+ <collection label="Horizon Chart Viz">
+  <view name="horizon_chart_gallery" />
+ </collection>
+ <collection label="Link Analysis Viz">
+  <view name="link_analysis_app_link_analysis_historical_view" />
+</collection>
+ <collection label="Network Diagram Viz">
+  <view name="network_diagram_viz_about" />
+  <view name="network_diagram_viz_available_icons" />
+  <collection label="Drill-Downs">
+	<view name="network_diagram_viz_drill_down_example" />
+	<view name="network_diagram_viz_drill_down_config" />
+  </collection>
+  <collection label="Examples">
+	<view name="network_diagram_viz_splunk_examples" />
+	<view name="network_diagram_viz_general_examples" />
+  </collection>
+  <view name="network_diagram_viz_business-process-diagram" />
+  <collection label="Create Layouts">
+	<view name="network_diagram_viz_create_designs" />
+	<view name="network_diagram_viz_create_designs_dark_mode" />
+  </collection>
+  <view name="network_diagram_viz_performance" />
+  <view name="network_diagram_viz_settings" />
+ </collection>
+ <collection label="Number Display Viz">
+  <view name="number_display_viz_documentation" />
+ </collection>
+ <collection label="Parallel Coordinates Viz">
+  <view name="parallel_coordinates_gallery" />
+ </collection>
+ <collection label="Performance Analysis Viz">
+  <view name="performance_analysis_about" />
+  <view name="performance_analysis_visualisation_examples" />
+  <view name="performance_analysis_drill_down_and_token_examples" />
+  <view name="performance_analysis_settings" />
+ </collection>
+ <collection label="Punchcard Viz">
+  <view name="punchcard_app_gallery" />
+ </collection>
+ <collection label="Region Chart Viz">
+  <view name="region_chart_viz_documentation" />
+ </collection>
+ <collection label="Sankey Diagram Viz">
+  <view name="sankey_diagram_app_gallery" />
+ </collection>
+ <collection label="Timeline Viz">
+  <view name="timeline_viz_gallery" />
+ </collection>
+ <collection label="Status Indicator Viz">
+  <view name="status_indicator_app_gallery" />
+ </collection>
+ <collection label="Sunburst Viz">
+  <view name="sunburst_viz_documentation" />
+ </collection>
+ <collection label="Treemap Viz">
+  <view name="treemap_viz_gallery" />
+ </collection>
+ <collection label="Standard Splunk">
+  <view name="search" default="true" />
+  <view name="dashboards" />
+ </collection>
+</nav>

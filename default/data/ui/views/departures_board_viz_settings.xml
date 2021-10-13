@@ -1,0 +1,172 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="options">options</set>
+  </init>
+  <label>Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="options" data-unset-token="format,themes,tokens" data-value="options">Options</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="format" data-unset-token="options,themes,tokens" data-value="format">Format</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="themes" data-unset-token="options,format,tokens" data-value="themes">Themes</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="options,format,themes" data-value="tokens">Tokens</button>
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$options$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/departures-board-viz_options-options.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Fixed size or Auto</h2>This setting determines the number of characters to display. <br />
+              <strong>Fixed Size</strong> will limit the length to a value you provide. If you try to display a longer word, it will be cut off, whereas shorter words will show blank panels.<br /> 
+              <strong>Auto Length</strong> will automatically fit the longest term (up to a maximun of 50 characters).<br /></p>
+              <br />
+              <p><h2>Fixed Size</h2>If you choose Fixed Size above, this value will be used to determine the length within the range of 1 to 50.<br /></p>
+              <br />
+              <p><h2>Refresh</h2>This setting determines if the Departures Board will cycle through values, or just update once.<br />
+              <strong>True</strong> - cycle through all values returned from your search. If your search only returns one value it will still update.<br />
+              <strong>False</strong> - Only the first result from your search will be displayed. The animation will only run once.</p>
+              <br />
+              <p><h2>Refresh every X seconds</h2>If you chose to refresh, this setting determines how often the update will occur, in seconds. </p>
+              <br />
+              <p><h2>Animation Duration</h2>This setting determines how long the lettter flipping animation will run. the 'Very Slow' option takes 1 second, 'Normal' takes half a second, and 'Very Fast' takes a tenth of a second. </p>
+              <br />
+              
+              
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$format$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/departures-board-viz_options-format.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Align Visualization</h2>This setting determines the alignment of the visualization within the dashboard panel. <br />
+              <strong>Left</strong> will align the visualization on the left. This is the default setting.<br /> 
+              <strong>Center</strong> will align the visualization in the middle.<br />
+              <strong>Right</strong>  will align the visualization on the right.<br /></p>
+              <br />
+              <p><h2>Align Text</h2>This setting aligns the text displayed within the visualization<br />
+              <strong>Left</strong> will align the text to the left. This is the default setting.<br /> 
+              <strong>Center</strong> will center the text if the display text is shorter than the number of panels available.<br />
+              <strong>Right</strong> will align the text to the right. If the text is too long the end of the text will be clipped.<br /></p>
+              <br />
+              <p><h2>Change Case</h2>This setting changes the results to be all-caps<br />
+              <strong>All Caps</strong> makes each result display in all caps. Equivalent to: <code>...| eval message = upper(message) </code><br /> 
+              <strong>No Change</strong> displays the results as-is.<br /></p>
+              <br />
+              <p><h2>Text Size</h2>This setting changes the size of the lettering<br />
+              The options are: Small, Medium, Large, Extra Large, Extra-Extra Large. To view the different sizes, see the <a href="example_1__styles">Example #1 - Styles</a> dashboard.</p>
+              <br />
+              
+              <p><h2>Caption</h2>This setting displays a caption at the bottom of the visualization<br />
+              The caption is optional.</p>
+              
+              <br />
+              
+              
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$themes$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/departures-board-viz_options-themes.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Theme</h2>Choose between three different themes.<br />
+              The options are: light theme, dark theme, custom
+              <br />
+              To view the different themes side-by-side, see the <a href="example_1__styles">Example #1 - Styles</a> dashboard.
+              <br />
+              To use a custom color, choose the custom theme.</p>
+			  <br/>
+			
+			<p><h2>Color</h2>
+			The panels that flip through the visualization are image based, so the selected color will be achieved via CSS styles. For that reason, the text is sometimes not as easily read with some colors. <br/>
+			Text is not customizable, as it is part of the panel image. If the text is not legible with the color selected, choose a different color.
+			</p>
+
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/departures-board-viz_options-tokens.png"/>
+            </td>
+            <td valign="top">
+              <p><h2>Term Token</h2>This token is set when the display changes.
+              <br />
+              The token will be updated with the currently displayed result. <br />You can use the token in your dashboard headings and searches by typing: $$dvb_term$$ <br />
+              </p>
+              <br />
+              <p><h2>ID Token</h2>This token is set when the display changes.
+              <br />
+              The token will be updated with the second field returned with the results. This token is optional.<br />You can use the token in your dashboard headings and searches by typing: $$dvb_id$$
+              </p>
+              <br />
+              
+              
+              
+              
+            </td>
+          </tr>
+          </table>
+            
+            </html>
+    </panel>
+   
+  </row>
+</dashboard>

@@ -1,0 +1,2553 @@
+<form theme="light">
+  <label>Number Display Viz - Documentation</label>
+  <search id="base1">
+    <query>index=_internal | stats sparkline(sum(count)) as overtime| eval text="42"</query>
+    <earliest>-24h@h</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <input type="link" token="tab" id="my_pillnavs">
+        <label></label>
+        <choice value="page1">Documentation</choice>
+        <choice value="page2">Examples 1</choice>
+        <choice value="page3">Examples 2</choice>
+        <choice value="page4">Examples 3</choice>
+        <change>
+          <condition value="page1">
+            <set token="showpage1">true</set>
+            <unset token="showpage2"></unset>
+            <unset token="showpage3"></unset>
+            <unset token="showpage4"></unset>
+          </condition>
+          <condition value="page2">
+            <unset token="showpage1"></unset>
+            <set token="showpage2">true</set>
+            <unset token="showpage3"></unset>
+            <unset token="showpage4"></unset>
+          </condition>
+          <condition value="page3">
+            <unset token="showpage1"></unset>
+            <unset token="showpage2"></unset>
+            <set token="showpage3">true</set>
+            <unset token="showpage4"></unset>
+          </condition>
+          <condition value="page4">
+            <unset token="showpage1"></unset>
+            <unset token="showpage2"></unset>
+            <unset token="showpage3"></unset>
+            <set token="showpage4">true</set>
+          </condition>
+        </change>
+        <default>page1</default>
+      </input>
+    </panel>
+    <panel depends="$never_match$">
+      <html>
+        Some inline CSS styles are in this panel.
+        <style>#my_pillnavs {width: 500px !important}</style>
+      </html>
+    </panel>
+  </row>
+  <row depends="$showpage1$">
+    <panel>
+      <html>
+<style>
+.table td, .table th {
+  vertical-align: middle;
+}
+</style>
+<div style="max-width: 1200px; margin: 0 auto;">
+<h2>Number Display Viz</h2>
+<p>A collection of ultra-configurable, single-statistic vizualisations for Splunk.</p>
+<p>Copyright (C) 2018 Chris Younger I am a Splunk Professional Services consultant working for JDS Australia, in Brisbane Australia.</p>
+<p>
+            <a href="https://github.com/ChrisYounger/number_display_viz">Source code</a> | <a href="https://splunkbase.splunk.com/app/4537/">Splunkbase</a> | <a href="https://answers.splunk.com/app/questions/4537.html">Questions, Bugs or Suggestions</a> | <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds">My Splunk apps</a>
+          </p>
+<br/>
+<br/>
+<br/>
+
+<h2>Usage</h2>
+<p>This visualization can deal with most datasets you want to throw at it. However for the most reliable results, use a search where the field names are exactly "value", "title" and "sparkline".</p>
+<pre class="highlight">
+<code>|stats sparkline(avg(SOME_VALUE)) as sparkline latest(SOME_VALUE) as value</code>
+</pre>
+
+
+<p>For multiple items do this: </p>
+<pre class="highlight">
+<code>| rename SPLIT_CATEGORY as title | stats sparkline(avg(SOME_VALUE)) as sparkline latest(SOME_VALUE) as value BY title</code>
+</pre>
+
+
+<p>The configured viz properties can be overridden by specifically named data fields.</p>
+<p>Here is an example where the subtitle is supplied in the data:</p>
+<pre class="highlight">
+<code>| rename SPLIT_CATEGORY as title | stats sparkline(avg(SOME_VALUE)) as sparkline latest(SOME_VALUE) as value latest(SOME_VALUE2) as subtext BY title</code>
+</pre>
+
+
+<p>another way of doing the same thing is like so: </p>
+<pre class="highlight">
+<code>| rename SPLIT_CATEGORY as title | stats sparkline(avg(SOME_VALUE)) as sparkline latest(SOME_VALUE) as value BY title | eval subtext = "something"</code>
+</pre>
+
+
+<p>These are the fields that can be provided in data:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+                  <code>value</code>
+                </td>
+<td>Numeric</td>
+<td>The value which will be used for threshold calculation and to set the gauge position or spinner speed. Viz will attempt to guess this field if not explicity supplied.</td>
+</tr>
+<tr>
+<td>
+                  <code>title</code>
+                </td>
+<td>String</td>
+<td>The title of the metric which will be shown as a text overlay. Viz will attempt to guess this field if not explicity supplied.</td>
+</tr>
+<tr>
+<td>
+                  <code>sparkline</code>
+                </td>
+<td>sparkline array</td>
+<td>The sparkline field to use as the area or line chart overlay. Viz will attempt to guess this field if not explicity supplied.</td>
+</tr>
+<tr>
+<td>
+                  <code>color</code>
+                </td>
+<td>HTML color code</td>
+<td>Set the base color, ignoring the thresholds. By using this field you can use any threshold logic you like in the search query</td>
+</tr>
+<tr>
+<td>
+                  <code>primarycolor</code>
+                </td>
+<td>HTML color code</td>
+<td>Similar to above but will only overide the primary color. The threshold color can still be used by other components. The primary color is only used by the main element (the gauge, spinner or shape background) in the viz.</td>
+</tr>
+<tr>
+<td>
+                  <code>secondarycolor</code>
+                </td>
+<td>HTML color code</td>
+<td>As above.</td>
+</tr>
+<tr>
+<td>
+                  <code>text</code>
+                </td>
+<td>String</td>
+<td>If supplied, this field enables overriding what would be shown as the numeric value.</td>
+</tr>
+<tr>
+<td>
+                  <code>subtitle</code>
+                </td>
+<td>String</td>
+<td>Override the subtitle value. Note that subtitle must be blank in the formatting options</td>
+</tr>
+<tr>
+<td>
+                  <code>min</code>
+                </td>
+<td>Number</td>
+<td>Overrides the "min" limit</td>
+</tr>
+<tr>
+<td>
+                  <code>max</code>
+                </td>
+<td>Number</td>
+<td>Overrides the "max" limit</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<br/>
+<br/>
+
+
+<h2>Formatting options</h2>
+<p>
+            <img alt="" src="https://cdn.apps.splunk.com/media/public/docimages/f7e74d8c-8a4e-11e9-92f7-0667a25d8762.png"/>
+          </p>
+<ol>
+<li>Set the height. Since most Styles have a fixed aspect ratio this also sets the width. When blank it will automatically determine the size so that all items can fit on a single line. Items will split onto multiple lines when using a hardcoded size if there is not enough space.</li>
+<li>Set the minimum horizontal spacing between items. </li>
+<li>The data limits are important for the gauge and spinner styles only.</li>
+<li>Set thresholds and leave any blank that are not needed. If you need more thresholds or non-numeric thresholds then compute them in the search query and pass the color as the <code>color</code> field.</li>
+<li>
+<p>The primary and secondary fields are the colors that are used by the main style component such as the gauge, spinner, or the shape color. This allows the color to be set to a static color and the threshold color to be used for the textvalue overlay, the sparkline or other places. Exactly what the primary or secondary color affects is different for each style, however it is typically a gradient range. If the Primary and Secondary color are set exactly the same then some of the shape textures will not be visible. </p>
+</li>
+<li>
+<p>To show a sparkline, then be sure to pass in sparkline data. use <code>| stats sparkline(AGG_FUNCTION(VALUE))</code>
+              </p>
+</li>
+<li>
+<p>The Text, Title, Subtitle tabs allow for configuring how text overlays are applied. They are all kind of the same except the text value can have animations on change, and a unit prefix/suffix.</p>
+<ul>
+<li>If the data has a sparkline field but no value field then the last value of the sparkline will be used.</li>
+<li>The Title and Subtitle options should be left blank to use values from the data instead.</li>
+<li>Advanced font styles are hosted by Google Fonts so these won't work unless the viewer has an internet connection.</li>
+</ul>
+</li>
+</ol>
+<br/>
+<br/>
+<br/>
+
+
+<h2>Icons</h2>
+The title, <code>text</code>, or <code>subtitle</code> fields allow for HTML injection. This allows icons to be used in place of text or numbers. <br/>
+Any icon from the FontAwesome v5 Free icon sets can be used, the complete list is here: <a href="https://fontawesome.com/cheatsheet/">https://fontawesome.com/cheatsheet/</a>
+          <br/>
+There are also some Splunk built-in icons that can be used. See the list at the following page of your Splunk environment: <code>/en-GB/static/docs/style/style-guide.html#icons</code>
+          <br/>
+Here is an example showing an icon being displayed:
+<pre class="highlight">
+            <code>|stats sparkline(avg(SOME_VALUE)) as Sparkline latest(SOME_VALUE) as Value by SPLIT_CATEGORY | eval text="&lt;i class='fas fa-check'&gt;&lt;/i&gt;"</code>
+          </pre>
+
+
+<br/>
+<br/>
+<br/>
+
+<h2>Custom fonts</h2>
+<p>It is possible to use custom fonts (hosted on the internet) by overriding specific CSS classes in a HTML panel: <code>.number_display_viz-font1</code> .. <code>font5</code>. </p>
+<p>Example:</p>
+<pre class="highlight">
+<code>&lt;html&gt;
+&lt;style&gt;
+@import url('https://fonts.googleapis.com/css?family=Teko:700&amp;display=swap');
+.number_display_viz-font1 {
+    font-family: 'Teko', sans-serif !important;
+    font-weight: 700 !important;
+}
+&lt;/style&gt;
+&lt;/html&gt;</code>
+</pre>
+<br/>
+<br/>
+<br/>
+
+<h2>Drilldowns and tokens</h2>
+<p>As long as there is a "title" field (explicity supplied or guessed) then drilldowns will be enabled. All data fields are automatically created as tokens when clicked, named like so: <code>$row.&lt;fieldname&gt;$</code>. Tokens <code>$click.name$</code> and <code>$click.value$</code> are also created. <em>Drilldown to search</em> also works as normal.</p>
+
+ 
+<br/>
+<br/>
+<br/>
+
+<h2>Third party software</h2>
+<p>The following third-party libraries are used by this app. Thank you!</p>
+<ul>
+<li>jQuery - MIT - <a href="https://jquery.com/">https://jquery.com/</a>
+            </li>
+<li>Chart.js - MIT - <a href="https://www.chartjs.org/">https://www.chartjs.org/</a>
+            </li>
+<li>Font Awesome - Creative Commons Attribution-ShareAlike 4.0 License - <a href="https://fontawesome.com/">https://fontawesome.com/</a>
+            </li>
+<li>Tinycolor - MIT - <a href="https://github.com/bgrins/TinyColor">https://github.com/bgrins/TinyColor</a>
+            </li>
+<li>Fan SVGs are by mynamepong - Creative Commons BY 3.0 - <a href="https://www.flaticon.com/authors/mynamepong">https://www.flaticon.com/authors/mynamepong</a>
+            </li>
+<li>SVG textures are by svgbackgrounds.com - Creative Commons Attribution-ShareAlike 4.0 License - <a href="https://www.svgbackgrounds.com">https://www.svgbackgrounds.com</a>
+            </li>
+<li>Four spinners from <a href="https://loading.io/">https://loading.io/</a>
+            </li>
+</ul>
+
+
+</div>
+</html>
+    </panel>
+  </row>
+  <row depends="$showpage2$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">darker1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s1</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">column</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s2</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">lighter2</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">darker1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s3</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#ebb839</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#bd9872</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5E5E5E</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s4</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#C6C6C6</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s5</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$showpage2$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#919191</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s6</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">darker1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s7</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">62</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#919191</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">50</option>
+        <option name="number_display_viz.number_display_viz.subtitletext">Normal</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">35</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">120</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">51</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="number_display_viz.number_display_viz.titletext">Token Ring Latency</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#5E5E5E</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">30</option>
+        <option name="number_display_viz.number_display_viz.style">s8</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "-8"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#919191</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">static</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#006d9c</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">hidden</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">s9</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">auto</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">150</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$showpage3$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal   | stats  sparkline(sum(count)) as overtime  | eval  v =81</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">297</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">center</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkheight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.sparkwidth">90</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">g4</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">48</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#00a9e1</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf3</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">280</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">afterabs</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">40</option>
+        <option name="number_display_viz.number_display_viz.thickness">25</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#00a9e1</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">80</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">84</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.titlesize">90</option>
+        <option name="number_display_viz.number_display_viz.titletext">Agree</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal|dedup index | eval title = "Orders"| table title date_second</query>
+          <earliest>rt-1m</earliest>
+          <latest>rt</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">313</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#f2f4f5</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">static</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#f2f4f5</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">bg</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">20</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a5</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">46</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">no</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">3000</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-thin</option>
+        <option name="number_display_viz.number_display_viz.textmode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">300</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">70</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">80</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal   | stats  sparkline(sum(count)) as overtime  | eval  v =81</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">304</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">auto</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">1</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">10</option>
+        <option name="number_display_viz.number_display_viz.style">g4</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">darker1</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">under</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">4</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">99</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">24</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-thin</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="number_display_viz.number_display_viz.titletext">PROGRESS</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal|dedup index | table date_second date_minute</query>
+          <earliest>rt-1m</earliest>
+          <latest>rt</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">317</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#919191</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">static</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#f2f4f5</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.max">10</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">6</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">0.5</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">texture4</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">91</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">95</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">2.5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">5</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">15</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">0</option>
+        <option name="number_display_viz.number_display_viz.style">s11</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">60</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">auto</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textprocessing">abr2</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">yes</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">under</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">20</option>
+        <option name="number_display_viz.number_display_viz.thickness">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">29</option>
+        <option name="number_display_viz.number_display_viz.thresholdval4">50</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">36</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-gf5</option>
+        <option name="number_display_viz.number_display_viz.titlesize">35</option>
+        <option name="number_display_viz.number_display_viz.titletext">Ant infestation!</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal   | stats  sparkline(sum(count)) as overtime  | eval  v = 100</query>
+          <earliest>1559887200.000</earliest>
+          <latest>1559974733.000</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#C6C6C6</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">60</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">40</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">42</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">bg</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">20</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">g3</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">right</option>
+        <option name="number_display_viz.number_display_viz.textalignv">86</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf2</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">afterabs</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">16.5</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">no</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">46</option>
+        <option name="number_display_viz.number_display_viz.titletext">Availability</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal|dedup index | table date_second date_minute</query>
+          <earliest>rt-1m</earliest>
+          <latest>rt</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">317</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#af575a</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">10</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">6</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">0.5</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">texture4</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">91</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">95</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">2.5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">5</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">8</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">0</option>
+        <option name="number_display_viz.number_display_viz.style">s10</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">60</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">lighter2</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textprocessing">abr2</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">yes</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">under</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">20</option>
+        <option name="number_display_viz.number_display_viz.thickness">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">29</option>
+        <option name="number_display_viz.number_display_viz.thresholdval4">50</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">36</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-gf5</option>
+        <option name="number_display_viz.number_display_viz.titlesize">90</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$showpage3$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal 
+| stats sparkline(count) as overtime count as total by sourcetype 
+| head 7
+|eval text = coalesce(text, total) | streamstats count as count</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#0178c7</option>
+        <option name="number_display_viz.number_display_viz.padding">0</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.size">160</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">74.3</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">96</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">2.3</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">20</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">darker1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">20</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a12</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">left</option>
+        <option name="number_display_viz.number_display_viz.textalignv">55</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf2</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textprocessing">abr3</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">160</option>
+        <option name="number_display_viz.number_display_viz.textunit">&amp;nbsp;sec</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">30</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#d16f18</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">100</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">200</option>
+        <option name="number_display_viz.number_display_viz.titlealign">left</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">no</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$showpage4$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>| makeresults | eval total="5", sourcetype="Text value check", text="Happy"
+| append [| makeresults | eval total="2", sourcetype="This is a very long name&lt;br&gt;will wrap " ] 
+| append [| makeresults | eval total="100", text="&lt;i class='icon-warning'&gt;&lt;/i&gt;", sourcetype="Icon test"]
+|eval text = coalesce(text, total)
+| table sourcetype total  text</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.max">10</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">0</option>
+        <option name="number_display_viz.number_display_viz.pulserate">2</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">0.5</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">no</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">triangles</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">91</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">95</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">2.5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">5</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">no</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">15</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">0</option>
+        <option name="number_display_viz.number_display_viz.style">s0</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">60</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textprocessing">abr1</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">160</option>
+        <option name="number_display_viz.number_display_viz.textthousands">yes</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">under</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">20</option>
+        <option name="number_display_viz.number_display_viz.thickness">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">29</option>
+        <option name="number_display_viz.number_display_viz.thresholdval4">50</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">31</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-gf5</option>
+        <option name="number_display_viz.number_display_viz.titlesize">35</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search>
+          <query>index=_internal 
+| stats sparkline(count) as overtime count as total by sourcetype 
+| head 3
+|eval text = coalesce(text, total)</query>
+          <earliest>rt-5m</earliest>
+          <latest>rt</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">10</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">5</option>
+        <option name="number_display_viz.number_display_viz.pulserate">12</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">0.5</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">no</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">89.5</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">85</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">7.5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">5</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#000000</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">static</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">static</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">15</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">0</option>
+        <option name="number_display_viz.number_display_viz.style">a2</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">left</option>
+        <option name="number_display_viz.number_display_viz.textalignv">65</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-gf1</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">1</option>
+        <option name="number_display_viz.number_display_viz.textprocessing">abr2</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">yes</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#4fa484</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">0</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">6</option>
+        <option name="number_display_viz.number_display_viz.thresholdval4">8</option>
+        <option name="number_display_viz.number_display_viz.titlealign">left</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">25</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.titlefont">number_display_viz-gf5</option>
+        <option name="number_display_viz.number_display_viz.titlesize">30</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$showpage4$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">6</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">5</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">triangles</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">61</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a4</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">left</option>
+        <option name="number_display_viz.number_display_viz.textalignv">30</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">no</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">140</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunit">%</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#ecbc1b</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#AF5300</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">left</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">50</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">no</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">60</option>
+        <option name="number_display_viz.number_display_viz.titletext">Availability</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">darker1</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a7</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">Squares</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">86</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">7</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">64</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a2</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-font4</option>
+        <option name="number_display_viz.number_display_viz.textmode">darker2</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">220</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">left</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">no</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="number_display_viz.number_display_viz.titletext">The meaning of life</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">solid</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a6</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">darker2</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">darker1</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">4</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">triangles</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">61</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a3</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">left</option>
+        <option name="number_display_viz.number_display_viz.textalignv">30</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textdrop">no</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">static</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">140</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#AF5300</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#AF5300</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">darker1</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">texture3</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a5</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-font3</option>
+        <option name="number_display_viz.number_display_viz.textmode">lighter1</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#1a9035</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#af575a</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">40</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">texture4</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">86</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">7</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">64</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a9</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textmode">darker2</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">100</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#b22b32</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.number_display_viz">
+        <search base="base1">
+          <query> | eval v = "888888"</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="number_display_viz.number_display_viz.bordercolor">#FFFFFF</option>
+        <option name="number_display_viz.number_display_viz.bordersize">2</option>
+        <option name="number_display_viz.number_display_viz.colorprimary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorprimarymode">auto</option>
+        <option name="number_display_viz.number_display_viz.colorsecondary">#000000</option>
+        <option name="number_display_viz.number_display_viz.colorsecondarymode">darker1</option>
+        <option name="number_display_viz.number_display_viz.max">100</option>
+        <option name="number_display_viz.number_display_viz.min">0</option>
+        <option name="number_display_viz.number_display_viz.nodatacolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.padding">10</option>
+        <option name="number_display_viz.number_display_viz.pulserate">4</option>
+        <option name="number_display_viz.number_display_viz.shadowcolor">#F2F4F5</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapebordercolormode">static</option>
+        <option name="number_display_viz.number_display_viz.shapebordersize">1</option>
+        <option name="number_display_viz.number_display_viz.shapecolor">#000000</option>
+        <option name="number_display_viz.number_display_viz.shapecolormode">auto</option>
+        <option name="number_display_viz.number_display_viz.shapedropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.shapeshadow">yes</option>
+        <option name="number_display_viz.number_display_viz.shapetexture">texture5</option>
+        <option name="number_display_viz.number_display_viz.sparkHeight">30</option>
+        <option name="number_display_viz.number_display_viz.sparkWidth">90</option>
+        <option name="number_display_viz.number_display_viz.sparkalign">5</option>
+        <option name="number_display_viz.number_display_viz.sparkalignv">70</option>
+        <option name="number_display_viz.number_display_viz.sparkcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorfill">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolorline">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormode">darker</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodefill">darker2</option>
+        <option name="number_display_viz.number_display_viz.sparkcolormodeline">lighter1</option>
+        <option name="number_display_viz.number_display_viz.sparkmin">0</option>
+        <option name="number_display_viz.number_display_viz.sparkorder">fg</option>
+        <option name="number_display_viz.number_display_viz.sparkshow">yes</option>
+        <option name="number_display_viz.number_display_viz.sparkstyle">area</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarycolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondarymode">static</option>
+        <option name="number_display_viz.number_display_viz.spinnersecondaycolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmax">10</option>
+        <option name="number_display_viz.number_display_viz.spinnerspeedmin">1</option>
+        <option name="number_display_viz.number_display_viz.style">a11</option>
+        <option name="number_display_viz.number_display_viz.subtitlealign">center</option>
+        <option name="number_display_viz.number_display_viz.subtitlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.subtitlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.subtitledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.subtitledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.subtitlesize">20</option>
+        <option name="number_display_viz.number_display_viz.textalign">center</option>
+        <option name="number_display_viz.number_display_viz.textalignv">50</option>
+        <option name="number_display_viz.number_display_viz.textcolor">#af575a</option>
+        <option name="number_display_viz.number_display_viz.textdrop">yes</option>
+        <option name="number_display_viz.number_display_viz.textdropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.textduration">300</option>
+        <option name="number_display_viz.number_display_viz.textfont">number_display_viz-font1</option>
+        <option name="number_display_viz.number_display_viz.textmode">darker2</option>
+        <option name="number_display_viz.number_display_viz.textprecision">nolimit</option>
+        <option name="number_display_viz.number_display_viz.textshow">yes</option>
+        <option name="number_display_viz.number_display_viz.textsize">200</option>
+        <option name="number_display_viz.number_display_viz.textthousands">no</option>
+        <option name="number_display_viz.number_display_viz.textunitposition">after</option>
+        <option name="number_display_viz.number_display_viz.textunitsize">50</option>
+        <option name="number_display_viz.number_display_viz.thickness">50</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol1">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol2">#ec9960</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol3">#009DD9</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol4">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol5">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdcol6">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.thresholdsize">20</option>
+        <option name="number_display_viz.number_display_viz.thresholdval2">99999999999</option>
+        <option name="number_display_viz.number_display_viz.thresholdval3">90</option>
+        <option name="number_display_viz.number_display_viz.titlealign">center</option>
+        <option name="number_display_viz.number_display_viz.titlealignv">20</option>
+        <option name="number_display_viz.number_display_viz.titlecolor">#5C6773</option>
+        <option name="number_display_viz.number_display_viz.titlecolormode">static</option>
+        <option name="number_display_viz.number_display_viz.titledrop">yes</option>
+        <option name="number_display_viz.number_display_viz.titledropcolor">#ffffff</option>
+        <option name="number_display_viz.number_display_viz.titlesize">100</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

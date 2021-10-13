@@ -1,0 +1,219 @@
+<form theme="light">
+  <label>Examples for Splunk Admins</label>
+  <init>
+    <set token="hierarchyDirection">Top-Down</set>
+    <set token="showPorts">false</set>
+  </init>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <html>
+        <h1>Splunk Environment</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_1">
+      <html>
+      
+      <style>    table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33.33%!important;}
+    div#third_2{width: 33.33%!important;}
+    div#third_3{width: 33.33%!important;}
+    div#twothirds_1{width: 66.66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+  span.grey{color: #b3b3b3;font-style:italic;}
+    </style>
+      <h1>A Splunk Environment</h1>
+      
+      <p>In this example, you can see a Splunk environment made up of a Search Head cluster with Deployer, three Indexers, and four Forwarders.</p>
+      <p>The ports used for internal communications are labeled on the links between the servers.</p>
+      
+      
+    </html>
+    </panel>
+    <panel id="twothirds_1">
+      <input type="link" token="showPorts" searchWhenChanged="true">
+        <label>Options</label>
+        <choice value="true">Show Ports</choice>
+        <choice value="false">Hide Ports</choice>
+        <default>false</default>
+        <initialValue>false</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| inputlookup splunk-instance.csv
+| eval linktext=if("$showPorts$"=="true",linktext, "")
+| fields - color</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">558</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Monitoring App Popularity</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_2">
+      <html>
+      <h1>Apps Use by Username</h1>
+      <p>Note: This example requires that you have access to the _internal index. If you don't have access, view the sample data.</p>
+      
+      <code>
+index=_internal sourcetype=splunkd_ui_access "/app/" earliest=-24h@h <br/>
+| rex field=_raw "^[^-]+-\s+(?&lt;from&gt;(?!-)[^\s]+).+\/app\/(?&lt;to&gt;(?!-)[^\/ ]+)" <br/>
+| stats count by to, from <br/>
+| eval value="User " + from + " made " + count + " requests to app " + to, linktext = count, type="users"<br/>
+| append <br/>
+    [ search index=_internal sourcetype=splunkd_ui_access "/app/" NOT "preview.png" earliest=-24h@h <br/>
+    | rex field=_raw "/app/(?&lt;from&gt;(?!-)[^/ ]+)" <br/>
+    | stats count by from <br/>
+    | eval type="image", value="App: " + from <br/>
+    | fields from, type, value]<br/>
+      </code>  
+    </html>
+    </panel>
+    <panel id="twothirds_2">
+      <title>Splunk User Activity</title>
+      <input type="link" token="userActivitySource" searchWhenChanged="true">
+        <label>Source</label>
+        <choice value="Splunk">Splunk</choice>
+        <choice value="Sample Data">Sample Data</choice>
+        <default>Sample Data</default>
+        <initialValue>Sample Data</initialValue>
+        <change>
+          <condition match="'userActivitySource'=&quot;Splunk&quot;">
+            <set token="userActivitySPL">
+              <![CDATA[ index=_internal sourcetype=splunkd_ui_access "/app/" earliest=-24h@h | rex field=_raw "^[^-]+-\s+(?<from>(?!-)[^\s]+).+\/app\/(?<to>(?!-)[^\/ ]+)" | stats count by to, from | eval value="User " + from + " made " + count + " requests to app " + to, linktext = count, type="users"| append     [ search index=_internal sourcetype=splunkd_ui_access "/app/" NOT "preview.png" earliest=-24h@h | rex field=_raw "/app/(?<from>(?!-)[^/ ]+)" | stats count by from | eval type="image", value="App: " + from | fields from, type, value] ]]>
+            </set>
+          </condition>
+          <condition>
+            <set token="userActivitySPL">|inputlookup nd-user-apps.csv| eval color=if(type=="users", "#00008B","#6495ED")</set>
+          </condition>
+        </change>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>$userActivitySPL$</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">487</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Bottom-Up</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Hot, Warm, and Cold Buckets</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_3">
+      <html>
+        <h1>Indexes and Buckets</h1>
+        <p>This example shows how you can view the Hot, Warm, and Cold buckets for each index on your indexers.</p>
+        <p>You will need access to run dbinspect [<a href="https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Dbinspect">docs link</a>] for this to work in your environment.</p>
+        <code>
+          | dbinspect index=* <br/>
+| stats count by state, index <br/>
+| eval color=case(state=="hot", "red",state=="warm","yellow",state=="cold","blue"),<br/>
+    value=state + " buckets: " + count, state = state + "(" + index + ")" <br/>
+| rename state as from, index as to, count as linktext <br/>
+| eval type="bucket" <br/>
+| table from, to, value, color,type, linktext <br/>
+| append <br/>
+    [| eventcount summarize=false index=* index=_* <br/>
+    | stats count as count by index <br/>
+    | fields - count <br/>
+    | rename index as from<br/> 
+    | eval to="splunk", value="Index: " + from, type="index", color="green" <br/>
+    | table from, to, type, color,value] <br/>
+| append <br/>
+    [| makeresults <br/>
+    | eval from="splunk", type="indexer", value="Splunk Indexer" <br/>
+    | fields from, type, value]</code>
+        
+      </html>
+    </panel>
+    <panel id="twothirds_3">
+      <title>Indexes and Hot Buckets</title>
+      <input type="link" token="showLinkWidth" searchWhenChanged="true">
+        <label>Link Weights</label>
+        <choice value="linktext/maximum*10">Show</choice>
+        <choice value="nothing">Ignore</choice>
+        <default>linktext/maximum*10</default>
+        <initialValue>linktext/maximum*10</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>|inputlookup nd-index-buckets.csv
+| eventstats max(linktext) as maximum
+| eval linkWidth = $showLinkWidth$</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">643</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Bottom-Up</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,58 @@
+<dashboard>
+  <label>Parallel Coordinates Gallery</label>
+  <row>
+    <panel>
+      <title>Default Categorical Colorization</title>
+      <viz type="Splunk_TA_common-viz.parallel_coordinates">
+        <search>
+          <query>| inputlookup nutrients.csv | head 1500 | stats count by group calories "protein (g)" "water (g)" | fields - count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="parallel_coordinates_app.parallel_coordinates.colorMode">categorical</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Default Sequential Colorization</title>
+      <viz type="Splunk_TA_common-viz.parallel_coordinates">
+        <search>
+          <query>| inputlookup nutrients.csv | head 1500 | stats count by calories group "protein (g)" "water (g)" | fields - count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="parallel_coordinates_app.parallel_coordinates.colorMode">sequential</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Maximum # of Categorical Values 35</title>
+      <viz type="Splunk_TA_common-viz.parallel_coordinates">
+        <search>
+          <query>| inputlookup nutrients.csv | head 1500 | stats count by name calories "protein (g)" "water (g)" | fields - count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="parallel_coordinates_app.parallel_coordinates.colorMode">categorical</option>
+        <option name="parallel_coordinates_app.parallel_coordinates.maxCategories">35</option>
+        <option name="height">600</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Default Sequential Colorization, Large Data Set</title>
+      <viz type="Splunk_TA_common-viz.parallel_coordinates">
+        <title>For data sets larger than 2000 rows, the visualization will render progressively to avoid locking the browser.</title>
+        <search>
+          <query>| inputlookup nutrients.csv | head 2500 | stats count by calories group "protein (g)" "water (g)" | fields - count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="parallel_coordinates_app.parallel_coordinates.colorMode">sequential</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

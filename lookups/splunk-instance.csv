@@ -1,0 +1,30 @@
+from,to,value,type,linktext
+Search Head 1,Manager Node,Search Head 1,search-head,port: 9100
+Search Head 2,Manager Node,Search Head 2,search-head,port: 9100
+Search Head 3,Manager Node,Search Head 3,search-head,port: 9100
+Deployer,Search Head 1,Deployer,deployment-server,port: 8089
+Deployer,Search Head 2,Deployer,deployment-server,port: 8089
+Deployer,Search Head 3,Deployer,deployment-server,port: 8089
+Manager Node,Indexer 1,Manager Node,manager-node,port: 9100
+Manager Node,Indexer 2,Manager Node,manager-node,port: 9100
+Manager Node,Indexer 3,Manager Node,manager-node,port: 9100
+Indexer 1,Universal Forwarder 1,Indexer 1,indexer,port: 9997
+Indexer 1,Universal Forwarder 2,Indexer 1,indexer,port: 9997
+Indexer 1,Universal Forwarder 3,Indexer 1,indexer,port: 9997
+Indexer 1,Universal Forwarder 4,Indexer 1,indexer,port: 9997
+Indexer 1,Universal Forwarder 5,Indexer 1,indexer,port: 9997
+Indexer 2,Universal Forwarder 1,Indexer 2,indexer,port: 9997
+Indexer 2,Universal Forwarder 2,Indexer 2,indexer,port: 9997
+Indexer 2,Universal Forwarder 3,Indexer 2,indexer,port: 9997
+Indexer 2,Universal Forwarder 4,Indexer 2,indexer,port: 9997
+Indexer 2,Universal Forwarder 5,Indexer 2,indexer,port: 9997
+Indexer 3,Universal Forwarder 1,Indexer 3,indexer,port: 9997
+Indexer 3,Universal Forwarder 2,Indexer 3,indexer,port: 9997
+Indexer 3,Universal Forwarder 3,Indexer 3,indexer,port: 9997
+Indexer 3,Universal Forwarder 4,Indexer 3,indexer,port: 9997
+Indexer 3,Universal Forwarder 5,Indexer 3,indexer,port: 9997
+Universal Forwarder 1,,Universal Forwarder 1,forwarder,
+Universal Forwarder 2,,Universal Forwarder 2,forwarder,
+Universal Forwarder 3,,Universal Forwarder 3,forwarder,
+Universal Forwarder 4,,Universal Forwarder 4,forwarder,
+Universal Forwarder 5,,Universal Forwarder 5,forwarder,

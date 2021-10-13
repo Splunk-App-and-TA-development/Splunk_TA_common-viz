@@ -1,0 +1,206 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="general">general</set>
+    <eval token="time">strftime(now(),"%d-%b")</eval>
+  </init>
+  <label>Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings:</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="title,yaxis,xaxis,tokens" data-value="general">General</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="title" data-unset-token="general,yaxis,xaxis,tokens" data-value="title">Title</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="yaxis" data-unset-token="general,title,xaxis,tokens" data-value="yaxis">Y Axis</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="xaxis" data-unset-token="general,title,yaxis,tokens" data-value="xaxis">X Axis</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,title,yaxis,xaxis" data-value="tokens">Tokens</button>
+
+
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$general$">
+      <html>
+        <style>
+          span.color{display:inline-block; border-radius:2px; width: 15px; height: 14px; margin-left: 3px;}
+        </style>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/$env:app$/images/animated_chart_viz_options-general.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Chart Type</h2> The style of chart to display. Options are: Bar, Line, Area, Pie, Doughnut.<br/></p>
+			   
+			   
+			   <p><h2>Color Theme</h2> Choose a set of colours to display on the chart. Bar, Pie, and Doughnut graphs can show multiple colours. Line and Area will show the first color.<br/></p>
+              
+				<strong>Bright:</strong><br />
+			  <span class="color" style="background-color:#003f5c;"></span> #003f5c,<span class="color" style="background-color:#2f4b7c;"></span> #2f4b7c,<span class="color" style="background-color:#665191;"></span> #665191,<span class="color" style="background-color:#a05195;"></span> #a05195,<span class="color" style="background-color:#d45087;"></span> #d45087,<span class="color" style="background-color:#f95d6a;"></span> #f95d6a,<span class="color" style="background-color:#ff7c43;"></span> #ff7c43,<span class="color" style="background-color:#ffa600;"></span> #ffa600 <br/>
+			   
+<strong>Splunk Default:</strong><br/> <span class="color" style="background-color:#006D9C;"></span> #006D9C,<span class="color" style="background-color:#4FA484;"></span> #4FA484,<span class="color" style="background-color:#EC9960;"></span> #EC9960,<span class="color" style="background-color:#AF575A;"></span> #AF575A,<span class="color" style="background-color:#B6C75A;"></span> #B6C75A,<span class="color" style="background-color:#62B3B2;"></span> #62B3B2,<span class="color" style="background-color:#294E70;"></span> #294E70,<span class="color" style="background-color:#738795;"></span> #738795,<span class="color" style="background-color:#EDD051;"></span> #EDD051,<span class="color" style="background-color:#BD9872;"></span> #BD9872<br/>
+
+<strong>Blues:</strong><br /><span class="color" style="background-color:#004c6d;"></span> #004c6d,<span class="color" style="background-color:#255e7e;"></span> #255e7e,<span class="color" style="background-color:#3d708f;"></span> #3d708f,<span class="color" style="background-color:#5383a1;"></span> #5383a1,<span class="color" style="background-color:#6996b3;"></span> #6996b3,<span class="color" style="background-color:#7faac6;"></span> #7faac6,<span class="color" style="background-color:#94bed9;"></span> #94bed9,<span class="color" style="background-color:#abd2ec;"></span> #abd2ec,<span class="color" style="background-color:#c1e7ff;"></span> #c1e7ff <br/>
+
+		   <strong>Greys:</strong><br/> <span class="color" style="background-color:#f1f1f1;"></span> #f1f1f1,<span class="color" style="background-color:#d3d3d3;"></span> #d3d3d3,<span class="color" style="background-color:#b6b6b6;"></span> #b6b6b6,<span class="color" style="background-color:#9a9a9a;"></span> #9a9a9a,<span class="color" style="background-color:#7e7e7e;"></span> #7e7e7e,<span class="color" style="background-color:#646464;"></span> #646464,<span class="color" style="background-color:#4b4b4b;"></span> #4b4b4b,<span class="color" style="background-color:#333333;"></span> #333333<br/>
+
+<strong>Fall:</strong><br/> <span class="color" style="background-color:#feda7e;"></span> #feda7e,<span class="color" style="background-color:#f5be6d;"></span> #f5be6d,<span class="color" style="background-color:#eaa260;"></span> #eaa260,<span class="color" style="background-color:#dc8756;"></span> #dc8756,<span class="color" style="background-color:#cc6c4f;"></span> #cc6c4f,<span class="color" style="background-color:#b9534a;"></span> #b9534a,<span class="color" style="background-color:#a43a46;"></span> #a43a46,<span class="color" style="background-color:#8d2242;"></span> #8d2242
+			   
+	
+               <p><h2>Custom Colors</h2>Enter a comma separated list of hex color codes for the pie colors. These are applied to the data in a first-come-first-served basis. <br/>
+               
+               
+               
+               <p></p><h2>Auto Play</h2>  Should the timeslices start animating right away, or wait until a user clicks the play button?<br />
+			   <h2>Show Timeline</h2> Optionally hide or show the timeline at the bottom of the chart. This is a good option if you have set autoplay to true. <br />
+			   <h2>Play Speed</h2> There are 6 different speeds to animate the time slices: Very Fast, Fast, Moderate, Normal, Slow, Very slow<br /></p>
+               
+			   <p><h2>Date Format</h2> Chose from one of the pre-defined date formats. Custom formats are not suported. <br/>Options are:
+			   <ul>
+			     <li>dd-mmm-yyyy HH:MM:SS</li>
+<li>dd-mm-yyyy HH:MM:SS</li>
+<li>dd-mm-yyyy</li>
+<li>mm-dd-yyyy HH:MM:SS</li>
+<li>mm-dd-yyyy</li>
+<li>HH:MM:SS</li>
+<li>HH:MM</li>
+<li>dd-mm</li>
+<li>mm-dd</li>
+<li>dd-mmm</li>
+<li>mmm-dd</li>
+<li>A</li>
+</ul>
+			   </p>
+			   <br />
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$title$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/$env:app$/images/animated_chart_viz_options-title.png"/>
+            </td>
+            <td valign="top">
+              <p><h2>Title</h2> Optional text to display at the top of the chart.<br /></p>
+              
+              <p><h2>Title Align</h2> Align the chart title left, center, or right.<br /></p>
+              
+              <p><h2>Show Time Slice</h2> The current time slice will be appended to the end of the title. Eg. if the title is set to "Weekly Sales: " and the X Axsis Time Format is set to <code>dd-mmm</code> then the chart will display: Weekly Sales: $time$<br /></p>
+              
+              
+              
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+<panel depends="$yaxis$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/$env:app$/images/animated_chart_viz_options-yaxis.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Label</h2> The label for the Y axis. <br /></p>
+              
+              <p><h2>Y Axix Min</h2> The minimum value for the Y axis. <br />
+              None: No limit - the Y Axis will change each time the chart is updated<br/>
+              Data Min: The minimum of the Y Axis will be the smallest value across all time slices. This will mean the Y Axis minimum won't move around as timeslices change.<br/>
+              Custom: Enter a manual minimum for the Y Axis. Setting this to 0 for percentage based figures will help stop the Y axis from moving around as the chart animates between time slices, and will allow easier comparison between multiple graphs.
+              </p>
+              
+                 <p><h2>Y Axix Max</h2> The maximum value for the Y axis. <br />
+              None: No limit - the Y Axis will change each time the chart is updated<br/>
+              Data Max: The maximum of the Y Axis will be the largest value across all time slices. This will mean the Y Axis won't move around as timeslices change.<br/>
+              Custom: Enter a manual maximum for the Y Axis. Setting this to 100 for percentage based figures will stop the Y axis maximum from moving around as the chart animates between time slices, and will allow easier comparison between multiple graphs.
+              
+              
+              </p>
+			  <br />
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+    
+    <panel depends="$xaxis$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/$env:app$/images/animated_chart_viz_options-xaxis.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Label</h2> The label for the X Axis. <br /></p>
+              
+			  
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+    
+    
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/$env:app$/images/animated_chart_viz_options-tokens.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Name</h2> The field name on the X Axis where the user clicked. Defaults to $$ac_name_token$$<br /></p>
+              
+               <p><h2>Value</h2> The value on the Y Axis corresponding to the item the user clicked. Defaults to $$ac_value_token$$<br /></p>
+              
+               <p><h2>Time Slice</h2> The formatted time value currently applied to the chart. This is formatted based on the  <code>Date Format</code> setting under General. Defaults to $$ac_time_token$$<br /></p>
+              
+              
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+  </row>
+</dashboard>

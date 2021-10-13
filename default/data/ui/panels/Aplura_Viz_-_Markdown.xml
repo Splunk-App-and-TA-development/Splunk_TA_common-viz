@@ -1,0 +1,23 @@
+<panel>
+      <title>Example</title>
+      <viz type="Splunk_TA_common-viz.markdown">
+        <search>
+          <query>| makeresults</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.markdown.app_name">Splunk_TA_common-viz</option>
+        <option name="Splunk_TA_common-viz.markdown.dalek">Maruku</option>
+        <option name="Splunk_TA_common-viz.markdown.file_name">README</option>
+        <option name="Splunk_TA_common-viz.markdown.html_id">Splunk_TA_common-viz,aplura_viz</option>
+        <option name="Splunk_TA_common-viz.markdown.log">true</option>
+        <option name="Splunk_TA_common-viz.markdown.path_name">visualizations/markdown</option>
+        <option name="Splunk_TA_common-viz.markdown.search_field">markdown</option>
+        <option name="Splunk_TA_common-viz.markdown.sonic_screwdriver">local_file</option>
+        <option name="drilldown">none</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>

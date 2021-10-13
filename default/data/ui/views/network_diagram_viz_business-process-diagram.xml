@@ -1,0 +1,97 @@
+<dashboard version="1.1">
+  <label>Business Process</label>
+  <row>
+    <panel>
+      <html>
+      <h1>Business Process: Member Voting on Key Issues</h1>
+      
+      <p>This dashboard represents an end-to-end busines process using the Network Diagram Viz. Each step in the business process contains one or more checks being run by Splunk as a scheduled search. Each search will validate the status of the process step and record its value in a summary index. The dashboard collates the latest value of each search for each step and reproduces the end-to-end flow with RAG status colors based on the latest validation data.</p>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>|inputlookup nd-business-process.csv
+| lookup nd-business-process-searches.csv process_step as from OUTPUT color
+| eval color=case(color="red","red",color="yellow","yellow",color="green","green",1=1,"grey")
+| eval status = case(color="red","Critical",color="yellow","Warning",color="green","OK",1=1,"No Data")
+| eval value="Step: " + nodeText +". Status: " + status
+ |  append [ 
+ |  makeresults 
+ |  eval raw="from=\"start\", x=\"-1370\", y=\"-385\" ### from=\"receive_issue_list\", x=\"-1369\", y=\"-195\" ### from=\"review_issue_list\", x=\"-1369\", y=\"-37\" ### from=\"any_issues_ready\", x=\"-1369\", y=\"180\" ### from=\"end_1\", x=\"-1127\", y=\"-48\" ### from=\"discussion_cycle\", x=\"-1110\", y=\"173\" ### from=\"announce_issues\", x=\"-886\", y=\"93\" ### from=\"collect_votes\", x=\"-888\", y=\"-48\" ### from=\"prepare_results\", x=\"-891\", y=\"-219\" ### from=\"post_results\", x=\"-614\", y=\"-389\" ### from=\"email_results\", x=\"-614\", y=\"-219\" ### from=\"completed_1\", x=\"-333\", y=\"-308\" ### from=\"enough_members_voted\", x=\"-40\", y=\"-306\" ### from=\"issues_wo_majority\", x=\"499\", y=\"-313\" ### from=\"members_are_warned\", x=\"-40\", y=\"-48\" ### from=\"reduce_voting_members\", x=\"237\", y=\"-143\" ### from=\"reannounce_vote\", x=\"-594\", y=\"-48\" ### from=\"end_3\", x=\"899\", y=\"-313\" ### from=\"2nd_time\", x=\"497\", y=\"160\" ### from=\"Critical\", nodeText=\"Critical\", value=\"This color denotes the process step is critical\",type=\"dot\", color=\"red\", x=\"-1600\", y=\"-95\" ### from=\"Warning\", color=\"yellow\", value=\"This color denotes the process step is experiencing some issues\",type=\"dot\", nodeText=\"Warning\", x=\"-1600\", y=\"-10\" ### from=\"OK\", value=\"This color denotes the process step has no issues\", color=\"green\", type=\"dot\",nodeText=\"OK\", x=\"-1600\", y=\"80\" ### from=\"No Data\", nodeText=\"No Data\", value=\"This color denotes the process step has no data\", color=\"grey\", type=\"dot\", x=\"-1600\", y=\"165\""
+ |  makemv delim="###" raw 
+ |  mvexpand raw 
+ |  rename raw  as  _raw 
+ |  extract 
+ |  table from, x, y, color, type, nodeText, value]</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">392</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">end</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">box</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">200</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">horizontal</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">200</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.shakeTowards">leaves</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">continuous</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">selected_node</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">selected_step</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$selected_step$">
+    <panel>
+      <html>
+      <h1>Step: $selected_step$</h1>
+    </html>
+    </panel>
+  </row>
+  <row depends="$selected_step$">
+    <panel>
+      <table>
+        <search>
+          <query>| inputlookup nd-business-process-searches.csv WHERE process_step=$selected_node|s$
+| eval Time = strftime(now() - time, "%Y-%m-%d %H:%M:%S")
+| rename process_step as "Process Step", savedsearch_name as "Splunk Saved Search", status as Status, description as Description
+| table Time, "Process Step", "Splunk Saved Search", Description, Status</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"OK":#53A051,"NA":#708794,"WARN":#F8BE34,"CRITICAL":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,27 @@
+from,to,type,nodeText,linktext
+start,receive_issue_list,dot,Start on Friday,
+receive_issue_list,review_issue_list,,Receive Issue List,
+review_issue_list,any_issues_ready,,Review Issues List,
+any_issues_ready,end_1,random,Any Issues Ready?,No
+any_issues_ready,discussion_cycle,,Any Issues Ready?,Yes
+end_1,,dot,End,
+discussion_cycle,announce_issues,,Disucssion Cycle,
+announce_issues,collect_votes,,Announce Issues,
+collect_votes,end_1,,Collect Votes,
+collect_votes,prepare_results,,Collect Votes,Time Out 1 Week
+prepare_results,post_results,,Prepare Results,
+prepare_results,email_results,,Prepare Results,
+post_results,completed_1,,Post Results to Website,
+email_results,completed_1,,Email Results of Vote,
+completed_1,enough_members_voted,chevron-circle-right,Completion Gate,
+enough_members_voted,issues_wo_majority,random,Did Enough Members Vote?,yes
+enough_members_voted,members_are_warned,,Did Enough Members Vote?,no
+members_are_warned,reduce_voting_members,random,Have the Members Been Warned?,yes
+members_are_warned,reannounce_vote,,Have the Members Been Warned?,no
+reannounce_vote,collect_votes,,Re-Announce Vote with Warning to Members,
+reduce_voting_members,issues_wo_majority,,Reduce Members and Recalc,
+issues_wo_majority,end_3,random,Issues W/O Majority,No
+end_3,,dot,End,
+issues_wo_majority,2nd_time,,Issues W/O Majority,Yes
+2nd_time,discussion_cycle,random,2nd Time?,Yes
+2nd_time,announce_issues,,2nd Time?,No

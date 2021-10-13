@@ -1,0 +1,131 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="general">general</set>
+  </init>
+  <label>Event Timeline Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="tokens,color" data-value="general">General</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="color" data-unset-token="general,tokens" data-value="colors">Colors</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,color" data-value="tokens">Tokens</button>
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$general$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-general_ev-timeline.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Time Location</h2>The position of the Time axis. Options are:
+               <ul><li>Top - Show at the top of the visualization</li><li>Bottom - Show at the bottom of the visualisation</li>
+               <li>Both - Show the time axis at the top and bottom</li></ul></p>
+               <br /> 
+               <p><h2>Group Sorting</h2>Choose how the groups are sorted on the left of the visualization.<br/>
+               <strong>Group Name</strong> - Sort groups alphabetically by group name (default).<br/>
+               <strong>Time</strong> - Sort groups by time, using the earliest event in that group.</p>
+               <br />
+               <p><h2>Prevent Overlap</h2>An option to let the labels for events overlap eachother. <br/>
+               <strong>True</strong> - Spread the events vertically to avoid two events sharing the same horizontal space.<br/>
+               <strong>False</strong> - Use less space by allowing labels to overlap. Some information may be obscured.</p>
+               <br />
+               <p><h2>Tooltip Date Format</h2> The date format for the tooltip.</p>
+               <br />
+               <p><h2>Tooltip Time Format</h2> The format to dislay time in the tooltip. You can choose not to display the event time.</p>
+               <br />
+               <p><h2>Minimum Zoom</h2> Defaults to 'No Limit'. This setting determines how far in a user can zoom in with the scroll wheel. </p>
+               <br />
+               <p><h2>Maximum Zoom</h2> Defaults to 'No Limit'. This setting determines how far out a user can zoom with the scroll wheel. </p>
+               <br />
+               <p><h2>Show Current Time</h2> Show a red line on the timeline to indicate the current date. Defaults to false. </p>
+               <br />
+               
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$colors$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-color_ev-timeline.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Background Color</h2>The background-color of the visualization. Default color is white.
+               <br /> </p>
+			   <p><h2>Event Color</h2>The default color for events. This value is overwritten by the 'color' field in search results.
+               <br /> </p>
+			   <p><h2>Text Color</h2>The color of text on events.
+               <br /> </p>
+			                  
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-tokens_ev-timeline.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Start Timestamp</h2> The <i>start</i> value of the selected event. Defaults to $$tok_et_start$$.<br /></p>
+              <br />
+              <p><h2>End Timestamp</h2> The <i>end</i> field of the selected event. Defaults to $$tok_et_end$$ <br />
+              <br /></p>
+			  <p><h2>Event Data</h2>The <i>data</i> field of the selected event. This is useful for drilldowns or for use in searches. Defaults to $$tok_et_data$$<br /></p>
+              <br />
+              <p><h2>Event Label</h2>The <i>label</i> field of the selected event. Useful for displaying on titles on drill-downs or other panels. Defaults to $$tok_et_label$$<br />
+              <br /></p>
+			  <p><h2>All Visible Events' Data</h2>The <i>data</i> field of all events currently visible on the visualisation. This token will change with the zoom level and date selection. Defaults to $$tok_et_all_visible$$<br /></p>
+              <br />
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+  </row>
+</dashboard>

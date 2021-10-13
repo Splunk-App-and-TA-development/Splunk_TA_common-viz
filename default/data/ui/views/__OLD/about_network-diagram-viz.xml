@@ -1,0 +1,196 @@
+<dashboard theme="light">
+  <label>Network Diagram Viz</label>
+  <row>
+    <panel>
+      <html>
+      <h2>Network Diagram Visualization</h2>
+      <h4>Version: 1.2.0</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.org">daniel@spavin.org</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <title>Network Diagram Viz - v1.2.0</title>
+        <search>
+          <query>| makeresults count=25
+| streamstats count as from 
+| eval type=case(from==1, "usergroups", from==2, "users", from==3, "server", from==4, "database",from==5, "desktop",from==6, "laptop",from==7, "printer",from==8, "harddrive",from==9,"wifi",from==10, "code",from==11, "money",from==12, "bell"
+,from==13, "shopping-cart",from==14, "comment",from==15, "exclamation-circle",from==16, "file",from==17, "globe",from==18, "sitemap",from==19, "image",from==20, "info", from==21, "cloud",from==22,"envelope",from==23,"star",from==24,"code-branch",from==25,"folder")
+
+| eval to=case(from==2, "usergroups", from==3, "users", from==4, "server", from==5, "database",from==6, "desktop",from==7, "laptop",from==8, "printer",from==9, "harddrive",from==10,"wifi",from==11, "code",from==12, "money",from==13, "bell"
+,from==14, "shopping-cart",from==15, "comment",from==16, "exclamation-circle",from==17, "file",from==18, "globe",from==19, "sitemap",from==20, "image",from==21, "info", from==22, "cloud",from==23,"envelope",from==24,"star",from==25,"code-branch")
+
+| eval from=type
+
+|  eval color = random()%4 | eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red")
+
+| eval value = type
+| table from, to, value, type, color
+      
+ |  append [ 
+ |  makeresults 
+ |  eval raw="from=\"usergroups\", x=\"-6842\", y=\"-1183\" ### from=\"users\", x=\"-6731\", y=\"-1076\" ### from=\"server\", x=\"-6601\", y=\"-1181\" ### from=\"database\", x=\"-6450\", y=\"-1073\" ### from=\"desktop\", x=\"-6296\", y=\"-1186\" ### from=\"laptop\", x=\"-6157\", y=\"-1072\" ### from=\"printer\", x=\"-6003\", y=\"-1178\" ### from=\"harddrive\", x=\"-5879\", y=\"-1063\" ### from=\"wifi\", x=\"-5797\", y=\"-1182\" ### from=\"code\", x=\"-5691\", y=\"-1066\" ### from=\"money\", x=\"-5598\", y=\"-1176\" ### from=\"bell\", x=\"-5472\", y=\"-1057\" ### from=\"shopping-cart\", x=\"-5361\", y=\"-1182\" ### from=\"comment\", x=\"-5261\", y=\"-1058\" ### from=\"exclamation-circle\", x=\"-5149\", y=\"-1183\" ### from=\"file\", x=\"-5018\", y=\"-1037\" ### from=\"globe\", x=\"-4940\", y=\"-1179\" ### from=\"sitemap\", x=\"-4817\", y=\"-1048\" ### from=\"image\", x=\"-4749\", y=\"-1187\" ### from=\"info\", x=\"-4657\", y=\"-1051\" ### from=\"cloud\", x=\"-4562\", y=\"-1189\" ### from=\"envelope\", x=\"-4456\", y=\"-1053\" ### from=\"star\", x=\"-4343\", y=\"-1186\" ### from=\"code-branch\", x=\"-4274\", y=\"-1059\" ### from=\"folder\", x=\"-4171\", y=\"-1181\""
+ |  makemv delim="###" raw 
+ |  mvexpand raw 
+ |  rename raw  as  _raw 
+ |  extract 
+ |  table from, x, y]</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">178</option>
+        <option name="network-diagram-viz.network-diagram-viz.canZoom">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none`</option>
+        <option name="network-diagram-viz.network-diagram-viz.designLayoutDashboard">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    
+    
+<h1>Version Support</h1>
+<p>7.2, 7.1, 7.0, 6.6, 6.5, 6.4</p>
+
+
+<h1>Who is this app for?</h1>
+<p>This app is for dashboard designers who want to display how different entities are related to eachother on a dashboard panel.</p>
+
+<br/>
+<h1>How does the app work?</h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p>
+<p>To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.</p>
+
+<br/>
+<h1>Usecases for the Network Diagram Visualization:</h1>
+<ol>
+  <li>Displaying current server status based on CPU, Memory, I/O, and Disk usage</li>
+  <li>Visually associating users with actions, e.g. purchases, crashes, errors</li>
+  <li>Visualising the connection speeds between two hosts or services</li>
+  <li>Showing how events are related to eachother</li>
+</ol>
+
+<br/>
+<h1>The following fields can be used in the search:</h1>
+<ul>
+  <li>from (required): The unique name of the source entity.</li>
+  <li>to (optional): The unique name of the destination entity.</li>
+  <li>value (optional): Text to display as a tool tip. This text is also available as a token when the entity (from) is clicked.</li>
+  <li>type (optional): This is used to display the entity on the dashboard (from). Use the list of icons available, Splunk server icons, or shapes.</li>
+  <li>color (optional): Used to set the color of the text and icon (except for Splunk icons).</li>
+  <li>linktext (optional): Text to display on the link between the from and to entities.</li>
+  <li>linkcolor (optional): Colour of the link - use HTML colours or "red" / "yellow" / "green" / "blue". Invalid colours may make the viz fail to display.</li>
+  <li>linkwidth (optional): the width of the link between nodes. The optimal size range is between 0 and 15.</li>
+  <li>x (optional): Used in the 'Create Layouts' dashboard to set the location within the viz.</li>
+  <li>y (optional): Used in the 'Create Layouts' dashboard to set the location within the viz.</li>
+</ul>
+<p>Options can be overwritten, so if type or color is set multiple times in the search results, the last value will be used. This is useful if you wish to set the icon types and values via a lookup table at the end of your search.  </p>
+<br/>
+<h1>Example Search</h1>
+<p>
+  <code>| makeresults count=12<br/>
+    | streamstats count as id <br/>
+    | eval from=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") <br/>
+    | eval to=case(id=1,"Web 1",id=2,"Web 2",id=3,"Web 3", id=4,"App Server 1",id=5,"App Server 2", id=6, "App Server 1",id=7,"App Server 2", id=8,"App Server 1",id=9,"App Server 2",id=10,"Database Server",id=11,"Database Server",id=12, "") <br/>
+    | eval value=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") <br/>
+    | eval type=case(id=1,"sitemap",id=4,"server", id=6, "server",id=8,"server",id=10,"server",id=11,"server",id=12, "database") <br/>
+    | fields from, to, value, type</code>
+</p>
+<br/>
+
+<h1>Save Layout Designs</h1>
+<p>You can now save the layout of a Network Diagram Viz to make sure a specific layout is always displayed on your dashboards.</p>
+<p>To create a layout, go to the <a href="create_designs">Create Layouts</a> dashboard and follow these steps:</p>
+<ol>
+          <li>Paste in your search then click <i>Run Search</i> to generate a Network Diagram Viz</li>
+<li>Drag the nodes around until you are happy with the design.</li>
+<li>A new search is generated in the third panel. Replace your original search with the new search to save your layout.</li>
+        </ol>
+<p>Note: You must have physics turned off: General &gt; Enable Physics = false<br/>
+You must also turn off hierarchy settings: Hierarchy &gt; Hierarchy View = false</p>
+<p>To prevent users from altering your layout, you can choose to disable draggable nodes: General &gt; Draggable Nodes = false</p>
+
+
+<h1>Tokens</h1>
+<p>Tokens are generated each time you click a node. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.</p>
+ <ul>
+          <li>Node or link text: This is the value/tooltip as it was defined in the search results for either the node or link. Default value: $$nd_value_token$$</li>
+          <li>Node (from): This is the unique node name (e.g. the server name) of the node you clicked, or if you clicked on a link it will show the <em>from</em> node. Default value: $$nd_node_token$$</li>
+          <li>Node (to): When you click on a link this is populated with the <em>to</em> node. Default value: $$nd_to_node_token$$</li>
+</ul>
+<br/>
+<h1># Release Notes #</h1>
+<h2>v 1.2.0</h2>
+<strong>User requested features:</strong>
+<ul>
+    <li>Control the width of links using the new linkwidth field in your search (optional)</li>
+    <li>Set the color of links using the new linkcolor field in your search (optional)</li>
+    <li>Use the link text as a token when you click on it - defaults to: $$nd_value_token$$</li>
+    <li>Ability to disable zoom - new setting in the Options menu</li>
+ </ul>
+<strong>Other updates:</strong>
+<ul>
+  <li>New icons - a range of new icons for Windows, Linux, Git, Skype, Java, Google Drive and others. See the Available Icons dashboard for the complete set.</li>
+  <li>When you click on a link between two nodes, you now get tokens for the <em>From</em> and <em>To</em> nodes, as well as the link text.</li>
+  <li>Fixed typos in dashboards and configuration settings</li>
+</ul>
+
+
+<h2>v 1.1.0</h2>
+<ul>
+          <li>Save your layout designs. You can now use an in-built dashboard to create specific layouts based on your searches. A new search will be generated for use in your dashboards. See new dashboard: Create Layouts.</li>
+        </ul>
+
+<h2>v 1.0.0</h2>
+<ul>
+  <li>Initial version</li>
+</ul>
+<br/>
+
+<h1>Issues and Limitations</h1>
+<p>If you have a bug report or feature request, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+
+<br/>
+<h1>Privacy and Legal</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualizaton.</p>
+
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+   <br/> 
+<h1>3rd Party Libraries</h1>    
+<p>This visualization uses the network module from <a href="http://visjs.org">visjs.org</a>
+        </p>
+<p>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        </p>
+<p>Icons made by <a href="https://fontawesome.com/">https://fontawesome.com</a>
+        </p>
+
+    
+  </html>
+    </panel>
+  </row>
+</dashboard>

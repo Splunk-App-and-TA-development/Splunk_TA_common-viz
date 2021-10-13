@@ -1,0 +1,2001 @@
+state,city,card_provider,response_code,amount
+California,Sunnyvale,AMEX,Approved,1869.836934
+Ohio,Cincinnati,MASTERCARD,Approved,2446.563025
+Washington,Seattle,AMEX,Do not honor,2233.40531
+Washington,Redmond,AMEX,Insufficient funds,6116.870888
+California,Paradise,VISA,Approved,1408.16207
+Ohio,Cincinnati,VISA,Insufficient funds,764.6996166
+California,Mountain View,VISA,Approved,678.2200336
+California,Mountain View,VISA,Approved,5176.117765
+California,Mountain View,MASTERCARD,Approved,161.8207596
+California,Mountain View,AMEX,Approved,384.8147014
+Florida,Boca Raton,MASTERCARD,Approved,2972.558687
+New Mexico,Glorieta,VISA,Do not honor,4949.455634
+Alaska,Fairbanks,MASTERCARD,Insufficient funds,3465.999581
+Washington,Redmond,VISA,Approved,254.8719978
+Washington,Redmond,VISA,Approved,1686.200908
+Washington,Redmond,VISA,Insufficient funds,773.7163348
+Illinois,Chicago,AMEX,Approved,1534.071357
+California,Mountain View,AMEX,Approved,100.0604508
+California,Sunnyvale,AMEX,Approved,4035.631242
+California,Menlo Park,VISA,Approved,852.9602837
+California,Mountain View,VISA,Approved,58.69741103
+New York,Rego Park,MASTERCARD,Approved,4202.077077
+California,Mountain View,VISA,Approved,17.99896148
+California,Menlo Park,MASTERCARD,Approved,1338.62127
+New York,Rochester,VISA,Approved,485.4480234
+Ohio,Cincinnati,MASTERCARD,Do not honor,3508.157055
+Washington,Redmond,VISA,Approved,793.6259698
+Washington,Redmond,VISA,Approved,623.7991177
+California,Sunnyvale,AMEX,Approved,150.991497
+Texas,San Antonio,AMEX,Approved,664.8032129
+Tennessee,Hendersonville,VISA,Approved,82.42970781
+California,Mountain View,MASTERCARD,Approved,2832.189185
+California,Mountain View,VISA,Approved,1734.132392
+California,Pasadena,DISCOVER,Insufficient funds,1357.419827
+California,Mountain View,VISA,Approved,246.7054212
+California,Mountain View,MASTERCARD,Do not honor,2964.551813
+California,Mountain View,MASTERCARD,Approved,1020.16897
+California,Mountain View,MASTERCARD,Approved,43.61652209
+Virginia,Ashburn,VISA,Approved,297.0163725
+Virginia,Ashburn,VISA,Approved,1005.633929
+Virginia,Ashburn,MASTERCARD,Do not honor,556.0572678
+Florida,Boca Raton,VISA,Approved,1508.006627
+Nevada,Las Vegas,AMEX,Approved,291.1240201
+Ohio,Cincinnati,MASTERCARD,Approved,1346.802852
+California,Mountain View,VISA,Approved,5449.801576
+California,San Jose,MASTERCARD,Approved,3059.623446
+California,Mountain View,MASTERCARD,Approved,154.1681032
+California,Mountain View,MASTERCARD,Approved,6635.692618
+New Jersey,Cresskill,AMEX,Approved,636.2287837
+Washington,Redmond,MASTERCARD,Approved,251.8984009
+California,Menlo Park,MASTERCARD,Approved,481.2104385
+Louisiana,Covington,VISA,Approved,4673.890584
+Ohio,Cincinnati,AMEX,Approved,1647.018802
+California,Menlo Park,MASTERCARD,Approved,13.50957041
+Washington,Seattle,AMEX,Approved,1532.380634
+Washington,Redmond,VISA,Approved,420.5626347
+Ohio,Cincinnati,AMEX,Approved,434.7046578
+Virginia,Ashburn,MASTERCARD,Approved,2617.370823
+Virginia,Ashburn,AMEX,Approved,2834.282379
+Washington,Redmond,VISA,Approved,1090.695255
+Washington,Redmond,VISA,Approved,3426.692725
+Washington,Redmond,AMEX,Do not honor,3510.035295
+Virginia,Ashburn,VISA,Approved,3731.988737
+Rhode Island,East Providence,MASTERCARD,Approved,1504.07623
+California,Menlo Park,MASTERCARD,Approved,446.5804759
+Virginia,Ashburn,VISA,Do not honor,397.3869979
+Texas,Frisco,VISA,Approved,4931.30185
+Illinois,Chicago,MASTERCARD,Insufficient funds,3151.346839
+Texas,Irving,VISA,Approved,785.9373164
+California,Menlo Park,MASTERCARD,Insufficient funds,3912.523916
+Ohio,Cincinnati,MASTERCARD,Approved,2782.292159
+Maryland,Laurel,VISA,Do not honor,23.80136975
+Washington,Seattle,VISA,Insufficient funds,332.1003096
+California,Mountain View,MASTERCARD,Issuer unavailable,3639.31146
+Tennessee,Clarksville,VISA,Approved,1008.113106
+Ohio,Cincinnati,VISA,Approved,1372.305843
+California,Palo Alto,MASTERCARD,Approved,470.3797044
+Virginia,Ashburn,MASTERCARD,Approved,181.8017325
+Ohio,Cincinnati,MASTERCARD,Approved,1062.491683
+California,Palo Alto,VISA,Insufficient funds,1128.248301
+Virginia,Ashburn,MASTERCARD,Approved,115.1852449
+California,Mountain View,VISA,Insufficient funds,1530.710949
+Ohio,Cincinnati,MASTERCARD,Approved,243.0496283
+Florida,Melbourne,MASTERCARD,Approved,67.32423047
+California,Mountain View,MASTERCARD,Approved,286.3237045
+California,San Ramon,AMEX,Insufficient funds,26.7874562
+California,Mountain View,AMEX,Approved,719.3977952
+California,Mountain View,AMEX,Approved,1980.608987
+Florida,Boynton Beach,MASTERCARD,Do not honor,114.8029582
+Ohio,Cincinnati,AMEX,Insufficient funds,5215.911267
+Washington,Redmond,AMEX,Approved,3789.289528
+New York,Springfield Gardens,VISA,Approved,560.6628357
+California,Sunnyvale,AMEX,Approved,2506.159453
+Iowa,Sioux City,AMEX,Insufficient funds,626.9262475
+California,Mountain View,MASTERCARD,Approved,6181.628279
+Washington,Redmond,MASTERCARD,Approved,839.304931
+Ohio,Cincinnati,VISA,Approved,3855.346315
+California,Palo Alto,MASTERCARD,Do not honor,281.8575972
+Colorado,Englewood,AMEX,Approved,1127.416693
+California,Menlo Park,VISA,Approved,458.7278021
+California,Mountain View,MASTERCARD,Approved,4168.30352
+California,Mountain View,MASTERCARD,Approved,2051.070153
+Ohio,Cincinnati,VISA,Approved,1295.300007
+California,Menlo Park,VISA,Approved,1397.802149
+California,Palo Alto,AMEX,Do not honor,3848.702247
+Virginia,Ashburn,MASTERCARD,Approved,3183.598195
+Washington,Redmond,AMEX,Approved,338.2428863
+California,Sunnyvale,MASTERCARD,Do not honor,2268.688957
+California,Mountain View,VISA,Approved,1000.058403
+California,Mountain View,VISA,Approved,157.5644243
+Ohio,Cincinnati,VISA,Approved,2085.961701
+Washington,Seattle,VISA,Approved,5738.309268
+Illinois,Lombard,MASTERCARD,Approved,2268.314529
+California,Sunnyvale,MASTERCARD,Do not honor,2668.894861
+Illinois,Elk Grove Village,DISCOVER,Insufficient funds,2175.852747
+California,Mountain View,AMEX,Approved,67.15557892
+New York,Brooklyn,VISA,Do not honor,416.53593
+California,Mountain View,VISA,Approved,5196.161291
+California,Mountain View,VISA,Insufficient funds,1533.787193
+California,Menlo Park,MASTERCARD,Approved,169.8359376
+California,Mountain View,VISA,Approved,37.04642228
+California,Sunnyvale,AMEX,Insufficient funds,5443.223672
+Illinois,Lombard,MASTERCARD,Restricted card,959.3623427
+Ohio,Cincinnati,VISA,Approved,2528.783783
+California,Mountain View,VISA,Approved,1457.155887
+New Jersey,Absecon,DISCOVER,Approved,130.8542426
+California,Mountain View,VISA,Approved,1438.651935
+Ohio,Cincinnati,MASTERCARD,Do not honor,1420.123138
+California,Menlo Park,VISA,Approved,219.4514794
+Ohio,Cincinnati,AMEX,Insufficient funds,239.3817989
+California,Menlo Park,MASTERCARD,Approved,472.7918534
+Virginia,Ashburn,MASTERCARD,Approved,5667.228228
+Washington,Redmond,VISA,Insufficient funds,664.7694627
+California,Menlo Park,MASTERCARD,Approved,1426.003704
+Indiana,Indianapolis,VISA,Approved,2755.211415
+California,Mountain View,AMEX,Insufficient funds,3373.997601
+California,Mountain View,VISA,Approved,151.1070201
+Ohio,Cincinnati,VISA,Approved,2352.965426
+California,Mountain View,AMEX,Approved,342.289404
+Ohio,Cincinnati,AMEX,Approved,4012.793972
+Florida,Gainesville,MASTERCARD,Approved,620.6032183
+California,Pasadena,MASTERCARD,Approved,3693.008054
+Georgia,Duluth,VISA,Do not honor,559.1683195
+California,Mountain View,MASTERCARD,Approved,6485.312863
+Virginia,Ashburn,MASTERCARD,Approved,4093.781575
+Ohio,Xenia,VISA,Approved,508.9832681
+Virginia,Ashburn,DISCOVER,Do not honor,333.6992198
+Missouri,Kansas City,MASTERCARD,Invalid transaction,201.1471349
+California,Sunnyvale,AMEX,Insufficient funds,1909.081535
+California,Mountain View,MASTERCARD,Incorrect PIN,2240.51557
+New Hampshire,Nashua,MASTERCARD,Restricted card,3740.473344
+California,Mountain View,MASTERCARD,Issuer unavailable,1890.282965
+Washington,Redmond,AMEX,Approved,1426.725313
+California,Mountain View,VISA,Approved,2146.01909
+Ohio,Cincinnati,AMEX,Approved,288.5811481
+California,San Francisco,MASTERCARD,Approved,313.4405299
+California,San Francisco,MASTERCARD,Approved,2244.892971
+Virginia,Ashburn,MASTERCARD,Approved,2838.606662
+California,San Francisco,VISA,Approved,976.26335
+California,Menlo Park,VISA,Approved,2961.344743
+California,Menlo Park,VISA,Approved,3.745044542
+Illinois,Chicago Heights,VISA,Approved,498.7924536
+Washington,Redmond,AMEX,Approved,4059.309766
+Ohio,Cincinnati,VISA,Approved,4659.605457
+California,Mountain View,AMEX,Do not honor,118.2422616
+California,Mountain View,VISA,Insufficient funds,3041.056339
+California,Mountain View,MASTERCARD,Approved,1488.351371
+Iowa,Sioux City,MASTERCARD,Approved,111.1520875
+California,San Francisco,VISA,Approved,1723.626175
+California,Mountain View,VISA,Insufficient funds,1213.350138
+California,Mountain View,VISA,Approved,400.3835217
+New Jersey,Union Township,MASTERCARD,Approved,3777.019187
+California,Mountain View,MASTERCARD,Approved,3688.092738
+Ohio,Cincinnati,VISA,Do not honor,408.1766134
+Washington,Redmond,VISA,Insufficient funds,4092.426649
+Ohio,Cincinnati,VISA,Approved,3574.803195
+California,Menlo Park,MASTERCARD,Do not honor,163.9936342
+California,San Francisco,VISA,Insufficient funds,113.6508408
+California,Berkeley,MASTERCARD,Approved,3070.694932
+Washington,Redmond,VISA,Approved,493.5466181
+California,Mountain View,AMEX,Approved,532.2441897
+Washington,Redmond,MASTERCARD,Approved,3122.530499
+Washington,Seattle,MASTERCARD,Approved,1705.622729
+Washington,Seattle,MASTERCARD,Approved,5152.263446
+Iowa,Sioux City,MASTERCARD,Approved,297.7421659
+California,Menlo Park,AMEX,Approved,7088.051301
+Ohio,Cincinnati,VISA,Approved,2184.903408
+California,Mountain View,VISA,Insufficient funds,1125.794314
+Washington,Redmond,MASTERCARD,Approved,3383.72703
+Washington,Redmond,MASTERCARD,Approved,1134.617943
+California,San Francisco,VISA,Approved,1783.96579
+California,San Mateo,MASTERCARD,Pick-up card,6882.164666
+California,Sunnyvale,AMEX,Do not honor,5562.948815
+Washington,Redmond,AMEX,Insufficient funds,1978.777672
+Ohio,Cincinnati,AMEX,Restricted card,3227.142463
+California,Mountain View,AMEX,Approved,1681.180969
+California,Mountain View,MASTERCARD,Pick-up card,4861.500198
+Washington,Redmond,VISA,Do not honor,1689.312427
+Washington,Redmond,VISA,Invalid amount,1064.285701
+California,Menlo Park,VISA,Insufficient funds,1417.26385
+Ohio,Cincinnati,VISA,Expired card,451.1711254
+Washington,Redmond,DISCOVER,Incorrect PIN,357.2450318
+Washington,Redmond,VISA,Restricted card,163.4817049
+Washington,Redmond,MASTERCARD,PIN tries exceeded,715.8728245
+Ohio,Cincinnati,MASTERCARD,Issuer unavailable,5.026986191
+Washington,Redmond,AMEX,Approved,6302.048894
+California,Mountain View,VISA,Approved,5897.408209
+California,Mountain View,AMEX,Insufficient funds,1808.912758
+California,Sunnyvale,AMEX,Approved,469.6673959
+California,Mountain View,VISA,Do not honor,1379.303568
+California,Mountain View,VISA,Approved,4993.848714
+California,Menlo Park,VISA,Approved,1122.452082
+California,Mountain View,MASTERCARD,Approved,13.83434037
+California,Mountain View,MASTERCARD,Do not honor,722.0921302
+Washington,Redmond,AMEX,Invalid amount,103.9909351
+Washington,Redmond,AMEX,Insufficient funds,7984.324804
+California,San Francisco,MASTERCARD,Incorrect PIN,3488.735917
+Ohio,Cincinnati,DISCOVER,Restricted card,1226.229285
+California,Menlo Park,AMEX,Approved,4986.515755
+Florida,Fort Lauderdale,MASTERCARD,Approved,606.7279293
+California,Menlo Park,MASTERCARD,Do not honor,70.94469528
+Washington,Redmond,VISA,Insufficient funds,1248.111237
+Washington,Redmond,AMEX,Approved,863.996301
+Virginia,Ashburn,VISA,Approved,461.0612288
+Washington,Redmond,AMEX,Approved,81.63297199
+California,Mountain View,MASTERCARD,Approved,1062.74165
+Ohio,Cincinnati,MASTERCARD,Do not honor,1609.344766
+California,Sunnyvale,MASTERCARD,Insufficient funds,8662.894876
+Washington,Redmond,VISA,Issuer unavailable,1703.586225
+California,Sunnyvale,MASTERCARD,Approved,852.2118637
+Ohio,Cincinnati,VISA,Approved,5646.282597
+Washington,Redmond,MASTERCARD,Approved,832.4397737
+California,Sunnyvale,VISA,Insufficient funds,4238.805041
+Washington,Seattle,VISA,Incorrect PIN,43.10844342
+Washington,Redmond,MASTERCARD,Approved,515.1028186
+Virginia,Ashburn,AMEX,Do not honor,3840.480802
+California,San Francisco,AMEX,Insufficient funds,1121.388959
+California,Menlo Park,MASTERCARD,Approved,807.9189859
+Ohio,Cincinnati,MASTERCARD,Approved,2665.305095
+Washington,Redmond,VISA,Pick-up card,3924.505532
+Washington,Redmond,VISA,Do not honor,2743.968322
+Washington,Redmond,MASTERCARD,Approved,1583.87187
+Washington,Redmond,VISA,Approved,14.86666224
+Washington,Redmond,AMEX,Insufficient funds,360.5816767
+Washington,Redmond,AMEX,Approved,3779.767867
+California,San Jose,AMEX,Approved,1002.889304
+California,Mountain View,AMEX,Do not honor,316.9786202
+California,Mountain View,AMEX,Invalid amount,25.06286847
+Washington,Seattle,VISA,Insufficient funds,621.974941
+Virginia,Ashburn,VISA,Approved,2949.187821
+California,Mountain View,MASTERCARD,Invalid amount,299.1122686
+Florida,Clearwater,DISCOVER,Insufficient funds,1161.119393
+California,Mountain View,MASTERCARD,Approved,6732.54056
+Ohio,Cincinnati,VISA,Approved,88.87133631
+Virginia,Ashburn,AMEX,Do not honor,36.52510761
+Washington,Seattle,MASTERCARD,Insufficient funds,2916.228364
+Ohio,Cincinnati,AMEX,Approved,3941.801325
+New Jersey,Absecon,AMEX,Approved,1762.928071
+Washington,Seattle,MASTERCARD,Approved,1178.539087
+Ohio,Cincinnati,VISA,Approved,5213.288487
+Virginia,Ashburn,AMEX,Do not honor,1404.946084
+California,Mountain View,VISA,Insufficient funds,94.13529594
+California,Mountain View,VISA,Incorrect PIN,737.9812237
+California,San Mateo,AMEX,Approved,120.6242562
+Washington,Redmond,VISA,Do not honor,2387.884367
+New York,New York,VISA,Approved,70.02516826
+California,Mountain View,VISA,Approved,167.3247489
+California,Mountain View,AMEX,Approved,423.5989167
+California,Mountain View,VISA,Do not honor,1368.274595
+Nebraska,Lincoln,VISA,Approved,11.07456331
+Virginia,Ashburn,MASTERCARD,Incorrect PIN,1280.418448
+California,Sunnyvale,VISA,Approved,4906.065281
+Virginia,Ashburn,AMEX,Approved,2765.599963
+Washington,Redmond,MASTERCARD,Approved,92.76352671
+Ohio,Cincinnati,VISA,Do not honor,969.4183699
+California,Menlo Park,AMEX,Insufficient funds,994.7000932
+California,San Francisco,MASTERCARD,Approved,432.6623006
+Ohio,Cincinnati,MASTERCARD,Insufficient funds,2771.739158
+California,Santa Clara,AMEX,Approved,40.53684807
+Missouri,Kansas City,AMEX,Incorrect PIN,464.6077691
+Ohio,Cincinnati,VISA,Approved,673.5855982
+California,Mountain View,AMEX,Approved,2836.2644
+California,Mountain View,VISA,Approved,549.8069944
+Delaware,Wilmington,AMEX,Approved,3449.003622
+New York,Buffalo,MASTERCARD,Approved,3211.241868
+California,San Francisco,VISA,Approved,2611.965649
+California,San Francisco,MASTERCARD,Approved,2473.436049
+California,San Francisco,VISA,Approved,107.6926071
+Ohio,Cincinnati,AMEX,Approved,4281.279455
+Washington,Redmond,VISA,Approved,290.6955475
+California,Mountain View,VISA,Approved,7954.260191
+California,Mountain View,MASTERCARD,Do not honor,2836.140618
+California,Sunnyvale,AMEX,Insufficient funds,2298.868289
+Washington,Redmond,MASTERCARD,Approved,1746.826939
+California,Mountain View,VISA,Approved,2518.057053
+California,Emeryville,VISA,Approved,1550.103182
+California,Menlo Park,DISCOVER,Do not honor,100.5486046
+Ohio,Cincinnati,VISA,Invalid transaction,2.642909178
+Colorado,Denver,VISA,Approved,2793.917372
+California,Sunnyvale,VISA,Approved,12.06254211
+Virginia,Ashburn,AMEX,Approved,995.6064962
+California,Mountain View,AMEX,Approved,21.83041492
+Virginia,Ashburn,AMEX,Approved,992.4303891
+Washington,Redmond,VISA,Approved,1472.675468
+Kentucky,Louisville,VISA,Do not honor,7923.988334
+California,Mountain View,DISCOVER,Approved,3254.112013
+California,Mountain View,MASTERCARD,Approved,310.4463993
+California,Mountain View,VISA,Approved,5508.468324
+Washington,Redmond,MASTERCARD,Approved,3062.54001
+Ohio,Cincinnati,MASTERCARD,Approved,4.422718287
+California,Mountain View,VISA,Approved,7452.834348
+Washington,Redmond,VISA,Approved,5704.713843
+California,Mountain View,MASTERCARD,Approved,264.6099795
+California,Mountain View,VISA,Approved,599.1436898
+Washington,Redmond,VISA,Insufficient funds,3041.215712
+Washington,Redmond,AMEX,Approved,356.096986
+California,Tustin,VISA,Approved,61.71749453
+Ohio,Cincinnati,VISA,Approved,3382.444471
+California,Mountain View,AMEX,Approved,3936.021507
+California,Mountain View,VISA,Do not honor,1068.069674
+Washington,Redmond,VISA,Approved,2185.495324
+Virginia,Ashburn,VISA,Do not honor,857.9014499
+California,Sunnyvale,MASTERCARD,Insufficient funds,329.2967388
+California,San Jose,VISA,Approved,467.6567299
+California,San Francisco,AMEX,Approved,710.1775177
+California,Cupertino,AMEX,Approved,148.3031679
+California,San Francisco,AMEX,Do not honor,122.4542383
+California,Menlo Park,MASTERCARD,Approved,1056.379563
+California,Menlo Park,MASTERCARD,Approved,4828.566532
+Washington,Redmond,MASTERCARD,Insufficient funds,782.6209715
+Washington,Redmond,MASTERCARD,Approved,825.5502761
+Washington,Redmond,MASTERCARD,Pick-up card,596.0949749
+Washington,Redmond,VISA,Do not honor,1973.654582
+Washington,Redmond,MASTERCARD,Insufficient funds,3401.476444
+California,Los Altos,VISA,Approved,319.3495626
+California,Mountain View,DISCOVER,Approved,9.568147721
+Michigan,Ann Arbor,AMEX,Insufficient funds,183.3596521
+California,Riverside,MASTERCARD,Approved,1161.631672
+Virginia,Ashburn,MASTERCARD,Approved,1735.737624
+California,Mountain View,VISA,Insufficient funds,317.341494
+Michigan,Grand Blanc,VISA,Approved,411.6525217
+Washington,Redmond,AMEX,Approved,2555.323306
+Ohio,Cincinnati,MASTERCARD,Approved,505.5963083
+California,Menlo Park,AMEX,Do not honor,2415.94156
+North Carolina,Cashiers,VISA,Insufficient funds,750.1574874
+Ohio,Cincinnati,MASTERCARD,Approved,1632.321508
+Wisconsin,Waukesha,VISA,Approved,667.5142743
+Virginia,Ashburn,MASTERCARD,Approved,2122.380773
+Missouri,Kansas City,MASTERCARD,Approved,3654.547152
+California,Sunnyvale,MASTERCARD,Approved,5682.900177
+Virginia,Ashburn,MASTERCARD,Approved,222.047421
+Ohio,Cincinnati,VISA,Approved,715.5513244
+California,Menlo Park,AMEX,Approved,121.6586197
+California,Mountain View,VISA,Approved,1062.862022
+Ohio,Cincinnati,VISA,Approved,436.2555379
+California,Mountain View,AMEX,Insufficient funds,316.9777323
+California,Mountain View,VISA,Approved,1.927296447
+Washington,Seattle,MASTERCARD,Approved,3006.297425
+California,Menlo Park,VISA,Approved,10459.61437
+Nevada,Las Vegas,AMEX,Approved,278.3035158
+California,Sunnyvale,AMEX,Approved,4466.698129
+Washington,Redmond,VISA,Approved,774.9194434
+Washington,Redmond,VISA,Approved,731.5454806
+South Carolina,Lexington,VISA,Approved,518.3205329
+Ohio,Cincinnati,VISA,Do not honor,587.6518079
+California,Mountain View,AMEX,Insufficient funds,383.2312523
+California,Mountain View,MASTERCARD,Approved,1045.751355
+Virginia,Ashburn,MASTERCARD,Do not honor,2294.425198
+Iowa,Des Moines,AMEX,Insufficient funds,963.8019588
+California,Menlo Park,AMEX,Approved,2566.852294
+California,Mountain View,VISA,Insufficient funds,71.03942858
+Washington,Redmond,VISA,Approved,29.77148904
+Washington,Redmond,VISA,Do not honor,863.3215868
+Washington,Redmond,MASTERCARD,Approved,3864.799637
+Washington,Redmond,MASTERCARD,Insufficient funds,2215.727344
+Washington,Seattle,VISA,Approved,5708.607576
+California,San Francisco,MASTERCARD,Approved,1579.809843
+South Dakota,Sioux Falls,MASTERCARD,Approved,1935.833152
+California,Menlo Park,MASTERCARD,Approved,3434.870955
+California,Mountain View,VISA,Approved,518.9448005
+New York,Nanuet,VISA,Approved,503.3949703
+California,Menlo Park,VISA,Approved,322.0185931
+California,Van Nuys,VISA,Approved,886.4504495
+Virginia,Ashburn,AMEX,Insufficient funds,3275.278464
+Ohio,Cincinnati,MASTERCARD,Approved,1075.625752
+California,Mountain View,MASTERCARD,Approved,1288.748221
+California,Mountain View,DISCOVER,Approved,4964.791513
+Washington,Redmond,MASTERCARD,Approved,1532.235872
+Virginia,Ashburn,VISA,Do not honor,590.1029221
+California,Mountain View,MASTERCARD,Insufficient funds,1251.609633
+California,Mountain View,AMEX,Approved,566.9773433
+California,Menlo Park,VISA,Approved,2800.797964
+Ohio,Cincinnati,MASTERCARD,Approved,2204.290027
+Virginia,Ashburn,VISA,Approved,23.99189408
+California,Mountain View,VISA,Approved,771.7549768
+Washington,Seattle,AMEX,Approved,1356.123933
+California,Menlo Park,MASTERCARD,Insufficient funds,414.8276429
+Virginia,Ashburn,MASTERCARD,Approved,140.3982082
+California,Mountain View,MASTERCARD,Approved,73.23328378
+California,Mountain View,AMEX,Approved,1403.658819
+California,Mountain View,VISA,Do not honor,232.9991152
+California,Mountain View,VISA,Insufficient funds,850.0231271
+Virginia,Ashburn,AMEX,Restricted card,427.2612463
+Georgia,Columbus,AMEX,Approved,3638.137071
+California,Sunnyvale,MASTERCARD,Approved,456.5816065
+Ohio,Cincinnati,VISA,Approved,1239.275311
+Oregon,Boardman,VISA,Approved,326.8231871
+California,Mountain View,VISA,Do not honor,3251.190011
+California,San Francisco,MASTERCARD,Approved,2279.385408
+Washington,Seattle,VISA,Approved,3696.87974
+California,San Jose,MASTERCARD,Approved,409.2362242
+Washington,Seattle,MASTERCARD,Approved,112.5028901
+California,Brea,MASTERCARD,Do not honor,2735.753991
+California,Mountain View,MASTERCARD,Insufficient funds,456.8350899
+California,Menlo Park,VISA,Approved,1351.067651
+California,Sunnyvale,AMEX,Approved,2924.546394
+Ohio,Cincinnati,VISA,Approved,2077.457865
+Washington,Seattle,MASTERCARD,Approved,458.9633903
+Missouri,St Louis,MASTERCARD,Do not honor,985.0010829
+California,Mountain View,VISA,Approved,736.9562089
+Ohio,Cincinnati,MASTERCARD,Do not honor,2175.516774
+California,Mountain View,VISA,Approved,440.8230263
+California,Mountain View,MASTERCARD,Approved,241.8570958
+California,Mountain View,MASTERCARD,Approved,576.523224
+California,Mountain View,VISA,Insufficient funds,7734.718961
+California,Los Angeles,VISA,Approved,2312.351291
+Ohio,Cincinnati,MASTERCARD,Invalid amount,1609.278833
+New Jersey,Absecon,VISA,Insufficient funds,2630.195303
+Virginia,Ashburn,MASTERCARD,Approved,930.2759277
+New Mexico,Albuquerque,VISA,Incorrect PIN,200.1040866
+California,San Francisco,AMEX,Approved,40.6349518
+California,Sunnyvale,VISA,Do not honor,5.980004438
+Washington,Seattle,VISA,Insufficient funds,3900.655162
+California,San Francisco,AMEX,Incorrect PIN,0.395670836
+Ohio,Cincinnati,VISA,Restricted card,19.22663953
+California,Mountain View,MASTERCARD,Approved,1301.065238
+California,Mountain View,MASTERCARD,Approved,2163.146701
+California,Mountain View,VISA,Approved,1013.129595
+California,Mountain View,VISA,No credit account,732.8716853
+California,Mountain View,VISA,Insufficient funds,110.0692477
+California,Mountain View,VISA,Incorrect PIN,393.9321431
+Washington,Redmond,VISA,Restricted card,71.72721931
+Ohio,Cincinnati,MASTERCARD,PIN tries exceeded,273.7439205
+California,Colton,DISCOVER,Approved,38.68033718
+Minnesota,Minneapolis,MASTERCARD,Approved,2868.893518
+California,Mountain View,VISA,Insufficient funds,4963.789801
+California,Mountain View,VISA,Approved,3427.49615
+Washington,Seattle,MASTERCARD,Insufficient funds,33.01967352
+Virginia,Ashburn,VISA,Approved,76.58268204
+Virginia,Blacksburg,AMEX,Approved,356.1453394
+Virginia,Ashburn,AMEX,Insufficient funds,111.7910765
+Washington,Redmond,VISA,Approved,7293.303249
+California,Sunnyvale,AMEX,Do not honor,4141.851035
+Virginia,Ashburn,MASTERCARD,Insufficient funds,687.4537363
+California,Mountain View,DISCOVER,Approved,1971.95154
+California,Mountain View,MASTERCARD,Approved,337.8974194
+California,Mountain View,VISA,Approved,1694.634269
+California,Berkeley,VISA,Do not honor,3775.059944
+California,Mountain View,DISCOVER,Insufficient funds,2178.351741
+Virginia,Portsmouth,VISA,Approved,28.4973787
+Ohio,Cincinnati,AMEX,Approved,1403.504309
+California,Mountain View,MASTERCARD,Approved,265.6845201
+California,Mountain View,VISA,Approved,6291.335428
+Missouri,Springfield,MASTERCARD,Insufficient funds,5859.958173
+Arizona,Sun City West,MASTERCARD,Approved,349.7544157
+California,Mountain View,AMEX,Do not honor,58.33803315
+California,Palo Alto,MASTERCARD,Incorrect PIN,86.16300324
+California,Palo Alto,VISA,Approved,8.049462472
+California,Palo Alto,VISA,Do not honor,844.7717477
+Alabama,Ramer,AMEX,Insufficient funds,1039.102368
+California,Mountain View,AMEX,Approved,2340.800908
+Arizona,Goodyear,AMEX,Insufficient funds,40.91436004
+Washington,Seattle,AMEX,Approved,1826.747599
+California,Palo Alto,VISA,Approved,2078.429797
+Virginia,Ashburn,MASTERCARD,Do not honor,8052.966149
+California,Mountain View,VISA,Insufficient funds,163.6851776
+Ohio,Cincinnati,VISA,Approved,133.1885447
+California,Union City,VISA,Approved,1764.125314
+California,Santa Clara,VISA,Approved,670.1394698
+Missouri,St Louis,MASTERCARD,Invalid merchant,1431.452168
+Tennessee,Memphis,AMEX,Approved,1014.59662
+California,Poway,AMEX,Approved,618.7104104
+California,Mountain View,VISA,Approved,1548.057344
+Washington,Redmond,MASTERCARD,Approved,1081.896845
+Pennsylvania,Allentown,VISA,Approved,1501.076741
+Washington,Redmond,MASTERCARD,Approved,1656.499714
+New Jersey,Leonia,VISA,Approved,3597.382537
+California,Mountain View,DISCOVER,Approved,30.14776556
+New York,New York,VISA,Do not honor,4841.804481
+California,Sunnyvale,MASTERCARD,Insufficient funds,930.0252255
+North Carolina,Boone,VISA,Approved,853.7063946
+Nebraska,Omaha,MASTERCARD,Approved,321.351821
+New York,The Bronx,MASTERCARD,Approved,1930.332163
+Washington,Seattle,MASTERCARD,Approved,1369.906114
+California,San Francisco,VISA,Approved,1202.67667
+California,San Francisco,MASTERCARD,Approved,931.6852251
+Ohio,Westerville,MASTERCARD,Approved,47.86880414
+Virginia,Ashburn,AMEX,Do not honor,1958.229157
+Ohio,Cincinnati,VISA,Approved,373.9031793
+California,Mountain View,MASTERCARD,Approved,662.8270153
+California,Menlo Park,VISA,Approved,96.09856343
+California,Menlo Park,AMEX,Approved,0.203726335
+California,Menlo Park,DISCOVER,Approved,2425.178873
+California,Menlo Park,VISA,Do not honor,1407.035644
+California,Menlo Park,VISA,Restricted card,1437.621161
+California,Menlo Park,VISA,Approved,891.7123791
+California,Menlo Park,VISA,Approved,4148.203804
+California,Menlo Park,AMEX,Approved,1523.638516
+California,Menlo Park,MASTERCARD,Approved,1501.227818
+California,Menlo Park,VISA,Approved,4374.6283
+California,Menlo Park,AMEX,Approved,4050.737784
+California,Menlo Park,MASTERCARD,Approved,9449.264205
+California,Menlo Park,MASTERCARD,Invalid transaction,2458.999736
+California,Menlo Park,AMEX,Approved,410.2368766
+California,Menlo Park,AMEX,Approved,499.7434035
+California,Menlo Park,VISA,Approved,1653.869938
+California,Menlo Park,VISA,Approved,371.8937151
+California,Merced,VISA,Approved,534.4370788
+California,Mountain View,MASTERCARD,Approved,625.1335992
+Ohio,Cincinnati,AMEX,Expired card,4206.579063
+California,Mountain View,VISA,Approved,113.593395
+Illinois,Chicago,AMEX,Approved,521.9125624
+California,Mountain View,VISA,Approved,590.1655114
+California,Sunnyvale,AMEX,Approved,2043.682241
+California,Mountain View,VISA,Do not honor,769.4536912
+California,Mountain View,VISA,Insufficient funds,1681.655394
+California,Mountain View,MASTERCARD,Approved,1846.351057
+South Carolina,Greenville,VISA,Approved,351.5499504
+Virginia,Ashburn,MASTERCARD,Do not honor,61.37956638
+Washington,Seattle,AMEX,Invalid transaction,2836.139167
+Virginia,Ashburn,VISA,Insufficient funds,944.5983454
+Maine,Poland,AMEX,Incorrect PIN,242.5931306
+Virginia,Ashburn,MASTERCARD,Issuer unavailable,2177.739554
+California,Berkeley,VISA,Approved,1912.372341
+California,Menlo Park,DISCOVER,Do not honor,1555.573816
+Virginia,Ashburn,AMEX,Approved,81.48828902
+Washington,Seattle,MASTERCARD,Invalid transaction,1815.11427
+California,Mountain View,MASTERCARD,Approved,2101.406178
+Washington,Redmond,MASTERCARD,Do not honor,996.4148993
+California,Sunnyvale,VISA,Invalid transaction,416.794604
+Virginia,Richmond,MASTERCARD,Insufficient funds,2643.873479
+New York,New York,VISA,Expired card,3855.420138
+California,Berkeley,MASTERCARD,Incorrect PIN,8947.806422
+Ohio,Cincinnati,VISA,Restricted card,4711.53347
+Virginia,Ashburn,VISA,Issuer unavailable,1035.356588
+California,Mountain View,VISA,Approved,1558.651092
+Washington,Seattle,AMEX,Approved,191.4361312
+Arkansas,Cabot,AMEX,PIN tries exceeded,5618.652918
+Washington,Seattle,DISCOVER,Issuer unavailable,788.5548707
+California,Mountain View,AMEX,Approved,472.4594619
+California,Menlo Park,AMEX,Do not honor,3894.728114
+Washington,Seattle,VISA,Insufficient funds,6178.871624
+California,Mountain View,VISA,Approved,951.1375256
+California,Mountain View,MASTERCARD,Approved,1003.697573
+Ohio,Cincinnati,MASTERCARD,Approved,798.0580121
+California,Fremont,MASTERCARD,Do not honor,727.535339
+Missouri,Kansas City,VISA,Approved,531.4624122
+California,Oakland,AMEX,Do not honor,6347.563432
+Washington,Seattle,VISA,Approved,218.4831915
+Virginia,Ashburn,AMEX,Insufficient funds,1224.155335
+California,Mountain View,AMEX,Approved,2810.717973
+California,Mountain View,AMEX,Insufficient funds,3398.68059
+California,Menlo Park,AMEX,Approved,400.7752658
+Virginia,Ashburn,VISA,Approved,3800.335805
+California,Mountain View,MASTERCARD,Do not honor,855.0904226
+Ohio,Cincinnati,MASTERCARD,Approved,472.9651999
+Virginia,Roanoke,VISA,Approved,234.8557306
+California,Menlo Park,VISA,Approved,4142.099487
+Ohio,Cincinnati,MASTERCARD,Approved,413.7409676
+Washington,Seattle,VISA,Approved,1674.718453
+California,Menlo Park,MASTERCARD,Approved,2378.211125
+Washington,Seattle,MASTERCARD,Pick-up card,1333.568283
+New York,Buffalo,MASTERCARD,Do not honor,774.6805598
+California,Mountain View,VISA,Approved,2858.19008
+Washington,Redmond,MASTERCARD,Approved,1829.867395
+California,Mountain View,AMEX,Issuer unavailable,187.3067584
+California,Menlo Park,MASTERCARD,Approved,3117.917992
+Ohio,Cincinnati,MASTERCARD,Approved,595.1801842
+California,San Jose,MASTERCARD,Approved,280.7256938
+Texas,McKinney,VISA,Approved,3964.896256
+Illinois,Chicago,MASTERCARD,Approved,8486.310311
+Washington,Redmond,MASTERCARD,Approved,2259.422424
+California,Mountain View,VISA,Approved,6835.200678
+California,Menlo Park,MASTERCARD,Insufficient funds,1535.322342
+California,Mountain View,VISA,Approved,2040.107182
+Washington,Redmond,MASTERCARD,Approved,2191.181002
+California,Mountain View,AMEX,Approved,290.6428099
+California,Sunnyvale,AMEX,Do not honor,459.7963641
+Washington,Redmond,MASTERCARD,Invalid transaction,745.8692836
+California,Menlo Park,VISA,Insufficient funds,477.9882491
+Virginia,Arlington,MASTERCARD,Incorrect PIN,2322.630329
+California,Mountain View,VISA,Approved,28.97717284
+California,Sunnyvale,AMEX,Approved,719.6116942
+California,Mountain View,VISA,Approved,1185.601963
+California,Menlo Park,MASTERCARD,Approved,152.6280535
+Ohio,Cincinnati,VISA,Approved,820.5634456
+Georgia,Evans,MASTERCARD,Invalid amount,3949.693113
+Washington,Redmond,VISA,Insufficient funds,1097.098233
+Washington,Redmond,AMEX,Approved,6078.277263
+Virginia,Ashburn,MASTERCARD,Approved,617.9700953
+Washington,Redmond,MASTERCARD,Approved,867.6583205
+Washington,Redmond,AMEX,Approved,1579.516632
+Virginia,Ashburn,MASTERCARD,Approved,4277.22604
+California,Menlo Park,VISA,Approved,48.76123745
+Virginia,Ashburn,MASTERCARD,Approved,4288.56649
+Maryland,Rockville,MASTERCARD,Approved,244.4949317
+California,Mountain View,MASTERCARD,Approved,3085.654141
+Virginia,Ashburn,VISA,Approved,2335.855139
+California,Mountain View,MASTERCARD,Approved,5827.22657
+California,Mountain View,MASTERCARD,Approved,125.6264003
+Ohio,Cincinnati,VISA,Approved,1854.739488
+California,Sunnyvale,VISA,Approved,452.6631886
+California,Mountain View,MASTERCARD,Approved,2915.941131
+Washington,Redmond,MASTERCARD,Approved,1626.780758
+California,Mountain View,VISA,Do not honor,8713.596187
+Washington,Redmond,VISA,Insufficient funds,761.3435198
+Virginia,Ashburn,MASTERCARD,Incorrect PIN,3986.731466
+Virginia,Ashburn,MASTERCARD,Approved,1094.441633
+Virginia,Ashburn,MASTERCARD,Approved,326.9721881
+Virginia,Ashburn,MASTERCARD,Approved,1740.962942
+Virginia,Ashburn,DISCOVER,Approved,4152.66421
+Virginia,Ashburn,AMEX,Approved,1062.356091
+Virginia,Ashburn,MASTERCARD,Approved,349.1450089
+Virginia,Ashburn,AMEX,Approved,4863.37348
+Ohio,Cincinnati,MASTERCARD,Approved,54.20464716
+Washington,Redmond,MASTERCARD,Pick-up card,1893.987424
+Washington,Redmond,AMEX,Approved,270.4682418
+California,Mountain View,VISA,Approved,145.4406895
+California,Mountain View,VISA,Approved,1075.976059
+Washington,Redmond,AMEX,Approved,1678.446883
+Washington,Redmond,VISA,Approved,255.3983534
+Washington,Redmond,MASTERCARD,Do not honor,1241.266983
+Washington,Redmond,VISA,Approved,1387.531513
+Washington,Redmond,MASTERCARD,Approved,6088.697641
+Washington,Redmond,VISA,Approved,409.1657572
+Michigan,Ann Arbor,VISA,Do not honor,2428.601895
+Washington,Redmond,AMEX,Insufficient funds,2852.633931
+California,Menlo Park,VISA,Incorrect PIN,1284.183645
+Ohio,Cincinnati,VISA,Approved,2950.660521
+Ohio,Cincinnati,MASTERCARD,Approved,61.92798547
+California,Palo Alto,AMEX,Approved,181.6697887
+California,Mountain View,MASTERCARD,Approved,4327.860159
+Oregon,Boardman,VISA,PIN tries exceeded,1298.351678
+Ohio,Cincinnati,VISA,Approved,4190.574935
+California,Palo Alto,VISA,Do not honor,4789.941755
+California,Menlo Park,MASTERCARD,Insufficient funds,527.3449718
+New Jersey,Absecon,AMEX,Incorrect PIN,1234.657063
+California,Menlo Park,MASTERCARD,Approved,3660.152889
+Ohio,Cincinnati,MASTERCARD,Approved,5158.047986
+Arizona,Tucson,DISCOVER,Incorrect PIN,5039.871136
+Ohio,Cincinnati,MASTERCARD,Approved,406.5292276
+Michigan,Ann Arbor,MASTERCARD,Do not honor,38.89068452
+California,Mountain View,MASTERCARD,Expired card,520.6748135
+Washington,Seattle,VISA,Approved,2669.836416
+California,Mountain View,DISCOVER,Invalid transaction,10609.2272
+California,Mountain View,AMEX,Insufficient funds,637.547281
+Virginia,Ashburn,MASTERCARD,Incorrect PIN,1923.405683
+New York,Staten Island,VISA,PIN tries exceeded,4934.992234
+Virginia,Charlottesville,AMEX,Approved,3442.817768
+Washington,Redmond,MASTERCARD,Incorrect PIN,987.9372956
+Washington,Redmond,VISA,Approved,2114.833896
+Washington,Redmond,AMEX,Do not honor,8.467516478
+California,San Francisco,VISA,Insufficient funds,571.6525907
+Oregon,Portland,MASTERCARD,Issuer unavailable,3150.332263
+Washington,Seattle,VISA,Approved,3958.576806
+Indiana,West Lafayette,MASTERCARD,Approved,3853.621201
+Virginia,Manassas,AMEX,Approved,1108.786102
+New York,Garden City,VISA,Approved,7565.739286
+California,Mountain View,VISA,Do not honor,262.0072064
+Washington,Redmond,VISA,Insufficient funds,2263.545064
+California,Modesto,AMEX,Incorrect PIN,1312.332792
+Ohio,Cincinnati,MASTERCARD,Approved,4153.063105
+Wisconsin,Genoa City,MASTERCARD,Approved,165.4334334
+Tennessee,Nashville,VISA,Do not honor,148.5890974
+California,Sunnyvale,AMEX,Invalid transaction,5363.752788
+California,Paradise,VISA,Insufficient funds,1192.628459
+Florida,North Miami Beach,VISA,Incorrect PIN,1941.291481
+California,Menlo Park,VISA,Approved,1824.142202
+California,Mountain View,AMEX,Approved,956.6652168
+Missouri,St Louis,VISA,Do not honor,2.127130806
+California,San Jose,AMEX,Insufficient funds,2554.375294
+Pennsylvania,Muncy,MASTERCARD,Approved,4687.407053
+Ohio,Cincinnati,MASTERCARD,Approved,92.84095161
+California,Mountain View,MASTERCARD,Do not honor,1171.026341
+New Jersey,Marlton,AMEX,Insufficient funds,272.6686658
+Virginia,Ashburn,AMEX,Approved,2522.306292
+Washington,Seattle,AMEX,Approved,1878.349779
+Virginia,Ashburn,MASTERCARD,Pick-up card,32.90874526
+California,Mountain View,VISA,Do not honor,9820.532339
+California,Mountain View,DISCOVER,Invalid transaction,3998.622212
+California,Mountain View,VISA,Insufficient funds,2859.886088
+California,Mountain View,AMEX,Expired card,725.8539771
+California,San Jose,AMEX,Incorrect PIN,5520.635307
+California,San Jose,VISA,Restricted card,1259.45787
+Virginia,Ashburn,MASTERCARD,PIN tries exceeded,112.583692
+Washington,Seattle,DISCOVER,Issuer unavailable,92.78270976
+Oregon,Boardman,MASTERCARD,Approved,1026.255267
+California,Sacramento,AMEX,Approved,3383.530921
+Ohio,Cincinnati,VISA,Approved,1558.115779
+California,San Jose,VISA,Approved,2243.60937
+New York,New York,MASTERCARD,Approved,1185.459911
+Ohio,Cincinnati,MASTERCARD,Approved,360.141314
+Washington,Redmond,VISA,Do not honor,2915.159925
+California,Mountain View,MASTERCARD,Issuer unavailable,1461.995792
+California,San Jose,VISA,Approved,4318.528909
+California,Mountain View,VISA,Approved,711.3068415
+Florida,Boca Raton,VISA,Approved,151.1903851
+Virginia,Ashburn,DISCOVER,Approved,583.5025573
+California,Menlo Park,MASTERCARD,Insufficient funds,4852.024571
+Washington,Walla Walla,VISA,Approved,16.2494709
+California,San Jose,VISA,Approved,2754.788592
+California,Menlo Park,MASTERCARD,Do not honor,2996.748187
+California,San Jose,VISA,Insufficient funds,102.9963808
+California,Menlo Park,DISCOVER,Incorrect PIN,2338.839194
+California,Mountain View,VISA,Issuer unavailable,2526.257558
+California,Mountain View,AMEX,Approved,559.3416276
+California,Los Angeles,VISA,Approved,48.80452749
+California,San Francisco,VISA,Approved,632.1674882
+Washington,Redmond,VISA,Insufficient funds,3504.534437
+California,Menlo Park,MASTERCARD,Approved,1804.538841
+Washington,Redmond,VISA,Approved,70.51777415
+Washington,Seattle,MASTERCARD,Do not honor,3206.337352
+Oregon,Boardman,MASTERCARD,Approved,1284.284672
+California,Mountain View,VISA,Approved,92.52113449
+Pennsylvania,King of Prussia,MASTERCARD,Insufficient funds,3925.806142
+Missouri,Kansas City,VISA,Approved,2050.553543
+Washington,Redmond,AMEX,Approved,1527.139347
+California,Mountain View,AMEX,Approved,3240.864774
+California,Mountain View,AMEX,Approved,5500.191601
+Ohio,Cincinnati,AMEX,Do not honor,188.8958688
+Oregon,Boardman,AMEX,Approved,251.191728
+California,Newport Beach,MASTERCARD,Approved,710.4160833
+Virginia,Ashburn,MASTERCARD,Approved,3390.929096
+Virginia,Ashburn,MASTERCARD,Approved,7702.62309
+Virginia,Ashburn,VISA,Approved,190.1401668
+Virginia,Ashburn,VISA,Approved,1017.009021
+Virginia,Ashburn,VISA,Approved,698.3244793
+Washington,Seattle,MASTERCARD,Approved,729.3638087
+New Jersey,Absecon,VISA,Approved,1124.257884
+California,San Jose,VISA,Do not honor,1197.625705
+Virginia,Ashburn,VISA,Insufficient funds,195.9012085
+Virginia,Ashburn,MASTERCARD,Incorrect PIN,2103.535398
+Washington,Redmond,VISA,PIN tries exceeded,119.2401698
+California,Watsonville,AMEX,Approved,2092.213053
+California,Palo Alto,VISA,Approved,2623.552225
+Virginia,Reston,VISA,Insufficient funds,2447.782895
+Oregon,Eugene,MASTERCARD,Approved,218.1033391
+California,Watsonville,MASTERCARD,Do not honor,768.1180064
+Virginia,Ashburn,VISA,Approved,5056.889896
+California,San Francisco,MASTERCARD,Approved,908.6341734
+Virginia,Ashburn,DISCOVER,Insufficient funds,1049.564543
+Virginia,Ashburn,MASTERCARD,Approved,1533.64479
+Texas,San Antonio,MASTERCARD,Approved,5568.226282
+Washington,Redmond,VISA,Approved,2618.779066
+Virginia,Ashburn,MASTERCARD,Approved,168.4720672
+Virginia,Ashburn,VISA,Do not honor,3685.770201
+California,San Francisco,AMEX,Invalid transaction,1470.624412
+California,San Francisco,VISA,Insufficient funds,1886.493866
+California,San Jose,VISA,Incorrect PIN,2507.44675
+California,Sunnyvale,VISA,Issuer unavailable,1084.439697
+California,San Francisco,VISA,Approved,1201.682499
+New Jersey,Absecon,VISA,Do not honor,6210.096371
+California,Cupertino,AMEX,Insufficient funds,2414.462415
+Texas,Dallas,MASTERCARD,Incorrect PIN,235.0527195
+Texas,Dallas,MASTERCARD,Issuer unavailable,3636.74738
+New Jersey,Absecon,VISA,Approved,23.81529654
+California,San Francisco,MASTERCARD,Do not honor,1288.900053
+Oregon,Boardman,AMEX,Invalid transaction,2353.800891
+California,San Jose,MASTERCARD,Insufficient funds,881.8789506
+Virginia,Ashburn,MASTERCARD,Incorrect PIN,4369.496526
+New Mexico,Farmington,VISA,Approved,6911.347081
+Colorado,Littleton,VISA,Do not honor,495.5952206
+California,Sunnyvale,VISA,Approved,1060.344432
+Ohio,Cincinnati,AMEX,Do not honor,418.9254131
+Washington,Walla Walla,MASTERCARD,Approved,8.617698506
+California,Mountain View,VISA,Approved,5803.162759
+California,Mountain View,MASTERCARD,Approved,729.9885605
+California,Mountain View,MASTERCARD,Do not honor,4102.845096
+California,Mountain View,AMEX,Approved,2907.883292
+California,Mountain View,VISA,Approved,553.8803415
+Ohio,Cincinnati,VISA,Approved,3999.06117
+California,Mountain View,VISA,Approved,8868.163858
+California,Mountain View,AMEX,Approved,7.15930491
+California,San Jose,MASTERCARD,Approved,5893.782728
+Ohio,Cincinnati,VISA,Insufficient funds,2165.294971
+Virginia,Roanoke,MASTERCARD,Approved,5531.901372
+South Carolina,Effingham,VISA,Approved,996.2655957
+Pennsylvania,Beaver Falls,VISA,Approved,585.8941757
+Georgia,Savannah,VISA,Approved,724.4893814
+New York,Buffalo,MASTERCARD,Do not honor,3614.8651
+California,Mountain View,AMEX,Insufficient funds,890.5713303
+California,Mountain View,VISA,Expired card,2024.214681
+California,Mountain View,VISA,Incorrect PIN,677.4559457
+Washington,Walla Walla,MASTERCARD,PIN tries exceeded,5540.539736
+Oregon,Boardman,AMEX,Issuer unavailable,1519.010181
+California,Mountain View,MASTERCARD,Approved,9.896709107
+California,Mountain View,AMEX,Invalid merchant,2751.572042
+Virginia,Ashburn,MASTERCARD,Approved,71.39139806
+California,Mountain View,AMEX,Insufficient funds,4592.053556
+Ohio,Cincinnati,MASTERCARD,Approved,1268.099563
+Washington,Redmond,VISA,Insufficient funds,1754.812161
+Washington,Redmond,VISA,Approved,1694.239964
+California,Menlo Park,VISA,Approved,8401.251531
+California,Sunnyvale,VISA,Approved,166.0247349
+Tennessee,Memphis,MASTERCARD,Approved,2381.932961
+Virginia,Ashburn,VISA,Approved,2234.120709
+Virginia,Ashburn,VISA,Approved,3501.70552
+California,Mountain View,MASTERCARD,Approved,8221.136279
+Ohio,Cincinnati,VISA,Approved,225.6655201
+California,Mountain View,AMEX,Approved,1613.644953
+Florida,Fort Lauderdale,VISA,Approved,4136.660215
+Washington,Redmond,DISCOVER,Invalid transaction,199.4570297
+Ohio,Cincinnati,AMEX,Approved,2161.765596
+California,Mountain View,MASTERCARD,Approved,3276.622247
+Washington,Seattle,MASTERCARD,Pick-up card,419.0263846
+Washington,Redmond,VISA,Do not honor,221.7163699
+Illinois,Arlington Heights,VISA,Invalid transaction,2952.054996
+California,Mountain View,VISA,Insufficient funds,1128.727711
+California,Mountain View,MASTERCARD,Incorrect PIN,4513.654174
+Washington,Redmond,VISA,Restricted card,658.7483884
+California,Mountain View,AMEX,Issuer unavailable,2983.945571
+California,Menlo Park,MASTERCARD,Approved,2499.637657
+California,Mountain View,VISA,Approved,430.297508
+California,Mountain View,VISA,Approved,4560.642231
+California,Mountain View,MASTERCARD,Approved,342.0517675
+California,Mountain View,VISA,Approved,2675.812335
+Ohio,Cincinnati,VISA,Approved,1252.794418
+Virginia,Ashburn,MASTERCARD,Do not honor,2567.220841
+California,Mountain View,VISA,Approved,2409.410429
+Maryland,Chevy Chase,VISA,Approved,1220.541606
+New York,New York,VISA,Approved,6006.59786
+California,Menlo Park,AMEX,Approved,3441.661367
+California,San Francisco,MASTERCARD,Approved,1420.565267
+Washington,Redmond,MASTERCARD,Insufficient funds,2446.243819
+Washington,Redmond,AMEX,Approved,1846.228149
+California,Mountain View,AMEX,Approved,2009.588752
+Washington,Redmond,VISA,Pick-up card,4477.522811
+California,Mountain View,MASTERCARD,Approved,155.5984573
+Washington,Redmond,MASTERCARD,Approved,1479.083583
+Washington,Redmond,AMEX,Approved,431.1585072
+Washington,Redmond,DISCOVER,Approved,2564.677767
+Ohio,Cincinnati,MASTERCARD,Approved,4774.693231
+California,Mountain View,MASTERCARD,Approved,2409.52775
+California,Mountain View,AMEX,Approved,299.2797678
+California,Mountain View,MASTERCARD,Approved,2240.731329
+California,Irvine,VISA,Do not honor,264.9136644
+Virginia,Ashburn,MASTERCARD,Insufficient funds,5855.422628
+Ohio,Cincinnati,MASTERCARD,Approved,923.087322
+California,Menlo Park,VISA,Approved,2460.2435
+Ohio,Cincinnati,VISA,Approved,1356.793267
+Washington,Redmond,VISA,Do not honor,4572.056063
+California,Mountain View,VISA,Invalid transaction,564.0184196
+California,Mountain View,VISA,Insufficient funds,1226.089835
+Oregon,Sherwood,VISA,Approved,131.5064777
+Virginia,Ashburn,VISA,Do not honor,1532.793302
+Washington,Redmond,MASTERCARD,Insufficient funds,4985.653232
+New Jersey,Absecon,AMEX,Approved,3925.990491
+Ohio,Cincinnati,MASTERCARD,Approved,691.2360331
+California,San Francisco,VISA,Approved,4939.082806
+California,Menlo Park,VISA,Approved,1075.200293
+California,Menlo Park,AMEX,Approved,678.8265163
+California,Menlo Park,DISCOVER,Pick-up card,715.1443147
+California,Menlo Park,AMEX,Do not honor,5.634809453
+California,Menlo Park,MASTERCARD,Incorrect PIN,235.3273267
+California,Menlo Park,MASTERCARD,Approved,4225.43287
+California,Menlo Park,MASTERCARD,Approved,62.30586398
+California,Menlo Park,MASTERCARD,Approved,3568.229015
+Ohio,Cincinnati,AMEX,Do not honor,127.2427554
+California,Tujunga,DISCOVER,Insufficient funds,14.25849839
+California,Menlo Park,MASTERCARD,Incorrect PIN,2866.159235
+Texas,Humble,MASTERCARD,Issuer unavailable,33.71032778
+California,Palo Alto,VISA,Approved,240.7626541
+Washington,Seattle,VISA,Approved,3601.073579
+California,Mountain View,VISA,Approved,357.6575493
+Wisconsin,Appleton,VISA,Approved,708.861763
+Arizona,Phoenix,VISA,Do not honor,903.9608131
+California,Mountain View,MASTERCARD,Approved,344.1830238
+California,Menlo Park,DISCOVER,Do not honor,783.90717
+California,Mountain View,AMEX,Insufficient funds,662.9732732
+California,San Francisco,AMEX,Incorrect PIN,712.1825776
+Arizona,Phoenix,MASTERCARD,Approved,4297.472373
+California,San Diego,AMEX,Approved,6004.36003
+California,Mountain View,AMEX,Approved,765.4601935
+California,Menlo Park,VISA,Approved,225.2580443
+New York,Melville,VISA,Approved,2751.960405
+California,Menlo Park,DISCOVER,Approved,114.6114711
+Ohio,Cincinnati,VISA,Do not honor,712.3246757
+California,Menlo Park,VISA,Insufficient funds,2288.427517
+Florida,Gainesville,MASTERCARD,Incorrect PIN,1917.061864
+California,Mountain View,AMEX,Approved,99.0592133
+Virginia,Ashburn,MASTERCARD,Approved,33.05149336
+Virginia,Ashburn,VISA,Approved,3226.444138
+Virginia,Ashburn,AMEX,Approved,2457.456638
+California,Emeryville,VISA,Approved,444.3804033
+California,Menlo Park,VISA,Approved,1995.335135
+Ohio,Cincinnati,AMEX,Do not honor,175.0082395
+California,Mountain View,MASTERCARD,Incorrect PIN,350.8595223
+California,Mountain View,AMEX,Approved,1813.263079
+California,Mountain View,VISA,Approved,1141.019381
+California,Mountain View,VISA,Approved,119.3871201
+California,Mountain View,MASTERCARD,Do not honor,4230.623734
+New York,Buffalo,VISA,Insufficient funds,4858.693016
+California,Palo Alto,MASTERCARD,Incorrect PIN,289.1224664
+Arizona,Phoenix,DISCOVER,Issuer unavailable,1296.542495
+Virginia,Fairfax,AMEX,Approved,901.7096132
+California,Mountain View,AMEX,Approved,404.9928539
+Delaware,Wilmington,MASTERCARD,Approved,3644.775526
+Washington,Redmond,VISA,Do not honor,1273.026061
+California,Mountain View,VISA,Insufficient funds,2535.048223
+Washington,Redmond,MASTERCARD,Incorrect PIN,328.259286
+Texas,Dallas,VISA,Do not honor,77.66322114
+California,Sunnyvale,VISA,Approved,576.8935541
+California,Mountain View,VISA,Approved,5880.227311
+Ohio,Cincinnati,AMEX,Approved,5403.73824
+Washington,Redmond,MASTERCARD,Do not honor,1459.555478
+California,San Jose,VISA,Incorrect PIN,2191.704921
+Washington,Redmond,AMEX,Approved,4937.601716
+California,San Francisco,AMEX,Approved,3996.028937
+California,San Francisco,VISA,Do not honor,144.4862602
+Pennsylvania,Reading,VISA,Insufficient funds,2807.545958
+California,Menlo Park,MASTERCARD,Approved,1900.668678
+California,Menlo Park,DISCOVER,Approved,4996.041196
+California,Menlo Park,DISCOVER,Approved,1303.595639
+California,Menlo Park,MASTERCARD,Approved,3626.766998
+Michigan,Saginaw,MASTERCARD,Invalid transaction,4020.247549
+Washington,Redmond,AMEX,Insufficient funds,1453.663469
+California,Mountain View,VISA,Approved,1543.810666
+California,Mountain View,VISA,Do not honor,4623.590568
+Ohio,Cincinnati,MASTERCARD,Approved,491.9752752
+Louisiana,New Orleans,MASTERCARD,Approved,323.18437
+Washington,Redmond,AMEX,Approved,5378.278013
+Washington,Redmond,MASTERCARD,Approved,4685.873487
+California,Mountain View,VISA,Approved,663.237741
+Washington,Seattle,AMEX,Do not honor,2647.803573
+Washington,Seattle,AMEX,Insufficient funds,940.7932305
+Washington,Redmond,VISA,Incorrect PIN,417.6548177
+California,Palo Alto,VISA,Approved,237.4761742
+California,Palo Alto,VISA,Approved,154.3247549
+California,Palo Alto,VISA,Approved,845.0505593
+California,Menlo Park,MASTERCARD,Approved,671.9973083
+California,Menlo Park,MASTERCARD,Approved,23.05840876
+Oregon,Boardman,MASTERCARD,Approved,1923.368118
+Oregon,Portland,DISCOVER,Approved,1626.982886
+Texas,Flower Mound,MASTERCARD,Approved,4919.706482
+Ohio,Cincinnati,MASTERCARD,Approved,2896.779112
+Washington,Redmond,VISA,Approved,3533.043856
+California,Menlo Park,MASTERCARD,Do not honor,201.7318034
+Wisconsin,Gleason,VISA,Approved,796.7671697
+Washington,Redmond,AMEX,Approved,367.1246672
+Virginia,Ashburn,MASTERCARD,Approved,483.9890015
+Virginia,Charlottesville,MASTERCARD,Approved,1111.631877
+Ohio,Cincinnati,MASTERCARD,Approved,3284.923238
+Indiana,South Bend,MASTERCARD,Approved,23.95274214
+California,Menlo Park,MASTERCARD,Do not honor,383.6117968
+Washington,Seattle,DISCOVER,Insufficient funds,175.5563068
+California,Mountain View,AMEX,Incorrect PIN,2436.455514
+Texas,Dallas,MASTERCARD,Approved,2084.928037
+California,Mountain View,VISA,Approved,172.2885741
+California,Mountain View,VISA,Approved,2652.955953
+Indiana,Indianapolis,MASTERCARD,Approved,679.4938952
+California,Sunnyvale,VISA,Approved,1621.89439
+Ohio,Cincinnati,AMEX,Do not honor,1626.572611
+Ohio,Cincinnati,VISA,Invalid transaction,1491.171648
+Washington,Seattle,VISA,Insufficient funds,809.7821946
+California,Mountain View,VISA,Incorrect PIN,4596.308035
+California,Mountain View,AMEX,Restricted card,450.3005905
+Washington,Redmond,VISA,Issuer unavailable,756.7160873
+Washington,Seattle,VISA,Approved,716.6211221
+Florida,Gainesville,MASTERCARD,Incorrect PIN,1184.130242
+Virginia,Ashburn,MASTERCARD,Approved,2160.437266
+Ohio,Cincinnati,DISCOVER,Do not honor,3334.63965
+New Jersey,Absecon,DISCOVER,Issuer unavailable,747.6456586
+California,Mountain View,VISA,Approved,1543.846089
+California,Palo Alto,AMEX,Approved,8333.66551
+California,San Jose,MASTERCARD,Approved,2837.999669
+Illinois,DeKalb,DISCOVER,Approved,249.9549251
+California,Mountain View,MASTERCARD,Approved,7968.870556
+Virginia,Blacksburg,MASTERCARD,Approved,2757.087428
+Texas,Abilene,VISA,Approved,1157.440162
+California,Mountain View,DISCOVER,Approved,2126.064396
+California,Mountain View,AMEX,Do not honor,4221.915601
+Ohio,Cincinnati,MASTERCARD,Approved,168.5345227
+California,San Francisco,VISA,Incorrect PIN,898.9738971
+New York,New York,MASTERCARD,Approved,1329.004429
+California,Menlo Park,AMEX,Approved,285.4897764
+Virginia,Ashburn,AMEX,Approved,989.1783202
+Ohio,Cincinnati,VISA,Approved,39.71358209
+California,Mountain View,VISA,Approved,2455.407387
+Washington,Redmond,AMEX,Do not honor,121.7640835
+Kentucky,Harlan,MASTERCARD,Issuer unavailable,2187.796384
+Washington,Redmond,MASTERCARD,Approved,1974.409803
+Washington,Redmond,VISA,Pick-up card,375.9764198
+Washington,Redmond,VISA,Incorrect PIN,100.9092839
+Virginia,Ashburn,MASTERCARD,Approved,7169.268117
+District of Columbia,Washington,MASTERCARD,Approved,2198.544154
+California,Mountain View,MASTERCARD,Approved,3569.337821
+California,Menlo Park,MASTERCARD,Approved,2052.328531
+Ohio,Cincinnati,MASTERCARD,Approved,2548.625212
+California,Mountain View,MASTERCARD,Approved,509.3481626
+California,Mountain View,AMEX,Approved,3.04883315
+Michigan,Ann Arbor,MASTERCARD,Incorrect PIN,530.2443929
+Virginia,Ashburn,DISCOVER,Approved,121.0473176
+California,Mountain View,MASTERCARD,Do not honor,1515.235718
+California,Mountain View,VISA,Invalid transaction,225.7929191
+California,Mountain View,VISA,Insufficient funds,1006.771575
+California,Redwood City,VISA,Incorrect PIN,647.1646334
+Washington,Redmond,AMEX,Approved,144.1287074
+Ohio,Cincinnati,MASTERCARD,Approved,7252.970085
+California,Sunnyvale,MASTERCARD,Insufficient funds,655.6854542
+Virginia,Ashburn,VISA,Approved,148.4631592
+Washington,Redmond,AMEX,Approved,3254.154956
+Ohio,Cincinnati,MASTERCARD,Do not honor,501.7382488
+Ohio,Cincinnati,MASTERCARD,Approved,2020.952884
+California,Mountain View,MASTERCARD,Approved,2804.394295
+California,Mountain View,MASTERCARD,Approved,841.9392508
+California,San Bruno,MASTERCARD,Do not honor,382.5281265
+Washington,Redmond,VISA,Approved,2455.533606
+California,Oakland,MASTERCARD,Approved,8911.047004
+California,Brea,AMEX,Approved,220.5784746
+California,Menlo Park,VISA,Approved,530.1609319
+Ohio,Cincinnati,MASTERCARD,Approved,1518.955426
+New York,New York,AMEX,Approved,3221.174804
+California,Los Angeles,VISA,Approved,1835.832301
+New Jersey,Absecon,VISA,Do not honor,2963.805407
+Washington,Redmond,VISA,Approved,40.41007606
+Ohio,Cincinnati,VISA,Approved,622.7020366
+Georgia,Atlanta,MASTERCARD,Approved,1043.048038
+California,Sunnyvale,MASTERCARD,Approved,3705.038755
+Virginia,Ashburn,VISA,Approved,947.9733926
+Washington,Seattle,MASTERCARD,Approved,201.9221001
+New Mexico,Albuquerque,MASTERCARD,Pick-up card,3.185846951
+Virginia,Ashburn,MASTERCARD,Do not honor,2434.41596
+California,Redwood City,AMEX,Insufficient funds,1349.878506
+California,Mountain View,MASTERCARD,Approved,167.3942376
+Idaho,Moscow,AMEX,Approved,2875.323578
+Oregon,Boardman,VISA,Approved,3417.01525
+Virginia,Ashburn,VISA,Do not honor,1628.309026
+Ohio,Cincinnati,AMEX,Approved,577.6596816
+New Jersey,Parsippany,MASTERCARD,Approved,447.9329348
+California,Mountain View,MASTERCARD,Do not honor,628.0261672
+California,Mountain View,VISA,Approved,298.0834726
+Kansas,Lenexa,MASTERCARD,Do not honor,354.5639477
+California,Palo Alto,VISA,Insufficient funds,2161.153696
+California,Palo Alto,VISA,Approved,1134.625355
+California,Mountain View,MASTERCARD,Approved,2124.388808
+California,Pinole,VISA,Approved,1235.591426
+Ohio,Cincinnati,VISA,Approved,1164.631266
+Washington,Veradale,VISA,Insufficient funds,2750.108738
+California,Mountain View,MASTERCARD,Approved,100.3718701
+New York,Cortland,MASTERCARD,Approved,3399.248735
+California,Roseville,VISA,Approved,1724.431803
+California,Menlo Park,VISA,Approved,964.0690539
+Texas,Manvel,VISA,Approved,229.4885987
+California,Mountain View,VISA,Approved,1827.759966
+Missouri,Kansas City,VISA,Approved,108.3497593
+Virginia,Fairfax Station,AMEX,Approved,2110.304245
+California,Mountain View,VISA,Approved,7941.58772
+Ohio,Cincinnati,AMEX,Approved,6313.143871
+California,Mountain View,AMEX,Incorrect PIN,1279.082689
+Washington,Redmond,MASTERCARD,Approved,3244.748634
+California,Menlo Park,VISA,Approved,3264.408085
+California,Mountain View,VISA,Approved,15003.48521
+Washington,Redmond,VISA,Approved,1134.668865
+California,Mountain View,DISCOVER,Approved,320.062793
+Ohio,Cincinnati,MASTERCARD,Approved,6495.329442
+California,Mountain View,VISA,Approved,1048.869269
+California,Santa Clara,AMEX,Approved,84.2325199
+California,Santa Clara,VISA,Approved,1381.356197
+California,Santa Clara,MASTERCARD,Approved,690.5593921
+Washington,Redmond,MASTERCARD,Approved,2576.521699
+Florida,Zephyrhills,MASTERCARD,Approved,631.4710644
+California,Menlo Park,VISA,Approved,860.608237
+Washington,Redmond,VISA,Approved,3124.378525
+Virginia,Ashburn,AMEX,Approved,4937.309454
+Virginia,Ashburn,MASTERCARD,Approved,413.9471602
+Washington,Seattle,MASTERCARD,Approved,2132.584132
+Washington,Redmond,VISA,Approved,2068.001603
+Texas,Fort Worth,VISA,Approved,3506.597851
+California,Mountain View,VISA,Approved,3258.17783
+California,Sunnyvale,VISA,Approved,4370.300164
+Tennessee,Memphis,VISA,Approved,3.685618101
+Ohio,Cincinnati,DISCOVER,Approved,841.758208
+Delaware,Wilmington,MASTERCARD,Approved,1863.130729
+Washington,Renton,VISA,Approved,746.7985219
+California,San Jose,AMEX,Approved,1299.672917
+California,Mountain View,MASTERCARD,Approved,5346.072604
+Utah,Providence,VISA,Approved,908.6371621
+California,Mountain View,MASTERCARD,Do not honor,38.74410253
+California,Mountain View,VISA,Insufficient funds,5092.090919
+Florida,Miami,MASTERCARD,Approved,3604.449609
+Washington,Redmond,AMEX,Approved,1910.818229
+District of Columbia,Washington,VISA,Approved,1347.123675
+Ohio,Cincinnati,VISA,Insufficient funds,685.4729449
+Washington,Redmond,VISA,Approved,4231.49087
+Virginia,Ashburn,AMEX,Insufficient funds,257.9581536
+California,Mountain View,MASTERCARD,Approved,544.2700154
+California,Mountain View,AMEX,Approved,1436.334559
+Ohio,Cincinnati,AMEX,Approved,26.2463023
+Washington,Seattle,AMEX,Approved,105.084897
+Washington,Redmond,VISA,Approved,742.4537755
+California,Mountain View,VISA,Approved,1019.241721
+Ohio,Cincinnati,MASTERCARD,Do not honor,342.5237778
+California,Mountain View,VISA,Insufficient funds,2504.83216
+California,Mountain View,MASTERCARD,Incorrect PIN,3383.562055
+California,Patterson,VISA,PIN tries exceeded,79.26017666
+Washington,Redmond,AMEX,Approved,49.02010591
+California,Mountain View,DISCOVER,Approved,2397.723918
+California,Mountain View,MASTERCARD,Approved,941.0847219
+California,Mountain View,AMEX,Do not honor,1529.063294
+Ohio,Cincinnati,AMEX,Approved,6155.752954
+California,Mountain View,AMEX,Approved,7803.802703
+Washington,Redmond,MASTERCARD,Insufficient funds,3061.200491
+Washington,Redmond,MASTERCARD,Approved,43.09287672
+Virginia,Ashburn,VISA,Approved,1085.479337
+Washington,Redmond,VISA,Do not honor,471.3838816
+Arizona,Buckeye,MASTERCARD,Approved,1241.693361
+California,Mountain View,MASTERCARD,Approved,95.09919386
+California,Mountain View,VISA,Do not honor,2130.027524
+California,Mountain View,VISA,Insufficient funds,1660.634499
+Washington,Seattle,MASTERCARD,Approved,532.6707349
+California,Mountain View,MASTERCARD,Approved,4251.739157
+Illinois,Chicago,AMEX,Approved,165.6819809
+Missouri,Kansas City,AMEX,Incorrect PIN,2827.88276
+New York,Albany,VISA,Approved,1086.167547
+Virginia,Chantilly,VISA,Approved,865.5390701
+Washington,Redmond,VISA,Approved,3480.330361
+California,San Francisco,VISA,Do not honor,72.23050698
+Ohio,Cincinnati,VISA,Insufficient funds,4905.210945
+Virginia,Ashburn,VISA,Approved,474.0376994
+Washington,Redmond,MASTERCARD,Approved,67.9546875
+Virginia,Ashburn,MASTERCARD,Approved,61.40242389
+Virginia,Ashburn,MASTERCARD,Approved,354.6370227
+Washington,Redmond,AMEX,Approved,1086.461615
+North Carolina,Raleigh,MASTERCARD,Approved,910.7715488
+California,Mountain View,MASTERCARD,Approved,1151.991941
+California,Mountain View,VISA,Approved,8158.399149
+Washington,Redmond,VISA,Insufficient funds,404.8416304
+Ohio,Cincinnati,MASTERCARD,Approved,1421.372899
+Washington,Redmond,AMEX,Insufficient funds,3322.813067
+California,Mountain View,MASTERCARD,Approved,1532.772537
+Virginia,Ashburn,VISA,Do not honor,6579.354698
+California,Menlo Park,AMEX,Incorrect PIN,679.701747
+California,Mountain View,MASTERCARD,Approved,4093.602024
+California,Mountain View,MASTERCARD,Insufficient funds,104.6079178
+Virginia,Chantilly,VISA,Approved,3524.430489
+California,San Jose,MASTERCARD,Approved,1744.464367
+New Jersey,Matawan,AMEX,Approved,1890.76067
+Washington,Redmond,DISCOVER,Insufficient funds,561.7903078
+California,Menlo Park,AMEX,Approved,1378.993627
+Ohio,Cincinnati,AMEX,Insufficient funds,4663.786356
+California,Menlo Park,AMEX,Approved,372.4292547
+Washington,Redmond,VISA,Do not honor,2898.360103
+California,Mountain View,MASTERCARD,Approved,4023.982151
+Washington,Seattle,VISA,Insufficient funds,1311.944976
+Virginia,Ashburn,VISA,Approved,165.7959991
+New Mexico,Albuquerque,VISA,Do not honor,2237.941145
+New York,New York,MASTERCARD,Insufficient funds,750.3707788
+Virginia,Ashburn,MASTERCARD,Approved,2379.081799
+Washington,Seattle,MASTERCARD,Approved,219.2417882
+Ohio,Cincinnati,AMEX,Do not honor,3701.65074
+California,Menlo Park,MASTERCARD,Insufficient funds,1428.063791
+Washington,Redmond,MASTERCARD,Incorrect PIN,636.718115
+California,Mountain View,VISA,Approved,656.1105835
+Washington,Redmond,AMEX,Do not honor,2001.91798
+Ohio,Cincinnati,VISA,Insufficient funds,3068.455007
+Florida,Miami,DISCOVER,Incorrect PIN,1216.64075
+Ohio,Cincinnati,VISA,Approved,587.9016931
+Washington,Redmond,VISA,Insufficient funds,4688.366765
+Pennsylvania,Philadelphia,MASTERCARD,Incorrect PIN,3240.627961
+Ohio,Cincinnati,AMEX,Approved,1017.929268
+California,Mountain View,VISA,Approved,1298.75655
+Ohio,Cincinnati,VISA,Insufficient funds,2150.393985
+Nebraska,Omaha,VISA,Approved,3422.309149
+New Jersey,Absecon,DISCOVER,Insufficient funds,299.931265
+Washington,Redmond,MASTERCARD,Approved,3993.722533
+Illinois,Ingleside,MASTERCARD,Approved,378.2837487
+California,Mountain View,MASTERCARD,Approved,5087.737925
+Washington,Redmond,AMEX,Do not honor,265.2793481
+Washington,Redmond,MASTERCARD,Incorrect PIN,1244.441693
+Washington,Redmond,AMEX,Approved,160.3703089
+Washington,Redmond,VISA,Do not honor,1075.068158
+Texas,El Paso,VISA,Approved,2027.518574
+California,Mountain View,AMEX,Incorrect PIN,2920.142098
+Mississippi,Biloxi,AMEX,Approved,1102.941545
+California,Mountain View,MASTERCARD,Approved,8955.823183
+California,Modesto,MASTERCARD,Do not honor,4737.75689
+Oklahoma,Oklahoma City,VISA,Approved,216.5343506
+California,Mountain View,AMEX,Incorrect PIN,4148.655179
+Ohio,Cincinnati,MASTERCARD,Approved,3876.978845
+Washington,Redmond,VISA,Approved,2201.24786
+Virginia,Ashburn,MASTERCARD,Approved,540.820014
+Texas,Pflugerville,VISA,Approved,6498.077339
+Virginia,Ashburn,MASTERCARD,Approved,960.3955632
+Montana,Bozeman,MASTERCARD,Approved,859.2831887
+Ohio,Cincinnati,AMEX,Do not honor,5853.924521
+California,Sacramento,VISA,Approved,1958.389668
+California,Mountain View,VISA,Do not honor,1180.822968
+California,Mountain View,MASTERCARD,Approved,906.0731615
+California,Mountain View,VISA,Do not honor,7676.240333
+California,Menlo Park,VISA,Insufficient funds,2766.904169
+Missouri,Springfield,VISA,Incorrect PIN,1857.089523
+Mississippi,Biloxi,MASTERCARD,Approved,2745.661271
+Ohio,Cincinnati,MASTERCARD,Invalid merchant,637.5977769
+California,Mountain View,DISCOVER,Incorrect PIN,1429.896861
+California,Mountain View,VISA,Approved,3282.036915
+California,Mountain View,VISA,Insufficient funds,38.19868322
+California,Mountain View,DISCOVER,Approved,415.1063304
+Virginia,Ashburn,VISA,Do not honor,1683.601491
+Ohio,Cincinnati,VISA,Issuer unavailable,2230.596929
+Virginia,Ashburn,AMEX,Approved,794.1165585
+California,Mountain View,VISA,Approved,968.6046793
+California,Mountain View,AMEX,Approved,1941.869532
+Louisiana,Arcadia,MASTERCARD,Approved,4276.043304
+Washington,Redmond,AMEX,Insufficient funds,831.8082496
+Washington,Redmond,VISA,Approved,501.8087599
+Washington,Seattle,VISA,Invalid merchant,2281.380818
+California,Menlo Park,VISA,Do not honor,2867.07889
+Washington,Redmond,MASTERCARD,Insufficient funds,211.4444392
+Washington,Redmond,MASTERCARD,Incorrect PIN,59.42209245
+Texas,San Antonio,MASTERCARD,PIN tries exceeded,349.119341
+Washington,Redmond,DISCOVER,Issuer unavailable,223.1843451
+California,San Francisco,MASTERCARD,Approved,2898.530153
+Virginia,Ashburn,MASTERCARD,Do not honor,1176.540012
+Ohio,Cincinnati,MASTERCARD,Approved,11749.06114
+Virginia,Ashburn,MASTERCARD,Insufficient funds,126.1577524
+Virginia,Ashburn,MASTERCARD,Approved,6895.100462
+Virginia,Ashburn,VISA,Do not honor,2061.65775
+Virginia,Ashburn,AMEX,Incorrect PIN,128.8758445
+California,Menlo Park,MASTERCARD,Approved,3094.908272
+Washington,Seattle,DISCOVER,Do not honor,1375.646502
+Ohio,Cincinnati,VISA,Invalid transaction,3475.90428
+California,Sunnyvale,VISA,Insufficient funds,3564.31901
+California,Menlo Park,MASTERCARD,Incorrect PIN,316.2745914
+California,Menlo Park,AMEX,PIN tries exceeded,1441.239563
+Ohio,Cincinnati,VISA,Approved,5001.112151
+Texas,Houston,DISCOVER,Do not honor,920.9877615
+Washington,Seattle,MASTERCARD,Insufficient funds,5986.522486
+Washington,Seattle,MASTERCARD,Incorrect PIN,246.3267927
+Ohio,Cincinnati,VISA,Approved,33.13265125
+California,Mountain View,VISA,Approved,4268.619609
+California,Mountain View,VISA,Approved,56.23629754
+California,Mountain View,MASTERCARD,Incorrect PIN,6611.29564
+Wisconsin,Verona,MASTERCARD,Approved,638.6237104
+Washington,Redmond,AMEX,Do not honor,14.40266214
+California,Mountain View,VISA,Approved,2375.129455
+Ohio,Cincinnati,VISA,Approved,594.4752294
+California,Bellflower,AMEX,Approved,197.0572983
+California,Menlo Park,VISA,Do not honor,5385.374886
+Washington,Seattle,AMEX,Invalid card number,1462.718503
+Virginia,Ashburn,AMEX,Insufficient funds,22.22886723
+Massachusetts,Littleton,VISA,Incorrect PIN,711.9773827
+Nevada,Las Vegas,MASTERCARD,Approved,902.8893146
+California,Mountain View,VISA,Approved,2494.457245
+Ohio,Cincinnati,VISA,Approved,981.6821615
+Virginia,Ashburn,AMEX,Approved,2461.228152
+California,Menlo Park,MASTERCARD,Approved,2676.771445
+California,Sunnyvale,VISA,Approved,7989.265084
+Arizona,Phoenix,VISA,Do not honor,2071.821196
+Ohio,Cincinnati,VISA,Insufficient funds,3654.653214
+Washington,Kenmore,VISA,Approved,2428.746922
+California,Mountain View,VISA,Approved,968.5457547
+California,San Francisco,MASTERCARD,Insufficient funds,1769.66867
+Washington,Seattle,MASTERCARD,Do not honor,2192.033618
+California,Mountain View,AMEX,Invalid transaction,214.2562822
+Ohio,Cincinnati,AMEX,Stolen card - pick-up,5026.275044
+California,Menlo Park,AMEX,Approved,11237.24902
+California,Menlo Park,VISA,Do not honor,2538.460118
+Washington,Seattle,MASTERCARD,Insufficient funds,3822.496599
+California,Menlo Park,VISA,Approved,788.7382365
+California,Redwood City,VISA,Approved,2474.4949
+California,Mountain View,VISA,Approved,752.0683964
+Washington,Seattle,MASTERCARD,Do not honor,8.869427448
+Ohio,Cincinnati,VISA,Approved,693.1032278
+Virginia,Ashburn,MASTERCARD,Approved,1440.393629
+Ohio,Cincinnati,MASTERCARD,Do not honor,1100.850835
+Texas,Plano,AMEX,Insufficient funds,924.5730754
+Ohio,Cincinnati,DISCOVER,Approved,1386.776479
+California,Mountain View,VISA,Approved,7713.988994
+California,Mountain View,VISA,Approved,2277.931838
+California,Mountain View,MASTERCARD,Approved,6805.424605
+California,Mountain View,VISA,Approved,2192.203073
+California,Mountain View,VISA,Insufficient funds,3203.51927
+Ohio,Cincinnati,AMEX,Insufficient funds,850.4990474
+California,Menlo Park,AMEX,Incorrect PIN,9574.074001
+California,Mountain View,AMEX,Approved,5025.939386
+California,Mountain View,AMEX,Approved,5676.226911
+Ohio,Cincinnati,MASTERCARD,Approved,848.7040879
+Pennsylvania,Clarks Summit,MASTERCARD,Approved,127.4403828
+Pennsylvania,Clarks Summit,VISA,Approved,1032.636929
+Texas,Houston,MASTERCARD,Approved,5792.156771
+New Jersey,Absecon,VISA,Approved,2042.363765
+Virginia,Ashburn,VISA,Approved,300.8323422
+California,Anaheim,MASTERCARD,Approved,1039.101387
+California,Mountain View,AMEX,Approved,568.3323128
+Ohio,Cincinnati,MASTERCARD,Incorrect PIN,1674.710475
+Pennsylvania,Pittsburgh,MASTERCARD,Approved,3785.799366
+Washington,Redmond,AMEX,Approved,167.6584729
+Oklahoma,Tulsa,MASTERCARD,Approved,588.7437866
+Washington,Redmond,MASTERCARD,Do not honor,427.0497901
+Virginia,Ashburn,MASTERCARD,Approved,4149.871013
+California,Mountain View,AMEX,Approved,1703.301018
+Ohio,Cincinnati,VISA,Approved,564.2911219
+Texas,Arlington,VISA,Approved,622.1701864
+Georgia,Atlanta,VISA,Approved,6726.735692
+California,Menlo Park,MASTERCARD,Approved,2964.34466
+California,Menlo Park,AMEX,Approved,2521.166803
+California,Menlo Park,VISA,Approved,2514.627279
+California,Menlo Park,MASTERCARD,Approved,347.0392451
+California,Menlo Park,VISA,Approved,2399.915829
+California,Menlo Park,AMEX,Approved,210.8626946
+California,San Francisco,MASTERCARD,Approved,2209.573065
+California,Menlo Park,VISA,Approved,343.6072515
+California,Menlo Park,MASTERCARD,Approved,1420.391581
+California,Menlo Park,VISA,Approved,311.8499533
+California,Mountain View,MASTERCARD,Approved,553.1993284
+California,Mountain View,DISCOVER,Approved,4168.787128
+California,Paradise,AMEX,Approved,750.8149927
+California,Sunnyvale,AMEX,Approved,32.84659865
+Ohio,Cincinnati,VISA,Approved,1598.316272
+California,Menlo Park,AMEX,Approved,8296.349795
+California,Sunnyvale,AMEX,Approved,2885.840588
+New York,New York,MASTERCARD,Approved,4800.518192
+Ohio,Cincinnati,MASTERCARD,Approved,1514.479152
+Washington,Redmond,VISA,Approved,526.896126
+Washington,Seattle,VISA,Approved,992.0116005
+California,Mountain View,DISCOVER,Do not honor,2531.969822
+California,Mountain View,DISCOVER,Approved,4687.160311
+Washington,Redmond,VISA,Approved,272.1092078
+California,Mountain View,VISA,Approved,406.3782532
+Virginia,Ashburn,AMEX,Approved,435.1316397
+Washington,Redmond,VISA,Approved,678.4811116
+California,Mountain View,MASTERCARD,Approved,3537.320731
+Missouri,Kansas City,VISA,Approved,1392.041141
+Oklahoma,Sapulpa,AMEX,Approved,1527.286898
+Ohio,Cincinnati,VISA,Approved,927.4409356
+Virginia,Ashburn,VISA,Approved,1847.756589
+California,San Francisco,MASTERCARD,Insufficient funds,948.9692838
+Wisconsin,Milwaukee,MASTERCARD,Issuer unavailable,946.4553118
+California,Menlo Park,VISA,Approved,1.749786728
+California,Menlo Park,MASTERCARD,Approved,37.90091921
+California,Menlo Park,MASTERCARD,Approved,156.6230601
+California,Mountain View,DISCOVER,Do not honor,807.4796044
+Ohio,Cincinnati,VISA,Insufficient funds,2644.609705
+California,San Francisco,MASTERCARD,Approved,118.6293243
+Illinois,Chicago,MASTERCARD,Approved,1296.81924
+Illinois,Minonk,DISCOVER,Approved,905.2413486
+Ohio,Cincinnati,AMEX,Approved,193.1890836
+California,San Francisco,VISA,Approved,1435.066012
+California,Mountain View,AMEX,Approved,2517.411654
+California,Mountain View,VISA,Approved,1057.013827
+California,Mountain View,AMEX,Approved,1637.491931
+Georgia,Augusta,DISCOVER,Approved,6099.767742
+Ohio,Cincinnati,VISA,Approved,383.243276
+New York,New York,VISA,Approved,3316.755163
+California,Mountain View,DISCOVER,Approved,889.4278545
+California,Mountain View,MASTERCARD,Approved,621.9848441
+Massachusetts,Harvard,AMEX,Approved,1036.682972
+Virginia,Ashburn,MASTERCARD,Approved,132.1461193
+California,Mountain View,MASTERCARD,Insufficient funds,1484.688631
+California,Mountain View,VISA,Approved,317.9323211
+Texas,Houston,MASTERCARD,Approved,1618.759045
+Ohio,Cincinnati,MASTERCARD,Approved,424.6957824
+California,San Francisco,AMEX,Insufficient funds,741.0064726
+California,Mountain View,AMEX,Incorrect PIN,135.7319168
+Wisconsin,Milwaukee,MASTERCARD,Approved,813.9300168
+Washington,Redmond,VISA,Approved,382.2835009
+California,San Jose,MASTERCARD,Approved,2431.139198
+California,Mountain View,AMEX,Approved,1724.600031
+California,Mountain View,VISA,Approved,1072.613749
+Washington,Redmond,VISA,Approved,2583.823206
+Washington,Redmond,VISA,Approved,2842.209983
+California,Menlo Park,AMEX,Approved,1512.75266
+California,Mountain View,VISA,Approved,2101.429435
+California,Mountain View,AMEX,Approved,6529.084885
+California,Mountain View,MASTERCARD,Approved,8813.417826
+Washington,Redmond,DISCOVER,Approved,124.4404382
+Ohio,Cincinnati,VISA,Incorrect PIN,6107.30532
+California,Mountain View,VISA,Approved,1669.096168
+California,Mountain View,DISCOVER,Approved,1355.301165
+California,Mountain View,MASTERCARD,Approved,1081.200725
+California,Mountain View,AMEX,Incorrect PIN,48.14066496
+California,Mountain View,DISCOVER,Approved,3463.891296
+Ohio,Cincinnati,VISA,Approved,2349.345232
+California,Mountain View,VISA,Approved,4889.117175
+Washington,Seattle,MASTERCARD,Approved,137.804012
+Washington,Seattle,AMEX,Approved,260.4141096
+Virginia,Ashburn,VISA,Approved,1878.086949
+Washington,Seattle,VISA,Approved,6009.785541
+California,Mountain View,VISA,Approved,39.84213081
+California,Mountain View,MASTERCARD,Approved,184.3896853
+Washington,Redmond,VISA,Approved,1353.464858
+California,Mountain View,MASTERCARD,Approved,1472.132328
+Washington,Redmond,MASTERCARD,Restricted card,795.5106643
+Virginia,Ashburn,AMEX,Approved,2735.320346
+Virginia,Roanoke,VISA,Insufficient funds,4533.600733
+Michigan,Midland,AMEX,Approved,925.9019102
+California,Mountain View,AMEX,Invalid merchant,1778.960413
+Washington,Seattle,VISA,Approved,342.1596173
+California,Mountain View,VISA,Approved,1541.592433
+Virginia,Ashburn,VISA,Approved,1821.455732
+Ohio,Cincinnati,VISA,Approved,50.86056148
+California,Mountain View,VISA,Do not honor,6143.834178
+Washington,Redmond,MASTERCARD,Approved,500.6372172
+California,Mountain View,DISCOVER,Approved,54.84146426
+Washington,Seattle,VISA,Approved,863.9482574
+Washington,Redmond,DISCOVER,Do not honor,79.11310935
+California,Mountain View,MASTERCARD,Approved,1160.811537
+California,Mountain View,MASTERCARD,Do not honor,8.058377403
+California,Mountain View,DISCOVER,Approved,749.2559442
+California,Mountain View,VISA,Approved,472.6043855
+Washington,Redmond,MASTERCARD,Approved,1982.547661
+California,Menlo Park,MASTERCARD,Insufficient funds,5512.505333
+Virginia,Ashburn,MASTERCARD,Approved,648.1451362
+California,Mountain View,AMEX,Approved,543.8882198
+California,Mountain View,VISA,Approved,1917.246643
+California,Mountain View,AMEX,Approved,85.96849353
+Virginia,Palmyra,VISA,Approved,1465.516258
+California,Sunnyvale,MASTERCARD,Approved,777.6747919
+California,Mountain View,VISA,Do not honor,6899.00071
+California,San Ramon,MASTERCARD,Invalid transaction,3115.610706
+Ohio,Cincinnati,VISA,Insufficient funds,4.678804649
+Washington,Seattle,MASTERCARD,Incorrect PIN,597.1597018
+California,Mountain View,MASTERCARD,Restricted card,16.57458017
+California,Mountain View,VISA,Approved,34.30917453
+California,San Jose,VISA,Restricted card,59.46677921
+Washington,Redmond,MASTERCARD,Approved,7966.676752
+Ohio,Cincinnati,MASTERCARD,Do not honor,3131.569718
+Washington,Redmond,MASTERCARD,Approved,220.5778619
+Ohio,Cincinnati,MASTERCARD,Approved,1788.441862
+Washington,Redmond,AMEX,Approved,186.6361184
+Virginia,Ashburn,VISA,Do not honor,2182.740701
+California,Sunnyvale,VISA,Approved,62.98997208
+California,Mountain View,VISA,Approved,1361.03727
+California,San Francisco,MASTERCARD,Incorrect PIN,2415.318892
+California,Menlo Park,MASTERCARD,Approved,1346.803738
+California,Mountain View,VISA,Approved,179.4250473
+Ohio,Cincinnati,VISA,Incorrect PIN,7075.329586
+California,San Jose,MASTERCARD,Approved,4505.945736
+Michigan,Ann Arbor,VISA,Approved,6272.047942
+California,Mountain View,AMEX,Do not honor,7929.730476
+Ohio,Cincinnati,AMEX,Insufficient funds,18.749461
+California,Mountain View,MASTERCARD,Incorrect PIN,4671.172557
+California,Mountain View,VISA,Approved,705.59185
+California,San Jose,VISA,Approved,2563.787607
+California,Mountain View,DISCOVER,Invalid transaction,3051.898363
+California,Brea,MASTERCARD,Insufficient funds,1295.131484
+California,Mountain View,VISA,Expired card,2009.933368
+California,Mountain View,AMEX,Approved,6102.216253
+Washington,Redmond,VISA,Approved,60.29925143
+California,Mountain View,VISA,Approved,1483.6096
+California,Mountain View,VISA,Approved,3437.749155
+New Jersey,Absecon,MASTERCARD,Approved,5476.634223
+California,Mountain View,AMEX,Approved,712.7804949
+Washington,Redmond,MASTERCARD,Approved,736.1892016
+California,Mountain View,VISA,Insufficient funds,14.1187395
+California,Mountain View,MASTERCARD,Approved,865.0420142
+Illinois,Arlington Heights,MASTERCARD,Approved,1142.50494
+Ohio,Cincinnati,AMEX,Do not honor,3550.745567
+Washington,Redmond,VISA,Approved,1870.116632
+New York,New York,AMEX,Pick-up card,1741.704291
+Washington,Redmond,MASTERCARD,Do not honor,5266.581112
+Washington,Redmond,VISA,Insufficient funds,1215.713463
+California,Cupertino,VISA,Incorrect PIN,79.36130252
+California,Mountain View,VISA,Approved,6.695335076
+Washington,Redmond,MASTERCARD,Approved,1208.95151
+California,Menlo Park,VISA,Approved,5089.571733
+California,Menlo Park,AMEX,Approved,3293.703885
+California,Mountain View,MASTERCARD,Approved,2375.352788
+Ohio,Cincinnati,MASTERCARD,Approved,1052.981109
+California,Mountain View,VISA,Approved,4538.648426
+California,Mountain View,MASTERCARD,Approved,400.7743417
+New Mexico,Albuquerque,MASTERCARD,Incorrect PIN,3495.371565
+Washington,Redmond,MASTERCARD,Approved,1052.501389
+Pennsylvania,Allison Park,MASTERCARD,Approved,25.30147956
+Washington,Seattle,DISCOVER,Approved,1700.103783
+California,Menlo Park,MASTERCARD,Approved,1517.163009
+California,Menlo Park,MASTERCARD,Approved,1537.466054
+Michigan,Ann Arbor,MASTERCARD,Do not honor,1630.158139
+California,Mountain View,MASTERCARD,Incorrect PIN,273.4324307
+California,Mountain View,DISCOVER,Approved,2396.814895
+Florida,Gainesville,VISA,Approved,6516.946317
+Florida,Cape Coral,VISA,Incorrect PIN,3096.739807
+Ohio,Cincinnati,VISA,Approved,100.481506
+California,Mountain View,MASTERCARD,Do not honor,218.2641911
+California,Mountain View,VISA,Approved,2179.303507
+California,Berkeley,AMEX,Do not honor,499.4953157
+Maryland,Baltimore,DISCOVER,Incorrect PIN,3676.835896
+Ohio,Cincinnati,VISA,Approved,3136.449084
+California,Menlo Park,VISA,Approved,1595.084516
+California,Mountain View,VISA,Do not honor,1993.281698
+California,San Francisco,MASTERCARD,Approved,1520.921477
+California,San Francisco,DISCOVER,Do not honor,1859.393759
+Florida,Miami,VISA,Approved,60.02552207
+California,Santa Rosa,MASTERCARD,Do not honor,102.8048864
+California,Menlo Park,MASTERCARD,Approved,672.1144358
+California,Mountain View,AMEX,Approved,1415.636459
+California,Sunnyvale,VISA,Approved,3444.691745
+California,Mountain View,MASTERCARD,Approved,188.3263419
+Florida,Orlando,MASTERCARD,Approved,1850.049609
+Washington,Seattle,VISA,Approved,2847.824956
+Ohio,Cincinnati,VISA,Approved,290.4061202
+Illinois,Highland Park,MASTERCARD,Do not honor,2062.280031
+Washington,Seattle,VISA,Insufficient funds,1001.753752
+Washington,Redmond,DISCOVER,Incorrect PIN,37.46472314
+Washington,Redmond,MASTERCARD,Approved,187.6379199
+Washington,Redmond,AMEX,Do not honor,1094.368121
+Washington,Redmond,VISA,Approved,1377.810367
+Washington,Redmond,AMEX,Incorrect PIN,1117.807069
+Ohio,Cincinnati,MASTERCARD,Approved,1135.309834
+California,Mountain View,VISA,Approved,12.66871207
+Washington,Redmond,MASTERCARD,Approved,2982.759737
+California,Menlo Park,MASTERCARD,Do not honor,383.8713143
+Ohio,Cincinnati,AMEX,Approved,1467.272618
+Washington,Redmond,MASTERCARD,Pick-up card,329.9675624
+Washington,Redmond,MASTERCARD,Invalid transaction,944.4904658
+Washington,Seattle,MASTERCARD,Approved,4.603360096
+Washington,Redmond,AMEX,Approved,1975.710675
+Missouri,Kansas City,VISA,Do not honor,670.6188837
+New York,Brooklyn,AMEX,Approved,353.6398035
+Ohio,Cincinnati,MASTERCARD,Approved,3535.06094
+California,San Jose,VISA,Do not honor,515.6942411
+California,Menlo Park,VISA,Approved,1957.5889
+California,Menlo Park,MASTERCARD,Approved,4711.98571
+Washington,Redmond,MASTERCARD,Approved,2073.083186
+Ohio,Cincinnati,VISA,Do not honor,313.0030776
+Washington,Seattle,VISA,Insufficient funds,49.41781333
+Washington,Redmond,VISA,Approved,2826.668584
+Virginia,Ashburn,VISA,Approved,2613.195927
+Washington,Redmond,MASTERCARD,Do not honor,656.4547599
+Washington,Seattle,AMEX,Invalid transaction,273.4559523
+Oklahoma,Tulsa,AMEX,Insufficient funds,3206.845575
+Ohio,Cincinnati,MASTERCARD,Approved,6623.114988
+Washington,Redmond,MASTERCARD,Approved,490.7469106
+California,Menlo Park,MASTERCARD,Approved,2969.836748
+Washington,Seattle,MASTERCARD,Approved,6737.766054
+California,Mountain View,MASTERCARD,Do not honor,103.0271379
+California,Mountain View,MASTERCARD,Invalid transaction,3657.876788
+Washington,Redmond,MASTERCARD,Insufficient funds,185.7364465
+Ohio,Cincinnati,MASTERCARD,Incorrect PIN,1578.733912
+Washington,Redmond,VISA,Approved,7381.956876
+Illinois,Wilmette,VISA,Do not honor,3444.350319
+New York,Brooklyn,AMEX,Approved,50.19022192
+Washington,Redmond,VISA,Approved,184.0780491
+California,Menlo Park,AMEX,Approved,10106.72779
+Missouri,Kansas City,VISA,Do not honor,1377.54353
+Washington,Redmond,VISA,Invalid transaction,31.08112272
+Washington,Redmond,VISA,Insufficient funds,213.9555984
+Washington,Seattle,AMEX,Approved,6297.982724
+Washington,Redmond,VISA,Approved,293.8808368
+California,Menlo Park,AMEX,Approved,283.6840479
+Georgia,Duluth,MASTERCARD,Approved,222.5845665
+California,Mountain View,MASTERCARD,Approved,1716.471377
+Washington,Redmond,VISA,Approved,3279.597961
+Washington,Redmond,MASTERCARD,Do not honor,4138.836674
+Washington,Redmond,MASTERCARD,Approved,1913.725838
+Ohio,Cincinnati,VISA,Approved,140.8006083
+California,Mountain View,VISA,Approved,396.5809744
+New York,New York,VISA,Insufficient funds,192.0941909
+California,Mountain View,AMEX,Approved,1630.622441
+California,Mountain View,MASTERCARD,Issuer unavailable,3319.646547
+Virginia,Ashburn,AMEX,Approved,1133.663535
+Washington,Seattle,VISA,Issuer unavailable,172.7395937
+California,Mountain View,AMEX,Approved,4875.574905
+California,Mountain View,VISA,Approved,3051.47382
+Rhode Island,Little Compton,MASTERCARD,Approved,778.3392178
+California,Mountain View,AMEX,Approved,1877.053715
+California,Mountain View,VISA,Approved,6194.9242
+Washington,Redmond,DISCOVER,Expired card,42.67547456
+California,Menlo Park,VISA,Incorrect PIN,7630.294726
+California,Menlo Park,AMEX,Approved,3760.484623
+Washington,Redmond,MASTERCARD,Do not honor,1217.945635
+California,Mountain View,MASTERCARD,Issuer unavailable,95.59323477
+New York,New York Mills,AMEX,Approved,3981.983449
+New Jersey,Parsippany,MASTERCARD,Insufficient funds,1873.989191
+Virginia,Ashburn,MASTERCARD,Issuer unavailable,3920.212375
+Ohio,Cincinnati,VISA,Approved,2265.461391
+Florida,Miami,AMEX,Approved,1999.832797
+Washington,Redmond,AMEX,Approved,2236.177338
+California,Sunnyvale,DISCOVER,Do not honor,584.9163867
+Ohio,Cincinnati,MASTERCARD,Insufficient funds,604.1695244
+California,Mountain View,MASTERCARD,Issuer unavailable,1.932981087
+California,Mountain View,VISA,Approved,6275.164994
+California,Mountain View,AMEX,Do not honor,2658.372168
+Ohio,Cincinnati,VISA,Issuer unavailable,280.6068646
+Washington,Redmond,VISA,Approved,217.5696526
+Washington,Redmond,MASTERCARD,Incorrect PIN,1355.895317
+Washington,Redmond,VISA,Issuer unavailable,526.7876668
+Illinois,Lombard,MASTERCARD,Approved,933.4355197
+California,Mountain View,MASTERCARD,Approved,194.5777808
+California,Mountain View,VISA,Do not honor,47.36329252
+California,Mountain View,DISCOVER,Incorrect PIN,12872.32593
+California,San Jose,MASTERCARD,Issuer unavailable,1155.698079
+Ohio,Cincinnati,VISA,Approved,3870.112994
+Ohio,Cincinnati,MASTERCARD,Approved,1993.929111
+California,Mountain View,VISA,Approved,411.1744316
+California,Mountain View,MASTERCARD,Do not honor,225.1150534
+Washington,Seattle,MASTERCARD,Invalid amount,1280.148765
+Washington,Redmond,AMEX,Insufficient funds,174.2445722
+California,Mountain View,VISA,Approved,60.99194531
+California,Mountain View,AMEX,Do not honor,1773.568001
+California,Mountain View,VISA,Invalid transaction,9.088329117
+California,San Francisco,MASTERCARD,Insufficient funds,3802.418412
+California,Menlo Park,AMEX,Incorrect PIN,372.3687679
+Virginia,Ashburn,VISA,Approved,200.6525622
+New Jersey,Absecon,VISA,Issuer unavailable,4781.23947
+Virginia,Ashburn,DISCOVER,Approved,1811.81426
+Washington,Redmond,MASTERCARD,Insufficient funds,416.2293197
+Ohio,Cincinnati,VISA,Approved,1283.595692
+California,Menlo Park,VISA,Approved,92.68279381
+Illinois,Chicago,AMEX,Approved,1864.033015
+California,Mountain View,VISA,Approved,314.675765
+Virginia,Chantilly,VISA,Approved,156.3523045
+California,Mountain View,MASTERCARD,Approved,1979.427922
+Ohio,Cincinnati,VISA,Approved,1692.274175
+Florida,Miami,MASTERCARD,Approved,2338.740614
+Washington,Redmond,AMEX,Approved,53.53244159
+Washington,Seattle,AMEX,Approved,1253.596189
+Nevada,Las Vegas,AMEX,Insufficient funds,4199.968847
+New Jersey,Woodbridge,AMEX,Approved,11785.72137
+California,San Francisco,AMEX,Approved,1718.576739
+New York,New York,VISA,Approved,1618.922086
+Washington,Redmond,MASTERCARD,Approved,618.0874212
+Virginia,Ashburn,DISCOVER,Approved,2319.733491
+California,Sunnyvale,VISA,Approved,1125.956121
+Ohio,Cincinnati,AMEX,Approved,6085.023808
+California,Mountain View,MASTERCARD,Approved,565.1436243
+North Carolina,Rural Hall,VISA,Insufficient funds,1426.845997
+California,Mountain View,MASTERCARD,Approved,165.4546891
+California,Mountain View,MASTERCARD,Approved,1433.294125
+California,Carlsbad,DISCOVER,Approved,3239.696941
+Ohio,Cincinnati,MASTERCARD,Approved,2362.05979
+Washington,Seattle,AMEX,Approved,930.9772801
+Virginia,Ashburn,MASTERCARD,Approved,1497.499463
+Florida,West Palm Beach,VISA,Approved,2099.751009
+Virginia,Ashburn,AMEX,Approved,2056.502114
+California,Santa Clarita,MASTERCARD,Approved,337.2911877
+California,Mountain View,VISA,Approved,138.1653301
+California,Mountain View,AMEX,Approved,816.3801596
+Texas,Brownsville,DISCOVER,Approved,19.06496961
+New Jersey,Cherry Hill,MASTERCARD,Approved,1230.22853
+Virginia,Fairfax Station,VISA,Insufficient funds,2326.755993
+Texas,Little Elm,VISA,Approved,157.3160045
+Alabama,Anniston,AMEX,Approved,43.74435013
+Virginia,Ashburn,VISA,Approved,451.3495229
+Ohio,Loveland,DISCOVER,Approved,479.8304678
+California,San Francisco,MASTERCARD,Approved,845.2881305
+Michigan,Grosse Pointe,AMEX,Approved,400.2430258
+Ohio,Cincinnati,AMEX,Approved,358.690635
+Louisiana,Doyline,VISA,Approved,171.8675952
+California,Menlo Park,MASTERCARD,Insufficient funds,112.0868368
+Ohio,Cincinnati,AMEX,Approved,798.7055259
+Washington,Redmond,VISA,Approved,329.934155
+Washington,Redmond,MASTERCARD,Approved,254.6942043
+Washington,Redmond,MASTERCARD,Approved,1277.985104
+Massachusetts,Natick,VISA,Approved,1358.514992
+New York,Tappan,MASTERCARD,Approved,3300.659819
+Ohio,Cincinnati,VISA,Approved,304.3609118
+California,Mountain View,AMEX,Approved,1523.81727
+California,Sunnyvale,MASTERCARD,Insufficient funds,251.6740401
+California,Menlo Park,DISCOVER,Approved,1999.136061
+Illinois,Chicago,AMEX,Approved,1978.729798
+Ohio,Cincinnati,VISA,Approved,1260.9151
+Massachusetts,Amherst,MASTERCARD,Insufficient funds,2322.650763
+California,Mountain View,MASTERCARD,Approved,77.51981188
+California,Menlo Park,VISA,Approved,7383.772529
+New York,New York,VISA,Approved,1313.938567
+California,Mountain View,VISA,Approved,1937.929379
+Illinois,Chicago,DISCOVER,Approved,3003.895958
+New York,Brooklyn,MASTERCARD,Approved,2141.521585
+Ohio,Cincinnati,AMEX,Approved,3171.073367
+California,Mountain View,VISA,Approved,1026.674164
+California,Mountain View,MASTERCARD,Approved,740.8874733
+California,Mountain View,MASTERCARD,Approved,1378.202188
+California,Mountain View,MASTERCARD,Approved,515.0441196
+California,Mountain View,VISA,Approved,703.208571
+Virginia,Ashburn,VISA,Approved,2818.096859
+Florida,Coral Gables,VISA,Insufficient funds,49.95042056
+Virginia,Ashburn,AMEX,Approved,2040.721705
+Wisconsin,Milwaukee,MASTERCARD,Approved,3491.121412
+New York,New York,VISA,Approved,297.5585136
+Washington,Seattle,MASTERCARD,Approved,1445.544661
+Virginia,Ashburn,VISA,Approved,2910.675554
+California,San Francisco,VISA,Approved,780.462935
+California,Mountain View,AMEX,Approved,943.2108424
+Virginia,Ashburn,VISA,Insufficient funds,279.4639177
+Washington,Redmond,MASTERCARD,Approved,914.5767022
+Virginia,Ashburn,VISA,Approved,386.1770999
+Virginia,Ashburn,AMEX,Approved,778.3183273
+Ohio,Cincinnati,VISA,Approved,2768.118556
+Virginia,Ashburn,VISA,Approved,859.9376009
+Ohio,Cincinnati,MASTERCARD,Approved,116.1053294
+Washington,Seattle,MASTERCARD,Approved,407.7582938
+California,Mountain View,DISCOVER,Approved,4.584443213
+California,Mountain View,AMEX,Incorrect PIN,1967.790141
+California,Mountain View,AMEX,Approved,652.3211154
+California,Mountain View,AMEX,Approved,730.6518646
+Washington,Seattle,MASTERCARD,Approved,6601.616025
+California,Mountain View,AMEX,Approved,5568.545548
+California,Mountain View,VISA,Approved,1032.905049
+California,Mountain View,MASTERCARD,Approved,5529.067576
+Virginia,Ashburn,VISA,Insufficient funds,1088.493733
+Washington,Seattle,VISA,Approved,19.22960602
+New York,New York,VISA,Approved,3335.319056
+Washington,Seattle,AMEX,Approved,169.6612335
+Washington,Seattle,MASTERCARD,Approved,174.6848601
+Ohio,Cincinnati,MASTERCARD,Approved,1770.790147
+New Jersey,Matawan,MASTERCARD,Approved,1477.335179
+Michigan,Ann Arbor,VISA,Approved,884.3257823
+California,Mountain View,AMEX,Approved,2136.002099
+California,Mountain View,AMEX,Approved,5558.971413
+California,Mountain View,VISA,Approved,1183.780009
+California,Menlo Park,MASTERCARD,Approved,1744.701574
+California,Menlo Park,MASTERCARD,Incorrect PIN,2.129007613
+Washington,Seattle,MASTERCARD,Approved,1173.738642
+California,Mountain View,AMEX,Approved,997.256982
+California,Mountain View,VISA,Insufficient funds,1051.908831
+California,Menlo Park,AMEX,Approved,1758.810102
+Washington,Seattle,AMEX,Do not honor,1865.648342
+Virginia,Ashburn,VISA,Approved,855.521475
+Illinois,Chicago,VISA,Insufficient funds,7304.758277
+Idaho,Meridian,MASTERCARD,Approved,14.30293173
+Washington,Seattle,VISA,Approved,209.0924923
+Illinois,Lombard,VISA,Insufficient funds,955.2829367
+Virginia,Ashburn,DISCOVER,Approved,817.9924795
+California,Mountain View,MASTERCARD,Invalid card number,4410.270114
+California,Mountain View,VISA,Approved,1305.342977
+Virginia,Ashburn,DISCOVER,Do not honor,2584.885848
+California,Menlo Park,AMEX,Lost card - pick-up,7201.152643
+Washington,Seattle,VISA,Incorrect PIN,463.7145786
+Ohio,Cincinnati,AMEX,Approved,76.93203233
+New York,Brooklyn,MASTERCARD,Approved,68.9750069
+Ohio,Cincinnati,VISA,Approved,6099.955751
+California,Mountain View,VISA,Invalid card number,7509.002745
+Virginia,Ashburn,MASTERCARD,Approved,2354.241113
+Ohio,Cincinnati,VISA,Approved,4601.256373
+California,Mountain View,VISA,Insufficient funds,612.5503835
+California,Mountain View,MASTERCARD,Approved,969.8776308
+California,Menlo Park,VISA,Insufficient funds,442.5691869
+California,Mountain View,AMEX,Approved,592.6004805
+Ohio,Cincinnati,MASTERCARD,Approved,1064.238993
+California,San Jose,VISA,Insufficient funds,566.8243511
+Ohio,Cincinnati,MASTERCARD,Approved,1071.237464
+Washington,Redmond,AMEX,Insufficient funds,1672.824947
+California,Menlo Park,VISA,Approved,549.2821633
+Washington,Seattle,VISA,Approved,434.1121328
+California,Mountain View,MASTERCARD,Approved,4633.847043
+Nevada,Las Vegas,VISA,Approved,1658.006629
+New York,New York,DISCOVER,Insufficient funds,1082.680015
+Washington,Seattle,AMEX,Approved,826.8889204
+California,Sunnyvale,VISA,Insufficient funds,2508.125661
+California,Menlo Park,MASTERCARD,Approved,1127.969299
+California,Mountain View,AMEX,Approved,953.7873756
+California,Mountain View,MASTERCARD,Approved,2299.795269
+Ohio,Cincinnati,MASTERCARD,Approved,612.5797276
+New Jersey,Absecon,MASTERCARD,Approved,3001.117017
+Washington,Redmond,VISA,Approved,2293.531396
+Virginia,Ashburn,AMEX,Approved,68.36093203
+California,Sunnyvale,VISA,Approved,2170.875665
+Ohio,Cincinnati,MASTERCARD,Approved,276.2730453
+Washington,Redmond,MASTERCARD,Approved,403.8469524
+Washington,Redmond,AMEX,Insufficient funds,1374.031542
+California,Mountain View,AMEX,Approved,225.9896132
+California,Mountain View,AMEX,Approved,5170.160991
+Illinois,Gurnee,AMEX,Approved,2141.995958
+Washington,Redmond,VISA,Approved,2430.185481
+Washington,Redmond,VISA,Approved,1730.418303
+Washington,Redmond,VISA,Approved,758.0908906
+Washington,Redmond,AMEX,Approved,827.1655893
+Ohio,Cincinnati,VISA,Approved,136.7156752
+Virginia,Ashburn,VISA,Approved,52.84878444
+California,Sunnyvale,AMEX,Approved,451.0657214
+California,San Jose,VISA,Approved,222.3192368
+California,Mountain View,MASTERCARD,Insufficient funds,3801.807049
+California,Mountain View,AMEX,Approved,3005.437773
+New York,New York,AMEX,Insufficient funds,8065.074484
+Ohio,Cincinnati,AMEX,Approved,103.2077285
+California,San Francisco,MASTERCARD,Approved,4994.206891
+Washington,Seattle,VISA,Approved,533.882442
+New Jersey,Absecon,MASTERCARD,Insufficient funds,201.8665227
+Florida,Orlando,MASTERCARD,Approved,1878.253609
+Georgia,Atlanta,VISA,Invalid amount,2533.103385
+California,Menlo Park,VISA,Insufficient funds,1047.81908
+Virginia,Ashburn,VISA,Approved,438.0523438
+California,Sacramento,DISCOVER,Insufficient funds,2089.468502
+Missouri,Kansas City,VISA,Approved,1524.922249
+Washington,Redmond,VISA,Approved,2.83080864
+Washington,Redmond,AMEX,Approved,1125.597981
+California,Santa Clara,VISA,Do not honor,1631.675476
+Washington,Redmond,VISA,Insufficient funds,614.9232391
+Pennsylvania,Malvern,VISA,Approved,2059.072541
+California,San Jose,MASTERCARD,Do not honor,6334.064287
+Washington,Redmond,AMEX,Insufficient funds,50.24723677
+Washington,Seattle,VISA,Approved,11720.00296
+Texas,Webster,VISA,Insufficient funds,1850.552448
+Virginia,Ashburn,VISA,Approved,761.7295582
+California,Mountain View,MASTERCARD,Do not honor,461.5044886
+Washington,Seattle,MASTERCARD,Invalid transaction,1507.079164
+Florida,Altamonte Springs,VISA,Invalid amount,2576.29189
+California,Mountain View,MASTERCARD,Invalid card number,4282.966673
+California,Mountain View,AMEX,Insufficient funds,135.9670584
+Virginia,Ashburn,VISA,Incorrect PIN,1134.724432
+Louisiana,New Orleans,AMEX,Transaction not permitted to cardholder,834.4650785
+Ohio,Cincinnati,MASTERCARD,Approved,1760.507122
+New Mexico,Albuquerque,MASTERCARD,Approved,1214.482483
+Washington,Seattle,VISA,Insufficient funds,4194.290021
+Wisconsin,Wisconsin Rapids,MASTERCARD,Issuer unavailable,79.80900178
+Ohio,Cincinnati,AMEX,Approved,810.7172003
+Missouri,Kansas City,VISA,Approved,1367.566705
+California,Mountain View,VISA,Approved,3979.083951
+New York,Buffalo,VISA,Approved,1510.022894
+Ohio,Cincinnati,MASTERCARD,Approved,87.51191296
+Nevada,Reno,VISA,Approved,2320.254524
+California,Mountain View,MASTERCARD,Insufficient funds,3442.733788
+Ohio,Cincinnati,AMEX,Approved,336.4660112
+Florida,Altamonte Springs,VISA,Approved,16859.87656
+New York,New York,VISA,Insufficient funds,134.8508132
+California,San Francisco,VISA,Approved,2944.792869
+New York,New York,VISA,Insufficient funds,1566.864154
+Washington,Seattle,VISA,Approved,206.8758081
+California,Mountain View,AMEX,Approved,24.6238887
+California,Menlo Park,VISA,Approved,1125.909664
+Virginia,Alexandria,VISA,Approved,502.6014861
+California,Menlo Park,VISA,Approved,129.406962
+California,Mountain View,VISA,Approved,1454.366707
+Ohio,Cincinnati,DISCOVER,Approved,2687.866185
+Nevada,Las Vegas,VISA,Approved,5316.06502
+California,Mountain View,MASTERCARD,Approved,454.815656
+Washington,Seattle,AMEX,Approved,6469.485974
+Massachusetts,Town of Boxborough,MASTERCARD,Approved,556.0056916
+Washington,Redmond,MASTERCARD,Approved,5905.631202
+California,Mountain View,VISA,Approved,3557.694289
+California,Fremont,AMEX,Insufficient funds,412.831654
+Washington,Seattle,VISA,Issuer unavailable,310.4211868
+Washington,Seattle,VISA,Approved,598.2854394
+Virginia,Ashburn,VISA,Approved,739.8353248
+California,Sunnyvale,AMEX,Approved,3052.613166
+California,Mountain View,VISA,Approved,3335.022995
+California,Mountain View,AMEX,Refer to card issuer - special condition,15.65082211
+California,Mountain View,VISA,Insufficient funds,1505.582119
+Nevada,Las Vegas,MASTERCARD,Approved,689.4594362
+California,Berkeley,AMEX,Do not honor,2324.838057
+Washington,Seattle,AMEX,Insufficient funds,2769.115259
+Delaware,Lewes,AMEX,Approved,328.1817416
+New York,New York,MASTERCARD,Approved,2468.50879
+Arizona,Phoenix,MASTERCARD,Do not honor,466.4099017
+Ohio,Cincinnati,VISA,Insufficient funds,200.0266563
+Washington,Redmond,AMEX,PIN tries exceeded,2426.927116
+Washington,Redmond,VISA,Approved,6676.348341
+Washington,Redmond,VISA,Approved,7573.849605
+Washington,Redmond,MASTERCARD,Approved,596.4658539
+Washington,Redmond,MASTERCARD,Approved,1918.002711
+California,Mountain View,DISCOVER,Approved,466.0809688
+California,Mountain View,VISA,Approved,2650.726522
+Montana,Kalispell,MASTERCARD,Approved,1928.69111
+Ohio,Cincinnati,VISA,Approved,346.6507936
+Colorado,Denver,MASTERCARD,Approved,693.650373
+Washington,Redmond,MASTERCARD,Approved,6521.136969
+Washington,Redmond,AMEX,Insufficient funds,2501.600077
+Minnesota,Minneapolis,VISA,Approved,679.0269831
+Ohio,Cincinnati,AMEX,Approved,5027.599917
+California,Mountain View,VISA,Approved,1413.633084
+Washington,Redmond,MASTERCARD,Approved,892.9501546
+California,Palo Alto,MASTERCARD,Approved,531.4263263
+Ohio,Sandusky,MASTERCARD,Insufficient funds,5338.192016
+Washington,Seattle,VISA,Approved,1769.752286
+California,Palo Alto,VISA,Approved,140.7567207
+California,Mountain View,MASTERCARD,Approved,2692.184012
+California,Menlo Park,AMEX,Approved,544.8995682
+Washington,Seattle,MASTERCARD,Approved,291.7276351
+Michigan,Ann Arbor,MASTERCARD,Approved,210.1223943
+Pennsylvania,Bala-Cynwyd,AMEX,Approved,138.6901985
+Washington,Seattle,MASTERCARD,Approved,5852.413178
+Washington,Redmond,VISA,Approved,839.4921292
+Washington,Redmond,VISA,Approved,787.3853512
+Florida,Tallahassee,VISA,Approved,1094.361276
+California,Menlo Park,MASTERCARD,Approved,6626.717247
+California,Mariposa,MASTERCARD,Approved,893.7400169
+California,Mountain View,AMEX,Approved,4596.203888
+California,Mountain View,MASTERCARD,Insufficient funds,908.9640079
+California,Mountain View,MASTERCARD,Approved,631.3842464
+California,Mountain View,AMEX,Approved,460.5645036
+California,Mountain View,VISA,Approved,2927.54911
+California,Mountain View,VISA,Approved,605.0642072
+Ohio,Cincinnati,VISA,Approved,4597.118076
+California,Mountain View,VISA,Approved,1316.524686
+California,Mountain View,VISA,Approved,4612.144461
+California,Mountain View,VISA,Approved,224.7852938
+California,Menlo Park,MASTERCARD,Approved,1603.961138
+Washington,Redmond,AMEX,Approved,127.1136842
+California,Mountain View,VISA,Approved,845.7787613
+California,Mountain View,VISA,Approved,6702.524826
+Washington,Redmond,MASTERCARD,Do not honor,3713.363959
+Ohio,Sandusky,VISA,Invalid transaction,1811.069309
+Ohio,Cincinnati,VISA,Insufficient funds,1659.347527
+North Carolina,Chapel Hill,VISA,Approved,2575.96508
+Georgia,Canton,VISA,Insufficient funds,185.3949255
+California,Menlo Park,VISA,Approved,1865.109668
+Washington,Redmond,AMEX,Insufficient funds,1348.920405
+New York,New York,MASTERCARD,Approved,1810.013996
+Washington,Redmond,VISA,Approved,11499.39117
+Washington,Redmond,VISA,Approved,268.7707356
+Ohio,Cincinnati,AMEX,Approved,672.5609606
+Washington,Seattle,AMEX,Insufficient funds,376.5274656
+Washington,Seattle,MASTERCARD,Approved,1094.629328
+Florida,Winter Springs,VISA,Approved,429.3577994
+California,Palo Alto,VISA,Approved,3850.337491
+Washington,Redmond,AMEX,Insufficient funds,6213.841173
+Washington,Redmond,AMEX,Approved,454.9769502
+California,Mountain View,AMEX,Approved,5145.682265
+Ohio,Cincinnati,MASTERCARD,Insufficient funds,602.1366464
+California,Mountain View,AMEX,Approved,1476.491942
+Washington,Seattle,MASTERCARD,Approved,546.711681
+California,Mountain View,DISCOVER,Approved,493.2284754
+California,Mountain View,MASTERCARD,Do not honor,379.0538139
+California,Mountain View,DISCOVER,Approved,1634.580113
+Ohio,Cincinnati,VISA,Approved,1500.521509
+Washington,Seattle,AMEX,Approved,2162.105591
+California,San Francisco,AMEX,Approved,907.6452726
+Washington,Seattle,VISA,Approved,778.3612678
+Washington,Redmond,VISA,Insufficient funds,1368.014729
+California,Menlo Park,MASTERCARD,Approved,1424.798693
+California,Mountain View,VISA,Approved,864.6857474
+Virginia,Ashburn,MASTERCARD,Approved,677.1611015
+Washington,Seattle,MASTERCARD,Approved,797.3851659
+California,Pasadena,MASTERCARD,Approved,1944.014955
+California,Castro Valley,AMEX,Do not honor,2608.318344
+California,San Francisco,MASTERCARD,Insufficient funds,3613.66884
+California,Sunnyvale,MASTERCARD,Incorrect PIN,1224.759689
+Washington,Seattle,AMEX,Approved,6531.917827
+California,Mountain View,VISA,Approved,1538.651987
+California,Mountain View,VISA,Insufficient funds,550.3367753
+Ohio,Cincinnati,VISA,Approved,271.8054512
+Virginia,Ashburn,DISCOVER,Approved,502.7578958
+Washington,Seattle,AMEX,Approved,4693.10922
+California,Brea,VISA,Do not honor,656.5127006
+New Jersey,Absecon,VISA,Approved,358.7579635
+New York,Brooklyn,VISA,Approved,1780.999937
+California,Mountain View,VISA,Approved,268.1970552
+Washington,Seattle,VISA,Approved,2326.058424
+Washington,Redmond,VISA,Approved,616.3630523
+Washington,Seattle,VISA,Approved,2890.722677
+Ohio,Cincinnati,VISA,Approved,55.61192412
+South Dakota,Sioux Falls,MASTERCARD,Approved,685.0378762
+Virginia,Ashburn,MASTERCARD,Approved,3513.743401
+California,San Francisco,AMEX,Do not honor,591.5081104
+California,Mountain View,AMEX,Approved,1731.38634
+Virginia,Ashburn,VISA,Approved,7406.576609
+New Mexico,Albuquerque,VISA,Approved,1357.771577
+Washington,Seattle,VISA,Approved,1299.126731
+Ohio,Cincinnati,MASTERCARD,Approved,996.9032259
+Virginia,Ashburn,AMEX,Approved,158.890814
+California,Mountain View,VISA,Approved,5059.09983
+California,Mountain View,AMEX,Approved,790.7249309
+Virginia,Ashburn,AMEX,Approved,4643.024147
+Virginia,Ashburn,AMEX,Approved,4179.869132
+Ohio,Cincinnati,MASTERCARD,Approved,2907.87028
+Virginia,Ashburn,VISA,Approved,1080.008117
+Virginia,Ashburn,AMEX,Approved,212.4192336
+California,San Francisco,VISA,Invalid card number,967.509719
+Utah,Providence,VISA,Insufficient funds,440.6229086
+Washington,Seattle,AMEX,Approved,566.7051938
+Virginia,Ashburn,MASTERCARD,Insufficient funds,140.6734059
+California,Mountain View,VISA,Approved,641.6760438
+Wisconsin,Madison,AMEX,Approved,865.8448551
+California,Mountain View,VISA,Insufficient funds,964.4598039
+Missouri,Kansas City,MASTERCARD,Approved,5575.209953
+Washington,Seattle,VISA,Approved,1782.254966
+California,Menlo Park,MASTERCARD,Insufficient funds,1790.56697
+New York,New York,VISA,Approved,5021.537581
+Virginia,Ashburn,VISA,Approved,2653.368768
+California,Menlo Park,MASTERCARD,Approved,268.1853403
+California,Menlo Park,MASTERCARD,Approved,8335.020397
+California,San Jose,VISA,Approved,577.2325729
+Virginia,Ashburn,MASTERCARD,Approved,3064.601809
+California,Mountain View,AMEX,Insufficient funds,204.2641003
+California,Mountain View,AMEX,Approved,1361.778545
+Ohio,Cincinnati,VISA,Insufficient funds,3310.017326
+Washington,Seattle,AMEX,Approved,231.7333503
+Texas,Fort Worth,MASTERCARD,Approved,2175.929218
+Wisconsin,Kaukauna,DISCOVER,Insufficient funds,2934.372783
+Washington,Seattle,MASTERCARD,Approved,3519.803786
+Massachusetts,Worcester,VISA,Approved,3316.533129
+California,Menlo Park,AMEX,Approved,166.945617
+Washington,Seattle,MASTERCARD,Insufficient funds,1734.567252
+Washington,Seattle,AMEX,Approved,3441.56807
+California,San Francisco,MASTERCARD,Approved,2838.454461
+Ohio,Cincinnati,MASTERCARD,Approved,131.47787
+Washington,Seattle,MASTERCARD,Approved,224.1957168
+California,Hanford,VISA,Exceeds withdrawal limit,3571.47244
+California,Mountain View,AMEX,Approved,2813.456027
+Virginia,Ashburn,AMEX,Do not honor,4496.433989
+Virginia,Ashburn,MASTERCARD,Approved,920.7005309
+Virginia,Ashburn,AMEX,Approved,196.9317096
+Florida,Tallahassee,VISA,Approved,180.3583728
+Ohio,Cincinnati,VISA,Approved,544.0916081
+California,Sunnyvale,VISA,Approved,1419.652795
+Texas,Austin,VISA,Approved,462.1969324
+Virginia,Ashburn,VISA,Approved,1718.559516
+California,Menlo Park,VISA,Approved,1779.847738
+Virginia,Ashburn,VISA,Approved,5844.774924

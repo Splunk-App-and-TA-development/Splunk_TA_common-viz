@@ -1,0 +1,24 @@
+<panel>
+    <viz type="Splunk_TA_common-viz.donut">
+        <title>3D Donut Chart</title>
+        <search>
+            <query>index=_internal | stats count by sourcetype</query>
+            <earliest>-24h@h</earliest>
+            <latest>now</latest>
+        </search>
+        <option name="Splunk_TA_common-viz.donut.chartType">3D</option>
+        <option name="Splunk_TA_common-viz.donut.log">false</option>
+        <option name="Splunk_TA_common-viz.donut.drilldown">Yes</option>
+        <option name="Splunk_TA_common-viz.donut.donutWidth">50</option>
+        <option name="Splunk_TA_common-viz.donut.xradius">-10</option>
+        <option name="Splunk_TA_common-viz.donut.yradius">-10</option>
+        <option name="Splunk_TA_common-viz.donut.height">10</option>
+        <option name="Splunk_TA_common-viz.donut.iradius">0.5</option>
+        <option name="Splunk_TA_common-viz.donut.show_legend">true</option>
+        <option name="Splunk_TA_common-viz.donut.legend_position">left</option>
+        <option name="Splunk_TA_common-viz.donut.legend_text_size">12</option>
+        <option name="Splunk_TA_common-viz.donut.color_scheme">predefined</option>
+        <option name="Splunk_TA_common-viz.donut.color_category">10</option>
+        <option name="Splunk_TA_common-viz.donut.color_csv">n/a</option>
+    </viz>
+</panel>

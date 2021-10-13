@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Search controls, events</title>
+    <link rel="shortcut icon" href="{{SPLUNKWEB_URL_PREFIX}}/static/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/en-US/static/@f4c1eb50e0f3/css/build/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="/en-US/static/@f4c1eb50e0f3/css/build/pages/dashboard-simple-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="all"
+        href="{{SPLUNKWEB_URL_PREFIX}}/static/app/link_analysis_app/dashboard.css" />
+</head>
+
+<body class="simplexml preload locale-en">
+    <!--
+Node Definition Search
+-->
+    <header>
+        <a class="navSkip" href="#navSkip" tabindex="1">Screen reader users, click here to skip the navigation bar</a>
+        <div class="header splunk-header">
+            <div id="placeholder-splunk-bar">
+                <a href="{{SPLUNKWEB_URL_PREFIX}}/app/launcher/home" class="brand"
+                    title="splunk > listen to your data">splunk<strong>></strong></a>
+            </div>
+            <div id="placeholder-app-bar"></div>
+        </div>
+        <a id="navSkip"></a>
+    </header>
+    <div class="dashboard-body container-fluid main-section-body" data-role="main">
+        <div class="dashboard-header clearfix">
+            <h2>Search controls, events</h2>
+        </div>
+
+
+        <div id="row1" class="dashboard-row dashboard-row1">
+            <div id="panel1" class="dashboard-cell" style="width: 100%;">
+                <div class="dashboard-panel clearfix">
+
+                    <p>This example shows how to set up SearchBar, SearchControls, and Timeline views in JavaScript and
+                        sync them with a SearchManager using events.</p>
+
+                    <div id="nodesearchbar"></div>
+                    <div id="nodesearchcontrols"></div>
+                    <div id="nodesearchtimeline"></div>
+
+                    <div class="panel-element-row">
+                        <div id="element1" class="dashboard-element table" style="width: 100%">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 
+        
+        Edge Definition Search
+        
+        --->
+
+        <div id="row2" class="dashboard-row dashboard-row2">
+            <div id="panel2" class="dashboard-cell" style="width: 100%;">
+                <div class="dashboard-panel clearfix">
+
+                    <p>This example shows how to set up SearchBar, SearchControls, and Timeline views in JavaScript and
+                        sync them with a SearchManager using events.</p>
+
+                    <div id="edgesearchbar"></div>
+                    <div id="edgesearchcontrols"></div>
+                    <div id="edgesearchtimeline"></div>
+
+                    <div class="panel-element-row">
+                        <div id="element1" class="dashboard-element table" style="width: 100%">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+END LAYOUT
+-->
+
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/config?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/js/i18n.js"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/i18ncatalog?autoload=1"></script>
+    <script src="{{SPLUNKWEB_URL_PREFIX}}/static/build/simplexml/index.js"></script>
+    <script type="text/javascript">
+        // <![CDATA[
+        // <![CDATA[
+
+        //
+        // LIBRARY REQUIREMENTS
+        //
+        // In the require function, we include the necessary libraries and modules for
+        // the HTML dashboard. Then, we pass variable names for these libraries and
+        // modules as function parameters, in order.
+        //
+        // When you add libraries or modules, remember to retain this mapping order
+        // between the library or module and its function parameter. You can do this by
+        // adding to the end of these lists, as shown in the commented examples below.
+
+        require([
+                "splunkjs/mvc",
+                "splunkjs/mvc/utils",
+                "splunkjs/mvc/tokenutils",
+                "underscore",
+                "jquery",
+                "splunkjs/mvc/simplexml",
+                "splunkjs/mvc/layoutview",
+                "splunkjs/mvc/simplexml/dashboardview",
+                "splunkjs/mvc/simplexml/dashboard/panelref",
+                "splunkjs/mvc/simplexml/element/chart",
+                "splunkjs/mvc/simplexml/element/event",
+                "splunkjs/mvc/simplexml/element/html",
+                "splunkjs/mvc/simplexml/element/list",
+                "splunkjs/mvc/simplexml/element/map",
+                "splunkjs/mvc/simplexml/element/single",
+                "splunkjs/mvc/simplexml/element/table",
+                "splunkjs/mvc/simpleform/formutils",
+                "splunkjs/mvc/simplexml/eventhandler",
+                "splunkjs/mvc/simplexml/searcheventhandler",
+                "splunkjs/mvc/simpleform/input/dropdown",
+                "splunkjs/mvc/simpleform/input/radiogroup",
+                "splunkjs/mvc/simpleform/input/linklist",
+                "splunkjs/mvc/simpleform/input/multiselect",
+                "splunkjs/mvc/simpleform/input/checkboxgroup",
+                "splunkjs/mvc/simpleform/input/text",
+                "splunkjs/mvc/simpleform/input/timerange",
+                "splunkjs/mvc/simpleform/input/submit",
+                "splunkjs/mvc/searchmanager",
+                "splunkjs/mvc/savedsearchmanager",
+                "splunkjs/mvc/postprocessmanager",
+                "splunkjs/mvc/simplexml/urltokenmodel",
+                "splunkjs/mvc/searchbarview",
+                "splunkjs/mvc/searchcontrolsview",
+                "splunkjs/mvc/timelineview"
+            ],
+            function (
+                mvc,
+                utils,
+                TokenUtils,
+                _,
+                $,
+                DashboardController,
+                LayoutView,
+                Dashboard,
+                PanelRef,
+                ChartElement,
+                EventElement,
+                HtmlElement,
+                ListElement,
+                MapElement,
+                SingleElement,
+                TableElement,
+                FormUtils,
+                EventHandler,
+                SearchEventHandler,
+                DropdownInput,
+                RadioGroupInput,
+                LinkListInput,
+                MultiSelectInput,
+                CheckboxGroupInput,
+                TextInput,
+                TimeRangeInput,
+                SubmitButton,
+                SearchManager,
+                SavedSearchManager,
+                PostProcessManager,
+                UrlTokenModel,
+                SearchbarView,
+                SearchControlsView,
+                TimelineView
+            ) {
+
+                var pageLoading = true;
+
+
+                //
+                // TOKENS
+                //
+
+                // Create token namespaces
+                var urlTokenModel = new UrlTokenModel();
+                mvc.Components.registerInstance('url', urlTokenModel);
+                var defaultTokenModel = mvc.Components.getInstance('default', {
+                    create: true
+                });
+                var submittedTokenModel = mvc.Components.getInstance('submitted', {
+                    create: true
+                });
+
+                urlTokenModel.on('url:navigate', function () {
+                    defaultTokenModel.set(urlTokenModel.toJSON());
+                    if (!_.isEmpty(urlTokenModel.toJSON()) && !_.all(urlTokenModel.toJSON(), _
+                        .isUndefined)) {
+                        submitTokens();
+                    } else {
+                        submittedTokenModel.clear();
+                    }
+                });
+
+                // Initialize tokens
+                defaultTokenModel.set(urlTokenModel.toJSON());
+
+                function submitTokens() {
+                    // Copy the contents of the defaultTokenModel to the submittedTokenModel and urlTokenModel
+                    FormUtils.submitForm({
+                        replaceState: pageLoading
+                    });
+                }
+
+                function setToken(name, value) {
+                    defaultTokenModel.set(name, value);
+                    submittedTokenModel.set(name, value);
+                }
+
+                function unsetToken(name) {
+                    defaultTokenModel.unset(name);
+                    submittedTokenModel.unset(name);
+                }
+
+
+
+                //
+                // SEARCH MANAGERS
+                //
+
+                var search1 = new SearchManager({
+                    "id": "search1",
+                    "status_buckets": 300,
+                    "latest_time": "$latest$",
+                    "search": "index=_internal | head 100",
+                    "earliest_time": "0",
+                    "cancelOnUnload": true,
+                    "app": utils.getCurrentApp(),
+                    "auto_cancel": 90,
+                    "preview": true,
+                    "runWhenTimeIsUndefined": false
+                }, {
+                    tokens: true,
+                    tokenNamespace: "submitted"
+                });
+
+
+
+                //
+                // SPLUNK LAYOUT
+                //
+
+                $('header').remove();
+                new LayoutView({
+                        "hideFooter": false,
+                        "hideSplunkBar": false,
+                        "hideAppBar": false,
+                        "hideChrome": false
+                    })
+                    .render()
+                    .getContainerElement()
+                    .appendChild($('.dashboard-body')[0]);
+
+
+                //
+                // DASHBOARD EDITOR
+                //
+
+                new Dashboard({
+                    id: 'dashboard',
+                    el: $('.dashboard-body'),
+                    showTitle: true,
+                    editable: true
+                }, {
+                    tokens: true
+                }).render();
+
+
+                //
+                // VIEWS: VISUALIZATION ELEMENTS
+                //
+
+                var element1 = new TableElement({
+                    "id": "element1",
+                    "drilldown": "row",
+                    "rowNumbers": "undefined",
+                    "wrap": "undefined",
+                    "managerid": "search1",
+                    "el": $('#element1')
+                }, {
+                    tokens: true,
+                    tokenNamespace: "submitted"
+                }).render();
+
+
+
+                //
+                //  Create views and add events
+                //
+
+                var mytimeline = new TimelineView({
+                    id: "timeline1",
+                    managerid: "search1",
+                    el: $("#nodesearchtimeline")
+                }).render();
+
+                var mysearchbar = new SearchbarView({
+                    id: "searchbar1",
+                    managerid: "search1",
+                    el: $("#nodesearchbar")
+                }).render();
+
+                var mysearchcontrols = new SearchControlsView({
+                    id: "searchcontrols1",
+                    managerid: "search1",
+                    el: $("#nodesearchcontrols")
+                }).render();
+
+                // When the timeline changes, update the search manager
+                mytimeline.on("change", function () {
+                    search1.settings.set(mytimeline.val());
+                });
+
+                // When the query in the searchbar changes, update the search manager
+                mysearchbar.on("change", function () {
+                    search1.settings.unset("search");
+                    search1.settings.set("search", mysearchbar.val());
+                });
+
+                // When the timerange in the searchbar changes, update the search manager
+                mysearchbar.timerange.on("change", function () {
+                    search1.settings.set(mysearchbar.timerange.val());
+                });
+
+                // End of First Search Bar
+
+                // Start of Second Search Bar
+                                var mytimeline = new TimelineView({
+                    id: "timeline2",
+                    managerid: "search1",
+                    el: $("#edgesearchtimeline")
+                }).render();
+
+                var mysearchbar = new SearchbarView({
+                    id: "searchbar2",
+                    managerid: "search1",
+                    el: $("#edgesearchbar")
+                }).render();
+
+                var mysearchcontrols = new SearchControlsView({
+                    id: "searchcontrols2",
+                    managerid: "search1",
+                    el: $("#edgesearchcontrols")
+                }).render();
+
+                // When the timeline changes, update the search manager
+                mytimeline.on("change", function () {
+                    search1.settings.set(mytimeline.val());
+                });
+
+                // When the query in the searchbar changes, update the search manager
+                mysearchbar.on("change", function () {
+                    search1.settings.unset("search");
+                    search1.settings.set("search", mysearchbar.val());
+                });
+
+                // When the timerange in the searchbar changes, update the search manager
+                mysearchbar.timerange.on("change", function () {
+                    search1.settings.set(mysearchbar.timerange.val());
+                });
+
+                // End of Second Search Bar
+
+                // Initialize time tokens to default
+                if (!defaultTokenModel.has('earliest') && !defaultTokenModel.has('latest')) {
+                    defaultTokenModel.set({
+                        earliest: '0',
+                        latest: ''
+                    });
+                }
+
+                submitTokens();
+
+
+                //
+                // DASHBOARD READY
+                //
+
+                DashboardController.ready();
+                pageLoading = false;
+
+            }
+        );
+        // ]]>
+    </script>
+</body>
+
+</html>

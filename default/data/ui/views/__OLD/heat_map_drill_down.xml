@@ -1,0 +1,254 @@
+<dashboard>
+  <init>
+    <set token="welcomePanel1">true</set>
+    <set token="welcomePanel2">true</set>
+  </init>
+  <label>Drill Down and Token Examples</label>
+  <description>Examples of using the Heat Map Viz to drill down to issues, and use tokens to create interactive dashboards.</description>
+  <row>
+    <panel>
+      <title>Drill Down Example: Application Performance Monitoring</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <search>
+          <query>| gentimes start=-7 increment=10m
+| rename starttime as _time 
+| eval rnd = random()%5 
+| eval name=case(rnd==0,"Homepage", rnd==1,"Login",rnd==2,"Search Page",rnd==3,"Select Result",rnd==4,"Logout",1==1,"Homepage")
+| eval value = random()%15
+| timechart span=4h eval(round(avg(value),0)) by name</query>
+          <earliest>-7d@d</earliest>
+          <latest>@d</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="heat-map-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="heat-map-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="heat-map-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="heat-map-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="heat-map-viz.heat-map-viz.enableShades">true</option>
+        <option name="heat-map-viz.heat-map-viz.legendPosition">top</option>
+        <option name="heat-map-viz.heat-map-viz.legendText">ranges</option>
+        <option name="heat-map-viz.heat-map-viz.shape">square</option>
+        <option name="heat-map-viz.heat-map-viz.showLegend">true</option>
+        <option name="heat-map-viz.heat-map-viz.showValues">true</option>
+        <option name="heat-map-viz.heat-map-viz.tokenLabel">none</option>
+        <option name="heat-map-viz.heat-map-viz.tokenTime">none</option>
+        <option name="heat-map-viz.heat-map-viz.tokenValue">none</option>
+        <option name="heat-map-viz.heat-map-viz.valHigh">10</option>
+        <option name="heat-map-viz.heat-map-viz.valLow">7</option>
+        <option name="heat-map-viz.heat-map-viz.valMedium">10</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+        <h1>Drill Down Example - Drill down to view the raw metrics or events</h1>
+        <h2>Click on a time and server to drill down into the raw metrics or events.</h2>
+        <p>To set up drill downs:</p>
+        <ol>
+          <li>Edit the dashboard</li>
+          <li>Click the '...' button</li>
+          <li>Select 'Edit Drill Down'</li>
+          <li>Select On Click: 'Link to Search'</li>
+          <li>Click Apply</li>
+          <li>Save the dashboard and refresh</li>
+        </ol>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Token Example #1: Server Infrastructure and Application Performance</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <search>
+          <query>| inputlookup heat-map_sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| timechart eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="heat-map-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="heat-map-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="heat-map-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="heat-map-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="heat-map-viz.heat-map-viz.enableShades">true</option>
+        <option name="heat-map-viz.heat-map-viz.legendPosition">top</option>
+        <option name="heat-map-viz.heat-map-viz.legendText">ranges</option>
+        <option name="heat-map-viz.heat-map-viz.shape">square</option>
+        <option name="heat-map-viz.heat-map-viz.showLegend">true</option>
+        <option name="heat-map-viz.heat-map-viz.showValues">false</option>
+        <option name="heat-map-viz.heat-map-viz.tokenLabel">hm_token_label</option>
+        <option name="heat-map-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="heat-map-viz.heat-map-viz.tokenValue">hm_token_value</option>
+        <option name="heat-map-viz.heat-map-viz.valHigh">60</option>
+        <option name="heat-map-viz.heat-map-viz.valLow">40</option>
+        <option name="heat-map-viz.heat-map-viz.valMedium">60</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel rejects="$hm_token_label$">
+      <html>
+        <h1>Token Example #1 - Drill down to a second Heat Map Viz</h1>
+        <h2>Please select a time and server to drill down into the performance of that time period.</h2>
+        <p>When you click on a cell, the Performance Analysis Viz will create three tokens:</p>
+        <ul>
+          <li>pa_name: The label for this row, e.g. "LNXPRODDB01"</li>
+          <li>pa_earliest: The timestamp for the start of the cell's time period</li>
+          <li>pa_latest: The timestamp for the end of the cell's time period</li>
+        </ul>
+        <p>You can then use these tokens to filter the source data and feed that into a second Heat Map on your dashboard.</p>
+        <p>To try it out, simply click on a cell to the left.</p>
+      </html>
+    </panel>
+    <panel depends="$hm_token_label$">
+      <title>Token Example #1 - Drill down to a second Heat Map Viz</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <title>Monitoring Results for $hm_token_label$</title>
+        <search>
+          <query>| inputlookup heat-map_sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| eval start_time=relative_time(strptime("$hm_token_time$", "%Y-%m-%dT%H:%M:%S.%3Q%z"),"-1h")
+| eval end_time=relative_time(strptime("$hm_token_time$", "%Y-%m-%dT%H:%M:%S.%3Q%z"),"+1h")
+| eval t=_time
+| eval start_time=tonumber(round(start_time)), end_time=tonumber(round(end_time)), t=tonumber(round(t))
+| eval diff = t - start_time
+| search diff &gt;0
+| eval diff = end_time-t
+| search diff &gt;0
+| search name=$hm_token_label|s$
+| timechart eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+          <progress>
+            <condition>
+              <unset token="welcomePanel1"></unset>
+            </condition>
+          </progress>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="heat-map-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="heat-map-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="heat-map-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="heat-map-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="heat-map-viz.heat-map-viz.enableShades">true</option>
+        <option name="heat-map-viz.heat-map-viz.legendPosition">top</option>
+        <option name="heat-map-viz.heat-map-viz.legendText">categories</option>
+        <option name="heat-map-viz.heat-map-viz.shape">rounded</option>
+        <option name="heat-map-viz.heat-map-viz.showLegend">true</option>
+        <option name="heat-map-viz.heat-map-viz.showValues">true</option>
+        <option name="heat-map-viz.heat-map-viz.tokenLabel">hm_token_label</option>
+        <option name="heat-map-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="heat-map-viz.heat-map-viz.tokenValue">hm_token_value</option>
+        <option name="heat-map-viz.heat-map-viz.valHigh">60</option>
+        <option name="heat-map-viz.heat-map-viz.valLow">40</option>
+        <option name="heat-map-viz.heat-map-viz.valMedium">60</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidth">auto</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidthpx">250</option>
+        <option name="height">100</option>
+        <option name="refresh.display">progressbar</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Token Example #2: Server Infrastructure and Application Performance</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <search>
+          <query>| inputlookup heat-map_sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| timechart eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">true</option>
+        <option name="heat-map-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="heat-map-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="heat-map-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="heat-map-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="heat-map-viz.heat-map-viz.enableShades">true</option>
+        <option name="heat-map-viz.heat-map-viz.legendPosition">top</option>
+        <option name="heat-map-viz.heat-map-viz.legendText">categories</option>
+        <option name="heat-map-viz.heat-map-viz.shape">square</option>
+        <option name="heat-map-viz.heat-map-viz.showLegend">true</option>
+        <option name="heat-map-viz.heat-map-viz.showValues">false</option>
+        <option name="heat-map-viz.heat-map-viz.tokenLabel">hm_token_label2</option>
+        <option name="heat-map-viz.heat-map-viz.tokenTime">hm_token_time2</option>
+        <option name="heat-map-viz.heat-map-viz.tokenValue">hm_token_value2</option>
+        <option name="heat-map-viz.heat-map-viz.valHigh">60</option>
+        <option name="heat-map-viz.heat-map-viz.valLow">40</option>
+        <option name="heat-map-viz.heat-map-viz.valMedium">60</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="heat-map-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <drilldown>
+          <unset token="welcomePanel"></unset>
+        </drilldown>
+      </viz>
+    </panel>
+    <panel rejects="$hm_token_label2$">
+      <html>
+        <h1>Token Example #2 - Drill down to show the source data</h1>
+        <h2>Please select a time and server to view the health checks performed during that period.</h2>
+        <p>When you click on a cell, the Heat Map Viz will create three tokens:</p>
+        <ul>
+          <li>pa_name: The label for this row, e.g. "LNXPRODDB01"</li>
+          <li>pa_earliest: The timestamp for the start of the cell's time period</li>
+          <li>pa_latest: The timestamp for the end of the cell's time period</li>
+        </ul>
+        <p>You can then use these tokens to dynamically show other results on the dashboard.</p>
+        <p>To try it out, simply click on a cell to the left.</p>
+      </html>
+    </panel>
+    <panel depends="$hm_token_label2$">
+      <title>Token Example #2 - Drill down to show the source data</title>
+      <table>
+        <title>Monitoring Results for $hm_token_label2$</title>
+        <search>
+          <progress>
+            <condition>
+              <unset token="welcomePanel2"></unset>
+            </condition>
+          </progress>
+          <query>| inputlookup heat-map_sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| eval start_time=relative_time(strptime("$hm_token_time2$", "%Y-%m-%dT%H:%M:%S.%3Q%z"),"-1h")
+| eval end_time=relative_time(strptime("$hm_token_time2$", "%Y-%m-%dT%H:%M:%S.%3Q%z"),"+1h")
+| eval t=_time
+| eval start_time=tonumber(round(start_time)), end_time=tonumber(round(end_time)), t=tonumber(round(t))
+| eval diff = t - start_time
+| search diff &gt;0
+| eval diff = end_time-t
+| search diff &gt;0
+| search name=$hm_token_label2|s$</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">5</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">row</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">true</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

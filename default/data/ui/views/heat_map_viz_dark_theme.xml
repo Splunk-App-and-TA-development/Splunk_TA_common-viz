@@ -1,0 +1,257 @@
+<dashboard theme="dark">
+  <label>Dark Theme</label>
+  <row>
+    <panel>
+      <html>
+        <h1>Heat Map Viz in Dark Theme</h1>
+<p>The following examples show you how to display the Heat Map Viz in different ways in dark mode.</p>  
+  <style>
+     .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33.33%!important;}
+    div#third_2{width: 33.33%!important;}
+    div#third_3{width: 33.33%!important;}
+    div#twothirds_1{width: 66.66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+
+
+  span.grey{color: #b3b3b3;font-style:italic;}
+    </style>
+  </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_1">
+      <html>
+        <h1>Application Performance Monitoring</h1>
+        <p>This is a good option for showing business transaction performance over time. Yellow squares indicate when performance is affecting end-users and red squares show where performance was very poor.</p>
+        <p>Settings:</p>
+        <ul>
+          <li>Strong Colors <span class="grey">General &gt; Enable Shades = False</span>
+          </li>
+          <li>Squares <span class="grey">General &gt; Shape = Squares</span>
+          </li>
+          <li>Hide "High" category <span class="grey">Colors &gt; High is equal to Medium value</span>
+          </li>
+        </ul>
+       <p>Disabling "Enable Shades" means that each cell will be colored the same as the corresponding category's color.</p>
+      </html>
+    </panel>
+    <panel id="twothirds_1">
+      <title>Application Performance Monitoring</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <title>Application Performance Monitoring</title>
+        <search>
+          <query>| gentimes start=-10 end=0 increment=1h
+| rename starttime as _time 
+| eval rnd = random()%5 
+| eval name=case(rnd==0,"Homepage", rnd==1,"Login",rnd==2,"Search Page",rnd==3,"Select Result",rnd==4,"Logout",1==1,"Homepage")
+| eval value = rnd*2 
+| eval status = case(rnd==1,"RED",1==1, "GREEN")
+| timechart span=6h avg(value) by name
+| fillnull</query>
+          <earliest>-10d@d</earliest>
+          <latest>@d</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableAnimation">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableShades">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.hideCellBorders">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelCritical">Critical</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelFontSize">18</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelHigh">High</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelLow">Low</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelMedium">Medium</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendPosition">top</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendText">categories</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.reverseNegativeShade">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.shape">square</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showDateInTooltip">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showValues">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenLabel">hm_label</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenValue">hm_value</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tooltipDateFormat">auto</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valHigh">3</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valLow">1</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valMedium">3</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_2">
+      <html>
+         <h1>Multiple Server CPU Example</h1>
+        <p>This example shows the same metric (CPU use) for multiple servers.</p>
+        <p>The options were:</p>
+        <ul>
+          <li>Shades of Colours <span class="grey">Colors &gt; Enable Shades = True</span>
+          </li>
+          <li>Squares <span class="grey">General &gt; Shape = Squares</span>
+          </li>
+          <li>Hide Values <span class="grey">General &gt; Show Values = False</span>
+          </li>
+          <li>Hide Cell borders <span class="grey">General &gt; Hide Cell Borders = True</span>
+          </li>
+        </ul>
+        <p>Enabling "Enable Shades" means that each cell is a shade of the corresponding category's color. The larger the value, the darker the shade. Zero values appear as white.</p>
+      </html>
+    </panel>
+    <panel id="twothirds_2">
+      <title>Multiple Server CPU Example</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <search>
+          <query>| gentimes start=-7 increment=1h
+| rename starttime as _time 
+| eval rnd = random()%6
+| eval name=case(rnd==0,"Web Server 1", rnd==1,"Web Server 2",rnd==2,"Application Server 1",rnd==3,"Database",rnd==4,"Authentication Server",1==1,"Licence Server")
+| eval value = random()%70 + 25
+| timechart span=4h eval(round(avg(value),0)) by name
+| fillnull</query>
+          <earliest>-7d@d</earliest>
+          <latest>@d</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableAnimation">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableShades">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.hideCellBorders">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelCritical">Critical</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelFontSize">18</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelHigh">High</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelLow">Low</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelMedium">Medium</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendPosition">top</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendText">ranges</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.reverseNegativeShade">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.shape">square</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showDateInTooltip">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showValues">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenLabel">hm_label</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenValue">hm_value</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tooltipDateFormat">auto</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valHigh">80</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valLow">60</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valMedium">75</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="height">221</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_3">
+      <html>
+         <h1>Pass / Fail Example</h1>
+        <p>This example shows the status of a Pass/Fail scenario, e.g. the status of test cases, or health checks.</p>
+        <p>The options were:</p>
+        <ul>
+          <li>No color shading <span class="grey">Colors &gt; Enable Shades = False</span>
+          </li>
+          <li>Circles <span class="grey">General &gt; Shape = Rounded</span>
+          </li>
+          <li>Show Values <span class="grey">General &gt; Show Values = False</span>
+          </li>
+        </ul>
+      </html>
+    </panel>
+    <panel id="twothirds_3">
+      <title>Pass / Fail Example</title>
+      <viz type="Splunk_TA_common-viz.heat-map-viz">
+        <search>
+          <query>| gentimes start=-1 increment=30m
+| rename starttime as _time 
+| eval "Test Case 1" = random()%2,  "Test Case 2" = random()%2,  "Test Case 3" = random()%2,  "Test Case 4" = random()%2,  "Test Case 5" = random()%2
+| table _time, "Test Case *"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorCritical">#DC4E41</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorHigh">#F1813F</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorLow">#53A051</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.colorMedium">#F8BE34</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableAnimation">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.enableShades">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.hideCellBorders">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelCritical">Critical</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelFontSize">18</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelHigh">High</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelLow">Low</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.labelMedium">Medium</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendPosition">top</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.legendText">ranges</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.reverseNegativeShade">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.shape">rounded</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showDateInTooltip">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.showValues">false</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenLabel">hm_label</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenTime">hm_token_time</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tokenValue">hm_value</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.tooltipDateFormat">auto</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valHigh">0</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valLow">0</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.valMedium">0</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidth">custom</option>
+        <option name="Splunk_TA_common-viz.heat-map-viz.yaxiswidthpx">180</option>
+        <option name="height">221</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

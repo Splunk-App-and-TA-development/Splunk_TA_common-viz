@@ -1,0 +1,296 @@
+<form>
+  <label>Drilldown Example</label>
+  <search id="randomData">
+    <query>| gentimes start=-7 end=0 increment=8h 
+| eval host="Load Balancer,Web 1,Web 2,Web 3,App Server 1,App Server 2,Database Server" 
+| makemv delim="," host 
+| mvexpand host 
+| eval Mem=random()%20 + 60 
+| eval CPU=random()%20 + 60 
+| rename starttime as _time 
+| fields _time, CPU,Mem,host 
+| append 
+    [| makeresults count=12 
+    | eval redServer=random()%7+1 
+    | eval redServer=case(redServer=1,"Load Balancer",redServer=2,"Web 1",redServer=3,"Web 2",redServer=4,"Web 3",redServer=5,"App Server 1",redServer=6,"App Server 2",redServer=7,"Database Server") 
+    | eventstats first(redServer) as redServer 
+    | streamstats count as id 
+    | eval from=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") 
+    | eval to=case(id=1,"Web 1",id=2,"Web 2",id=3,"Web 3", id=4,"App Server 1",id=5,"App Server 2", id=6, "App Server 1",id=7,"App Server 2", id=8,"App Server 1",id=9,"App Server 2",id=10,"Database Server",id=11,"Database Server",id=12, "") 
+    | eval value=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") 
+    | eval type=case(id=1,"sitemap",id=4,"server", id=6, "server",id=8,"server",id=10,"server",id=11,"server",id=12, "database") 
+    | eval host=from 
+    | eval color=if(host==redServer,"red","green") 
+    | eval Mem=if(host==redServer,random()%9 + 90,random()%5+50) 
+    | eval CPU=if(host==redServer,random()%8 + 90,random()%15+50) 
+    | eval _time = now() 
+    | eval linkColor = if(to=redServer OR from=redServer, "red","green")
+    | eval linkWidth=random()%11
+    | eval linkText=linkWidth . "MBps"
+    | fields _time, from, to, value, type, color, CPU,Mem,host, linkWidth, linkColor, linkText]
+    
+    
+    
+    </query>
+  </search>
+  <init>
+    <set token="hierarchyDirection">Left-Right</set>
+    <set token="showPorts">true</set>
+    <set token="nd_node_token">Environment Overview</set>
+  </init>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <html>
+        <h1>3-tier Architecture: Tokens to drilldown into more detail</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <input type="link" token="hierarchyDirection" searchWhenChanged="true">
+        <label>Hierarchy Settings</label>
+        <choice value="Top-Down">Top Down</choice>
+        <choice value="Bottom-Up">Bottom Up</choice>
+        <choice value="Left-Right">Left Right</choice>
+        <choice value="Right-Left">Right Left</choice>
+        <default>Left-Right</default>
+        <initialValue>Left-Right</initialValue>
+      </input>
+      <input type="link" token="smoothEdges">
+        <label>Smooth Edges</label>
+        <choice value="true">True</choice>
+        <choice value="false">False</choice>
+        <default>True</default>
+        <initialValue>True</initialValue>
+      </input>
+      <input type="link" token="showLinkWidth" searchWhenChanged="true">
+        <label>Link Widths</label>
+        <choice value=",linkWidth">Show</choice>
+        <choice value=", linkColor">Ignore</choice>
+        <default>,linkWidth</default>
+        <initialValue>,linkWidth</initialValue>
+      </input>
+      <input type="link" token="showLinkText" searchWhenChanged="true">
+        <label>Link Labels</label>
+        <choice value=",linkText">Show</choice>
+        <choice value=", linkColor">Hide</choice>
+        <default>,linkText</default>
+        <initialValue>,linkText</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search base="randomData">
+          <query>| search to=* OR from=* | table from, to, value, type, color, linkColor, $showLinkWidth$ $showLinkText$</query>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">545</option>
+        <option name="network-diagram-viz.network-diagram-viz.canZoom">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">left</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">$hierarchyDirection$</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.linkTextLocation">middle</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">$smoothEdges$</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <single>
+        <title>Total requests in the last hour</title>
+        <search>
+          <query>| gentimes start=-7| eval requests=random()%400 + 200 | rename starttime as  _time | table _time, requests</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="height">171</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Requests</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+      <single>
+        <title>Total Purchases in the last hour</title>
+        <search>
+          <query>| gentimes start=-7| eval requests=random()%100 + 10 | rename starttime as  _time | table _time, requests</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="height">167</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="rangeValues">[0,30,70,100]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="underLabel">Purchases</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">0</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel rejects="$nd_value_token$">
+      <html>
+        <h1>Drill down on a Server to view server-specific Information</h1>
+      </html>
+    </panel>
+    <panel depends="$nd_value_token$">
+      <title>Server Metrics for: $nd_node_token$ $nd_value_token$</title>
+      <single>
+        <title>CPU Use on $nd_node_token$</title>
+        <search base="randomData">
+          <query>| search host=$nd_node_token|s$ | timechart avg(CPU) as CPU | filldown</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xf8be34","0xdc4e41"]</option>
+        <option name="rangeValues">[80,85]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">-24h</option>
+        <option name="underLabel">CPU Use</option>
+        <option name="unit">%</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+      <single>
+        <title>Memory Use on $nd_node_token$</title>
+        <search base="randomData">
+          <query>| search host=$nd_node_token|s$
+| timechart avg(Mem) as Mem | filldown</query>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xf8be34","0xdc4e41"]</option>
+        <option name="rangeValues">[80,85]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">-24h</option>
+        <option name="underLabel">Used Memory (%)</option>
+        <option name="unit">%</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+      <single>
+        <title>Link Speed between $nd_node_token$ and $nd_to_node_token$</title>
+        <search>
+          <query>| makeresults 
+| eval linkspeed=$nd_value_token|s$ , fromnode=$nd_node_token|s$ 
+| eval linkspeed=if(linkspeed=fromnode, "N/A", linkspeed) 
+| table linkspeed</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xf8be34","0xdc4e41"]</option>
+        <option name="rangeValues">[80,85]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="showSparkline">0</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">-24h</option>
+        <option name="underLabel">Link Speed (MB/s)</option>
+        <option name="unit"></option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+      <table>
+        <title>Raw Logs for  $nd_node_token$</title>
+        <search>
+          <query>| gentimes start=-7 end=0 increment=8h 
+| eval host="Load Balancer,Web 1,Web 2,Web 3,App Server 1,App Server 2,Database Server"
+| makemv delim="," host
+| mvexpand host
+| eval Mem=random()%20 + 60
+| eval CPU=random()%20 + 60 
+| rename starttime as _time
+| fields _time, CPU,Mem,host
+
+
+| append[
+
+| makeresults count=12
+| eval redServer=random()%7+1
+| streamstats count as id
+| eval from=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server")
+| eval to=case(id=1,"Web 1",id=2,"Web 2",id=3,"Web 3", id=4,"App Server 1",id=5,"App Server 2", id=6, "App Server 1",id=7,"App Server 2", id=8,"App Server 1",id=9,"App Server 2",id=10,"Database Server",id=11,"Database Server",id=12, "")
+| eval value=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server")
+| eval type=case(id=1,"sitemap",id=4,"server", id=6, "server",id=8,"server",id=10,"server",id=11,"server",id=12, "database")
+| eval color=if(id==redServer,"red","green")
+| eval Mem=if(id==redServer,99,random()%50+20)
+| eval CPU=if(id==redServer,99,random()%50+20)
+| eval _time = now()
+| eval host=from
+]
+| table _time, host, CPU, Mem
+| search host=$nd_node_token|s$</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>

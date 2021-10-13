@@ -1,0 +1,19 @@
+metric,value,website
+Revenue,1000,Website 1
+Distinct Users,100,Website 1
+Revenue,700,Website 1
+Distinct Users,200,Website 1
+Distinct Users,600,Website 1
+Distinct Sessions,2000,Website 1
+Revenue,300,Website 1
+Distinct Sessions,2750,Website 1
+Distinct Users,120,Website 2
+Revenue,900,Website 2
+Distinct Users,120,Website 2
+Revenue,730,Website 2
+Distinct Users,180,Website 2
+Distinct Users,300,Website 2
+Distinct Sessions,2200,Website 2
+Revenue,300,Website 2
+Distinct Sessions,3820,Website 2
+Distinct Users,150,Website 2

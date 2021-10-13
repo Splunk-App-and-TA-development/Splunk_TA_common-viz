@@ -1,0 +1,263 @@
+<dashboard theme="dark">
+  <label>Dark Mode</label>
+    <row>
+    <panel>
+      <html>
+        <h1>Bar Chart</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| gentimes start=-7 increment=1d 
+| streamstats count as id
+| eval LNXPRODAPP01=random()%30 * (.8 * id), LNXPRODAPP02=random()%30* (.6 * id), LNXPRODDB01=random()%30* (.4 * id), WINPRODWEB01=random()%30* id,WINPRODWEB02=random()%30* id
+| rename starttime as _time
+| chart avg(LNXPRODAPP01) as LNXPRODAPP01, avg(LNXPRODAPP02) as LNXPRODAPP02, avg(LNXPRODDB01) as LNXPRODDB01, avg(WINPRODWEB01) as WINPRODWEB01, avg(WINPRODWEB02) as WINPRODWEB02 over _time</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">center</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">$type$</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">bright</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">dd-mmm</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#2f4554</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Primary Data Center CPU Use on:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Percent CPU (%)</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMin">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMinCustom">0</option>
+        <option name="drilldown">none</option>
+        <option name="height">282</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Line Chart</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| makeresults count=7
+| streamstats count as id
+| eval Washington=random()%50+40, Singapore=random()%100+30, Auckland=random()%100+20, Melbourne=random()%100+10,Paris=random()%100
+| eval _time=case(id=1,"Checkers",id=2,"Tic Tac Toe",id=3,"Chess",id=4,"Solitaire",id=5,"Bridge", id=6,"Snakes and Ladders",id=7,"Snap")
+| table _time, Washington, Singapore,Auckland, Melbourne, Paris</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">left</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">line</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">blues</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">HH:MM</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#749f83</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Online Games Played:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Locations of Players</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Total Games Played</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">dataMax</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">300</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMin">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMinCustom">0</option>
+        <option name="drilldown">none</option>
+        <option name="height">340</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Area Chart</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| gentimes start=-1 increment=1h 
+| streamstats count as id
+| search id&gt;7 AND id&lt;18
+| eval bronze=random()%80 * (.8 * id), silver=random()%100* (.6 * id), gold=random()%100* (.4 * id), platinum=random()%100* id,ultra=random()%100* id
+| rename starttime as _time
+| chart avg(bronze) as "Bronze Tier", avg(silver) as "Silver Tier", avg(gold) as "Gold Tier", avg(platinum) as "Platinum Tier", avg(ultra) as "Ultra Tier" over _time</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">center</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">area</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">fall</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">HH:MM</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#61a0a8</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Total Value of Sales in hour:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Sales $</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">dataMax</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMin">dataMin</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMinCustom">100</option>
+        <option name="drilldown">none</option>
+        <option name="height">282</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Pie Chart</h1>
+      </html>
+    </panel>
+    <panel>
+      <html>
+        <h1>Doughnut Chart</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| makeresults count=7
+| streamstats count as id
+| eval Washington=random()%50+40, Singapore=random()%100+30, Auckland=random()%100+20, Melbourne=random()%100+10,Paris=random()%100
+| eval _time=case(id=1,"Checkers",id=2,"Tic Tac Toe",id=3,"Chess",id=4,"Solitaire",id=5,"Bridge", id=6,"Snakes and Ladders",id=7,"Snap")
+| table _time, Washington, Singapore,Auckland, Melbourne, Paris</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">left</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">pie</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">Splunk Categorical</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">HH:MM</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Game Popularity by City:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Percent CPU (%)</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">dataMax</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMin">none</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMinCustom">100</option>
+        <option name="drilldown">none</option>
+        <option name="height">282</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| inputlookup sample-data.csv
+| eval _time=strptime(time, "%m/%d/%Y %H:%M")
+| eval value = value * 1000000000
+| timechart span=120m eval(round(avg(value),0)) by name</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">center</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">doughnut</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">blues</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">HH:MM</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Doughnut Chart - time slice:</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Percent CPU (%)</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">dataMax</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="drilldown">none</option>
+        <option name="height">282</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$CSSONLY$">
+    <panel>
+      <html>
+        <style>
+		div.html {
+    background-color: #434a52;
+    border-radius: 10px;
+    color: white!important;
+    padding: 1px 0px 1px 5px!important;
+}
+
+.dashboard-row .dashboard-panel {background-color: transparent!important;}
+</style>
+      </html>
+    </panel>
+  </row>
+</dashboard>

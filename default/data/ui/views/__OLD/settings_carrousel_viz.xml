@@ -1,0 +1,172 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="general">general</set>
+  </init>
+  <label>Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="direction,format,numberformat,tokens" data-value="general">General</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="direction" data-unset-token="general,format,numberformat,tokens" data-value="direction">Direction</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="format" data-unset-token="general,direction,numberformat,tokens" data-value="format">Format</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="numberformat" data-unset-token="general,direction,format,tokens" data-value="numberformat">Number Format</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,direction,format,numberformat" data-value="tokens">Tokens</button>
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$general$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-general_carrousel.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Slides to Show</h2>The number of slides to show at the same time.<br /></p>
+			   <br /><p><h2>Scroll at a Time</h2>The number of slides to scroll each time the scroll is triggered. This can't be more than the total number of slides. If you make it more that the 'Slides to Show' then some slides will be skipped.<br /></p>
+			   <br /><p><h2>Autoplay</h2>Set autoplay to true to enable automatic scrolling of slides. Setting autoplay to False will mean only what is initialy visible will be displayed - all other slides will be hidden.<br /></p>
+			   <br /><p><h2>Autoplay Speed</h2>Autoplay speed determines how fast the slides will scroll. <br /><br />The options are: Very Slow, Slow, Normal, Fast, Very Fast<br /></p>
+			  <br /> <p><h2>Size</h2>The size of each slide is set here. Options are: Extra Small, Small, Medium Large, Extra Large, and Automatic.<br /><br />When you select Automatic, the size will be determined automatically by the height that you have set on the dashboard.</p>
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$direction$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-direction_carrousel.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Direction</h2>Left to Right, or Right to Left scrolling direction. Note that this does not change the text to right-to-left reading order. This option is ignored if you select Vertical orientation.<br /></p>
+              <br />
+              <p><h2>Orientation</h2>The orientation will determine whether the visualization will scroll horizontally or vertically. <br />
+              <br /></p>
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$format$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-format_carrousel.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Change Case</h2>ALL CAPS: Enforce ALL-CAPS for all text in the Value fields<br /><br />No Change: Leave text as-is.
+              <br /></p><br />
+              <p><h2>Color Mode</h2>Background - fills in the background of the slides depending on the range field<br />Foreground - colors the text and border based on the range field.</p>
+			  <table width="260" cellpadding="2" cellspacing="0" border="1" style="border: 1px solid #cccccc; border-collapse:collapse;">
+              <tr><td align="center"><strong>Color</strong></td><td align="center"><strong>Value for 'range' field</strong></td></tr>
+              <tr><td align="center" style="background-color: #6EB9D9">Blue</td><td align="center">blue<br />debug<br />unknown</td></tr>
+			  <tr><td align="center" style="background-color: #65a637">Green</td><td align="center">green<br />ok<br />low</td></tr>
+              <tr><td align="center" style="background-color: #f7bc38">Amber</td><td align="center">amber<br />warning<br />orange<br />elevated<br />medium</td></tr>
+              <tr><td align="center" style="background-color: #D93F3C">Red</td><td align="center">red<br />critical<br />severe<br />high</td></tr>
+            </table>
+              <br />
+               <p><h2>Default Caption</h2>If no value is set for the caption field in the search, this value will be used. If left blank, no caption will display.
+              <br /></p><br />
+			  <p><h2>Show Dots</h2>This setting will optionally display the navigation dots beneath the slides when in horizontal mode. Clicking the dots will navigate to the slides.
+              <br /></p>
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$numberformat$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-numberformat_carrousel.png"/>
+            </td>
+            <td valign="top">
+              <p><h2>Precision</h2>Set the number of decimal places to display for numerical values. This is not applicable to text values.
+              </p>
+              <br />
+              <p><h2>Use Thousands Separators</h2>For numerical values, optionally add a comma after every group of 3 digits. E.g. will convert 123456789 to 123,456,789.
+              <br /></p><br />
+              <p><h2>Default Unit</h2>If no value is set fo the unit field in the search, this value will be used. If left blank, no caption will display. 
+              <br /></p><br />
+			  <p><h2>Unit Position</h2>Where to place the unit (either from the search or the default unit). E.g. '$' is displayed before the value, where as '%' is displayed after.
+              <br /></p>              
+              <br />
+              
+              
+              
+              
+            </td>
+          </tr>
+          </table>
+            
+            </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-tokens_carrousel.png"/>
+            </td>
+            <td valign="top">
+              <p><h2>Tokens</h2>Tokens are generated eacht time you click a slide. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.
+              </p>
+              <br />
+              <p><h2>Formatted Value</h2>This is the 'value' field, that has undergone any formatting changes from the options, e.g. all-caps for text or decimal places and commas for numbers. Use this token to display to the user. <br/>Default value: $$cv_formatted_value$$
+              <br /></p><br />
+              <p><h2>Raw Value</h2>This is the value as it was defined in the search results. Use this token in searches for exact matches of the raw data. <br />Default value: $$cv_raw_value$$
+              <br /></p><br />
+			  <p><h2>Caption</h2>This is the 'caption' field. If you use the hostname of a server as the caption, you can create additional searches by using this value.<br />Default value: $$cv_caption$$
+              <br /></p>              
+			  <p><h2>Unit</h2>This is the 'unit' field, or the default value for unit. Use this token to help users make sense of the Formatted Value token. <br />Default value: $$cv_unit$$
+              <br /></p>              
+              <br />
+              
+              
+              
+              
+            </td>
+          </tr>
+          </table>
+            
+            </html>
+    </panel>
+  </row>
+</dashboard>

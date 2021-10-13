@@ -1,0 +1,137 @@
+<dashboard theme="light">
+  <label>Animated Chart Viz</label>
+  <row>
+    <panel>
+      <html>
+      <h2>Animated Chart Visualization</h2>
+      <h4>Version: 1.0.0</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.net">daniel@spavin.net</a>)</h4>
+	  <h4>Integrated in <b>Splunk_TA_common-viz</b> by Patrick Vanreck (<a href="mailto:yoyonet-info@gmx.ch">yoyonet-info@gmx.ch</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.animated_chart_viz">
+        <search>
+          <query>| gentimes start=-7 increment=1d 
+| streamstats count as id
+| eval LNXPRODAPP01=random()%30 * (.8 * id), LNXPRODAPP02=random()%30* (.6 * id), LNXPRODDB01=random()%30* (.4 * id), WINPRODWEB01=random()%30* id,WINPRODWEB02=random()%30* id
+| rename starttime as _time
+| chart avg(LNXPRODAPP01) as LNXPRODAPP01, avg(LNXPRODAPP02) as LNXPRODAPP02, avg(LNXPRODDB01) as LNXPRODDB01, avg(WINPRODWEB01) as WINPRODWEB01, avg(WINPRODWEB02) as WINPRODWEB02 over _time</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.alignTitle">center</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.autoPlay">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.backgroundColor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.chartType">bar</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.colorTheme">bright</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.dateFormat">mmm-dd</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.playSpeed">moderate</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.seriesColor">#2f4554</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeSlice">false</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.showTimeline">true</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.title">Animated Chart Viz</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenLabel">pc_label_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenName">ac_name_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenTime">ac_time_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.tokenValue">pc_value_token</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.xAxisLabel">Servers in the data centre</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisLabel">Percent CPU (%)</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMax">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMaxCustom">100</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMin">custom</option>
+        <option name="Splunk_TA_common-viz.animated_chart_viz.yAxisMinCustom">0</option>
+        <option name="drilldown">none</option>
+        <option name="height">331</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    
+    
+<h1>Version Support</h1>
+<p>8.1, 8.0, 7.3, 7.2, 7.1, 7.0</p>
+
+
+<h1>Who is this app for?</h1>
+<p>This app is for dashboard designers who want to view trends in metrics over time.</p>
+
+<h1>How does the app work?</h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p>
+<p>To use it in your dashboards, simply install the app, and create a search using timechart to provide the values to display.</p>
+
+
+<h1>Usecases for the Animated Chart Visualization:</h1>
+<ol>
+  <li>Displaying server status based on CPU, Memory, I/O, or Disk usage over time</li>
+  <li>Showing customer satisfaction ratings over time</li>
+  <li>Viewing a single metric by host over time</li>
+</ol>
+
+
+<h1>Supported Fields:</h1>
+<p>Animated Charts Viz is designed to use the output from <code>| timechart</code>. Use the following fields in the search:</p>
+<ul>
+  <li>_time (required) The time period for the event. If no time value is supplied, the first field is used for the slices.</li>
+  <li>&lt;category 1&gt; (required) The name for the value, e.g host, and the actual value.</li>
+  <li>&lt;category 2&gt; (optional) The name for the value, e.g host, and the actual value.</li>
+  <li>&lt;category 3&gt; (optional) The name for the value, e.g host, and the actual value.</li>
+</ul>
+
+<h1>Example Search</h1>
+<p>
+<code style="white-space: pre-wrap;padding:4px;">index=_internal earliest=-24h@h latest=now
+| timechart span=15m count by sourcetype</code>
+</p>
+
+
+<h1>Tokens</h1>
+<p>Tokens are generated each time you click an item. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.</p>
+ <ul>
+          <li>Name : This is the name of the selected item. Default value: $$ac_name_token$$</li>
+          <li>Value : This is the value of the selected item you clicked. Default value: $$ac_value_token$$</li>
+          <li>Time Slice : This is the current time slice of the visualisation. Default value: $$ac_time_token$$</li>
+</ul>
+<br/>
+<h1>Release Notes</h1>
+<h2>v 1.0.0</h2>
+<ul>
+  <li>Initial Version</li>
+</ul>
+
+<h1>Issues and Limitations</h1>
+<ul>
+          <li>To reduce the impact to browser resources there is a limit of 100 time slices (rows of results). You can reduce how many rows are generated by increasing the span of the <code>| timechart</code> command. E.g. <code>| timechart span=1h</code> for 1 hour increments. Any rows after the 100th are ignored.</li>
+<li>Tokens like $$click.value$$ are not supported, use the tokens in the options popup instead (defaults: $$ac_name_token$$, $$ac_value_token$$, $$ac_time_token$$). Otherwise, drilldowns work as normal.</li>
+</ul>
+<p>If you have a bug report or feature request, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+
+<h1>Privacy and Legal</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualizaton.</p>
+
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+  <br/> 
+<h1>3rd Party Libraries</h1>    
+<p>
+          <a href="https://https://echarts.apache.org/">https://echarts.apache.org/</a>
+        </p>
+
+    
+  </html>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,133 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="menuItem">default-thresholds</set>
+  </init>
+  <label>About</label>
+  <description>About the Performance Analysis visualization.</description>
+  <row>
+    <panel>
+      <html>
+      <h2>Performance Analysis Visualization</h2>
+      <h4>Version: 1.3</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.net">daniel@spavin.net</a>)</h4>
+	  <h4>Integrated in <b>Splunk_TA_common-viz</b> by Patrick Vanreck (<a href="mailto:yoyonet-info@gmx.ch">yoyonet-info@gmx.ch</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Server Infrastructure and Application Performance</title>
+      <viz type="Splunk_TA_common-viz.performance_analysis">
+        <search>
+          <query>| inputlookup sample-data.csv | rename time as _time| table _time, name, value, status, warning_threshold, critical_threshold</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.OKIsLowOrHigh">low</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalColour">#DD0000</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalThreshold">18</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeEnd">7</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeStart">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.granularity">60</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.noDataColour">#5EBFC6</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okColour">#78B24A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showStatusAsText">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.sortOrder">az</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.timeFormat">h:mm A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenEarliest">pa_earliest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenLatest">pa_latest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenName">pa_name</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningColour">#f8be34</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningThreshold">12</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row><panel><html>
+    
+    
+<h1>Version Support</h1>
+<p>7.3, 7.2, 7.1, 7.0, 6.6, 6.5</p>
+
+
+<h1> Who is this app for? </h1>
+<p>This app is for anyone who wants to show how two related metrics vary over time in a tablular format.</p>
+
+
+<h1>How does the app work? </h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p><p>To use it in your dashboards, simply install the app, and create a search that provides the following fields: _time, name, value, status</p>
+
+
+<h1>Usecases for the Performance Analysis Visualization:</h1>
+<ol><li>Displaying both infrastructure and application health over time</li>
+<li>Showing both performance and availability of transactions from a selenium script (Application Performance Monitoring)</li>
+<li>Monitoring Application health and exceptions over the past day or week</li>
+<li>Tracking the number of code commits vs build status over time</li></ol>
+
+
+<h1>The following fields can be used in the search:</h1>
+<ul>
+  <li>_time (required): the time field for the events.</li>
+<li>name (required): The label for each row of the table. This usually represents the server name.</li>
+<li>value (required): The numeric value of the primary metric - e.g. CPU %. This will determine the colour of the cells.</li>
+<li>status (required): This represents the secondary metric - e.g. Application health. Status is used to create the icon or numeric value. Can be textual: GREEN / AMBER / RED, or numeric: 12.22. If you don't want to show a status, you can set this to "" (...| eval staus="" |...)</li>
+<li>warning_threshold (optional): This value determines when the cell background color changes from GREEN to AMBER. You can set a different warning_threshold for each name, or use the default settings.</li>
+<li>critical_threshold (optional): This value determines when the cell background color changes from AMBER to RED. You can set a different critical_threshold for each name, or use the default settings.</li>
+</ul>
+
+
+<h1>Example Search</h1>
+<p><code>index=_internal earliest = -24h@h group=*| rename group as name, date_second as value, date_minute as status | table _time, name, value, status</code></p>
+
+<p>A sample data set is included with the app:</p>
+
+<p><code>| inputlookup sample-data.csv</code></p>
+
+<h1># Release Notes #</h1>
+<h2>v 1.3.0</h2>
+<ul>
+	<li>Fixed issue with Splunk 7.3 showing 'undefined' on the options menu</li>
+	<li>Fixed bug where null values were converted to zero. Now you can display 'No Data' coloring where all values were null.</li>
+	<li>Down-time is now turned off by default. It can still be enabled via the Options window. </li>
+</ul>
+
+<h2>v 1.2.0</h2>
+<ul>
+	<li>Events previously had to be in time order, causing some searches to show incorrect results. That requirement has now been removed. Even when sorted in a random order the viz will display the start and end times correctly.</li>
+	<li>You can now have Critical values lower than OK values - e.g. number of purchases per hour is critical at 0, but OK at 50. See Options - Default Thresholds</li>
+	<li>Names can now be sorted by order found in search results (default), alphabetical, or reverse alphabetical.</li>
+	<li>The maximum size of the visualization has been increased from 1,000px to 10,000px so you can view more KPIs without seeing a scroll bar.</li>
+</ul>
+
+
+<h2>v 1.1.0</h2>
+<ul><li>Updated drill down support to filter by name as well as date</li>
+<li>Added token support to allow interactive dashboards</li>
+<li>Created new dashboard to feature the drill down and token features</li>
+</ul>
+
+<h2>v 1.0.0</h2>
+<ul><li>Initial version</li></ul>
+
+
+<h1>Possible Issues </h1>
+<p>No issues have been raised. If you have a bug report, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a></p>
+
+
+<h1>Privacy and Legal</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualizaton.</p>
+
+
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a></p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+    
+    
+  </html></panel></row>
+</dashboard>

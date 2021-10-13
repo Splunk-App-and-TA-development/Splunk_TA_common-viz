@@ -1,0 +1,352 @@
+<dashboard theme="light">
+  <label>Region Chart Viz - Documentation</label>
+  <row>
+    <panel>
+      <html>
+<style>
+
+.dashboard.view-mode {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.dashboard-row .dashboard-panel {
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+.dashboard-row .dashboard-panel h2.panel-title {
+  padding-top: 80px;
+}
+.table td, .table th {
+  vertical-align: middle;
+  text-align: center;
+}
+.highlight { white-space:nowrap; }
+</style>
+<div>
+<h2>Region Chart Viz</h2>
+<p>A line chart visualization that supports data-driven, colored regions.</p>
+
+<p>Can be used to show:</p>
+<ul>
+  <li>configured thresholds</li>
+  <li>the spread of data (for example using standard deviation/interquartile range)</li>
+  <li>where data might be incomplete (because it is still arriving)</li>
+  <li>maintenance periods</li>
+  <li>business hours</li>
+</ul>
+<p>Provide valuable context to your line charts. Built with D3.</p>
+
+<p>See also "Get ITSI Thresholds" ( <a href="https://splunkbase.splunk.com/app/4910/" target="_blank">https://splunkbase.splunk.com/app/4910/</a> ) - a custom command to retrieve ITSI time-based thresholds.</p>
+<p>
+Copyright (C) 2020 Chris Younger | <a href="https://splunkbase.splunk.com/app/4911/#/details">Splunkbase</a> | <a href="https://github.com/ChrisYounger/region_chart_viz">Source code</a> | <a href="https://answers.splunk.com/app/questions/4911.html">Questions, Bugs or Suggestions</a> | <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds">My Splunk apps</a>
+          </p>
+
+<br/>
+          <br/>
+          <br/>
+          <br/>
+
+<h2>Usage</h2>
+<p>This visualisation should work with any data that works with the Splunk built-in line chart. The first column (which is often "_time") will be the X-axis and subsequent columns will be rendered as lines (so they should be numeric values). 
+A column with the specific name <code class="highlight">regions</code> defines the colored regions to draw behind the chart. </p>
+
+<img alt="" src="/static/app/Splunk_TA_common-viz/images/region_chart_viz_example_data.png" />
+          <br/>
+          <br/>
+
+<p>Regions are drawn per-column vertically, from bottom to top. Horizontal regions can be drawn by setting the same region value on multiple columns. See the examples below.</p>
+
+<p>The format for the region field is comma-seperated key-value pairs and best explained with examples:</p>
+<table border="1" class="table">
+<thead>
+<tr>
+<th>"regions" field</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<span style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; background-color:rgb(30, 30, 30);padding:10px;margin:5px; color: #ce9178;white-space:nowrap;'>red</span></td>
+<td style="text-align:left;">The most basic example that creates a region. A red column of data will be drawn from the bottom of the chart to the top of chart. Region colors can be specificed as valid HTML colours (RBG, Hex, named colours, etc..). </td>
+</tr>
+<tr>
+<td>
+<span style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; background-color:rgb(30, 30, 30);padding:10px;margin:5px; color: #ce9178;white-space:nowrap;'>Out of hours=#ccccc</span></td>
+<td style="text-align:left;">Create a named region in a grey color for the chart column. This name will be seen on the tooltip when hovering the chart.</td>
+</tr>
+<tr>
+<td>
+<span style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; background-color:rgb(30, 30, 30);padding:10px;margin:5px; color: #ce9178;white-space:nowrap;'>green,1000,orange,1500,red</span>
+</td>
+<td style="text-align:left;">Create a green region from the bottom of the chart to 1000, an orange region from 1000 to 1500 and a red region from 1500 to the top of the chart.</td>
+</tr>
+<tr>
+<td>
+<span style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; background-color:rgb(30, 30, 30);padding:10px;margin:5px; color: #ce9178;white-space:nowrap;'>,1000,Warning=orange,1500,Critical=red</span></td>
+<td style="text-align:left;">Create a orange region from 1000 to 1500 and a red region from 1500 to the top of the chart.</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Examples:</title>
+      </panel>
+      </row>  
+  <row>
+    <panel>
+      <title>Charting ITSI Time-Based Policies</title>
+      <html>
+<p>Especially useful for visualizing the adaptive thresholds that were set by ITSI (also works with ITSI static thresholds). Requires add-on <a href="https://splunkbase.splunk.com/app/4910/" target="_blank">Get ITSI Thresholds - custom command (https://splunkbase.splunk.com/app/4910/)</a></p>
+
+<div style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; color:rgb(212, 212, 212); background-color:rgb(30, 30, 30);padding:10px;margin:5px;'><span><span style="color: #3dc9b0;">index</span><span style="color: #d4d4d4;">=</span><span style="color: #ce9178;">"itsi_summary"</span><span style="color: #3dc9b0;"> itsi_service_id</span><span style="color: #d4d4d4;">=</span><span style="color: #ce9178;">c2d8f443-fd65-4872-b3b8-1ac7757b57f6</span><span style="color: #d4d4d4;"> <span style="color: #3dc9b0;">kpiid</span><span style="color: #d4d4d4;">=</span><span style="color: #ce9178;">a672f70631ce28a0be31e1f2</span> indexed</span><span style="color: #d4d4d4;">_is_service_max_severity_event=</span><span style="color: #b5cea8;">0</span><span style="color: #d4d4d4;"> </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timechart</span><span style="color: #d4d4d4;"> span=</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">h </span><span style="color: #c586c0;">avg</span><span style="color: #d4d4d4;">(alert_value) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> alert_value </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #569cd6;font-weight: bold;"> getitsithresholds <span style="color: #3dc9b0;">service</span><span style="color: #d4d4d4;">=</span><span style="color: #ce9178;">c2d8f443-fd65-4872-b3b8-1ac7757b57f6</span> <span style="color: #3dc9b0;">kpi</span><span style="color: #d4d4d4;">=</span><span style="color: #ce9178;">a672f70631ce28a0be31e1f2</span></span></span><br/></div>
+
+</html>
+    </panel>
+  </row>
+    <row>
+    <panel>
+      <title>Show business hours</title>
+      <html>
+<p>Over a 24 hour chart, show the hours that are important.</p>
+
+<div style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; color:rgb(212, 212, 212); background-color:rgb(30, 30, 30);padding:10px;margin:5px;'><span><span style="color: #608b4e;">&lt; ... search ... &gt;</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timechart</span><span style="color: #d4d4d4;"> span=</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">h </span><span style="color: #c586c0;">avg</span><span style="color: #d4d4d4;">(series1) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> avg</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">eval</span><span style="color: #d4d4d4;"> hour = </span><span style="color: #c586c0;">strftime</span><span style="color: #d4d4d4;">(_time, </span><span style="color: #ce9178;">"%H"</span><span style="color: #d4d4d4;">)</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">eval</span><span style="color: #d4d4d4;"> regions = </span><span style="color: #c586c0;">if</span><span style="color: #d4d4d4;">(hour &gt; </span><span style="color: #b5cea8;">17</span><span style="color: #d4d4d4;"> </span><span style="color: #dd6a6f;">OR</span><span style="color: #d4d4d4;"> hour &lt; </span><span style="color: #b5cea8;">9</span><span style="color: #d4d4d4;">,</span><span style="color: #ce9178;">"Out of hours=#009DD9"</span><span style="color: #d4d4d4;">,</span><span style="color: #ce9178;">""</span><span style="color: #d4d4d4;">) </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">fields</span><span style="color: #d4d4d4;"> - hour</span></span><br/></div>
+
+</html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.region_chart_viz">
+        <search>
+          <query>| makeresults count=864 
+| streamstats count 
+| eval _time = _time - ((count - 2) * 5 * 60) 
+| eval series1 = (random() % 5000) 
+| timechart span=1h avg(series1) as avg
+| eval hour = strftime(_time, "%H")
+| eval regions = if(hour &gt; 17 OR hour &lt; 9,"Out of hours=#009DD9","") 
+| fields - hour</query>
+          <earliest>-60s</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.last_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_color">#000000</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_size">3</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.min">0</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.multi_series">shaded</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.nulls">gap</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.region_opacity">35</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.shadow">20</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.status_dots">show</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.summ_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_precision">1</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_thousands">yes</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_unit_position">after</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.type">curve</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.xtitle_show">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.ytitle_show">hide</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>  
+  <row>
+    <panel>
+      <title>Show static thresholds</title>
+      <html>
+<p>Hardcoded simple static thresholds.</p>
+
+<div style='font-family: Consolas, "Courier New", monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; color:rgb(212, 212, 212); background-color:rgb(30, 30, 30);padding:10px;margin:5px;'><span><span style="color: #608b4e;">&lt; ... search ... &gt;</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timechart</span><span style="color: #d4d4d4;"> span=</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">m </span><span style="color: #c586c0;">avg</span><span style="color: #d4d4d4;">(series1) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> avg</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">eval</span><span style="color: #d4d4d4;"> regions = </span><span style="color: #ce9178;">"normal=#99D18B,5000,Warning=#FCB64E,7000,Error=#B</span><span style="color: #ce9178;">50101"</span><span style="color: #d4d4d4;"> </span></span><br/></div>
+
+</html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.region_chart_viz">
+        <search>
+          <query>| makeresults count=60 
+| streamstats count 
+| eval _time = _time - (count * 60) 
+| eval series1 = 3000 + (random() % 5000) 
+| timechart span=1m avg(series1) as avg
+| eval regions = "normal=#99D18B,5000,Warning=#FCB64E,7000,Error=#B50101" </query>
+          <earliest>-60s</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.last_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_color">#000000</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_size">3</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.min">0</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.multi_series">shaded</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.nulls">gap</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.region_opacity">35</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.shadow">20</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.status_dots">show</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.summ_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_precision">1</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_thousands">yes</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_unit_position">after</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.type">curve</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.xtitle_show">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.ytitle_show">hide</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>  
+  <row>
+    <panel>
+      <title>Show that data might be incomplete</title>
+      <html>
+<p>Add a gray region to highlight the area of the chart that is less than 15 minutes old. Can easily be adapted to show a maintinance window.</p>
+
+<div style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; color:rgb(212, 212, 212); background-color:rgb(30, 30, 30);padding:10px;margin:5px;"><span><span style="color: #608b4e;">&lt; ... search ... &gt;</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timechart</span><span style="color: #d4d4d4;"> span=</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">h </span><span style="color: #c586c0;">avg</span><span style="color: #d4d4d4;">(series1) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> avg</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">eval</span><span style="color: #d4d4d4;"> regions = </span><span style="color: #c586c0;">if</span><span style="color: #d4d4d4;">(_time &gt; (</span><span style="color: #c586c0;">now</span><span style="color: #d4d4d4;">() - </span><span style="color: #b5cea8;">900</span><span style="color: #d4d4d4;">),</span><span style="color: #ce9178;">"Data still arriving=#aaaaaa"</span><span style="color: #d4d4d4;">,</span><span style="color: #ce9178;">""</span><span style="color: #d4d4d4;">)</span></span><br/></div>
+
+</html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.region_chart_viz">
+        <search>
+          <query>| makeresults count=60 
+| streamstats count 
+| eval _time = _time - (count * 60) 
+| eval series1 = 3000 + (random() % 5000) 
+| timechart span=1m avg(series1) as avg
+| eval regions = if(_time &gt; (now() - 900) ,"Data still arriving=#aaaaaa","")</query>
+          <earliest>-60s</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.last_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_color">#000000</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_size">3</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.min">0</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.multi_series">shaded</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.nulls">gap</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.region_opacity">35</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.shadow">20</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.status_dots">show</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.summ_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_precision">1</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_thousands">yes</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_unit_position">after</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.type">curve</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.xtitle_show">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.ytitle_show">hide</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Show 2/3 standard deviations above/below the average, for same time last week</title>
+      <html>
+<p>Calculate the historical average and standard deviation of the data. Then mark regions based on the standard deviations.</p>
+
+<div style="font-family: Consolas, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 14px; line-height: 19px; letter-spacing: 0px; color:rgb(212, 212, 212); background-color:rgb(30, 30, 30);padding:10px;margin:5px;"><span><span style="color: #608b4e;">&lt; ... search over 2 weeks of data ... &gt;</span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timechart</span><span style="color: #d4d4d4;"> span=</span><span style="color: #b5cea8;">1</span><span style="color: #d4d4d4;">h </span><span style="color: #c586c0;">avg</span><span style="color: #d4d4d4;">(FIELD) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> avg </span><span style="color: #c586c0;">stdev</span><span style="color: #d4d4d4;">(FIELD) </span><span style="color: #dd6a6f;">as</span><span style="color: #d4d4d4;"> stddev </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">timewrap</span><span style="color: #d4d4d4;"> w </span><span style="color: #3dc9b0;">series</span><span style="color: #d4d4d4;">=short </span><span style="color: #3dc9b0;">align</span><span style="color: #d4d4d4;">=now </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">where</span><span style="color: #d4d4d4;"> _time &gt; </span><span style="color: #c586c0;">now</span><span style="color: #d4d4d4;">() - </span><span style="color: #b5cea8;">86400</span><span style="color: #d4d4d4;"> </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">eval</span><span style="color: #d4d4d4;"> regions = </span><span style="color: #ce9178;">"3 standard deviations below=#B50101,"</span><span style="color: #d4d4d4;"> + </span><span style="color: #c586c0;">tostring</span><span style="color: #d4d4d4;">(avg_s1 - stddev_s1 * </span><span style="color: #b5cea8;">3</span><span style="color: #d4d4d4;">) + </span><span style="color: #ce9178;">",2 standard deviations below=#FCB64E,"</span><span style="color: #d4d4d4;"> + </span><span style="color: #c586c0;">tostring</span><span style="color: #d4d4d4;">(avg_s1 - stddev_s1 * </span><span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">) + </span><span style="color: #ce9178;">",normal=#99D18B,"</span><span style="color: #d4d4d4;"> + </span><span style="color: #c586c0;">tostring</span><span style="color: #d4d4d4;">(avg_s1 + stddev_s1 * </span><span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">) + </span><span style="color: #ce9178;">",2 standard deviations above=#FCB64E,"</span><span style="color: #d4d4d4;"> + </span><span style="color: #c586c0;">tostring</span><span style="color: #d4d4d4;">(avg_s1 + stddev_s1 * </span><span style="color: #b5cea8;">3</span><span style="color: #d4d4d4;">) + </span><span style="color: #ce9178;">",3 standard deviations above=#B50101"</span><span style="color: #d4d4d4;"> </span></span><br/><span><span style="color: #d4d4d4;font-weight: bold;">|</span><span style="color: #d4d4d4;"> </span><span style="color: #569cd6;font-weight: bold;">table</span><span style="color: #d4d4d4;"> _time avg_s0 avg_s1 regions</span></span><br/></div>
+
+</html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.region_chart_viz">
+        <search>
+          <query>| makeresults count=4032 
+| streamstats count 
+| eval _time = _time - ((count - 2) * 5 * 60) 
+| eval series1 = if(count &lt; 2016, 6000, 5000) + (random() % 5000) + if(count &lt; 20, if(count &lt; 10, 7000, 3000), 0) 
+| timechart span=1h avg(series1) as avg stdev(series1) as stddev 
+| timewrap w series=short align=now 
+| where _time &gt; now() - 86400 
+| eval regions = "3 standard deviations below=#B50101," + tostring(avg_s1 - stddev_s1 * 3) + ",2 standard deviations below=#FCB64E," + tostring(avg_s1 - stddev_s1 * 2) + ",normal=#99D18B," + tostring(avg_s1 + stddev_s1 * 2) + ",2 standard deviations below=#FCB64E," + tostring(avg_s1 + stddev_s1 * 3) + ",3 standard deviations above=#B50101" 
+| table _time avg_s0 avg_s1 regions</query>
+          <earliest>-14d@d</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.last_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_color">#000000</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.line_size">3</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.min">0</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.multi_series">shaded</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.nulls">gap</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.region_opacity">35</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.shadow">20</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.status_dots">show</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.summ_text">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_precision">1</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_thousands">yes</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.text_unit_position">after</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.type">curve</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.xtitle_show">hide</option>
+        <option name="Splunk_TA_common-viz.region_chart_viz.ytitle_show">hide</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Formatting options</title>
+      <html>
+
+There are two modes of rendering the lines when there are multiple series of data. 
+"Lighter/Dashed" is best suited when the data series are historical trend lines. E.g. Comparing CPU performance this week against last week and the week before. 
+"Coloured" is best suited when the data series are peers. E.g. The average CPU of three servers in a cluster.
+<table style="width:100%;"><tr><td style="height: 250px; background: url(/static/app/Splunk_TA_common-viz/images/region_chart_viz_example_dashed.png) no-repeat center center;background-size: contain;"></td><td style="background: url(/static/app/Splunk_TA_common-viz/images/region_chart_viz_example_colored.png) no-repeat center center;background-size: contain;"></td></tr></table>
+<br/><br/>
+There are some text overlays that can be enabled. Note that these overlays are only for the primary data series.
+<img alt="" src="/static/app/Splunk_TA_common-viz/images/region_chart_viz_example_formatting.png" style="height:300px" />
+
+        <br/>
+        <br/>
+        <br/>
+</html>
+    </panel>
+  </row>  
+  <row>
+    <panel>
+      <title>Third party software</title>
+      <html>
+<p>The following third-party libraries are used by this app. Thank you!</p>
+<ul>
+<li>jQuery - MIT - <a href="https://jquery.com/">https://jquery.com/</a>
+          </li>
+<li>D3 - BSD 3-Clause - <a href="https://d3js.org/">https://d3js.org/</a>
+          </li>
+<li>TinyColor - MIT - <a href="https://github.com/bgrins/TinyColor">https://github.com/bgrins/TinyColor</a>
+          </li>
+<li>Font Awesome - Creative Commons Attribution-ShareAlike 4.0 License - <a href="https://fontawesome.com/">https://fontawesome.com/</a>
+          </li>
+</ul>
+<br/>
+        <br/>
+        <br/>
+        <br/>
+</html>
+    </panel>
+  </row>
+</dashboard>

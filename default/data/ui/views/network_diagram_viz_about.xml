@@ -1,0 +1,304 @@
+<dashboard theme="light" version="1.1">
+  <label>Network Diagram Viz</label>
+  <row>
+    <panel>
+      <html>
+      <h2>Network Diagram Visualization</h2>
+      <h4>Version: 2.0.0</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.net">daniel@spavin.net</a>)</h4>
+	  <h4>Integrated in <b>Splunk_TA_common-viz</b> by Patrick Vanreck (<a href="mailto:yoyonet-info@gmx.ch">yoyonet-info@gmx.ch</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <title>Network Diagram Viz - v2.0.0</title>
+        <search>
+          <query>| makeresults count=25
+| streamstats count as from 
+| eval type=case(from==1, "usergroups", from==2, "users", from==3, "server", from==4, "database",from==5, "desktop",from==6, "laptop",from==7, "printer",from==8, "harddrive",from==9,"wifi",from==10, "code",from==11, "money",from==12, "bell"
+,from==13, "shopping-cart",from==14, "comment",from==15, "exclamation-circle",from==16, "file",from==17, "globe",from==18, "sitemap",from==19, "image",from==20, "info", from==21, "cloud",from==22,"envelope",from==23,"star",from==24,"code-branch",from==25,"folder")
+
+| eval to=case(from==2, "usergroups", from==3, "users", from==4, "server", from==5, "database",from==6, "desktop",from==7, "laptop",from==8, "printer",from==9, "harddrive",from==10,"wifi",from==11, "code",from==12, "money",from==13, "bell"
+,from==14, "shopping-cart",from==15, "comment",from==16, "exclamation-circle",from==17, "file",from==18, "globe",from==19, "sitemap",from==20, "image",from==21, "info", from==22, "cloud",from==23,"envelope",from==24,"star",from==25,"code-branch")
+
+| eval from=type
+
+|  eval color = random()%4 | eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red")
+
+| eval value = type
+| table from, to, value, type, color
+| append[|makeresults | eval from="title", nodeText="Network Diagram Viz - Version 2.0.0", type="box", color="#3cd1e6"| table from, nodeText, type, color]
+      
+ |  append [ 
+ |  makeresults 
+ |  eval raw="from=\"usergroups\", x=\"-6842\", y=\"-1183\" ### from=\"users\", x=\"-6751\", y=\"-1097\" ### from=\"server\", x=\"-6653\", y=\"-1183\" ### from=\"database\", x=\"-6550\", y=\"-1097\" ### from=\"desktop\", x=\"-6447\", y=\"-1183\" ### from=\"laptop\", x=\"-6342\", y=\"-1097\" ### from=\"printer\", x=\"-6245\", y=\"-1183\" ### from=\"harddrive\", x=\"-6146\", y=\"-1097\" ### from=\"wifi\", x=\"-6037\", y=\"-1183\" ### from=\"code\", x=\"-5933\", y=\"-1097\" ### from=\"money\", x=\"-5838\", y=\"-1183\" ### from=\"bell\", x=\"-5714\", y=\"-1097\" ### from=\"shopping-cart\", x=\"-5608\", y=\"-1183\" ### from=\"comment\", x=\"-5497\", y=\"-1097\" ### from=\"exclamation-circle\", x=\"-5388\", y=\"-1183\" ### from=\"file\", x=\"-5273\", y=\"-1097\" ### from=\"globe\", x=\"-5167\", y=\"-1183\" ### from=\"sitemap\", x=\"-5049\", y=\"-1097\" ### from=\"image\", x=\"-4943\", y=\"-1183\" ### from=\"info\", x=\"-4838\", y=\"-1097\" ### from=\"cloud\", x=\"-4735\", y=\"-1183\" ### from=\"envelope\", x=\"-4622\", y=\"-1097\" ### from=\"star\", x=\"-4510\", y=\"-1183\" ### from=\"code-branch\", x=\"-4392\", y=\"-1097\" ### from=\"folder\", x=\"-4284\", y=\"-1183\" ### from=\"title\", x=\"-5512\", y=\"-1238\""
+ |  makemv delim="###" raw 
+ |  mvexpand raw 
+ |  rename raw  as  _raw 
+ |  extract 
+ |  table from, x, y]</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">178</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none`</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.designLayoutDashboard">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">cubicbezier</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    
+    
+<h1>Version Support</h1>
+<p>8.1, 8.0, 7.3, 7.2, 7.1, 7.0, 6.6, 6.5, 6.4</p>
+
+<br/>
+<h1>Who is this app for?</h1>
+<p>This app is for dashboard designers who want to display how different entities are related to eachother on a dashboard panel.</p>
+
+<br/>
+<h1>How does the app work?</h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p>
+<p>To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.</p>
+
+<br/>
+<h1>Usecases for the Network Diagram Visualization:</h1>
+<ol>
+  <li>Displaying current server status based on CPU, Memory, I/O, and Disk usage</li>
+  <li>Visually associating users with actions, e.g. purchases, crashes, errors</li>
+  <li>Visualising the connection speeds between two hosts or services</li>
+  <li>Showing how events are related to eachother</li>
+</ol>
+
+<br/>
+<h1>The following fields can be used in the search:</h1>
+<ul>
+  <li>from (required): The unique name of the source entity.</li>
+  <li>to (optional): The unique name of the destination entity.</li>
+  <li>value (optional): Text to display as a tool tip. Populates token: <em>$$row.value$$</em> when the node is clicked.</li>
+  <li>nodeText (optional): Text to display as the text under the node. Defaults to the <em>from</em> field. Populates token: <em>$$click.value$$</em> when a node is clicked.</li>
+  <li>type (optional): This is used to display the entity on the dashboard (from). Use the list of icons available, Splunk server icons, or shapes.</li>
+  <li>color (optional): Used to set the color of the text and icon (you can now color Splunk icons too).</li>
+  <li>linktext (optional): Text to display on the link between the from and to entities.</li>
+  <li>linkcolor (optional): Colour of the link - use HTML colours or "red" / "yellow" / "green" / "blue". Invalid colours may make the viz fail to display.</li>
+  <li>linkwidth (optional): the width of the link between nodes. The optimal size range is between 0 and 15.</li>
+  <li>linklength (optional): The length of the link between two nodes. Will be ignored if Physics is enabled.</li>
+  <li>x (optional): Used in the 'Create Layouts' dashboard to set the location within the viz.</li>
+  <li>y (optional): Used in the 'Create Layouts' dashboard to set the location within the viz.</li>
+</ul>
+<p>Options can be overwritten, so if type or color is set multiple times in the search results, the last value will be used. This is useful if you wish to set the icon types and values via a lookup table at the end of your search.  </p>
+<br/>
+<h1>Example Search</h1>
+<p>A simple way to create the data necessary for the visualisation is to:</p>
+<ol type="a">
+          <li>Select all the relevant data</li>
+          <li>Use <code>| appendpipe [...]</code> multiple times to define the FROM and TO values</li>
+          <li>
+            <![CDATA[Clean up the results by only outputting valid Network Diagram Viz fields]]>
+          </li>
+        </ol>
+  <p>This example looks at all hosts, indexes, and sourcetypes. Each row/event will have 3 fields defined: host, index, and sourcetype. By using <code>| appendpipe</code> and using <code>| stats</code> we can define the From -&gt; To relationships and define icons for each type:</p>
+  
+  <code>| tstats values(sourcetype) as sourcetype  WHERE index=* OR index=_* by host, index
+ | mvexpand sourcetype
+ | appendpipe [|stats count by host, index| rename host as from, index as to| eval type="server"]
+ | appendpipe [|stats count by index, sourcetype| rename index as from, sourcetype as to| eval type="index"]
+ | appendpipe [|stats count by sourcetype| rename sourcetype as from | eval type="file"]
+ | search from=*
+ | table from, to, type</code>
+
+<br/>
+
+<h1>Save Layout Designs</h1>
+<p>You can save the layout of a Network Diagram Viz to make sure a specific layout is always displayed on your dashboards.</p>
+<p>To create a layout, go to the <a href="create_designs" title="View the Create Layouts dashboard. ">Create Layouts</a> dashboard and follow these steps:</p>
+<ol>
+	<li>Paste in your search then click <i>Run Search</i> to generate a Network Diagram Viz</li>
+	<li>Drag the nodes around until you are happy with the design.</li>
+	<li>A new search is generated in the third panel. Replace your original search with the new search to save your layout.</li>
+</ol>
+<p>Note: You must have physics turned off: General &gt; Enable Physics = false<br/>
+You must also turn off hierarchy settings: Hierarchy &gt; Hierarchy View = false</p>
+
+<p>To prevent users from altering your layout, you can choose to disable draggable nodes: General &gt; Draggable Nodes = false</p>
+
+<br/>
+<h1>Tokens</h1>
+<p>Tokens are generated each time you click a node. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.</p>
+ <ul>
+          <li>Node or link text: This is the name of the node as it was defined in the search results for either the node or link. Default value: $$nd_value_token$$. Same as $$row.name$$.</li>
+          <li>Node (from): This is the unique node name (e.g. the server name) of the node you clicked, or if you clicked on a link it will show the <em>from</em> node. Default value: $$nd_node_token$$. Same as $$row.name$$.</li>
+          <li>Node (to): When you click on a link this is populated with the <em>to</em> node. Default value: $$nd_to_node_token$$. Same as $$row.to$$.</li>
+		  <li>Tool Tip: When you click on a node this is the tooltip value that pops up. Default value: $$nd_tooltip_token$$. Same as $$row.value$$.</li>
+</ul>
+<br/>
+<h1>Drill-Down</h1>
+<p>Drill-down support is available. To access the drill-down options, click the ... button when editing a dashboard, and select <em>Drilldown</em>. See <a href="drill_down_config" title="View the Drill-Down Settings dashboard. ">Drill-Down settings</a> for more information.</p>
+
+
+
+<br/>
+<h1>Release Notes</h1>
+<h2>v 2.0.0</h2>
+<ul>
+  <li>All 'to' nodes are now generated by default, simplifying the generating search.</li>
+  <li>The "box" type now has legible text. See it used on the Business Process example dashboard.</li>
+	<li>Added business process usecase with the updated "box" type</li>
+	<li>Drill-downs are disabled on all search results pages. This allows you to move the nodes around on the search/visualisation tab without performing a drill-down.</li>
+	<li>There is now a faint box around the node text to help legibility</li>
+	<li>Created new option for Physics: Partial. This option (along with dynamic lines and line length) will let you see multiple links between the same nodes without them overlapping.</li>
+	<li>Updated libraries to the latest versions</li>
+	<li>Bug fix: NodeText won't be overwritten with blank values</li>
+	<li>Bug fix: Fixed error where some default icon options were ignored</li>
+	<li>Other minor bug fixes</li>
+	
+	
+</ul>
+
+<h2>v 1.9.0</h2>
+<ul>
+    <li>Upgraded visjs code to latest version</li>
+	<li>Added layout option for directed hierarchies: shake towards. This will change the layout to favor roots or leaves when using the <em>directed</em> sort mode.</li>
+	
+	
+</ul>
+
+<h2>v 1.8.0</h2>
+<ul>
+    <li>Improved dark-mode compatibility for link text</li>
+	<li>Fixed bug were a panel resize would make the diagram appear off-centre</li>
+	<li>Added new field: nodeText so you can have a different label for a node to the <em>from</em> field. Defaults to the 'from' field value.</li>
+	<li>Added option to make drill-downs activate on double-click only, so you can move nodes around without it trying to drill-down.</li>
+	
+</ul>
+
+
+
+<h2>v 1.7.0</h2>
+<ul>
+    <li>Drill-downs now work on a single click, rather than a double click</li>
+	<li>You can now set the line length from search by specifying a <em>linkLength</em> field</li>
+	<li>Default link length can be set in options</li>
+	<li>Under Hierarchy settings you can now specify the distance between layers, and if phyiscs is disabled, spacing between nodes</li>
+	<li>The options menu has been re-organised to better group related options</li>
+	<li>Created a dark-mode version of the Create Layouts dashboard</li>
+</ul>
+
+<h2>v 1.6.0</h2>
+<ul>
+    <li>Huge performance increase - show up to 10,000 nodes within a few seconds. New performance dashboard to test out massive network diagrams.</li>
+	<li>Added new edge types to change the way nodes are linked: Dynamic, Cubic Bezier, Discrete, Continuous, Diagonal Cross, and Straight Cross.</li>
+	<li>Added arrows to edges to help show the flow. Show arrows at the start, middle, or end of edges.</li>
+	<li>Edges now have a tooltip when you hover over them if you set a linktext value.</li>
+	<li>There is a new token for tooltips: $$nd_tooltip_token$$.</li>
+	<li>Fixed bug when default icon was set to a logo icon.</li>
+	<li>Minor bug fixes related to grouping.</li>
+ </ul>
+
+
+<h2>v 1.5.0</h2>
+<ul>
+    <li>Drill-Down is now supported via the Drill-down menu. This change will enable drill-downs to other dashboards, searches and URLs while also supporting custom tokens.</li>
+	<li>There is now a date picker on the Layout Design dashboard to allow you to time limit your searches.</li>
+	<li>Both the node label and link text size can be increased - see the new options under General: Node Text Size and Link Text Size</li>
+	<li>Fixed bug where Splunk License server icon didn't change color</li>
+ </ul>
+
+
+<h2>v 1.4.0</h2>
+<ul>
+    <li>Splunk icons can now be colored: red, yellow, green, blue. Just set your <em>color</em> field in your search to one of these colors.<br/>
+		You can also use terms like 'error','bad','severe','high' for Red, 'amber','warning','medium','orange' for yellow, 'ok','good','low' for green, and 'debug','unknown' for blue.</li>
+ </ul>
+
+
+
+<h2>v 1.3.0</h2>
+<ul>
+    <li>Hundreds more icons available - see the Available Icons dashboard for the complete set.</li>
+    <li>Fixed options menu 'undefined' text that appears on Splunk 7.3.</li>
+ </ul>
+
+
+<h2>v 1.2.0</h2>
+<strong>User requested features:</strong>
+<ul>
+    <li>Control the width of links using the new linkwidth field in your search (optional).</li>
+    <li>Set the color of links using the new linkcolor field in your search (optional).</li>
+    <li>Use the link text as a token when you click on it - defaults to: $$nd_value_token$$.</li>
+    <li>Ability to disable zoom - new setting in the Options menu.</li>
+ </ul>
+<strong>Other updates:</strong>
+<ul>
+  <li>New icons - a range of new icons for Windows, Linux, Git, Skype, Java, Google Drive and others. See the Available Icons dashboard for the complete set.</li>
+  <li>When you click on a link between two nodes, you now get tokens for the <em>From</em> and <em>To</em> nodes, as well as the link text.</li>
+  <li>Fixed typos in dashboards and configuration settings.</li>
+</ul>
+
+
+<h2>v 1.1.0</h2>
+<ul>
+          <li>Save your layout designs. You can now use an in-built dashboard to create specific layouts based on your searches. A new search will be generated for use in your dashboards. See new dashboard: Create Layouts.</li>
+        </ul>
+
+<h2>v 1.0.0</h2>
+<ul>
+  <li>Initial version.</li>
+</ul>
+<br/>
+
+<h1>Issues and Limitations</h1>
+<p>If you have a bug report or feature request, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+
+<br/>
+<h1>Privacy and Legal</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualizaton.</p>
+<br/>
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+<br/> 
+<h1>3rd Party Libraries</h1>    
+<p>This visualization uses the network module from <a href="http://visjs.org">visjs.org</a>
+        </p>
+<p>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+        </p>
+<p>Icons made by <a href="https://fontawesome.com/">https://fontawesome.com</a>
+        </p>
+<style>code{white-space:pre-wrap;}</style>
+    
+  </html>
+    </panel>
+  </row>
+</dashboard>

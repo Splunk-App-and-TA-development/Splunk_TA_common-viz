@@ -1,0 +1,398 @@
+<form theme="light" version="1.1">
+  <label>Examples for Splunk Admins</label>
+  <init>
+    <set token="hierarchyDirection">Top-Down</set>
+    <set token="showPorts">false</set>
+  </init>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <html>
+        <h1>Splunk Environment</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_1">
+      <html>
+      <style>table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33.33%!important;}
+    div#third_2{width: 33.33%!important;}
+    div#third_3{width: 33.33%!important;}
+    div#third_4{width: 33.33%!important;}
+    div#twothirds_1{width: 66.66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+  span.grey{color: #b3b3b3;font-style:italic;}
+  code{white-space:pre;}
+    </style>
+      <h1>A Splunk Environment</h1>
+      
+      <p>In this example, you can see a Splunk environment made up of a Search Head cluster with Deployer, three Indexers, and four Forwarders.</p>
+      <p>The ports used for internal communications are labeled on the links between the servers.</p>
+      <p>Each Splunk icon can be colored Red - Amber - Green - Blue:</p>
+      <br/>
+      <table cellpadding="2">
+          <tr>
+            <td width="20%">
+              <strong>Color</strong>
+            </td>
+            <td width="80%">
+              <strong>Accepted values</strong>
+            </td>
+          </tr>
+      <tr>
+            <td>Red</td>
+            <td>error, severe, high, bad, red</td>
+          </tr>
+      <tr>
+            <td>Amber</td>
+            <td>amber, medium, yellow, elevated, warning, orange</td>
+          </tr>
+      <tr>
+            <td>Green</td>
+            <td>green, ok, good, low, fine</td>
+          </tr>
+      <tr>
+            <td>Blue</td>
+            <td>debug, unknown, blue</td>
+          </tr>
+      </table>
+      <p>E.g.:<br/>
+      <code>...| rangemap field=cpu_ptc green=1-70 yellow=71-85 red=86-100 default=blue<br/>| rename range as color</code>
+      </p>
+    </html>
+    </panel>
+    <panel id="twothirds_1">
+      <input type="link" token="showPorts" searchWhenChanged="true">
+        <label>Options</label>
+        <choice value="true">Show Ports</choice>
+        <choice value="false">Hide Ports</choice>
+        <default>false</default>
+        <initialValue>false</initialValue>
+      </input>
+      <input type="link" token="showColors" searchWhenChanged="true">
+        <label>Show Colors</label>
+        <choice value="1">Colors</choice>
+        <choice value="0">Black and White</choice>
+        <default>1</default>
+        <initialValue>1</initialValue>
+      </input>
+      <input type="link" token="levelSeparation" searchWhenChanged="true">
+        <label>Level Separation</label>
+        <choice value="150">Default</choice>
+        <choice value="100">Short</choice>
+        <choice value="250">Long</choice>
+        <default>150</default>
+        <initialValue>150</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| inputlookup splunk-instance.csv
+| eval linktext=if("$showPorts$"=="true",linktext, "")
+| eval color=random()%4 
+| eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red")
+| eval color=if($showColors|s$=="1",color,null)
+</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">558</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">150</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">$levelSeparation$</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">dynamic</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Splunk Health Checks</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_4">
+      <html>
+      <h1>Splunk Health Checks</h1>
+      <p>Note: This example requires that you have access to the _internal index. If you don't have access, view the sample data.</p>
+      
+      <code><![CDATA[index=_internal sourcetype=splunkd source=*health.log [|search index=_internal sourcetype=splunkd source=*health.log | stats first(host) as host| table host]
+| rex field=node_path "^(?<a>[^.]+)\.?(?<b>[^.]+)?\.?(?<c>[^.]+)?$"
+| rename feature as d
+| stats first(color) as color, first(_time) as _time by a,b,c
+| appendpipe [|stats count by a,b| rename a as from, b as to| eval type="indexer"]
+| appendpipe [|stats values(color) as color by b,c| rename b as from, c as to| eval  type="folder" | eventstats values(color) as allColors by from| eval color=case(allColors="red","red", allColors="yellow","yellow", 1==1, "green") ]
+| appendpipe [|stats values(color) as color, values(_time) as _time by c | rename c as from | eval time =strftime(_time,"%d %b, %H:%M:%S"), type=if(color=="green","check-circle","times-circle")| eval value="Status: " + color + " at " + time]
+| search from=*
+| table from, to, color, type, value]]>
+        </code>  
+    </html>
+    </panel>
+    <panel id="twothirds_4">
+      <title>Splunk Health Check Data</title>
+      <input type="link" token="healthCheckSource" searchWhenChanged="true">
+        <label>Source</label>
+        <choice value="Splunk">Splunk</choice>
+        <choice value="Sample Data">Sample Data</choice>
+        <default>Sample Data</default>
+        <initialValue>Sample Data</initialValue>
+        <change>
+          <condition match="'healthCheckSource'=&quot;Splunk&quot;">
+            <set token="healthCheckSPL">
+              <![CDATA[ index=_internal sourcetype=splunkd source=*health.log [|search index=_internal sourcetype=splunkd source=*health.log | stats first(host) as host| table host]
+| rex field=node_path "^(?<a>[^.]+)\.?(?<b>[^.]+)?\.?(?<c>[^.]+)?$"
+| rename feature as d
+| stats first(color) as color, first(_time) as _time by a,b,c
+| appendpipe [|stats count by a,b| rename a as from, b as to| eval type="indexer"]
+| appendpipe [|stats values(color) as color by b,c| rename b as from, c as to| eval  type="folder" | eventstats values(color) as allColors by from| eval color=case(allColors="red","red", allColors="yellow","yellow", 1==1, "green") ]
+| appendpipe [|stats values(color) as color, values(_time) as _time by c | rename c as from | eval time =strftime(_time,"%d %b, %H:%M:%S"), type=if(color=="green","check-circle","times-circle")| eval value="Status: " + color + " at " + time]
+| search from=*
+| table from, to, color, type, value ]]>
+            </set>
+          </condition>
+          <condition>
+            <set token="healthCheckSPL">|makeresults
+| eval raw="from=splunkd, to=\"file_monitor_input\", color=green, type= type=indexer, value= ### from=splunkd, to=\"index_processor\", color=green, type= type=indexer, value=  ### from=splunkd, to=\"search_scheduler\", color=green, type= type=indexer, value=  ### from=splunkd, to=\"workload_management\", color=green, type= type=indexer, value=  ### from=\"file_monitor_input\", to=\"batchreader-0\", color=green, type= type=folder, value=  ### from=\"file_monitor_input\", to=\"tailreader-0\", color=, type= type=folder, value=  ### from=\"index_processor\", to=buckets, color=, type= type=folder, value=  ### from=\"index_processor\", to=\"disk_space\",color=green, type= type=folder, value=  ### from=\"index_processor\", to=\"index_optimization\", color=green, type= type=folder, value=  ### from=\"search_scheduler\", to=\"search_lag\", color=green, type= type=folder, value=  ### from=\"search_scheduler\", to=\"searches_delayed\", color=green, type= type=folder, value=  ### from=\"search_scheduler\", to=\"searches_skipped\", color=red, type= type=folder, value=  ### from=\"workload_management\", to=\"configuration_check\", color=green , type= type=folder, value=  ### from=\"workload_management\", to=\"system_check\", color=green, type= type=folder, value=  ### from=\"batchreader-0\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=buckets, to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"configuration_check\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"disk_space\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"index_optimization\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"search_lag\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"searches_delayed\", to=, color=red, type=\"times-circle\", value=\"Status: red at \" ### from=\"searches_skipped\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"system_check\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"tailreader-0\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### "
+|makemv delim="###" raw
+| mvexpand raw
+| rename raw as _raw
+| extract
+| eval time = strftime(now(),"%d %b, %H:%M:%S")| eval value = value ." ". time</set>
+          </condition>
+        </change>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>$healthCheckSPL$</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">487</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">top</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">small</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">130</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">small</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.shakeTowards">leaves</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">straightcross</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Monitoring App Popularity</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_2">
+      <html>
+      <h1>Apps Use by Username</h1>
+      <p>Note: This example requires that you have access to the _internal index. If you don't have access, view the sample data.</p>
+      
+      <code>index=_internal sourcetype=splunkd_ui_access "/app/" earliest=-24h@h
+| rex field=_raw "^[^-]+-\s+(?&lt;from&gt;(?!-)[^\s]+).+\/app\/(?&lt;to&gt;(?!-)[^\/ ]+)"
+| stats count by to, from
+| eval value="User " + from + " made " + count + " requests to app " + to, linktext = count, type="users"
+| append
+    [ search index=_internal sourcetype=splunkd_ui_access "/app/" NOT "preview.png" earliest=-24h@h
+    | rex field=_raw "/app/(?&lt;from&gt;(?!-)[^/ ]+)"
+    | stats count by from
+    | eval type="image", value="App: " + from
+    | fields from, type, value]
+      </code>  
+    </html>
+    </panel>
+    <panel id="twothirds_2">
+      <title>Splunk User Activity</title>
+      <input type="link" token="userActivitySource" searchWhenChanged="true">
+        <label>Source</label>
+        <choice value="Splunk">Splunk</choice>
+        <choice value="Sample Data">Sample Data</choice>
+        <default>Sample Data</default>
+        <initialValue>Sample Data</initialValue>
+        <change>
+          <condition match="'userActivitySource'=&quot;Splunk&quot;">
+            <set token="userActivitySPL">
+              <![CDATA[ index=_internal sourcetype=splunkd_ui_access "/app/" earliest=-24h@h | rex field=_raw "^[^-]+-\s+(?<from>(?!-)[^\s]+).+\/app\/(?<to>(?!-)[^\/ ]+)" | stats count by to, from | eval value="User " + from + " made " + count + " requests to app " + to, linktext = count, type="users"| append     [ search index=_internal sourcetype=splunkd_ui_access "/app/" NOT "preview.png" earliest=-24h@h | rex field=_raw "/app/(?<from>(?!-)[^/ ]+)" | stats count by from | eval type="image", value="App: " + from | fields from, type, value] ]]>
+            </set>
+          </condition>
+          <condition>
+            <set token="userActivitySPL">|inputlookup nd-user-apps.csv| eval color=if(type=="users", "#00008B","#6495ED")</set>
+          </condition>
+        </change>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>$userActivitySPL$</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">487</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Bottom-Up</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">200</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">top</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">150</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">small</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">dynamic</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Hot, Warm, and Cold Buckets</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_3">
+      <html>
+        <h1>Indexes and Buckets</h1>
+        <p>This example shows how you can view the Hot, Warm, and Cold buckets for each index on your indexers.</p>
+        <p>You will need access to run dbinspect [<a href="https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Dbinspect">docs link</a>] for this to work in your environment.</p>
+        <code>| dbinspect index=*
+| stats count by state, index
+| eval color=case(state=="hot", "red",state=="warm","yellow",state=="cold","blue"), value=state + " buckets: " + count, state = state + "(" + index + ")" 
+| rename state as from, index as to, count as linktext
+| eval type="bucket"
+| table from, to, value, color,type, linktext
+| append
+    [| eventcount summarize=false index=* index=_*
+    | stats count as count by index
+    | fields - count
+    | rename index as from
+    | eval to="splunk", value="Index: " + from, type="index", color="green"
+    | table from, to, type, color,value]
+| append
+    [| makeresults
+    | eval from="splunk", type="indexer", value="Splunk Indexer"
+    | fields from, type, value]</code>
+        
+      </html>
+    </panel>
+    <panel id="twothirds_3">
+      <title>Indexes and Hot Buckets</title>
+      <input type="link" token="showLinkWidth" searchWhenChanged="true">
+        <label>Link Weights</label>
+        <choice value="linktext/maximum*10">Show</choice>
+        <choice value="nothing">Ignore</choice>
+        <default>linktext/maximum*10</default>
+        <initialValue>linktext/maximum*10</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>|inputlookup nd-index-buckets.csv
+| eventstats max(linktext) as maximum
+| eval linkWidth = $showLinkWidth$</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">643</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hideEdgesOnDrag">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">150</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">horizontal</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">large</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">120</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">dynamic</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,121 @@
+<form>
+  <label>Treemap Gallery</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <title>Credit Card Transactions by Card Provider</title>
+      <viz type="Splunk_TA_common-viz.treemap">
+        <search>
+          <query>| inputlookup treemap_dataset.csv | stats sum(amount) as Dollars by card_provider, response_code</query>
+          <earliest>0</earliest>
+        </search>state,city,card_provider,response_code,amount<option name="Splunk_TA_common-viz.treemap.useZoom">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLabels">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showTooltip">true</option>
+        <option name="Splunk_TA_common-viz.treemap.maxCategories">10</option>
+        <option name="Splunk_TA_common-viz.treemap.useColors">true</option>
+        <option name="Splunk_TA_common-viz.treemap.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.treemap.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.treemap.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.treemap.numOfBins">6</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Splunk File System</title>
+      <viz type="Splunk_TA_common-viz.treemap">
+        <title>Default color by parent directory</title>
+        <search>
+          <query>| inputlookup splunk_files.csv  | rex field=path "\./(?&lt;level1&gt;[A-Za-z0-9]*)/(?&lt;level2&gt;[A-Za-z0-9]*)"  | rex field=path ".+\.(?&lt;extension&gt;[A-Za-z0-9]+)$" | fillnull value="Other" extension| fillnull value="-" level2  | stats sum(size), count as size by level1, level2</query>
+          <earliest>0</earliest>
+        </search>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Splunk File System</title>
+      <viz type="Splunk_TA_common-viz.treemap">
+        <title>Color by total size</title>
+        <search>
+          <query>| inputlookup splunk_files.csv  | rex field=path "\./(?&lt;level1&gt;[A-Za-z0-9]*)/(?&lt;level2&gt;[A-Za-z0-9]*)"  | rex field=path ".+\.(?&lt;extension&gt;[A-Za-z0-9]+)$" | fillnull value="Other" extension| fillnull value="-" level2  | stats sum(size), count as size by level1, level2</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="Splunk_TA_common-viz.treemap.useZoom">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLabels">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showTooltip">true</option>
+        <option name="Splunk_TA_common-viz.treemap.maxCategories">10</option>
+        <option name="Splunk_TA_common-viz.treemap.useColors">true</option>
+        <option name="Splunk_TA_common-viz.treemap.colorMode">sequential</option>
+        <option name="Splunk_TA_common-viz.treemap.minColor">#f7bc38</option>
+        <option name="Splunk_TA_common-viz.treemap.maxColor">#65a637</option>
+        <option name="Splunk_TA_common-viz.treemap.numOfBins">9</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Splunk File System, Color by file extension</title>
+      <input type="text" token="num_categories" searchWhenChanged="true">
+        <label>Number of Extensions</label>
+        <initialValue>10</initialValue>
+        <default>10</default>
+      </input>
+      <input type="dropdown" token="agg_fn">
+        <label>aggregation</label>
+        <choice value="sum(size)">Total size</choice>
+        <choice value="count">Count</choice>
+        <initialValue>count</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.treemap">
+        <title>Color by most prominent extensions</title>
+        <search>
+          <query>| inputlookup splunk_files.csv   | rex field=path "\./(?&lt;level1&gt;[A-Za-z0-9]*)/(?&lt;level2&gt;[A-Za-z0-9]*)"  | rex field=path ".+\.(?&lt;extension&gt;[A-Za-z][A-Za-z0-9]+)$"  | join extension type=left [| inputlookup splunk_files.csv  | rex field=path "\./(?&lt;level1&gt;[A-Za-z0-9]*)/(?&lt;level2&gt;[A-Za-z0-9]*)"  | rex field=path ".+\.(?&lt;extension&gt;[A-Za-z][A-Za-z0-9]+)$" | top $num_categories$ extension | eval is_top_extension="true"| fields extension,is_top_extension]  | eval extension=if(is_top_extension=="true", extension, "OTHER")  | stats $agg_fn$ by level1, level2, extension</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="Splunk_TA_common-viz.treemap.useZoom">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLabels">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showLegend">true</option>
+        <option name="Splunk_TA_common-viz.treemap.showTooltip">true</option>
+        <option name="Splunk_TA_common-viz.treemap.maxCategories">100</option>
+        <option name="Splunk_TA_common-viz.treemap.useColors">true</option>
+        <option name="Splunk_TA_common-viz.treemap.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.treemap.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.treemap.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.treemap.numOfBins">6</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Treemap with Trellis Layout</title>
+      <viz type="Splunk_TA_common-viz.treemap">
+        <search>
+          <query>| inputlookup treemap_dataset.csv 
+| stats sum(amount) as Dollars by card_provider, response_code, state
+| sort response_code, card_provider, state</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.treemap.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.treemap.maxCategories">10</option>
+        <option name="Splunk_TA_common-viz.treemap.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.treemap.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.treemap.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.treemap.showLabels">1</option>
+        <option name="Splunk_TA_common-viz.treemap.showLegend">false</option>
+        <option name="Splunk_TA_common-viz.treemap.showTooltip">1</option>
+        <option name="Splunk_TA_common-viz.treemap.useColors">1</option>
+        <option name="Splunk_TA_common-viz.treemap.useZoom">1</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trellis.splitBy">response_code</option>
+      </viz>
+    </panel>
+  </row>
+</form>

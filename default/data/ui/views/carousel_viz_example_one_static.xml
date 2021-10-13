@@ -1,0 +1,244 @@
+<dashboard>
+  <label>Example One: Static</label>
+  <row>
+    <panel>
+      <html>
+        <h1>Static Slides</h1>
+  <p>The following examples show you how to display multiple single-value slides without any animation.</p>
+   <style>
+     .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33.33%!important;}
+    div#third_2{width: 33.33%!important;}
+    div#third_3{width: 33.33%!important;}
+    div#twothirds_1{width: 66.66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+
+
+  span.grey{color: #b3b3b3;font-style:italic;}
+    </style>
+  </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Single Metric Example</h1>
+        <p>An alternative to the default Splunk Single Value viz.</p>
+        <p>Settings:</p>
+        <ul>
+          <li>Foreground Colour mode <span class="grey">Format &gt; Color Mode = Foreground</span>
+          </li>
+          <li>No animation <span class="grey">General &gt; Autoplay = False</span>
+          </li>
+          <li>Show 1 slides <span class="grey">General &gt; Slides to Show = 1</span>
+          </li>
+        </ul>
+       
+      </html>
+    </panel>
+    <panel>
+      <title>Social Media Likes</title>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <search>
+          <query>|makeresults 
+| eval value=42
+| eval caption="Likes"
+| eval range="low"
+| table value,  range,caption</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplay">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplaySpeed">normal</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.colorMode">foreground</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.direction">right</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.forceAllCaps">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.numDecimalPlaces">0</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.orientation">horizontal</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.rotation">infinite</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showArrows">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showDots">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.size">automatic</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToScroll">1</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToShow">1</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.thousandsSeparator">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_value">cv_value</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.unitPosition">after</option>
+        <option name="drilldown">none</option>
+        <option name="height">241</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Splunk Single Value Viz for Comparison</title>
+      <single>
+        <search>
+          <query>|makeresults 
+| eval value=42.3
+| eval caption="Likes"
+| eval range="low"
+| table value,  range,caption</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="height">239</option>
+        <option name="rangeColors">["0x53a051","0x0877a6","0xf8be34","0xf1813f","0xdc4e41"]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="underLabel">Likes</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_1">
+      <html>
+        <h1>Single Server Infrastructure Example</h1>
+        <p>This is a good option for showing multiple different stats relating to a single entity. </p>
+        <p>Settings:</p>
+        <ul>
+          <li>Block Colour mode <span class="grey">Format &gt; Color Mode = Background</span>
+          </li>
+          <li>No animation <span class="grey">General &gt; Autoplay = False</span>
+          </li>
+          <li>Show 5 slides <span class="grey">General &gt; Slides to Show = 5</span>
+          </li>
+        </ul>
+       
+      </html>
+    </panel>
+    <panel id="twothirds_1">
+      <title>Single Server Infrastructure Stats</title>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <search>
+          <query>|makeresults count=5 
+| streamstats count as id
+| eval value=case(id==1,42.4, id==2,74, id==3,"2", id==4,"55",id==5,"622") 
+| eval unit=case(id==1,"%", id==2,"MB", id==3,"%", id==4,"Mbps",id==5,"Users") 
+| eval caption=case(id==1,"CPU Use", id==2,"Free Memory", id==3,"Free Disk Space", id==4,"Network Use",id==5,"Active Users") 
+| eval range=case(id==1,"low", id==2,"elevated", id==3,"severe", id==4,"blue",id==5,"low") 
+| table value, unit, caption, range</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplay">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplaySpeed">normal</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.colorMode">background</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.direction">left</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.forceAllCaps">true</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.numDecimalPlaces">0</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.orientation">horizontal</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.rotation">bounce</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showArrows">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showDots">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.size">automatic</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToScroll">0</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToShow">5</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.thousandsSeparator">true</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_value">cv_value</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.unitPosition">after</option>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_2">
+      <html>
+         <h1>Multiple Server CPU Example</h1>
+        <p>This example shows the same metric (CPU use) for multiple servers.</p>
+        <p>The options were:</p>
+        <ul>
+          <li>Foreground Colour mode <span class="grey">Format &gt; Color Mode = Foreground</span>
+          </li>
+          <li>No animation <span class="grey">General &gt; Autoplay = False</span>
+          </li>
+          <li>1 decimal place <span class="grey">Number Format &gt; Precision = 0.0</span>
+          </li>
+        </ul>
+      </html>
+    </panel>
+    <panel id="twothirds_2">
+      <title>Application Server Average CPU Use</title>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <search>
+          <query>|makeresults count=5 
+| streamstats count as id
+| eval value=case(id==1,"39.4", id==2,65.5, id==3,12.2, id=4,99.6,id==5,72.0) 
+| eval unit="%"
+| eval caption=case(id==1,"PRDLNXWEB01", id==2,"PRDLNXWEB02", id==3,"PRDLNXWEB03", id=4,"PRDLNXAPP01",id==5,"PRDLNXDB01") 
+| rangemap field=value blue=1-20 low=20-65 elevated=65-85 default=critical
+| table value, unit, caption, range</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplay">true</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.autoplaySpeed">vslow</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.colorMode">foreground</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.direction">left</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.forceAllCaps">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.numDecimalPlaces">1</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.orientation">horizontal</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.rotation">infinite</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showArrows">false</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.showDots">true</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.size">automatic</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToScroll">1</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.slidesToShow">5</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.thousandsSeparator">true</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.token_value">cv_value</option>
+        <option name="Splunk_TA_common-viz.carousel-viz.unitPosition">after</option>
+        <option name="drilldown">none</option>
+        <option name="height">134</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

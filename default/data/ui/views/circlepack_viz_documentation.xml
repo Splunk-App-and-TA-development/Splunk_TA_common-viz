@@ -1,0 +1,275 @@
+<form theme="light">
+  <label>Circlepack Viz - Documentation</label>
+  <search id="base1">
+    <query>| makeresults   
+| eval raw = "
+index=\"_internal\" sourcetype=\"scheduler\" log_level=\"INFO\" component=\"SavedSearchHistory\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"scheduler\" log_level=\"INFO\" component=\"SavedSplunker\"  count=\"29\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"ERROR\" component=\"config\"  count=\"1\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"ERROR\" component=\"utility\"  count=\"1\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"__init__\"  count=\"16\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"admin\"  count=\"1\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"custom\"  count=\"28\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"i18n_catalog\"  count=\"58\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"lists\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"root\"  count=\"372\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"INFO\" component=\"view\"  count=\"86\" ###
+index=\"_internal\" sourcetype=\"splunk_web_service\" log_level=\"WARN\" component=\"appnav\"  count=\"42\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"ERROR\" component=\"EvalCommand\"  count=\"1\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"ERROR\" component=\"IntrospectionGenerator:resource_usage\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"ERROR\" component=\"TailReader\"  count=\"40\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"ERROR\" component=\"UiAuth\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"ERROR\" component=\"Watchdog\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ApplicationLicense\"  count=\"3\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"BucketMover\"  count=\"21\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"BundlesSetup\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"CMBucketId\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"CertStorageProvider\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ClientSessionsManager\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ClusteringMgr\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"DC:DeploymentClient\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"DSManager\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"DS_DC_Common\"  count=\"12\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"DatabaseDirectoryManager\"  count=\"154\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"DeploymentServer\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ExecProcessor\"  count=\"52\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"HotBucketRoller\"  count=\"28\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"HotDBManager\"  count=\"133\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IndexProcessor\"  count=\"18\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IndexWriter\"  count=\"79\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IndexerIf\"  count=\"11\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IndexerInit\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IndexerService\"  count=\"22\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IntrospectionGenerator:disk_objects\"  count=\"6\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"IntrospectionGenerator:resource_usage\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"KeyManagerLocalhost\"  count=\"12\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LMConfig\"  count=\"18\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LMSlaveInfo\"  count=\"5\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LMStack\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LMStackMgr\"  count=\"20\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LMTracker\"  count=\"92\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LicenseMgr\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"LicenseUsage\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"MPool\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ModularInputs\"  count=\"30\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"OnlineFsck\"  count=\"7\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"PipeFlusher\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"PipelineComponent\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ProcessTracker\"  count=\"6\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ProxyConfig\"  count=\"6\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"PubSubSvr\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"Rsa2FA\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"SHClusterMgr\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ScheduledViewsReaper\"  count=\"3\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ServerConfig\"  count=\"14\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ServerRoles\"  count=\"6\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ShutdownHandler\"  count=\"128\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"SpecFiles\"  count=\"28\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"TailReader\"  count=\"26\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"TailingProcessor\"  count=\"44\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"TcpInputConfig\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"TcpInputProc\"  count=\"18\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"TcpOutputProc\"  count=\"6\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"UiHttpListener\"  count=\"8\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"Watchdog\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"WatchdogActions\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"WatchedFile\"  count=\"55\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"WorkloadManager\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"loader\"  count=\"62\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"INFO\" component=\"ulimit\"  count=\"22\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"DC:DeploymentClient\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"IndexConfig\"  count=\"16\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"InstalledFilesHashChecker\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"IntrospectionGenerator:resource_usage\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"ProcessTracker\"  count=\"30\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"SHCConfig\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"TelemetryHandler\"  count=\"1\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"WatchdogInit\"  count=\"4\" ###
+index=\"_internal\" sourcetype=\"splunkd\" log_level=\"WARN\" component=\"X509Verify\"  count=\"2\" ###
+index=\"_internal\" sourcetype=\"splunkd_conf\" log_level=\"INFO\" component=\"ConfDeployment\"  count=\"2\"
+"
+| makemv delim="###" raw
+| mvexpand raw 
+| rename raw  as  _raw 
+| extract | table index sourcetype log_level component count</query>
+    <earliest>-24h@h</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>  
+  <row>
+    <panel>
+      <html>
+<style>
+.table td, .table th {
+  vertical-align: middle;
+  text-align: center;
+}
+</style>
+<div style="max-width: 1200px; margin: 0 auto;">
+<h2>Circlepack Viz</h2>
+<p>Circle packing / Pack layout / bubble chart visualization built with D3.  Optional click-to-zoom and plenty of color themes.</p>
+
+<p>Copyright (C) 2020 Chris Younger | <a href="https://splunkbase.splunk.com/app/4574/#/details">Splunkbase</a> | <a href="https://github.com/ChrisYounger/circlepack_viz">Source code</a> |  <a href="https://answers.splunk.com/app/questions/4574.html">Questions, Bugs or Suggestions</a> | <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds">My Splunk apps</a></p>
+
+<br /><br /><br /><br />
+
+<h2>Usage</h2>
+<p>This visualisation expects tabular data, with any amount of text/category columns, but the last column must be a numerical value. </p>
+<p>For example, the following data:</p>
+<table border="1" class="table">
+<thead>
+<tr>
+<th>field1</th>
+<th>field2</th>
+<th>field3</th>
+<th>numeric_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>outer1</td>
+<td>mid1</td>
+<td>node1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>outer1</td>
+<td>mid1</td>
+<td>node2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>outer1</td>
+<td>mid2</td>
+<td>node3</td>
+<td>9</td>
+</tr>
+<tr>
+<td>outer2</td>
+<td>mid3</td>
+<td>node4</td>
+<td>13</td>
+</tr>
+</tbody>
+</table><br />
+<p>Would produce this:<br />
+<img alt="" src="/static/app/Splunk_TA_common-viz/images/circlepack_viz_example.png" /></p>
+<p>The typical search uses <code>stats</code> command like so:</p>
+<pre class="highlight"><code>index=* | stats count BY index sourcetype source</code></pre>
+
+
+<p>Sidenote: a much faster search to do the same thing is </p>
+<pre class="highlight"><code>|tstats count where index=* BY index sourcetype source</code></pre>
+
+
+<p>Note that <code>stats</code> does not return rows when the group BY field is <code>null</code>. Convert nulls to be an empty string like this:</p>
+<pre class="highlight"><code>index=_internal 
+| eval component = coalesce(component,"") 
+| eval log_level = coalesce(log_level,"") 
+| stats count BY sourcetype component log_level</code></pre>
+
+
+<p>Add more fields after the "BY" keyword to increase the depth</p>
+
+<br /><br /><br /><br />
+
+<h2>Formatting options</h2>
+<p><img alt="" src="/static/app/Splunk_TA_common-viz/images/circlepack_viz_formatting.png" /></p>
+
+<p>The "Color overrides" field accepts either a JSON object (in curly braces) or comma separated pairs. For example to make sure that "INFO" values are green, WARN's are orange and ERROR's are red, set the value like so: </p>
+<pre class="highlight"><code>INFO,#1a9035,ERROR,#b22b32,WARN,#AF5300</code></pre>
+
+
+<p>The "Set color by" options "First field.." allow for data to set the color of the leaf node but not affect the grouping. The  "First field as color codes (n/g)" option allows for valid HTML color codes to be passed in from the search. Here is an example search:</p>
+<pre class="highlight"><code>index=_internal 
+| stats sum(count) as count BY log_level component 
+| eval color = case(log_level=="ERROR", "#b22b32",log_level=="INFO", "#1a9035",log_level=="WARN", "#AF5300", true(), "blue") 
+| table color component count</code></pre>
+
+
+<p>Note that when using "Click action" of "Zoom in" the labels are do not honor the clipping and truncating settings and may overlap.</p>
+
+<p>Examples of color themes: <a href="/static/app/Splunk_TA_common-viz/images/circlepack_viz_themes.png"><br /><img alt="" src="/static/app/Splunk_TA_common-viz/images/circlepack_viz_themes.png" style="max-width: 500px;" /></a></p>
+
+
+<br /><br /><br /><br />
+
+<h2>Third party software</h2>
+<p>The following third-party libraries are used by this app. Thank you!</p>
+<ul>
+<li>jQuery - MIT - <a href="https://jquery.com/">https://jquery.com/</a></li>
+<li>D3 - BSD 3-Clause - <a href="https://d3js.org/">https://d3js.org/</a></li>
+<li>Font Awesome - Creative Commons Attribution-ShareAlike 4.0 License - <a href="https://fontawesome.com/">https://fontawesome.com/</a></li>
+</ul>
+
+<br /><br /><br /><br />
+
+</div>
+</html>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.circlepack_viz">
+        <search base="base1">
+          <query>| stats sum(count) as count by sourcetype component</query>
+        </search>
+        <title>Simple Example</title>
+        <option name="Splunk_TA_common-viz.circlepack_viz.color">schemeCategory10</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.colormode">parent</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelcolor">#ffffff</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labels">show</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelsize">100</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.mode">static</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.onclick">none</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.packing">circle</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.shadow">show</option>
+        <option name="drilldown">none</option>
+        <option name="height">600</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>    
+      <viz type="Splunk_TA_common-viz.circlepack_viz">
+        <search base="base1">
+          <query>| stats sum(count) as count by log_level component | eval log_level = if(log_level=="WARNING", "WARN", log_level)</query>
+        </search>
+        <title>Example setting colors in the formatting options</title>
+        <option name="Splunk_TA_common-viz.circlepack_viz.color">interpolateGreys</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.colormode">size</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.coloroverride">INFO,#1a9035,ERROR,#b22b32,WARN,#AF5300</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelcolor">#000000</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labels">show</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelsize">100</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.mode">static</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.onclick">zoom</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.packing">circle</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.shadow">show</option>
+        <option name="drilldown">none</option>
+        <option name="height">800</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.circlepack_viz">
+        <search base="base1">
+          <query>| stats sum(count) as count by log_level component | eval log_level = case(log_level=="ERROR", "#b22b32",log_level=="INFO", "#1a9035",log_level=="WARN" OR log_level=="WARNING", "#AF5300", true(), "blue")| table  log_level component count | search NOT component="root"</query>
+        </search>
+        <title>Example setting colors in the search query</title>
+        <option name="Splunk_TA_common-viz.circlepack_viz.color">schemeCategory10</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.colormode">firstdatacodes</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelcolor">#000000</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labels">show</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.labelsize">80</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.mode">static</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.onclick">none</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.packing">random</option>
+        <option name="Splunk_TA_common-viz.circlepack_viz.shadow">hide</option>
+        <option name="drilldown">none</option>
+        <option name="height">800</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

@@ -1,0 +1,221 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="general">general</set>
+  </init>
+  <label>Heat Map Viz Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    td img{min-width: 534px!important;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="colors,tokens,legend" data-value="general">General</button>	  
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="colors" data-unset-token="general,tokens,legend" data-value="direction">Colors</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="legend" data-unset-token="general,colors,tokens" data-value="legend">Legend</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,colors,legend" data-value="tokens">Tokens</button>
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$colors$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-colors_heat-map.png" width="534"/>
+            </td>
+            <td valign="top">
+              <p>Set the thresholds and colours for the visualization.</p>
+
+<p><strong>Low:</strong> The highest value that can still be considered Low.<br />
+<strong>Medium:</strong> Any value between Low and this value will be considered Medium.<br />
+<strong>High:</strong> Any value between Medium and this value will be considered High<br />
+<strong>Critical:</strong> Any value higher than the High value will be considered Critical.<br />
+</p>
+
+<p>Low and Critical are always shown on the legend.</p>
+
+<p>If you don't want Medium or High in the legend, set these values to the same number as the preceding category. I.e.:</p>
+<ul><li>To hide Medium: Set Medium value to same as Low value</li>
+<li>To hide High: Set High value to the same as Medium value.</li>
+</ul>
+
+<p><h2>Enable Shades</h2>
+
+This option lets you see shades of each color depending on the value for a particular cell. The closer to the maximum value, the closer the color will resemble the defined color.</p>
+
+<ul><li><strong>True:</strong> Use different shades of the selected colors to show relelative values.</li>
+<li><strong>False:</strong> Use the exact color for each category.</li></ul>
+
+
+<p><h2>Reverse Negative Shade</h2> When enabled, it will reverse the shades for negatives but keep the positive shades as it is now. An example of such use-case would be in a profit/loss chart where darker reds mean larger losses, darker greens mean larger gains.</p>
+
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$general$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-general_heat-map.png" width="534"/>
+            </td>
+            <td valign="top">
+              
+             
+<p><h2>Shape</h2>
+Affects the shape of each cell.</p>
+<ul><li><strong>Square</strong> - each cell is rectangular</li>
+<li><strong>Rounded</strong> - each cell has rounded corners.</li>
+</ul>
+
+<p><h2>Show Values</h2>
+Choose whether or not to show the value field in each cell.
+</p>
+
+<p><h2>Hide Cell Borders</h2>
+Choose whether each cell has a white border drawn around it. If set to true the border will be the color of the cell. Defaults to False.
+</p>
+
+
+
+<p><h2>Label Width</h2>
+If you have multiple Heat Map Viz panels on one dashboard, you may want the labels to be lined up. To achieve this, set the width to 'Custom' and set the desired width. Make sure to leave enough space for the longest label, otherwise it will be clipped. <br />
+To remove the labels altogether, set the custom width to 0.<br /> 
+The Auto setting will automatically adjust the width of the labels to accommodate the text.
+</p>
+
+<p><h2>Label Font Size</h2>
+Optionally make the label font size larger or smaller than the default of 18px. Note that this setting does not change the grid size.
+</p>
+
+
+<p><h2>Enable Animations</h2>
+Choose whether or not to show a brief animation as the visualization loads.
+<ul><li><strong>True</strong> - each panel appears with a quick animation</li>
+<li><strong>False</strong> - the entire visualisation appears in one go.</li></ul></p>
+
+
+<p><h2>Date in Tooltip</h2>
+This option lets you include the data in the tooltip when you hover over a cell. Choose the format of the date in the 'Tooltip Date Format' option.
+</p>
+
+<p><h2>Tooltip Date Format</h2>
+If showing the date in the tooltip, you can choose the date format:</p>
+
+<table><tr><td><strong>Option</strong></td><td><strong>Example</strong></td></tr>
+<tr><td>dd-mmm-yyyy hh:mm:ss</td><td>13-Oct-2019 18:33:12</td></tr>
+<tr><td>dd-mm-yyyy hh:mm:ss</td><td>13-10-2019 18:33:12</td></tr>
+<tr><td>dd-mm-yyyy</td><td>13-10-2019</td></tr>
+<tr><td>mm-dd-yyyy</td><td>10-13-2019</td></tr>
+<tr><td>mm-dd-yyyy hh:mm:ss</td><td>10-13-2019 18:33:12</td></tr>
+<tr><td>hh:mm:ss</td><td>18:33:12</td></tr>
+<tr><td>hh:mm</td><td>18:33</td></tr></table>
+          
+
+<p><h2>Convert Time to UTC</h2>
+By default this option is set to false so all times generated with <em>| timechart</em> will be accurate.<br/>
+In early versions of this app the date was silently converted to UTC. If you want to keep that behavior, set this option to true. <br />
+</p>
+
+
+
+		  </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+	 <panel depends="$legend$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-legend_heat-map.png" width="534"/></td>
+            <td valign="top">
+			
+<p><h2>Show Legend</h2>
+Show or hide the legend on the visualisation.
+</p>
+
+<p><h2>Legend Position</h2>
+The location of the legend:
+<ul><li><strong>Top</strong> - Show the legend at the top center of the visualization.</li>
+<li><strong>Bottom</strong> - Show the legend at the bottom center of the visualization.</li></ul>
+</p>
+
+<p><h2>Legend Text</h2>
+This option changes the legend text to be either Categories or Ranges:
+<ul><li><strong>Categories:</strong> Low, Medium, High, Critical</li>
+<li><strong>Ranges:</strong> 0-30, 30-60, 60-80, 80-99<br /> Note that the minimum value for Low, and the Maximum value for Critical will be determined by the content of the results. If the results have a maximum value of 100, then that will be the value for the Critical range. Likewise, the minimum value in the results will show as the range for Low.</li></ul>
+</p>
+			
+<p><h2>Labels</h2>Choose what the text should say for the different text categories. Defaults to: Low, Medium, High, Critical.<br /></p>
+
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-tokens_heat-map.png" width="534"/>
+            </td>
+            <td valign="top">
+              
+			  <p><h2>Time</h2>
+The current time period for the selected cell. Default token is: $$hm_token_time$$
+</p>
+
+<p><h2>Label</h2>
+The label for the selected row. Default token is: $$hm_token_label$$
+</p>
+
+<p><h2>Value</h2>
+The current value for the selected cell. Default token is: $$hm_token_value$$
+</p>
+	  
+               
+              
+              
+            </td>
+          </tr>
+          </table>
+            
+            </html>
+    </panel>
+  </row>
+</dashboard>

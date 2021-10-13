@@ -1,0 +1,517 @@
+<dashboard>
+  <label>Available Icons</label>
+  <init>
+    <set token="hierarchyDirection">Top-Down</set>
+    <set token="showPorts">true</set>
+  </init>
+  <row>
+    <panel>
+      <html>
+      <h1>Using different icons</h1>
+      <p>To use icons in your diagram, simply set the 'type' to be one of the icon named below.</p>
+      <p>e.g. to make all hosts staring with "web" use the server icon:</p>
+      <code> | eval type=if(like(host,"web%"), "server", type)</code>
+      
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| makeresults count=42
+| streamstats count as from 
+| eval type=case(from==1, "usergroups", from==2, "users", from==3, "server", from==4, "database",from==5, "desktop",from==6, "laptop",from==7, "printer",from==8, "harddrive",from==9,"wifi",from==10, "code",from==11, "money",from==12, "bell"
+,from==13, "shopping-cart",from==14, "comment",from==15, "exclamation-circle",from==16, "file",from==17, "globe",from==18, "sitemap",from==19, "image",from==20, "info", from==21, "cloud",from==22,"envelope",from==23,"star",from==24,"file",from==25,"folder",
+from==26, "windows", from==27, "adobe", from==28, "aws", from==29, "paypal",from==30, "git",from==31, "google",from==32, "googledrive",from==33, "java",from==34,"jenkins",from==35, "nodejs",from==36, "php",from==37, "twitter"
+,from==38, "wordpress",from==39, "windows",from==40, "linux",from==41, "skype",from==42, "slack")
+| streamstats current=false last(type) as to
+| eval from=type
+|  eval color = random()%4 | eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red")
+| eval value = type
+| table from, to, value, type, color</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">602</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none`</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">left</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">hubsize</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+      <h1>Icons</h1>
+      <center>
+<table id="symbols">
+<tr>
+            <td width="125">usergroups</td>
+            <td>
+              <span class="usergroups"/>
+            </td>
+            <td width="125">comment</td>
+            <td>
+              <span class="comment"/>
+            </td>
+            <td>ad</td>
+            <td>
+                <span class="ad"/>
+              </td>
+          </tr>
+<tr>
+            <td>users</td>
+            <td>
+              <span class="users"/>
+            </td>
+            <td>exclamation-circle</td>
+            <td>
+              <span class="exclamation-circle"/>
+            </td>
+           <td width="125">adobe</td>
+            <td>
+                <span class="adobe"/>
+              </td>
+          </tr>
+<tr>
+            <td>server</td>
+            <td>
+              <span class="server"/>
+            </td>
+            <td>shopping-cart</td>
+            <td>
+              <span class="shopping-cart"/>
+            </td>
+            <td>aws</td>
+            <td>
+                <span class="aws"/>
+              </td>
+          </tr>
+<tr>
+            <td>database</td>
+            <td>
+              <span class="database"/>
+            </td>
+            <td>globe</td>
+            <td>
+              <span class="globe"/>
+            </td>
+            <td>paypal</td>
+            <td>
+                <span class="paypal"/>
+              </td>
+          </tr>
+<tr>
+            <td>desktop</td>
+            <td>
+              <span class="desktop"/>
+            </td>
+            <td>sitemap</td>
+            <td>
+              <span class="sitemap"/>
+            </td>
+            <td>git</td>
+            <td>
+                <span class="git"/>
+              </td>
+          </tr>
+<tr>
+            <td>laptop</td>
+            <td>
+              <span class="laptop"/>
+            </td>
+            <td>image</td>
+            <td>
+              <span class="image"/>
+            </td>
+            <td>google</td>
+            <td>
+                <span class="google"/>
+              </td>
+          </tr>
+<tr>
+            <td>printer</td>
+            <td>
+              <span class="printer"/>
+            </td>
+            <td>info</td>
+            <td>
+              <span class="info"/>
+            </td>
+            <td>googledrive</td>
+            <td>
+                <span class="googledrive"/>
+              </td>
+          </tr>
+<tr>
+            <td>harddrive</td>
+            <td>
+              <span class="harddrive"/>
+            </td>
+            <td>cloud</td>
+            <td>
+              <span class="cloud"/>
+            </td>
+            <td>java</td>
+            <td>
+                <span class="java"/>
+              </td>
+          </tr>
+<tr>
+            <td>wifi</td>
+            <td>
+              <span class="wifi"/>
+            </td>
+            <td>envelope</td>
+            <td>
+              <span class="envelope"/>
+            </td>
+            <td>jenkins</td>
+            <td>
+                <span class="jenkins"/>
+              </td>
+          </tr>
+<tr>
+            <td>code</td>
+            <td>
+              <span class="code"/>
+            </td>
+            <td>star</td>
+            <td>
+              <span class="star"/>
+            </td>
+            <td>nodejs</td>
+            <td>
+                <span class="nodejs"/>
+              </td>
+          </tr>
+<tr>
+            <td>money</td>
+            <td>
+              <span class="money"/>
+            </td>
+            <td>file</td>
+            <td>
+              <span class="file"/>
+            </td>
+            <td>php</td>
+            <td>
+                <span class="php"/>
+              </td>
+          </tr>
+<tr>
+            <td>bell</td>
+            <td>
+              <span class="bell"/>
+            </td>
+            <td>folder</td>
+            <td>
+              <span class="folder"/>
+            </td>
+            <td>twitter</td>
+            <td>
+                <span class="twitter"/>
+              </td>
+          </tr>
+		  
+<tr>
+              <td>code-branch</td>
+              <td>
+                <span class="code-branch"/>
+              </td>
+              <td>wordpress</td>
+              <td>
+                <span class="wordpress"/>
+              </td>
+              <td>windows</td>
+              <td>
+                <span class="windows"/>
+              </td>
+            </tr>		  
+<tr>
+              <td>linux</td>
+              <td>
+                <span class="linux"/>
+              </td>
+              <td>skype</td>
+              <td>
+                <span class="skype"/>
+              </td>
+              <td>slack</td>
+              <td>
+                <span class="slack"/>
+              </td>
+            </tr>		  
+            
+</table>
+
+<table id="splunksymbols">
+  <tr>
+            <td>search-head</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/search-head.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>master-node</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/master-node.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>indexer</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/indexer.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>index</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/index.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>deployment-server</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/deployment-server.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>forwarder</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/forwarder.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>firewall</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/firewall.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>heavy-forwarder</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/heavy-forwarder.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>license-master</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/license-master.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>bucket</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/bucket.png"/>
+            </td>
+          </tr>
+  <tr>
+            <td>load-balancer</td>
+            <td>
+              <img src="/static/app/Splunk_TA_common-viz/icons/load-balancer.png"/>
+            </td>
+          </tr>
+</table>
+  
+  </center>
+
+<style>
+
+@font-face{font-family:"Font Awesome 5 solid";font-style:normal;font-weight:normal;font-display:auto;src:url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.eot);src:url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.eot?#iefix) format("embedded-opentype"),url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.woff2) format("woff2"),url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.woff) format("woff"),url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.ttf) format("truetype"),url(/static/app/Splunk_TA_common-viz/fonts/fa-solid-900.svg#fontawesome) format("svg")}
+
+@font-face{font-family:"Font Awesome 5 Brands";
+	font-style:normal;
+	font-weight:normal;
+	font-display:auto;
+	src:url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.eot);
+	src:url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.eot?#iefix) format("embedded-opentype"),url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.woff2) format("woff2"),url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.woff) format("woff"),url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.ttf) format("truetype"),url(/static/app/Splunk_TA_common-viz/fonts/fa-brands-400.svg#fontawesome) format("svg")}
+	.fab{font-family:"Font Awesome 5 Brands"}
+
+
+
+table#symbols, table#splunksymbols{display:inline-block;vertical-align:top;}
+table#symbols td, table#splunksymbols td{border: 1px solid #efefef;padding: 2px; min-width: 50px; height: 40px;}
+table#symbols span{font-family:"Font Awesome 5 solid"; font-size: 30px;}
+
+span.usergroups:before			{content:'\f0c0'}
+span.users:before 				{content:'\f007'}
+span.server:before 				{content:'\f233'}
+span.database:before 			{content:'\f1c0'}
+span.desktop:before 			{content:'\f108'}
+span.laptop:before 				{content:'\f109'}
+span.printer:before 			{content:'\f02f'}
+span.harddrive:before 			{content:'\f0a0'}
+span.wifi:before 				{content:'\f1eb'}
+span.code:before 				{content:'\f121'}
+span.money:before 				{content:'\f155'}
+span.bell:before 				{content:'\f0f3'}
+span.comment:before 			{content:'\f075'}
+span.exclamation-circle:before 	{content:'\f06a'}
+span.file:before 				{content:'\f15b'}
+span.globe:before 				{content:'\f0ac'}
+span.image:before 				{content:'\f03e'}
+span.info:before 				{content:'\f05a'}
+span.sitemap:before 			{content:'\f0e8'}
+span.shopping-cart:before		{content:'\f07a'}
+span.cloud:before				{content:'\f0c2'}
+span.envelope:before			{content:'\f0e0'}
+span.star:before				{content:'\f005'}
+span.code-branch:before			{content:'\f126'}
+span.folder:before				{content:'\f07c'}
+
+span.ad:before				{content:'\f641'; font-family:"Font Awesome 5 Solid"!important;}
+span.adobe:before			{content:'\f778'; font-family:"Font Awesome 5 Brands"!important;}
+span.aws:before				{content:'\f378'; font-family:"Font Awesome 5 Brands"!important;}
+span.paypal:before			{content:'\f1f4'; font-family:"Font Awesome 5 Brands"!important;}
+span.git:before				{content:'\f1d2'; font-family:"Font Awesome 5 Brands"!important;}
+span.google:before			{content:'\f1a0'; font-family:"Font Awesome 5 Brands"!important;}
+span.googledrive:before		{content:'\f3aa'; font-family:"Font Awesome 5 Brands"!important;}
+span.java:before			{content:'\f4e4'; font-family:"Font Awesome 5 Brands"!important;}
+span.jenkins:before			{content:'\f3b6'; font-family:"Font Awesome 5 Brands"!important;}
+span.nodejs:before			{content:'\f3d3'; font-family:"Font Awesome 5 Brands"!important;}
+span.php:before				{content:'\f457'; font-family:"Font Awesome 5 Brands"!important;}
+span.twitter:before			{content:'\f099'; font-family:"Font Awesome 5 Brands"!important;}
+span.wordpress:before		{content:'\f19a'; font-family:"Font Awesome 5 Brands"!important;}
+span.windows:before			{content:'\f17a'; font-family:"Font Awesome 5 Brands"!important;}
+span.linux:before			{content:'\f17c'; font-family:"Font Awesome 5 Brands"!important;}
+span.skype:before			{content:'\f17e'; font-family:"Font Awesome 5 Brands"!important;}
+span.slack:before			{content:'\f198'; font-family:"Font Awesome 5 Brands"!important;}
+
+
+</style>
+      
+      
+      
+    </html>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| makeresults count=11
+| streamstats count as id 
+| eval to = from +1
+| eval type=case(id==1, "search-head",id==2, "master-node", id==3, "indexer", id==4, "index",id==5, "deployment-server",id==6, "forwarder",id==7, "firewall",id==8, "heavy-forwarder",id==9,"license-master",id==10, "bucket",id==11, "load-balancer")
+| eval to=case(id==2, "search-head",id==3, "master-node", id==4, "indexer", id==5, "index",id==6, "deployment-server",id==7, "forwarder",id==8, "firewall",id==9, "heavy-forwarder",id==10,"license-master",id==11, "bucket",id==1, "load-balancer")
+| eval value = type
+| eval from=type
+| table from, to, value, type, color</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">598</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none`</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">left</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">hubsize</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| makeresults count=5
+| streamstats count as from 
+| eval type=case(from==1, "triangle", from==2, "dot", from==3, "square", from==4, "diamond",from==5, "hexagon")
+| eval to=case(from==1, "dot", from==2, "square", from==3, "diamond",from==4, "hexagon")
+| eval from=type
+| eval color = random()%4 
+| eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red")
+| eval value = type
+| table from, to, value, type, color</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">110</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none`</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">left</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    <h1>Using Lookups</h1>
+    <p>You may find it easier to define your diagram in a lookup, and append the lookup to the end of your search.</p>
+    <p>By defining all the <i>from</i> nodes with an icon, color, and label in a lookup, you don't need to define them in your main search.</p>
+    <p>E.g. If you have a search to monitor the troughput between different servers, you can append a lookup to the end which defines the servers and the "server" type:</p>
+    <code>...main Search...<br/>
+    | append[ |inputlookup server-definition-lookup.csv]</code>
+    <p>The lookup would look something like this:    </p>
+    <table class="lookup">
+      <tr>
+            <td>from</td>
+            <td>type</td>
+            <td>color</td>
+            <td>value</td>
+          </tr>
+      <tr>
+            <td>webserver1</td>
+            <td>server</td>
+            <td>black</td>
+            <td>Primary Web Server</td>
+          </tr>
+      <tr>
+            <td>webserver2</td>
+            <td>server</td>
+            <td>black</td>
+            <td>Secondary Web Server</td>
+          </tr>
+      <tr>
+            <td>appserver1</td>
+            <td>server</td>
+            <td>black</td>
+            <td>Primary App Server</td>
+          </tr>
+      <tr>
+            <td>authserver</td>
+            <td>cloud</td>
+            <td>#efefef</td>
+            <td>Cloud Auth Server</td>
+          </tr>
+    </table>
+    <p>There is no <i>to</i> server defined. We just want to make sure that any time a node is called 'webserver1' it will have the server icon, in black, with the correct tool tip.</p>
+    <style>table.lookup td {padding: 4px; border: 1px solid #cccccc; border-collapse:collapse;</style>
+  </html>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,142 @@
+<dashboard script="token-via-links.js">
+  <init>
+    <set token="general">general</set>
+  </init>
+  <label>Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="hierarchy,tokens" data-value="general">General</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="hierarchy" data-unset-token="general,tokens" data-value="hierarchy">Hierarchy</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,hierarchy" data-value="tokens">Tokens</button>
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$general$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-general-netdiag.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Enable Physics</h2>Set whether the nodes will jiggle when you move them.:
+               <ul><li>True - Edges act like springs, making the nodes move and react to you dragging them around.</li>
+			   <li>False - When dragging nodes, they simple move location, and will not affect the other nodes.</li></ul></p>
+               <br /> 
+               <p><h2>Draggable Nodes</h2>Set whethere the nodes can be repositioned by clicking and dragging.<br/>
+               <p><strong>True</strong> - Click and drag to reposition the nodes.<br/>
+               <strong>False</strong> - The diagram is fixed in place.</p>
+               <br />
+               
+			   <p><h2>Enable Zoom</h2>Allow users to zoom into the viz. Enabled by default.</p>
+			   <p><strong>True</strong> - Zoom via the scroll wheel is enabled.<br/>
+               <strong>False</strong> - Zoom via the scroll wheel is disabled.</p>
+               <br />
+			   
+			   <p><h2>Link Text Position</h2>This setting determines where the link text will be positioned.</p>
+			   <p><strong>Top</strong> - Text appears on the top side of the link.<br/>
+               <strong>Middle</strong> - Text appears through the link.<br/>
+               <strong>Bottom</strong> - Text appears under the link.</p>
+               
+               <br />
+               <p><h2>Smooth Edges</h2>This determines whether the links between nodes are curved, or straight lines.</p>
+               <strong>True</strong> - Links are curved.<br/>
+               <strong>False</strong> - Links are straight.</p>
+               <br />
+               <p><h2>Clustering</h2>Determines whether or not to group similar nodes together.</p>
+               <p><strong>None</strong> - Do not cluster nodes.<br/>
+               <strong>Color</strong> - Group nodes by the same color.<br/>
+               <strong>Group</strong> - Group nodes by the same icon type.</p>
+               
+			   <br />
+			   <p><h2>Default Node Type</h2>If you don't define a node type in your search, that node will use the default type. Choose from over 60 types in the drop-down.</p> 
+               
+               
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+	    <panel depends="$hierarchy$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-hierarchy-netdiag.png"/>
+            </td>
+            <td valign="top">
+               <p><h2>Hierarchy View</h2>Set to True to organise the nodes into a hierarchy.</p>
+               <br /> 
+               <p><h2>Hierarchy Direction</h2>The orientation of the hierarchy:<br />
+               <strong>Top-Down</strong> - Position the root node(s) at the top, and progress downwards.<br/>
+               <strong>Bottom-Up</strong> - Position the root node(s) at the bottom, and progress upwards.<br/>
+               <strong>Left-Right</strong> -  Position the root node(s) at the left, and progress towards the right.<br/>
+               <strong>Right-Left</strong> -  Position the root node(s) at the right, and progress towards the left.</p>
+               <br />
+               <p><h2>Sort Method</h2>Choose how to organise the hierarchy</p>
+               <p><strong>Directed</strong> - Organise the hierarchy based on the from/to links in the Splunk search.<br/>
+               <strong>Hub Size</strong> - Pick the root node(s) based on how many links connect the nodes.<br/></p>
+              </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/options-tokens-netdiag.png"/>
+            </td>
+            <td valign="top">
+              
+              <p><h2>Node or link text</h2> The <i>label</i> value of the selected node, or the <i>linktext</i> of the selected link. Defaults to $$nd_value_token$$.<br /></p>
+              <br />
+              <p><h2>Node (from)</h2> The <i>from</i> field of the selected node. Defaults to $$nd_node_token$$ <br /></p>
+			  <br />
+			  <p><h2>Node (to)</h2> The <i>to</i> field of the selected link. Defaults to $$nd_to_node_token$$ <br />
+              <br /></p>
+              <br />
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+
+  </row>
+</dashboard>

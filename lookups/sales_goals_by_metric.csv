@@ -1,0 +1,4 @@
+metric,range_low,range_med,range_high,target
+Revenue,1500,2500,3500,3000
+Distinct Users,500,800,1000,700
+Distinct Sessions,2000,4000,6000,5000

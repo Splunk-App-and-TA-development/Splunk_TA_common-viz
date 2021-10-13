@@ -1,0 +1,224 @@
+<dashboard>
+  <init>
+    <set token="welcomePanel">true</set>
+    <set token="welcomePanel2">true</set>
+  </init>
+  <label>Drill Down and Token Examples</label>
+  <description>Examples of using the Performance Analysis Viz to drill down to issues, and use tokens to create interactive dashboards.</description>
+  <row>
+    <panel>
+      <title>Drill Down Example: Application Performance Monitoring</title>
+      <viz type="Splunk_TA_common-viz.performance_analysis">
+        <search>
+          <query>| gentimes start=4/1/18:12:00:00 end=4/1/18:17:00:00 increment=1m
+| rename starttime as _time 
+| eval rnd = random()%5 
+| eval name=case(rnd==0,"Homepage", rnd==1,"Login",rnd==2,"Search Page",rnd==3,"Select Result",rnd==4,"Logout",1==1,"Homepage")
+| eval value = rnd*2 
+| eval status = case(rnd==1,"RED",1==1, "GREEN")
+| table _time, name,value, status</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalColour">#DD0000</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalThreshold">8</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeEnd">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeStart">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.granularity">30</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.highColour">#92D050</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.highThreshold">3</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.lowColour">#00B0F0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.noDataColour">#cecece</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okColour">#78B24A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okThreshold">1</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showLegend">false</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showStatusAsText">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.timeFormat">h:mm A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenEarliest">pa_earliest_no_drilldown</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenLatest">pa_earliest_no_drilldown</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenName">pa_earliest_no_drilldown</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.veryHighColour">#ED7D31</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.veryHighThreshold">5.5</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningColour">#E0C135</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningThreshold">5</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <html>
+        <h1>Drill Down Example - Drill down to view the raw metrics or events</h1>
+        <h2>Please click on a time and server to drill down into the raw metrics or events of that time period.</h2>
+        <p>When you click on a cell, the Performance Analysis Viz will link to a search that filters data based on the date and name field.</p>
+        <p>To try it out, simply click on a cell to the left. Note that the data for this panel is randomised, so the raw data won't match up with what is currently displayed.</p>
+        <p>To set up drill downs:</p>
+        <ol>
+          <li>Edit the dashboard</li>
+          <li>Click the '...' button</li>
+          <li>Select 'Edit Drill Down'</li>
+          <li>Select On Click: 'Link to Search'</li>
+          <li>Click Apply</li>
+          <li>Save the dashboard and refresh</li>
+        </ol>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Token Example #1: Server Infrastructure and Application Performance</title>
+      <viz type="Splunk_TA_common-viz.performance_analysis">
+        <search>
+          <query>| inputlookup sample-data.csv | rename time as _time| table _time, name, value, status, warning_threshold, critical_threshold</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalColour">#DD0000</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalThreshold">18</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeEnd">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeStart">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.granularity">180</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.noDataColour">#5EBFC6</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okColour">#78B24A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showLegend">false</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showStatusAsText">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.timeFormat">h:mm A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenEarliest">pa_earliest2</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenLatest">pa_latest2</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenName">pa_name2</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningColour">#f8be34</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningThreshold">12</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <drilldown>
+          <unset token="welcomePanel2"></unset>
+        </drilldown>
+      </viz>
+    </panel>
+    <panel depends="$welcomePanel2$">
+      <html>
+        <h1>Token Example #1 - Drill down to a second Performance Analysis Viz</h1>
+        <h2>Please select a time and server to drill down into the performance of that time period.</h2>
+        <p>When you click on a cell, the Performance Analysis Viz will create three tokens:</p>
+        <ul>
+          <li>pa_name: The label for this row, e.g. "LNXPRODDB01"</li>
+          <li>pa_earliest: The timestamp for the start of the cell's time period</li>
+          <li>pa_latest: The timestamp for the end of the cell's time period</li>
+        </ul>
+        <p>You can then use these tokens to filter the source data and feed that into a second Performance Analysis Viz on your dashboard.</p>
+        <p>To try it out, simply click on a cell to the left.</p>
+      </html>
+    </panel>
+    <panel depends="$pa_name2$">
+      <title>Token Example #1 - Drill down to a second Performance Analysis Viz</title>
+      <viz type="Splunk_TA_common-viz.performance_analysis">
+        <title>Monitoring Results for $pa_name2$</title>
+        <search>
+          <query>| inputlookup sample-data.csv 
+| eval epoch = strptime(time, "%m/%d/%Y %H:%M")
+| search name="$pa_name2$" AND epoch&gt;=$pa_earliest2$ AND epoch&lt;=$pa_latest2$
+| rename time as _time
+| table _time, name, value, status, warning_threshold, critical_threshold</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalColour">#DD0000</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalThreshold">18</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeEnd">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeStart">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.granularity">30</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.noDataColour">#5EBFC6</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okColour">#78B24A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showLegend">false</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showStatusAsText">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.timeFormat">h:mm A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenEarliest">pa_earliest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenLatest">pa_latest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenName">pa_name</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningColour">#E0C135</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningThreshold">12</option>
+        <option name="refresh.display">progressbar</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Token Example #2: Server Infrastructure and Application Performance</title>
+      <viz type="Splunk_TA_common-viz.performance_analysis">
+        <search>
+          <query>| inputlookup sample-data.csv | rename time as _time| table _time, name, value, status, warning_threshold, critical_threshold</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalColour">#DD0000</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.criticalThreshold">18</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeEnd">7</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.downTimeStart">0</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.granularity">180</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.noDataColour">#5EBFC6</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.okColour">#78B24A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showLegend">false</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.showStatusAsText">true</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.timeFormat">h:mm A</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenEarliest">pa_earliest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenLatest">pa_latest</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.tokenName">pa_name</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningColour">#f8be34</option>
+        <option name="Splunk_TA_common-viz.performance_analysis.warningThreshold">12</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <drilldown>
+          <unset token="welcomePanel"></unset>
+        </drilldown>
+      </viz>
+    </panel>
+    <panel depends="$welcomePanel$">
+      <html>
+        <h1>Token Example #2 - Drill down to show the source data</h1>
+        <h2>Please select a time and server to view the health checks performed during that period.</h2>
+        <p>When you click on a cell, the Performance Analysis Viz will create three tokens:</p>
+        <ul>
+          <li>pa_name: The label for this row, e.g. "LNXPRODDB01"</li>
+          <li>pa_earliest: The timestamp for the start of the cell's time period</li>
+          <li>pa_latest: The timestamp for the end of the cell's time period</li>
+        </ul>
+        <p>You can then use these tokens to dynamically show other results on the dashboard.</p>
+        <p>To try it out, simply click on a cell to the left.</p>
+      </html>
+    </panel>
+    <panel depends="$pa_name$">
+      <title>Token Example #2 - Drill down to show the source data</title>
+      <table>
+        <title>Monitoring Results for $pa_name$</title>
+        <search>
+          <query>| inputlookup sample-data.csv 
+| eval epoch = strptime(time, "%m/%d/%Y %H:%M")
+| search name="$pa_name$" AND epoch&gt;=$pa_earliest$ AND epoch&lt;=$pa_latest$ 
+| rename time as Time, name as "Server Hostname", value as "CPU Percent", status as "Application Health" 
+| table Time, "Server Hostname", "CPU Percent", "Application Health"</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">5</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">row</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">true</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

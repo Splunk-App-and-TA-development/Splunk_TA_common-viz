@@ -1,0 +1,29 @@
+<panel>
+    <viz type="Splunk_TA_common-viz.scatterplot_matrix">
+        <title>Scatterplot Matrix</title>
+        <search>
+            <query>index=_internal component=Metrics group=per_sourcetype_thruput | bin _time span=1h | stats avg(kbps)
+                as avg_kbps stdevp(kbps) as stdevp_kbps by series _time | fields - _time
+            </query>
+            <earliest>-24h@h</earliest>
+            <latest>now</latest>
+        </search>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.axis_label_offset">0</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.box_size">140</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.cell_padding">10</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.dot_radius">5</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.log">0</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.show_r">r</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.show_trend">1</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.ticks">5</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.trendline_color">#555</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.trendline_width">2</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.legend_position">left</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.height">800</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.width">1024</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.show_legend">1</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.legend_height">15</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.legend_top_fudge">-50</option>
+        <option name="Splunk_TA_common-viz.scatterplot_matrix.legend_left_fudge">-100</option>
+    </viz>
+</panel>

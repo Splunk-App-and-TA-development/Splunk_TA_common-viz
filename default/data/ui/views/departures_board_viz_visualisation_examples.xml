@@ -1,0 +1,176 @@
+<dashboard>
+  <label>Example #2 - Tokens</label>
+  <row>
+    <panel>
+      <html>
+        <style>
+          div.html h1, div.html p{color:#333333!important;}
+          div.html{ background-color: #d1d1d1; border-radius:15px 15px 0px 0px;}
+          div.panel-element-row,div.dashboard-panel{border-radius: 15px 15px 0px 0px;}
+          
+        </style>
+        <h1>Using a token from one Departures Board to drive a second</h1>
+        <p>The departures board visualization on the left generates a "<i>country</i>" token, which is used to display the right hand visualization.</p>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Cities of the World</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| inputlookup departures-board-viz-countries-lookup.csv | eval rand=random()| sort rand | table city, country</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">15</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">dark</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">country</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">city</option>
+        <option name="drilldown">none</option>
+        <option name="height">118</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>$city$ is the capital of $country$</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| makeresults | eval text=$country|s$ | table text</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">15</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">dark</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbvasfdasd_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbvasdfasdf_term</option>
+        <option name="drilldown">none</option>
+        <option name="height">110</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Using a token from one Departures Board to drive other searches</h1>
+        <p>The departures board visualization on the left generates an ID token, which is used to filter the query for the right hand table, and the map.</p>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Population of $city$</title>
+      <viz type="Splunk_TA_common-viz.departures-board-viz">
+        <search>
+          <query>| inputlookup departures-board-viz-countries-lookup.csv where city=$city|s$ AND country=$country|s$ | eval population=tostring(population, "commas") | table population, id</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.departures-board-viz.align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.auto_refresh_period">10</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.dark_tiles">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.force_all_caps">true</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.is_fixed_length">false</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.num_characters">5</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.size">L</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.text_align">left</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.theme">dark</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.timing">500</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_id">dbv_id</option>
+        <option name="Splunk_TA_common-viz.departures-board-viz.token_term">dbv_term</option>
+        <option name="drilldown">none</option>
+        <option name="height">167</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Details of $city$</title>
+      <table>
+        <search>
+          <query>| inputlookup departures-board-viz-countries-lookup.csv where id=$dbv_id$|  rename city as City, country as Country, population as Population | table City, Country, Population | fieldformat Population=tostring(Population, "commas")</query>
+          <earliest>1541449920.000</earliest>
+          <latest>1541464324.000</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">1</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">row</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">false</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Location of $dbv_term$</title>
+      <map>
+        <search>
+          <query>| inputlookup departures-board-viz-countries-lookup.csv where id=$dbv_id$ | geostats latfield=lat longfield=lng sum(population) as Population translatetoxy=true</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.choroplethLayer.colorBins">5</option>
+        <option name="mapping.choroplethLayer.colorMode">auto</option>
+        <option name="mapping.choroplethLayer.maximumColor">0xaf575a</option>
+        <option name="mapping.choroplethLayer.minimumColor">0x62b3b2</option>
+        <option name="mapping.choroplethLayer.neutralPoint">0</option>
+        <option name="mapping.choroplethLayer.shapeOpacity">0.75</option>
+        <option name="mapping.choroplethLayer.showBorder">1</option>
+        <option name="mapping.data.maxClusters">100</option>
+        <option name="mapping.legend.placement">bottomright</option>
+        <option name="mapping.map.center">(0,0)</option>
+        <option name="mapping.map.panning">1</option>
+        <option name="mapping.map.scrollZoom">0</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.markerLayer.markerMaxSize">50</option>
+        <option name="mapping.markerLayer.markerMinSize">10</option>
+        <option name="mapping.markerLayer.markerOpacity">0.8</option>
+        <option name="mapping.showTiles">1</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.minZoom">0</option>
+        <option name="mapping.tileLayer.tileOpacity">1</option>
+        <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </map>
+    </panel>
+  </row>
+</dashboard>

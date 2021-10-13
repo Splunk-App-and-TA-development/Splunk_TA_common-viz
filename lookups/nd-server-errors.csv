@@ -1,0 +1,8 @@
+server,status,message
+Load Balancer,red,Invalid configuration detected. Cannot join host domain.
+Web 1,red,Server 500 error: Invalid configuration
+Web 2,red,SSL error: Invalid cipher requested. 
+Web 3,red,Error: CPU above 80%
+App Server 1,red,"Version mis-match: Reported version: 12.11, Cluster version: 13.0"
+App Server 2,red,Error: Connection refused on port 8080
+Database Server,red,Error: Out of storage (0x1123)

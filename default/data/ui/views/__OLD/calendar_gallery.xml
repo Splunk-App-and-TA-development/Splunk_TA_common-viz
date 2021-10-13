@@ -1,0 +1,55 @@
+<dashboard>
+  <label>Calendar Gallery</label>
+  <description>Examples on how to use the Calendar custom visualization.</description>
+  <row>
+    <panel>
+      <title>Multiple series on the same calendar</title>
+      <viz type="calendar_app.calendar">
+        <title>index=_internal | timechart span=1d dc(sourcetype) AS sourcetypes dc(source) as sources dc(host) as hosts</title>
+        <search>
+          <query>index=_internal | timechart span=1d dc(sourcetype) AS sourcetypes dc(source) as sources dc(host) as hosts</query>
+          <earliest>0</earliest>
+          <sampleRatio>1000</sampleRatio>
+        </search>
+        <option name="calendar_app.calendar.calendarView">month</option>
+        <option name="calendar_app.calendar.showWeekNumbers">false</option>
+        <option name="calendar_app.calendar.showWeekends">true</option>
+        <option name="height">550</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Default to week view</title>
+      <viz type="calendar_app.calendar">
+        <search>
+          <query>index=_internal | timechart span=1h dc(sourcetype) AS sourcetypes</query>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1000</sampleRatio>
+        </search>
+        <option name="calendar_app.calendar.calendarView">agendaWeek</option>
+        <option name="calendar_app.calendar.showWeekNumbers">false</option>
+        <option name="calendar_app.calendar.showWeekends">true</option>
+        <option name="height">550</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Toggle week ends and week numbers</title>
+      <viz type="calendar_app.calendar">
+        <search>
+          <query>index=_internal | timechart span=1d dc(sourcetype) AS sourcetypes</query>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>10</sampleRatio>
+        </search>
+        <option name="calendar_app.calendar.calendarView">month</option>
+        <option name="calendar_app.calendar.showWeekNumbers">true</option>
+        <option name="calendar_app.calendar.showWeekends">false</option>
+        <option name="height">550</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

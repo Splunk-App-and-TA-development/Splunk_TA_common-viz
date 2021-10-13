@@ -1,0 +1,36 @@
+process_step,savedsearch_name,description,status,color,time
+start,nd-60m-business-process-start,Hourly validation of starting parameters.,OK,green,3600
+receive_issue_list,nd-15m-business-process-receiveIssuesLength,Issue list length validation  - limit of 15 entries.,OK,green,877
+receive_issue_list,nd-15m-business-process-receiveIssuesFields,Validate all required fields are present,WARN,yellow,860
+receive_issue_list,nd-15m-business-process-receiveIssuesTimestamp,Validate timestamps are within 1 week of today,OK,green,655
+review_issue_list,nd-15m-business-process-reviewIssuesRepeats,No duplicate topics are resubmitted within 2 weeks,OK,green,812
+review_issue_list,nd-15m-business-process-reviewIssuesAuthorized,All entries have supporting authorization,OK,green,800
+any_issues_ready,nd-1d-business-process-issuesReadyGate,Count of new Issues is greater than 1,OK,green,64840
+end_1,nd-1d-business-process-end1_ack,ServiceNow updated with exit criteria,OK,green,72000
+discussion_cycle,nd-1h-business-process-discussionUserValidation,Validate users against distribution list,OK,green,3400
+discussion_cycle,nd-1h-business-process-discussionNoDelegatesCommenting,Verify that no delegates have responded in discussion topics,OK,green,3205
+discussion_cycle,nd-1h-business-process-discussionWordCountLimit,Word count on discussion less than 10K words,OK,green,1255
+announce_issues,nd-1h-business-process-announceIssuesLimit,Verify there are fewer than 7 concurrent issues,OK,green,423
+announce_issues,nd-1h-business-process-announceIssuesRegister,Validate the issues register has been updated before voting has commenced,OK,green,235
+announce_issues,nd-1d-business-process-announceIssuesBatch,Overnight publishing job has completed without error,OK,green,63000
+collect_votes,nd-1h-business-process-collectVotesUserValidation,Voting users are validated against AzureAD,OK,green,300
+collect_votes,nd-1d-business-process-collectVotesLimits,Votes received before cutoff,OK,green,5420
+prepare_results,nd-1d-business-process-prepareResultsValid,Issues validated against votes,OK,green,2583
+prepare_results,nd-1d-business-process-prepareResultsSingleVoteLimit,One valid vote per user counted,OK,green,36900
+post_results,nd-1d-business-process-postResultBatch,Overnight publishing job has completed without error,OK,green,5456
+post_results,nd-15m-business-process-postResultWebsite,Results server is operational,WARN,yellow,843
+email_results,nd-1d-business-process-emailResultCert,Self-Signed email certificate valid,OK,green,61200
+email_results,nd-15m-business-process-emailResultBounceback,No Bounce-Back replies from email,CRITICAL,red,52
+completed_1,nd-1d-business-process-completedEmails,Emails sent,OK,green,3345
+completed_1,nd-1d-business-process-completedPosted,Results posted to web,OK,green,68130
+enough_members_voted,nd-1d-business-process-membersVoted,Validate that a quorum was achieved,OK,green,35480
+members_are_warned,nd-1d-business-process-membersWarned,Members Warned of lack of quorum,NA,blue,65461
+reannounce_vote,nd-1d-business-process-reanounceVoteRisk,Risk register updated,NA,blue,65461
+reannounce_vote,nd-1d-business-process-reanounceVotePosted,Members informed and marked off on register,NA,blue,348520
+reannounce_vote,nd-1d-business-process-reanounceVote,Re-vote timer started in Project Management Tool,NA,blue,32136
+reduce_voting_members,nd-1d-business-process-reduceMembers,Update risk register with new quorum level,NA,blue,32136
+issues_wo_majority,nd-1d-business-process-woMajorityValidate,Validate majority vote,OK,green,68130
+issues_wo_majority,nd-1d-business-process-woMajorityUpdateRegister,Update Project Management register,OK,green,57600
+issues_wo_majority,nd-1d-business-process-woMajorityCloseServiceNow,Close ServiceNow ticket,OK,green,12458
+end_3,nd-1d-business-process-end3_ack,Bulletin published,OK,green,12458
+2nd_time,nd-1d-business-process-2ndTime,Approval for revote supplied,NA,blue,348520

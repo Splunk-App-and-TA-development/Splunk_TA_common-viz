@@ -1,0 +1,96 @@
+<dashboard>
+  <label>Bullet Graph Gallery</label>
+  <row>
+    <panel>
+      <title>Default</title>
+      <viz type="Splunk_TA_common-viz.bullet_graph">
+        <search>
+          <query>| inputlookup sales_data.csv 
+| where website="Website 1"
+| stats sum(value) by metric 
+| lookup sales_goals_by_metric metric 
+| fields metric sum(value) range_low range_med range_high</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+      </viz>
+    </panel>
+    <panel>
+      <title>Default (goal specified)</title>
+      <viz type="Splunk_TA_common-viz.bullet_graph">
+        <search>
+          <query>| inputlookup sales_data.csv 
+| where website="Website 1"
+| stats sum(value) by metric 
+| lookup sales_goals_by_metric metric 
+| fields metric sum(value) range_low range_med range_high target</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Custom Colors</title>
+      <viz type="Splunk_TA_common-viz.bullet_graph">
+        <search>
+          <query>| inputlookup sales_data.csv 
+| where website="Website 1"
+| stats sum(value) by metric 
+| lookup sales_goals_by_metric metric 
+| fields metric sum(value) range_low range_med range_high target</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.bullet_graph.bulletColor">#1e93c6</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeLowColor">#f58f39</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.targetMarkerColor">#d93f3c</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Custom colors #2</title>
+      <viz type="Splunk_TA_common-viz.bullet_graph">
+        <search>
+          <query>| inputlookup sales_data.csv 
+| where website="Website 1"
+| stats sum(value) by metric 
+| lookup sales_goals_by_metric metric 
+| fields metric sum(value) range_low range_med range_high target</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.bullet_graph.bulletColor">#fff</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeHighColor">#65a637</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeLowColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeMidColor">#f58f39</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.targetMarkerColor">#333</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Bullet Chart with Trellis Layout</title>
+      <viz type="Splunk_TA_common-viz.bullet_graph">
+        <search>
+          <query>| inputlookup sales_data.csv 
+| stats sum(value) by metric website
+| lookup sales_goals_by_metric metric 
+| fields metric sum(value) range_low range_med range_high website</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="Splunk_TA_common-viz.bullet_graph.bulletColor">#333</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeHighColor">#a4a4a4</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeLowColor">#cccccc</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.rangeMidColor">#c6c6c6</option>
+        <option name="Splunk_TA_common-viz.bullet_graph.targetMarkerColor">#333</option>
+        <option name="drilldown">none</option>
+        <option name="height">264</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.size">large</option>
+        <option name="trellis.splitBy">website</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

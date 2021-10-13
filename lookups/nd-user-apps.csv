@@ -1,0 +1,20 @@
+to,from,count,linktext,type,value
+carousel-viz,admin,14,14,users,User admin made 14 requests to carousel-viz
+event-timeline-viz,admin,23,23,users,User admin made 23 requests to event-timeline-viz
+highlighter,admin,16,16,users,User admin made 16 requests to highlighter
+network-diagram-viz,admin,35,35,users,User admin made 35 requests to network-diagram-viz
+performance-analysis,admin,66,66,users,User admin made 66 requests to performance-analysis
+search,admin,78,78,users,User admin made 78 requests to search
+carousel-viz,sally,3,3,users,User sally made 3 requests to carousel-viz
+event-timeline-viz,sally,6,6,users,User sally made 6 requests to event-timeline-viz
+highlighter,sally,47,47,users,User sally made 47 requests to highlighter
+network-diagram-viz,sally,12,12,users,User sally made 12 requests to network-diagram-viz
+network-diagram-viz,paul,1,1,users,User paul made 1 requests to network-diagram-viz
+performance-analysis,paul,13,13,users,User paul made 13 requests to performance-analysis
+search,paul,112,112,users,User paul made 112 requests to search
+,carousel-viz,,,image,App: carousel-viz
+,event-timeline-viz,,,image,App: event-timeline-viz
+,highlighter,,,image,App: highlighter
+,network-diagram-viz,,,image,App: network-diagram-viz
+,performance-analysis,,,image,App: performance-analysis
+,search,,,image,App: search

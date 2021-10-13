@@ -1,0 +1,260 @@
+<dashboard theme="light">
+  <label>Carousel Visualization</label>
+  <row>
+    <panel>
+      <html>
+      <h2>Carousel Visualization</h2>
+      <h4>Version: 1.1.3</h4>
+      <h4>Created by Daniel Spavin (<a href="mailto:daniel@spavin.org">daniel@spavin.org</a>)</h4>
+        </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <title>Carousel Viz - v1.1.3</title>
+        <search>
+          <query>|makeresults count=5 
+| streamstats count as id
+| eval value=case(id==1,9333, id==2,1000, id==3,"98.10%", id==4,"My Account",id==5,"15,320") 
+| eval unit=case(id==1,"RPM", id==2,"Accounts", id==3,"CPU", id==4,"",id==5,"I/O") 
+| eval caption=case(id==1,"Disk Platter Speed", id==2,"Active Users", id==3,"Webserver CPU Use", id==4,"Most Active Webiste Area",id==5,"SAN Performance") 
+| eval range=case(id==1,"low", id==2,"elevated", id==3,"severe", id==4,"blue",id==5,"low") 
+| table value, unit, caption, range</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="carousel-viz.carousel-viz.autoWidth">false</option>
+        <option name="carousel-viz.carousel-viz.autoplay">true</option>
+        <option name="carousel-viz.carousel-viz.autoplaySpeed">normal</option>
+        <option name="carousel-viz.carousel-viz.colorMode">foreground</option>
+        <option name="carousel-viz.carousel-viz.defaultCaption">Caption for all slides</option>
+        <option name="carousel-viz.carousel-viz.direction">right</option>
+        <option name="carousel-viz.carousel-viz.forceAllCaps">false</option>
+        <option name="carousel-viz.carousel-viz.numDecimalPlaces">0</option>
+        <option name="carousel-viz.carousel-viz.orientation">horizontal</option>
+        <option name="carousel-viz.carousel-viz.rotation">infinite</option>
+        <option name="carousel-viz.carousel-viz.showArrows">false</option>
+        <option name="carousel-viz.carousel-viz.showDots">false</option>
+        <option name="carousel-viz.carousel-viz.size">small</option>
+        <option name="carousel-viz.carousel-viz.slidesToScroll">1</option>
+        <option name="carousel-viz.carousel-viz.slidesToShow">3</option>
+        <option name="carousel-viz.carousel-viz.thousandsSeparator">true</option>
+        <option name="carousel-viz.carousel-viz.thousandsSeparators">true</option>
+        <option name="carousel-viz.carousel-viz.tokenCaption">cv_caption</option>
+        <option name="carousel-viz.carousel-viz.tokenFormattedValue">cv_formatted_value</option>
+        <option name="carousel-viz.carousel-viz.tokenRawValue">cv_raw_value</option>
+        <option name="carousel-viz.carousel-viz.tokenUnit">cv_unit</option>
+        <option name="carousel-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="carousel-viz.carousel-viz.token_value">cv_value</option>
+        <option name="carousel-viz.carousel-viz.unitPosition">after</option>
+        <option name="drilldown">none</option>
+        <option name="height">178</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <title>Carousel Viz - v1.1.3</title>
+        <search>
+          <query>| makeresults count=12 
+| eval value=random()%10000 
+| rangemap field=value blue=8500-10000 low=6500-8500 elevated=2500-6500 default=critical 
+| streamstats count as id 
+| eval caption = "Sales for " + tostring(strftime(strptime("01-" + tostring(id) + "-2019","%d-%m-%Y"),"%B" ) )
+| table value, range, caption, bit1, months</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="carousel-viz.carousel-viz.autoWidth">false</option>
+        <option name="carousel-viz.carousel-viz.autoplay">true</option>
+        <option name="carousel-viz.carousel-viz.autoplaySpeed">normal</option>
+        <option name="carousel-viz.carousel-viz.colorMode">background</option>
+        <option name="carousel-viz.carousel-viz.defaultCaption">Cost of Mortgage Repayment</option>
+        <option name="carousel-viz.carousel-viz.direction">left</option>
+        <option name="carousel-viz.carousel-viz.forceAllCaps">false</option>
+        <option name="carousel-viz.carousel-viz.numDecimalPlaces">0</option>
+        <option name="carousel-viz.carousel-viz.orientation">horizontal</option>
+        <option name="carousel-viz.carousel-viz.rotation">infinite</option>
+        <option name="carousel-viz.carousel-viz.showArrows">false</option>
+        <option name="carousel-viz.carousel-viz.showDots">true</option>
+        <option name="carousel-viz.carousel-viz.size">small</option>
+        <option name="carousel-viz.carousel-viz.slidesToScroll">1</option>
+        <option name="carousel-viz.carousel-viz.slidesToShow">3</option>
+        <option name="carousel-viz.carousel-viz.thousandsSeparator">true</option>
+        <option name="carousel-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="carousel-viz.carousel-viz.token_value">cv_value</option>
+        <option name="carousel-viz.carousel-viz.unit">$</option>
+        <option name="carousel-viz.carousel-viz.unitPosition">before</option>
+        <option name="drilldown">none</option>
+        <option name="height">183</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+    <panel>
+      <viz type="Splunk_TA_common-viz.carousel-viz">
+        <title>Carousel Viz - v1.1.3</title>
+        <search>
+          <query>|makeresults count=4
+| streamstats count as id
+| eval value=case(id==1,42, id==2,2221, id==3,63543, id==4,3135) 
+| eval caption=case(id==1,"Likes", id==2,"Up Votes", id==3,"Shares", id==4,"Mentions") 
+| eval range=case(id==1,"low", id==2,"low", id==3,"low", id==4,"low") 
+| table value, caption, range</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="carousel-viz.carousel-viz.autoWidth">false</option>
+        <option name="carousel-viz.carousel-viz.autoplay">true</option>
+        <option name="carousel-viz.carousel-viz.autoplaySpeed">normal</option>
+        <option name="carousel-viz.carousel-viz.colorMode">background</option>
+        <option name="carousel-viz.carousel-viz.direction">right</option>
+        <option name="carousel-viz.carousel-viz.forceAllCaps">false</option>
+        <option name="carousel-viz.carousel-viz.numDecimalPlaces">0</option>
+        <option name="carousel-viz.carousel-viz.orientation">vertical</option>
+        <option name="carousel-viz.carousel-viz.rotation">infinite</option>
+        <option name="carousel-viz.carousel-viz.showArrows">false</option>
+        <option name="carousel-viz.carousel-viz.showDots">true</option>
+        <option name="carousel-viz.carousel-viz.size">small</option>
+        <option name="carousel-viz.carousel-viz.slidesToScroll">1</option>
+        <option name="carousel-viz.carousel-viz.slidesToShow">1</option>
+        <option name="carousel-viz.carousel-viz.thousandsSeparator">true</option>
+        <option name="carousel-viz.carousel-viz.token_capiton">cv_caption</option>
+        <option name="carousel-viz.carousel-viz.token_value">cv_value</option>
+        <option name="carousel-viz.carousel-viz.unitPosition">before</option>
+        <option name="drilldown">none</option>
+        <option name="height">131</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+    
+    
+<h1>Version Support</h1>
+<p>7.2, 7.1, 7.0, 6.6, 6.5, 6.4, 6.3, 6.2, 6.1, 6.0</p>
+
+
+<h1>Who is this app for?</h1>
+<p>This app is for anyone who wants to display several metrics on a small area of a dashboard.</p>
+
+
+<h1>How does the app work?</h1>
+<p>This app provides a visualization that you can use in your own apps and dashboards.</p>
+<p>To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.</p>
+
+
+<h1>Usecases for the Departures Board Visualization:</h1>
+<ol>
+  <li>Displaying current server metrics like CPU, Memory, I/O, and Disk usage</li>
+  <li>Scrolling through a list of sales by category or date</li>
+  <li>Showing related application metrics in a discreet dashboard panel</li>
+  <li>Rotating through all open Priority 1 ticket numbers</li>
+</ol>
+
+
+<h1>The following fields can be used in the search:</h1>
+<ul>
+  <li>value (required): If you don't define a field called value, the first field will be used to display the value text.</li>
+  <li>unit (optional): You can define a unit for the value, e.g. '$' or '%'. A value in the unit field will override the default unit configured in settings.</li>
+  <li>caption (optional): A caption to display for this value. If you define a caption field, it will override the default caption configured in settings.</li>
+  <li>range (optional): This is usually generated by the <a href="https://docs.splunk.com/Documentation/Splunk/latest/SearchReference/Rangemap"/>rangemap<a/> command. It is used to set the color for the slide.</li>
+</ul>
+
+
+<h1>Example Search</h1>
+<p>
+  <code>| makeresults count=5 <br/>
+| streamstats count as id<br/>
+| eval value=case(id==1,42.4, id==2,74, id==3,"2", id==4,"55",id==5,"622") <br/>
+| eval unit=case(id==1,"%", id==2,"MB", id==3,"%", id==4,"Mbps",id==5,"Users") <br/>
+| eval caption=case(id==1,"CPU Use", id==2,"Free Memory", id==3,"Free Disk Space", id==4,"Network Use",id==5,"Active Users") <br/>
+| eval range=case(id==1,"low", id==2,"elevated", id==3,"severe", id==4,"low",id==5,"low") <br/>
+| table value, unit, caption, range</code>
+</p>
+
+
+<h1>Tokens</h1>
+<p>Tokens are generated eacht time you click a slide. This can be useful if you want to populate another panel on the dashboard with a custom search, or link to a new dashboard with the tokens carying across.</p>
+ <ul>
+          <li>Formatted Value: This is the 'value' field, that has undergone any formatting changes from the options, e.g. all-caps for text or decimal places and commas for numbers. Use this token to display to the user. Default value: $cv_formatted_value$</li>
+<li>Raw Value: This is the value as it was defined in the search results. Use this token in searches for exact matches of the raw data. Default value: $cv_raw_value$</li>
+<li>Caption: This is the 'caption' field. If you use the hostname of a server as the caption, you can create additional searches by using this value. Default value: $cv_caption$</li>
+<li>Unit: This is the 'unit' field, or the default value for unit. Use this token to help users make sense of the Formatted Value token.  Default value: $cv_unit$</li>
+        </ul>
+
+<h1>Limits</h1>
+<p>The visualization is bound by the follwoing limits:</p>
+<ul>
+  <li>Total results: 1000</li>
+</ul>
+
+<h1># Release Notes #</h1>
+<h2>v 1.1.3</h2>
+<ul>
+        <li>Added blue color when using range: range='blue', 'unknown', 'debug'</li>
+		<li>Setting range to 'medium' or 'high' now translates to amber / red</li>
+		<li>Fixed bug where the viz would not display when using a base search</li>
+</ul>
+
+
+<h2>v 1.1.2</h2>
+<ul>
+          <li>Minor change to pass AppInspect checks</li>
+        </ul>
+
+<h2>v 1.1.0</h2>
+<ul>
+  <li>Added ability to create tokens on click</li>
+  <li>Updated dashboard to show example token usage</li>
+  <li>Made value text fit better on fixed-size slides</li>
+  <li>Fixed resizing issue when editing settings</li>
+</ul>
+
+<h2>v 1.0.0</h2>
+<ul>
+  <li>Initial version</li>
+</ul>
+
+
+<h1>Issues and Limitations</h1>
+<ul>
+<li>Internet Explorer 11 and Microsoft Edge - Vertical orientation with fixed-sized slides can cause display issues. To workaround this, set the size to Automatic.</li>
+	<li>Vertical orientation only scrolls in one direction. Setting left-to-right or right-to-left does not affect the direction.</li>
+	<li>'Show dots' option is ignored for vertical orientation.</li>
+</ul>
+<p>If you have a bug report or feature request, please contact <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+
+
+<h1>Privacy and Legal</h1>
+<p>No  personally identifiable information is logged or obtained in any way through this visualizaton.</p>
+
+
+<h1>For support </h1>
+<p>Send email to <a href="email:daniel@spavin.net" title="Email: daniel@spavin.net">daniel@spavin.net</a>
+        </p>
+<p>Support is not guaranteed and will be provided on a best effort basis.</p>
+    
+<h1>Slick</h1>    
+<p>This visualization uses <a href="http://kenwheeler.github.io/slick/">Slick</a> by Ken Wheeler.</p>
+
+    
+  </html>
+    </panel>
+  </row>
+</dashboard>

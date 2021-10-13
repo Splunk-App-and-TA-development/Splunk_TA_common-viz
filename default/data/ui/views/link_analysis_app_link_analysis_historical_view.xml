@@ -1,0 +1,29 @@
+<form script="./cytoStateN.js" stylesheet="cytostate.css" theme="dark">
+  <label>Link Analysis Historical View</label>
+  <search id="cytoState">
+    <query>index=cyto sourcetype=cyto:graph graph_id=$cytoId$</query>
+    <earliest>-365d@h</earliest>
+    <latest>now</latest>
+  </search>
+  <fieldset submitButton="false" autoRun="false">
+    <input type="dropdown" token="cytoId" searchWhenChanged="true">
+      <label>Previous State</label>
+      <fieldForLabel>desc_time</fieldForLabel>
+      <fieldForValue>graph_id</fieldForValue>
+      <search>
+        <query>index=cyto graph_id=*  sourcetype=cyto:graph | eval time = strftime(_time, "%c") | strcat description " : " time " : " graph_id desc_time | dedup desc_time</query>
+        <earliest>-365d@d</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+  </fieldset>
+  <row>
+    <panel depends="$cytoId$">
+      <title>Load Former State</title>
+      <html>
+                  <div id="cy">   
+                  </div>
+            </html>
+    </panel>
+  </row>
+</form>

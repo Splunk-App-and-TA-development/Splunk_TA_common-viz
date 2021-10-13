@@ -1,0 +1,297 @@
+<form theme="light">
+  <label>Dendrogram Viz - Documentation</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <html>
+<style>
+.table td, .table th {
+  vertical-align: middle;
+}
+</style>
+<div style="max-width: 1200px; margin: 0 auto;">
+<p>Configurable dendrogram visualization built using D3. Supports dark-mode, and can layout horizontally, vertically or as a radial dendogram. These charts are useful to display hierarchical data.</p>
+<br/><br/>
+<p>Copyright (C) 2020 Chris Younger |
+<a href="https://github.com/ChrisYounger/dendrogram_viz">Source code</a> | <a href="https://splunkbase.splunk.com/app/5153/">Splunkbase</a> | <a href="https://answers.splunk.com/app/questions/5153.html">Questions, Bugs or Suggestions</a> | <a href="https://splunkbase.splunk.com/apps/#/author/chrisyoungerjds">My Splunk apps</a>
+</p>
+
+<br/>
+<br/>
+<br/>
+
+<h2>Usage</h2>
+<p>This visualisation expects a table of data, with one column called "path". Additional optional columns are listed below.</p>
+<p>
+  <ul>
+    <li><code>path</code> - this column/field should can be forward-slash delimited, but you can change the delimiter in the formatting options.</li>
+    <li><code>color</code> - a HTML color code or hex value to use for coloring the node</li>
+    <li><code>drilldown</code> - when a user clicks a node, the contents of this drilldown field will be set in a token called <code>$dendrogram_viz_drilldown$</code>. See token section below.</li>
+    <li><code>tooltip</code> - content to show on the tooltip when a user hovers the node</li>
+    <li><code>names</code> - can be used to change node names. Should be the same 'depth' as the path.</li>
+  </ul>
+</p>
+
+<p>Here is an example search that you can use with web data</p>
+<pre class="highlight">
+<code>index=web | stats count by uri_path | rename uri_path as path</code>
+</pre>
+<br/>
+<p>Here is an example of how the data should look</p>
+<img src="/static/app/Splunk_TA_common-viz/images/dendrogram_viz_table.png"/>
+<br/><br/>
+
+<h2>Tokens</h2>
+When clicking a node, the following tokens will be set: <code>$dendrogram_viz_path$</code>, <code>$dendrogram_viz_name$</code> (see 'names' above), <code>$dendrogram_viz_id$</code> and <code>$dendrogram_viz_drilldown$</code> (if drilldown column is provided in the data).  Hit F12 to open the browser console, to see what tokens are being set.
+<br/>
+<br/>
+<br/>
+
+<h2>Formatting options</h2>
+
+<img src="/static/app/Splunk_TA_common-viz/images/dendrogram_viz_formatting.png"/>
+
+<br/>
+
+
+<br/>
+<br/>
+<br/>
+
+<h2>Third party software</h2>
+<p>The following third-party libraries are used by this app. Thank you!</p>
+<ul>
+<li>jQuery - MIT - <a href="https://jquery.com/">https://jquery.com/</a>
+            </li>
+<li>D3 - BSD 3-Clause - <a href="https://d3js.org/">https://d3js.org/</a>
+            </li>
+<li>Tinycolor - MIT - <a href="https://github.com/bgrins/TinyColor">https://github.com/bgrins/TinyColor</a>
+            </li>
+</ul>
+
+</div>
+</html>
+    </panel>
+    <panel>
+      <input type="link" token="tidytree">
+        <label>Leafnodes</label>
+        <choice value="yes">Tidytree</choice>
+        <choice value="no">Justified</choice>
+        <default>yes</default>
+        <initialValue>yes</initialValue>
+      </input>
+      <viz type="Splunk_TA_common-viz.dendrogram_viz">
+        <title>Horizontal layout</title>
+        <search>
+          <query>| makeresults   
+| eval raw = "
+path=\"/etc/apps/$$app1/local\" ###
+path=\"/etc/apps/$$app1/default\" ###
+path=\"/etc/apps/$$app2/local\" ###
+path=\"/etc/apps/$$app2/default\" ###
+path=\"/etc/apps/$$app3/local\" ###
+path=\"/etc/apps/$$app3/default\" ###
+path=\"/etc/system/local\" ###
+path=\"/etc/system/default\" ###tidy
+path=\"/etc/users/$$username/$$app/local\" ###
+path=\"/etc/users/$$username/$$app/default\" ###
+"
+| makemv delim="###" raw
+| mvexpand raw 
+| rename raw  as  _raw 
+| extract</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.delimiter">/</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.html">yes</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.label_size">10</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.layout">horizontal</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.max_rows">1000</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_ancestor_spacing">150</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_sibling_spacing">24</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_size">5</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.radius">300</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.tidy">$tidytree$</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.zoom">no</option>
+        <option name="drilldown">none</option>
+        <option name="height">424</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.dendrogram_viz">
+        <title>Example  with vertical layout and larger nodes</title>
+        <search>
+          <query>| makeresults   
+| eval raw = "
+path=\"My Company\" color=\"#d16f18\" ###
+path=\"My Company/Platform\" color=\"#d16f18\" ###
+path=\"My Company/Platform/LDAP\" color=\"#1a9035\" ###
+path=\"My Company/Platform/DNS\" color=\"#1a9035\" ###
+path=\"My Company/Platform/Network\" color=\"#b22b32\" ###
+path=\"My Company/Business Services\" color=\"#1a9035\" ###
+path=\"My Company/Business Services/Finance\" color=\"#1a9035\" ###
+path=\"My Company/Business Services/Finance/SAP\" color=\"#1a9035\" ###
+path=\"My Company/Business Services/Finance/Documents\" color=\"#1a9035\" ###
+path=\"Business unit 1\" color=\"#1a9035\" ###
+path=\"Business unit 1/Business Services\" color=\"#1a9035\" ###
+path=\"Business unit 1/Business Services/Sales\" color=\"#1a9035\" ###
+path=\"Business unit 1/Business Services/Services\" color=\"#1a9035\" ###
+path=\"Business unit 2/Business Services/Sales\" color=\"#1a9035\" ###
+path=\"Business unit 2/Business Services/Services\" color=\"#1a9035\" ###
+path=\"Business unit 3/Business Services/Sales\" color=\"#1a9035\" ###
+path=\"Business unit 3/Business Services/Services\" color=\"#1a9035\" ###
+path=\"Business unit 4/Business Services/Sales\" color=\"#1a9035\" 
+"
+| makemv delim="###" raw
+| mvexpand raw 
+| rename raw  as  _raw 
+| extract
+| table path color | eval value = 1</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.delimiter">/</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.html">no</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.label_size">10</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.layout">vertical</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.max_rows">1000</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_ancestor_spacing">100</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_sibling_spacing">40</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_size">10</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.radius">300</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.tidy">$tidytree$</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.zoom">no</option>
+        <option name="drilldown">none</option>
+        <option name="height">431</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+      <viz type="Splunk_TA_common-viz.dendrogram_viz">
+        <title>Example with radial layout</title>
+        <search>
+          <query>| makeresults   
+| eval raw = "
+path=\"itsi_internal_log/itsi.async_csv_loader\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.backfill\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.controllers.itoa_rest_interface_provider\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.default_aggregation_policy_loader\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.default_correlation_search_acl_loader\" color=\"#b22b32\" ###
+path=\"itsi_internal_log/itsi.entity_exchange_consumer\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.license_checker\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.notable_event_actions_queue_consumer\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.notable_event_archive\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.notable_event_hec_init\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.objects.searches\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.scheduled_backup_caller\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.service_template_update_scheduler\" color=\"#53a051\" ###
+path=\"itsi_internal_log/itsi.user_access_init\" color=\"#53a051\" ###
+path=\"itsi_internal_log/maintenance_minder\" color=\"#53a051\" ###
+path=\"scheduler/SavedSearchHistory\" color=\"#53a051\" ###
+path=\"scheduler/SavedSplunker\" color=\"#53a051\" ###
+path=\"splunk_web_service/__init__\" color=\"#53a051\" ###
+path=\"splunk_web_service/_cplogging\" color=\"#53a051\" ###
+path=\"splunk_web_service/cached\" color=\"#53a051\" ###
+path=\"splunk_web_service/config\" color=\"#b22b32\" ###
+path=\"splunk_web_service/custom\" color=\"#b22b32\" ###
+path=\"splunk_web_service/decorators\" color=\"#53a051\" ###
+path=\"splunk_web_service/error\" color=\"#53a051\" ###
+path=\"splunk_web_service/i18n_catalog\" color=\"#53a051\" ###
+path=\"splunk_web_service/lists\" color=\"#53a051\" ###
+path=\"splunk_web_service/root\" color=\"#53a051\" ###
+path=\"splunk_web_service/startup\" color=\"#b22b32\" ###
+path=\"splunk_web_service/view\" color=\"#53a051\" ###
+path=\"splunkd/ApplicationLicense\" color=\"#53a051\" ###
+path=\"splunkd/AuthorizationManager\" color=\"#d16f18\" ###
+path=\"splunkd/BucketMover\" color=\"#53a051\" ###
+path=\"splunkd/BundlesSetup\" color=\"#53a051\" ###
+path=\"splunkd/CMBucketId\" color=\"#53a051\" ###
+path=\"splunkd/CapabilityExpression\" color=\"#d16f18\" ###
+path=\"splunkd/CascadingReplicationManager\" color=\"#53a051\" ###
+path=\"splunkd/CertStorageProvider\" color=\"#53a051\" ###
+path=\"splunkd/ClientSessionsManager\" color=\"#53a051\" ###
+path=\"splunkd/ClusteringMgr\" color=\"#53a051\" ###
+path=\"splunkd/DC:DeploymentClient\" color=\"#d16f18\" ###
+path=\"splunkd/DSManager\" color=\"#53a051\" ###
+path=\"splunkd/DS_DC_Common\" color=\"#53a051\" ###
+path=\"splunkd/DatabaseDirectoryManager\" color=\"#53a051\" ###
+path=\"splunkd/DeploymentServer\" color=\"#53a051\" ###
+path=\"splunkd/DispatchManager\" color=\"#d16f18\" ###
+path=\"splunkd/DispatchProcess\" color=\"#b22b32\" ###
+path=\"splunkd/DispatchSearchMetadata\" color=\"#d16f18\" ###
+path=\"splunkd/ExecProcessor\" color=\"#b22b32\" ###
+path=\"splunkd/HealthChangeReporter\" color=\"#53a051\" ###
+path=\"splunkd/HotBucketRoller\" color=\"#53a051\" ###
+path=\"splunkd/HotDBManager\" color=\"#53a051\" ###
+path=\"splunkd/HttpListener\" color=\"#b22b32\" ###
+path=\"splunkd/IndexConfig\" color=\"#d16f18\" ###
+path=\"splunkd/IndexProcessor\" color=\"#53a051\" ###
+path=\"splunkd/IndexWriter\" color=\"#53a051\" ###
+path=\"splunkd/IndexerIf\" color=\"#53a051\" ###
+path=\"splunkd/IndexerInit\" color=\"#53a051\" ###
+path=\"splunkd/IndexerService\" color=\"#53a051\" ###
+path=\"splunkd/IniFile\" color=\"#d16f18\" ###
+path=\"splunkd/InstalledFilesHashChecker\" color=\"#d16f18\" ###
+path=\"splunkd/IntrospectionGenerator:disk_objects\" color=\"#53a051\" ###
+path=\"splunkd/IntrospectionGenerator:resource_usage\" color=\"#b22b32\" ###
+path=\"splunkd/KeyManagerLocalhost\" color=\"#53a051\" ###
+path=\"splunkd/LMAdminHandlerLicenses\" color=\"#b22b32\" ###
+path=\"splunkd/LMConfig\" color=\"#53a051\" ###
+path=\"splunkd/LMLicense\" color=\"#53a051\" ###
+path=\"splunkd/LMSlaveInfo\" color=\"#53a051\" ###
+path=\"splunkd/LMStack\" color=\"#53a051\" ###
+path=\"splunkd/LMStackMgr\" color=\"#53a051\" ###
+path=\"splunkd/LMTracker\" color=\"#53a051\" ###
+path=\"splunkd/LicenseMgr\" color=\"#53a051\" ###
+path=\"splunkd/LocalAppsAdminHandler\" color=\"#d16f18\" ###
+path=\"splunkd/MPool\" color=\"#53a051\" ###
+path=\"splunkd/MetricAlertManager\" color=\"#53a051\" ###
+path=\"splunkd/MetricSchemaProcessor\" color=\"#53a051\" ###
+path=\"splunkd/Metrics\" color=\"#53a051\" ###
+path=\"splunkd/ModularInputs\" color=\"#53a051\" ###
+path=\"splunkd/OnlineFsck\" color=\"#53a051\" ###
+path=\"splunkd/PeriodicHealthReporter\" color=\"#53a051\" ###
+path=\"splunkd/PipeFlusher\" color=\"#53a051\" ###
+path=\"splunkd/PipelineComponent\" color=\"#53a051\" ###
+path=\"splunkd/ProcessTracker\" color=\"#d16f18\" ###
+path=\"splunkd/ProxyConfig\" color=\"#53a051\" ###
+path=\"splunkd/Pstacks\" color=\"#d16f18\" ###
+path=\"splunkd/PubSubSvr\" color=\"#53a051\" ###
+path=\"splunkd/Rsa2FA\" color=\"#53a051\" ###
+path=\"splunkd/SHCConfig\" color=\"#d16f18\" ###
+path=\"splunkd/SHClusterMgr\" color=\"#53a051\" ###
+path=\"splunkd/ScheduledViewsReaper\" color=\"#53a051\" ###
+path=\"splunkd/SearchParser\" color=\"#b22b32\""
+| makemv delim="###" raw
+| mvexpand raw 
+| rename raw  as  _raw 
+| extract
+| table path color</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.delimiter">/</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.html">yes</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.label_size">10</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.layout">radial</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.max_rows">1000</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_ancestor_spacing">100</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_sibling_spacing">20</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.node_size">5</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.radius">200</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.tidy">yes</option>
+        <option name="Splunk_TA_common-viz.dendrogram_viz.zoom">no</option>
+        <option name="drilldown">none</option>
+        <option name="height">712</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</form>

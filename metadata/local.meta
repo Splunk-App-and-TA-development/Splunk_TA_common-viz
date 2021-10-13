@@ -1,0 +1,14 @@
+# splunk TA - Splunk_TA_Common-VIZ
+# metadata/local.meta
+# © 2017-2021 SwissTXT Security
+#########################################
+# ------------------------------------- #
+# Splunk TA with the collection of the  #
+# most used Splunk Visualizations.      #
+# ------------------------------------- #
+# Declare Local App Permissions.        #
+#########################################
+
+[app/install/install_source_checksum]
+version = 8.0.9
+modtime = 1621354974.917512000

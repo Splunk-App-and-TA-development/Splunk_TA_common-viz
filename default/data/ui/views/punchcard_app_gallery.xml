@@ -1,0 +1,135 @@
+<dashboard>
+  <label>Punchcard Gallery</label>
+  <description>Usage data from bikeshare program Washington DC (https://www.capitalbikeshare.com)</description>
+  <row>
+    <panel>
+      <title>Default</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <title>Radius scale localized by day</title>
+        <search>
+          <query>| inputlookup bikeshare.csv
+| stats count by date_hour date_wday</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">false</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">horizontal</option>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">local</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Global Radius Scale</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <search>
+          <query>| inputlookup bikeshare.csv
+| stats count by date_hour date_wday</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">global</option>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">false</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">horizontal</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Sequential Colorization</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <title>+ angled X axis labels</title>
+        <search>
+          <query>| inputlookup bikeshare.csv
+| eval duration = duration_ms/60000
+| stats count median(duration) by date_hour date_wday</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">true</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">sequential</option>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">local</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#f7bc38</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">angle</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Categorical Colorization</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <title>+ angled X axis labels</title>
+        <search>
+          <query>| inputlookup bikeshare.csv
+| eval duration = duration_ms/60000
+| eval is_member = if(member_type=="Registered", 1, 0)
+| eval is_casual = if(member_type=="Casual", 1, 0)
+| stats avg(duration_ms) sum(is_member) as sum_m, sum(is_casual) as sum_c by date_hour date_wday
+| eval prevalent_member_type = if(sum_m &gt; sum_c, "Member", "Casual")
+| fields - sum_m, sum_c</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">true</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">categorical</option>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">local</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#3fc77a</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">angle</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Rows show categorical field instead of week day</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <title>Showing only registered members</title>
+        <search>
+          <query>| inputlookup bikeshare.csv
+| search member_type="Registered"
+| stats count by date_hour start_station
+| sort 400 start_station</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="height">600</option>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">false</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">sequential</option>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">local</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#f7bc38</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">angle</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Rows show categorical field instead of week day</title>
+      <viz type="Splunk_TA_common-viz.punchcard">
+        <title>Showing only casual riders</title>
+        <search>
+          <query>| inputlookup bikeshare.csv
+| search member_type="Casual"
+| stats count by date_hour start_station
+| sort 400 start_station</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="height">600</option>
+        <option name="Splunk_TA_common-viz.punchcard.useColors">false</option>
+        <option name="Splunk_TA_common-viz.punchcard.colorMode">sequential</option>
+        <option name="Splunk_TA_common-viz.punchcard.radiusScale">local</option>
+        <option name="Splunk_TA_common-viz.punchcard.minColor">#f7bc38</option>
+        <option name="Splunk_TA_common-viz.punchcard.maxColor">#d93f3c</option>
+        <option name="Splunk_TA_common-viz.punchcard.numOfBins">6</option>
+        <option name="Splunk_TA_common-viz.punchcard.labelRotation">angle</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

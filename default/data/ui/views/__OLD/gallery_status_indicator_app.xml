@@ -1,0 +1,111 @@
+<dashboard>
+  <label>Status Indicator Gallery</label>
+  <row>
+    <panel>
+      <title>Default, Number only, Drilldown</title>
+      <viz type="Splunk_TA_common-viz.status_indicator">
+        <search>
+          <query>| inputlookup status_indicator_data.csv | head 1 | table value icon_value color_value</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="status_indicator_app.status_indicator.showOption">3</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">warning</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#555</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">text</option>
+        <drilldown>
+          <link target="_blank">http://www.google.com?q=$row.value$</link>
+        </drilldown>
+      </viz>
+    </panel>
+    <panel>
+      <title>Icon, Number Formatting, Dynamic Icon, Dynamic Color</title>
+      <viz type="Splunk_TA_common-viz.status_indicator">
+        <search>
+          <query>| inputlookup status_indicator_data.csv | eval count=1 | accum count | where count &gt;= 2 | head 1 | table value icon_value color_value</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.icon">field_value</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">warning</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.colorBy">field_value</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#d93f3c</option>
+        <option name="status_indicator_app.status_indicator.precision">2</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">text</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Fill Background, Static Icon</title>
+      <viz type="Splunk_TA_common-viz.status_indicator">
+        <search>
+          <query>| inputlookup status_indicator_data.csv | eval count=1 | accum count | where count &gt;= 3 | head 1 | table value icon_value color_value</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.icon">field_value</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">warning</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#65a637</option>
+        <option name="status_indicator_app.status_indicator.precision">0</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Fill Background, Icon Only</title>
+      <viz type="Splunk_TA_common-viz.status_indicator">
+        <search>
+          <query>| inputlookup status_indicator_data.csv | head 1</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="status_indicator_app.status_indicator.showOption">2</option>
+        <option name="status_indicator_app.status_indicator.icon">fix_icon</option>
+        <option name="status_indicator_app.status_indicator.fixIcon">database</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="status_indicator_app.status_indicator.colorBy">static_color</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#6db7c6</option>
+        <option name="status_indicator_app.status_indicator.precision">3</option>
+        <option name="status_indicator_app.status_indicator.useThousandSeparator">true</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">background</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Status Indicator with Trellis Layout</title>
+      <viz type="Splunk_TA_common-viz.status_indicator">
+        <search>
+          <query>| inputlookup status_indicator_data.csv
+| head 10
+| stats values(value) as value, values(icon_value), values(color_value) by category
+| eval value = value % 1000
+| eval 3=3</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">152</option>
+        <option name="status_indicator_app.status_indicator.colorBy">field_value</option>
+        <option name="status_indicator_app.status_indicator.fillTarget">text</option>
+        <option name="status_indicator_app.status_indicator.icon">field_value</option>
+        <option name="status_indicator_app.status_indicator.showOption">1</option>
+        <option name="status_indicator_app.status_indicator.staticColor">#555</option>
+        <option name="status_indicator_app.status_indicator.useColors">true</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">small</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,218 @@
+<dashboard>
+    <label>Scatterplot Matrix</label>
+    <row>
+        <panel>
+            <html>
+                <h1>Scatterplot Matrix</h1>
+                <blockquote>
+                    The scatterplot matrix visualization allows comparison between numeric sets of data, giving a rough
+                    idea if there is a linear correlation between multiple fields. The scatterplot matrix consists of
+                    Rows and Columns of individual Scatterplots that plot an X and a Y value. These values come from the
+                    fields sent from the search bar.
+                </blockquote>
+                <h2>How To Use and Read the Scatterplot Matrix</h2>
+                <blockquote>
+                    The scatterplot matrix could be considered a table of sorts. Each row compares data against the
+                    column. So for each label (or field) that is displayed, follow the label to the scatterplot, and
+                    that is what is being compared. For example, the top right box of the example on this dashboard
+                    compares avg_kbps (Y axis) to stdevp_kbps (X axis). The bottom left box compares avg_kbps (X axis)
+                    to stdevp_kbps (Y axis). The axis are switched, and give a different visualization of the data.
+                </blockquote>
+                <blockquote>
+                    Additionally, the graph supports some interactivity. Click and drag over a portion of a scatterplot,
+                    and the same XY coordinates in the other plots will also be highlighted, and the legend will reflect
+                    the items within that highlight. Mouseover the legend items, and the corresponding data points will
+                    be highlighted in the scatter plots.
+                </blockquote>
+                <blockquote>
+                    You can find more information for Scatterplot Matricies at the links below.
+                    <ul>
+                        <li>
+                            <a href="https://learningomics.wordpress.com/2013/01/31/scatterplot-matrices/"
+                               target="_blank">Learning Omics
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.itl.nist.gov/div898/handbook/eda/section3/eda33qb.htm" target="_blank">
+                                Engineering Statistics Handbook
+                            </a>
+                        </li>
+                    </ul>
+                </blockquote>
+                <h2>Configuration Options</h2>
+                <blockquote>Scatterplot Matrix has many different configuration options, each split into similar
+                    sections. The options are displayed like this:
+                    <ul>
+                        <li>Configuration Option Name</li>
+                        <ul>
+                            <li>Valid Setting Options</li>
+                            <li>Description</li>
+                        </ul>
+                    </ul>
+                </blockquote>
+            </html>
+        </panel>
+        <panel ref="Aplura_Viz_-_Scatterplot_Matrix" app="Splunk_TA_common-viz"></panel>
+    </row>
+    <row>
+        <panel>
+            <html>
+                <h1>Configuration Options</h1>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Graph</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Box Padding
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls the space around each scatterplot.</li>
+                                </ul>
+                            </li>
+                            <li>Box Size
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls the size of each scatterplot.</li>
+                                </ul>
+                            </li>
+                            <li>Number of Ticks
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls the number of tick marks on each axis.</li>
+                                </ul>
+                            </li>
+                            <li>Axis Label Offset
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls how far away from the scatterplot matrix the labels for the axis
+                                        appear.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Height
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This is the height of the SVG. If you have clipping due to size, increase
+                                        this.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Width
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This is the width of the SVG. If you have clipping due to size, increase this.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Legend</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Show Legend
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>This toggles the Legend.</li>
+                                </ul>
+                            </li>
+                            <li>Height (px)
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This is the height of the Legend Text.</li>
+                                </ul>
+                            </li>
+                            <li>Position
+                                <ul>
+                                    <li>Left, Right</li>
+                                    <li>This controls where the legend is placed, either to the left or right of the
+                                        matrix.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Top Offset
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls how far from the top of the Visualization the legend will
+                                        display.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Left Offset
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>THis controls how far from the left of the Visualization the legend will
+                                        display.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Trendline</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Show Trendlines
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>This toggles the trendlines for each scatterplot.</li>
+                                </ul>
+                            </li>
+                            <li>Show R-Value
+                                <ul>
+                                    <li>No, R, R²</li>
+                                    <li>Controls if, and how, the R value is displayed on the graph.</li>
+                                </ul>
+                            </li>
+                            <li>Show One-to-One Data
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>This controls the scatterplots on the Top-left to Bottom-Right Diagonal. This
+                                        will remove the data points for those plots if No.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Trendline Width
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This sets the width of the Trendline.</li>
+                                </ul>
+                            </li>
+                            <li>Trendline Color
+                                <ul>
+                                    <li>&lt;hex color&gt;</li>
+                                    <li>This sets the color of the Trendline.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Debug</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Javascript Logging
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>Disables or enables the logging of debug information for the visualization.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                    <h3>Data Points</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Dot Size
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>This controls the size of the data points in the scatterplots.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+            </html>
+        </panel>
+    </row>
+</dashboard>

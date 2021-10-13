@@ -1,0 +1,366 @@
+<dashboard script="token-via-links.js" version="1.1">
+  <init>
+    <set token="example">example</set>
+  </init>
+  <label>Drill-Down Config</label>
+  <description>How to set up drill-downs to create tokens and link to other dashboards or URLs.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="example" data-unset-token="general,hierarchy,tokens" data-value="example">Example</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="general" data-unset-token="hierarchy,tokens,example" data-value="general">In-Dashboard Tokens</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="hierarchy" data-unset-token="general,tokens,example" data-value="hierarchy">Splunk Drill-Down Tokens</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="general,hierarchy,example" data-value="tokens">Splunk Drill-Down to URL</button>
+
+
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$general$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/network-diagram-viz_options-tokens.png"/>
+            </td>
+            <td valign="top">
+              <h1>In-Dashboard Tokens</h1>
+			  <p>
+                <b>Activated by a single click</b>
+              </p>
+			  <p>When you click a node or link in the Network Diagram Viz, a custom token is created. This allows you to move the nodes around and iteract with the visualization while still being able to create context-aware tokens.</p>
+			  <p>These default tokens can be configured in the Options menu, under 'Tokens'.</p>
+              <p>
+                <h2>Node or link text</h2> The <i>label</i> value of the selected node, or the <i>linktext</i> of the selected link. Defaults to $$nd_value_token$$.<br/>
+              </p>
+              <br/>
+              <p>
+                <h2>Node (from)</h2> The <i>from</i> field of the selected node. Defaults to $$nd_node_token$$ <br/>
+              </p>
+			  <br/>
+			  <p>
+                <h2>Node (to)</h2> The <i>to</i> field of the selected link. Defaults to $$nd_to_node_token$$ <br/>
+              <br/>
+              </p>
+              <br/>
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$hierarchy$">
+      <html>
+		<table cellpadding="10">
+			<tr>
+				<td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/network-diagram-viz_drilldown-options.png"/>
+            </td>
+				<td valign="top">
+					<h1>Splunk Drill-Downs</h1>
+					<p>
+                <b>Activated by a single click</b>
+              </p>
+					<p>You can access the drill-down menu by clicking the ... button at the top right of the visualization panel when editing the dashboard:</p>
+					<img src="/static/app/Splunk_TA_common-viz/images/network-diagram-viz_drilldown-where.png"/>
+					<p>From this menu you can choose to create tokens, send users to a search, redirect to a dashboard, or redirect to a URL.</p>
+					<p>A general warning may appear on the drill-down menu. This warning does not apply to the Network Diagram Viz and can be ignored:</p>
+					<img src="/static/app/Splunk_TA_common-viz/images/network-diagram-viz_drilldown-error.png"/>
+					
+					<p>When creating custom tokens the following source tokens are available:</p>
+					
+					
+	<table border="1" cellpadding="5" cellspacing="0" width="100%">
+		<tbody>
+			<tr>
+				<th>Data Property</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>
+                      <b>click.name</b>
+                    </td>
+				<td>Either From value of the node that is double clicked on the Network Diagram visualization.<br/>Or linkText of the link that is double clicked on the Network Diagram visualization.</td>
+			</tr>
+			<tr>
+				<td>
+                      <b>click.value</b>
+                    </td>
+				<td>Either Value of the node that is double clicked on the Network Diagram visualization.<br/>Or linkWidth of the link that is double clicked on the Network Diagram visualization.</td>
+			</tr>
+			<tr>
+				<td>
+                      <b>click.name2</b>
+                    </td>
+				<td>Same as click.name.</td>
+			</tr>
+			<tr>
+				<td>
+                      <b>click.value2</b>
+                    </td>
+				<td>Same as click.name.</td>
+			</tr>
+			<tr>
+				<td>
+                      <b>click.color</b>
+                    </td>
+				<td>Either Color of the node that is double clicked on the Network Diagram visualization.<br/>OR linkColor  of the link that is double clicked on the Network Diagram visualization.</td>
+			</tr>
+			<tr>
+				<td>
+                      <b>row.&lt;fieldname&gt;</b>
+                    </td>
+				<td>Exposes each field in the same result row from which the node value is taken.<br/>
+				Available fields depend on whether a node or link was double clicked: <br/>
+				Double clicking nodes: row.from, row.value, row.type, row.color<br/>
+				Double clicking links: row.from, row.to, row.linkColor, row.linkText, row.linkWidth<br/>
+                    </td>
+			</tr>
+		</tbody>
+	</table>
+			</td>
+			</tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$tokens$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/network-diagram-viz_drilldown-tourl.png"/>
+            </td>
+            <td valign="top">
+              <h1>Splunk Drill-Down to URL</h1>
+			  <p>
+                <b>Activated by a double click</b>
+              </p>
+			  <p>To drill-down to a URL you can choose this option. All drill-down tokens are available to use in the URL.</p>
+			  <p>To make sure that the tokens are URL save, you can use the following format: $$<em>token_name</em>|u$$ This will URL encode the token to make it safe to use in links.</p>
+              
+              <br/>
+            </td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+  </row>
+  <row depends="$example$">
+    <panel>
+      <html>
+      <h2>Tokens Built into the app</h2>  
+      <table id="tokens1">
+        <tr>
+            <td>
+              <strong>Token</strong>
+            </td>
+            <td>
+              <strong>Value</strong>
+            </td>
+            <td>
+              <strong>Notes</strong>
+            </td>
+          </tr>
+        <tr>
+            <td>$$nd_value_token$$</td>
+            <td>$nd_value_token$</td>
+            <td>If you click a link: Link text - same as $$row.linkText$$<br/>If you click a node: From Node name - same as $$row.from$$. This is due to a bug from earlier versions. Use $$nd_tooltip_token$$ instead if you want the node value.</td>
+          </tr>
+          <tr>
+            <td>$$nd_from_node_token$$</td>
+            <td>$nd_from_node_token$</td>
+            <td>From Node name - same as $$row.from$$</td>
+          </tr>
+        <tr>
+            <td>$$nd_to_node_token$$</td>
+            <td>$nd_to_node_token$</td>
+            <td>To Node name - same as $$row.to$$</td>
+          </tr>
+        <tr>
+            <td>$$nd_tooltip_token$$</td>
+            <td>$nd_tooltip_token$</td>
+            <td>Tool text of From Node name - same as $$row.value$$</td>
+          </tr>
+      </table>
+      </html>
+    </panel>
+    <panel>
+      <html>
+        <h2>Splunk built-in drilldowns</h2>
+              <table id="tokens2">
+        <tr>
+            <td>
+              <strong>Token</strong>
+            </td>
+            <td>
+              <strong>Value</strong>
+            </td>
+            <td>
+              <strong>Notes</strong>
+            </td>
+          </tr>
+        <tr>
+            <td>$$custom_value$$</td>
+            <td>$custom_value$</td>
+            <td>
+              <code>
+                <![CDATA[<set token="custom_value">$$row.from$$</set>]]>
+              </code>
+            </td>
+          </tr>
+        <tr>
+            <td>$$custom_value_2$$</td>
+            <td>$custom_value_2$</td>
+            <td>
+              <code>
+                <![CDATA[<set token="custom_value_2">$$row.value$$</set>]]>
+              </code>
+            </td>
+          </tr>
+               <tr>
+            <td>$$is_a_folder$$</td>
+            <td>$is_a_folder$</td>
+            <td>
+              <code>
+                <![CDATA[<eval token="is_a_folder">if('row.from'=="folder","You just clicked a folder","You didn't click a folder")</eval>]]>
+              </code>
+            </td>
+          </tr>
+      </table>
+        <p>Click the folder icon (first on the left) to see the $$is_a_folder$$ token change between "you've clicked a folder" and "you didn't click a folder" based on an eval in the drill-down menu.</p>
+    <style>table#tokens1,table#tokens2{border:1px solid #333333;width:fit-content;border-collapse: separate;border-collapse: collapse} table#tokens1 td,table#tokens td{padding:4px;border-collapse: collapse;border: 1px solid #333333;valign:top;}code#dashboard{display: block; white-space: pre-wrap }</style>
+      </html>
+    </panel>
+  </row>
+  <row depends="$example$">
+    <panel>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <title>Network Diagram Viz - v1.7.0</title>
+        <search>
+          <query>| makeresults count=10 
+| streamstats count as from 
+| eval type=case (from==1, "usergroups", from==2, "users", from==3, "server", from==4, "database",from==5, "desktop",from==6, "laptop",from==7, "printer",from==8, "harddrive",from==9,"wifi",from==10, "folder") 
+| eval to=case(from==2, "usergroups", from==3, "users", from==4, "server", from==5, "database",from==6, "desktop",from==7, "laptop",from==8, "printer",from==9, "harddrive", from==10, "wifi") 
+| eval from=type 
+| eval color = random()%4 
+| eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red") 
+| eval value = "NODE_ID_" . tostring(random()%40)
+| eval linkText=random()%500+1
+| table from, to, value, type, color, linkText</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">all</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">end</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">150</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">large</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">continuous</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_from_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <drilldown>
+          <set token="custom_value">$row.from$</set>
+          <set token="custom_value_2">$row.value$</set>
+          <eval token="is_a_folder">if('row.from'=="folder","You just clicked a folder","You didn't click a folder")</eval>
+        </drilldown>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$example$">
+    <panel>
+      <html>
+      <h1>Dashboard Code:</h1>
+      <code id="dashboard">
+          <![CDATA[<viz type="Splunk_TA_common-viz.network-diagram-viz">
+  <title>Network Diagram Viz - v1.7.0</title>
+  <search><query>| makeresults count=10 
+                 | streamstats count as from 
+                 | eval type=case (from==1, "usergroups", from==2, "users", from==3, "server", from==4, "database",from==5, "desktop",from==6, "laptop",from==7, "printer",from==8, "harddrive",from==9,"wifi",from==10, "folder") 
+                 | eval to=case(from==2, "usergroups", from==3, "users", from==4, "server", from==5, "database",from==6, "desktop",from==7, "laptop",from==8, "printer",from==9, "harddrive", from==10, "wifi") 
+                 | eval from=type, color = random()%4, eval color=case(color==0,"blue", color==1,"yellow",color==2,"green", 1==1, "red"), value = "NODE_ID_" . tostring(random()%40), linkText=random()%500+1
+                 | table from, to, value, type, color, linkText</query></search>
+  <option name="drilldown">all</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">end</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">circle</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">150</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">large</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">100</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">continuous</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_from_node_token</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+  <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+  <option name="refresh.display">progressbar</option>
+  <drilldown>
+    <set token="custom_value">$$row.from$$</set>
+    <set token="custom_value2">$$row.value$$</set>
+    <eval token="is_a_folder">if('row.from'=="folder","You just clicked a folder","You didn't click a folder")</eval>
+  </drilldown>
+</viz>]]>
+        </code>
+      
+      
+    </html>
+    </panel>
+  </row>
+</dashboard>

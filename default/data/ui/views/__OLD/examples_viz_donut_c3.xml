@@ -1,0 +1,106 @@
+<dashboard>
+  <label>Examples</label>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.c3donut">
+        <title>Default settings</title>
+        <search>
+          <query>| inputlookup radar.csv | table name strength | rename name as Strength</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="viz_donut_c3.c3donut.expand">0</option>
+        <option name="viz_donut_c3.c3donut.label_format">%</option>
+        <option name="viz_donut_c3.c3donut.label_show">1</option>
+        <option name="viz_donut_c3.c3donut.label_threshold">.05</option>
+        <option name="viz_donut_c3.c3donut.label_value">ratio</option>
+        <option name="viz_donut_c3.c3donut.legend_position">bottom</option>
+        <option name="viz_donut_c3.c3donut.legend_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_format">%</option>
+        <option name="viz_donut_c3.c3donut.tooltip_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_value">default</option>
+        <option name="type">viz_donut_c3.c3donut</option>
+        <option name="data">preview</option>
+        <option name="pagerPosition">bottom</option>
+        <option name="managerid">search1</option>
+        <option name="id">view_13415</option>
+        <option name="drilldownRedirect">true</option>
+        <option name="resizable">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.c3donut">
+        <title>Wider , Expand on hover, Legend on right</title>
+        <search>
+          <query>| inputlookup radar.csv | table name luck | rename name as Luck</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="viz_donut_c3.c3donut.expand">1</option>
+        <option name="viz_donut_c3.c3donut.label_format">%</option>
+        <option name="viz_donut_c3.c3donut.label_show">1</option>
+        <option name="viz_donut_c3.c3donut.label_threshold">.05</option>
+        <option name="viz_donut_c3.c3donut.label_value">ratio</option>
+        <option name="viz_donut_c3.c3donut.legend_position">right</option>
+        <option name="viz_donut_c3.c3donut.legend_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_format">%</option>
+        <option name="viz_donut_c3.c3donut.tooltip_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_value">default</option>
+        <option name="viz_donut_c3.c3donut.width">70</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.c3donut">
+        <title>Label actual values instead of percentage.</title>
+        <search>
+          <query>| inputlookup radar.csv | table name strength | rename name as Strength</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="viz_donut_c3.c3donut.expand">0</option>
+        <option name="viz_donut_c3.c3donut.label_show">1</option>
+        <option name="viz_donut_c3.c3donut.label_threshold">.05</option>
+        <option name="viz_donut_c3.c3donut.label_value">value</option>
+        <option name="viz_donut_c3.c3donut.legend_position">bottom</option>
+        <option name="viz_donut_c3.c3donut.legend_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_format">%</option>
+        <option name="viz_donut_c3.c3donut.tooltip_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_value">default</option>
+        <option name="type">viz_donut_c3.c3donut</option>
+        <option name="data">preview</option>
+        <option name="pagerPosition">bottom</option>
+        <option name="managerid">search3</option>
+        <option name="id">view_13408</option>
+        <option name="drilldownRedirect">true</option>
+        <option name="resizable">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <viz type="Splunk_TA_common-viz.c3donut">
+        <title>10% threshold label display with dollar formatting</title>
+        <search>
+          <query>| inputlookup countries_gdp.csv</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="viz_donut_c3.c3donut.expand">1</option>
+        <option name="viz_donut_c3.c3donut.label_format">$</option>
+        <option name="viz_donut_c3.c3donut.label_show">1</option>
+        <option name="viz_donut_c3.c3donut.label_threshold">.1</option>
+        <option name="viz_donut_c3.c3donut.label_value">value</option>
+        <option name="viz_donut_c3.c3donut.legend_position">right</option>
+        <option name="viz_donut_c3.c3donut.legend_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_format">$</option>
+        <option name="viz_donut_c3.c3donut.tooltip_show">1</option>
+        <option name="viz_donut_c3.c3donut.tooltip_value">value</option>
+        <option name="viz_donut_c3.c3donut.width">60</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

@@ -1,0 +1,148 @@
+<dashboard>
+  <label>Example Two: Server Metrics</label>
+  <row>
+    <panel>
+      <html>
+        <h1>Server Metrics</h1>
+  <p>The following example shows how to display multiple server metrics on a single Event Timeline Viz.</p>
+   <style>
+     .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    table,td{ border-collapse:collapse; border: 1px solid #dedede;}
+    div#third_1{width: 33%!important;}
+    div#third_2{width: 33%!important;}
+    div#third_3{width: 33%!important;}
+    div#twothirds_1{width: 66%!important;}
+    div#twothirds_2{width: 66.66%!important;}
+    div#twothirds_3{width: 66.66%!important;}
+    div#twothirds_4{width: 66.66%!important;}
+    div#twothirds_5{width: 66.66%!important;}
+    div#twothirds_6{width: 66.66%!important;}
+
+
+  span.grey{color: #b3b3b3;font-style:italic;}
+    </style>
+  </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_1">
+      <html>
+        <h1>Server metrics over time</h1>
+        <p>In this example, data from the <em>os</em> index is displayed on a time line. As the metrics represent hourly figures, the zoom levels have been fixed to 1 Day.</p>
+        <p>Sample query:</p>
+        <code>index=os sourcetype=cpu OR sourcetype=vmstat (all OR memFreePct)<br/>
+| eval CPU = 100-PercentIdleTime <br/>
+| bin span=1h _time<br/>
+| fields _time, sourcetype, memUsedPct, CPU<br/>
+| stats avg(CPU) as CPU, avg(memUsedPct) as memUsedPct  by _time, sourcetype<br/>
+| eval label = if(sourcetype="CPU",CPU,memUsedPct)<br/>
+| rename _time as start<br/>
+| eval label = round(label,1). "%" <br/>
+| eval end=start + 3600 <br/>
+| eval data=label <br/>
+| eval range="ok"<br/>
+| eval group= if(sourcetype="vmstat", "Memory", group)<br/>
+| fields group, start, end, label, range</code>
+      </html>
+    </panel>
+    <panel id="twothirds_1">
+      <title>Server Performance</title>
+      <viz type="Splunk_TA_common-viz.event-timeline-viz">
+        <search>
+          <query>|inputlookup example-os-index.csv | eval data=label| eval label =label."%" | eval tooltip=group . ": " . label</query>
+          <earliest>1548057600.000</earliest>
+          <latest>1548147463.000</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="event-timeline-viz.event-timeline-viz.maxZoom">86400000</option>
+        <option name="event-timeline-viz.event-timeline-viz.minZoom">86400000</option>
+        <option name="event-timeline-viz.event-timeline-viz.orientation">both</option>
+        <option name="event-timeline-viz.event-timeline-viz.stack">false</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenAllVisible">tok_tv_all_visible</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenData">tok_tv_data</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenEnd">tok_tv_end</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenLabel">tok_tv_label</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenStart">tok_tv_start</option>
+        <option name="event-timeline-viz.event-timeline-viz.tooltipDateFormat">DD-MMM-YYYY</option>
+        <option name="event-timeline-viz.event-timeline-viz.tooltipTimeFormat">hh:mm:ss</option>
+        <option name="height">263</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel id="third_2">
+      <html>
+       <h1>Running Processes over time</h1>
+        <p>In this example, process data from the <em>os</em> index is displayed on a time line. Data was collected as part of the Splunk_TA_nix add-on. </p>
+        <p>Sample query:</p>
+      
+      
+      <code>index=os<br/>
+| fields _time, COMMAND, pid<br/>
+| bin span=5m _time<br/>
+| stats values(COMMAND) as COMMAND by pid, _time<br/>
+| stats earliest(_time) as start, latest(_time) as end, values(COMMAND) as COMMAND by pid<br/>
+| mvexpand COMMAND<br/>
+| rename COMMAND as label<br/>
+| eval end=if(start=end, null, end)<br/>
+| head 500</code>
+    </html>
+    </panel>
+    <panel id="twothirds_2">
+      <title>Running Processes</title>
+      <viz type="Splunk_TA_common-viz.event-timeline-viz">
+        <search>
+          <query>|inputlookup example-os-index-ps.csv | eval tooltip="Command: " .label </query>
+          <earliest>1548057600.000</earliest>
+          <latest>1548147463.000</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="event-timeline-viz.event-timeline-viz.maxZoom">315360000000000</option>
+        <option name="event-timeline-viz.event-timeline-viz.minZoom">10</option>
+        <option name="event-timeline-viz.event-timeline-viz.orientation">bottom</option>
+        <option name="event-timeline-viz.event-timeline-viz.stack">true</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenAllVisible">tok_tv_all_visible</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenData">tok_tv_data</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenEnd">tok_tv_end</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenLabel">tok_tv_label</option>
+        <option name="event-timeline-viz.event-timeline-viz.tokenStart">tok_tv_start</option>
+        <option name="event-timeline-viz.event-timeline-viz.tooltipDateFormat">DD-MMM-YYYY</option>
+        <option name="event-timeline-viz.event-timeline-viz.tooltipTimeFormat">h:mm:ss A</option>
+        <option name="height">424</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

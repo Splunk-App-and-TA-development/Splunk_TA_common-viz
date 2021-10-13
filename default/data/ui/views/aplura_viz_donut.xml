@@ -1,0 +1,184 @@
+<dashboard>
+    <label>Donut Chart</label>
+    <row>
+        <panel>
+            <html>
+                <h1>Donut Chart</h1>
+                <blockquote>
+                    The donut chart is a variation of the standard pie chart. This chart will display results as a
+                    percentage of the whole.
+                </blockquote>
+                <h2>How to Use the Donut Chart</h2>
+                <blockquote>
+                    This chart has the ability to be displayed as either a two-dimensional or three-dimensional
+                    chart. This chart provides some interactivity. Mouseover a section of the chart to display
+                    the associated results. Click on a slice to drill down into the raw results.
+                </blockquote>
+                <h2>Configuration Options</h2>
+                <blockquote>
+                    The donut chart has many different configuration options. The options are split into sections
+                    related to each type of chart. The options are displayed like this:
+                    <ul>
+                        <li>Configuration Option Name</li>
+                        <ul>
+                            <li>Valid Setting Options</li>
+                            <li>Description</li>
+                        </ul>
+                    </ul>
+                </blockquote>
+            </html>
+        </panel>
+        <panel ref="Aplura_Viz_3D_Donut" app="Splunk_TA_common-viz"></panel>
+    </row>
+    <row>
+        <panel>
+            <html>
+                <h1>Configuration Options</h1>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Format</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Chart Type
+                                <ul>
+                                    <li>2D, 3D</li>
+                                    <li>Toggles between 2-dimensional and 3-dimensional.</li>
+                                </ul>
+                            </li>
+                            <li>Min Percent
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Controls the minimum percent of the total events before a result is included in the "Other" category.</li>
+                                </ul>
+                            </li>
+                            <li>Use Min Percent
+                                <ul>
+                                    <li>&lt;boolean&gt;</li>
+                                    <li>Controls whether event counts are rolled into the "Other" category based on the min percent value.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                    <h3>Colors</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Color Scheme
+                                <ul>
+                                    <li>Predefined, Custom</li>
+                                    <li>Use one of the predefined color schemes or specify your own color scheme.</li>
+                                </ul>
+                            </li>
+                            <li>Predefined Category
+                                <ul>
+                                    <li>Select from the predefined color schemes for D3 charts (category10, category20, category20b, category20c).</li>
+                                </ul>
+                            </li>
+                            <li>Custom Color Palette
+                                <ul>
+                                    <li>&lt;string&gt;</li>
+                                    <li>Specify a list of comma-separated hex color codes that should be used with the chart.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Legend</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Show Legend
+                                <ul>
+                                    <li>Yes,No</li>
+                                    <li>Toggles the legend.</li>
+                                </ul>
+                            </li>
+                            <li>Text Size (px)
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Size of the legend text.</li>
+                                </ul>
+                            </li>
+                            <li>Legend Item Width (px)
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Length of each item in the legend in number of pixels.</li>
+                                </ul>
+                            </li>
+                            <li>Position
+                                <ul>
+                                    <li>Left, Right, Top, Bottom</li>
+                                    <li>Controls where the legend is placed, either to the left, right, top or bottom of the chart.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>2D Chart</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Donut Width
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Controls the width of the donut hole.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                    <h3>3D Chart</h3>
+                    <blockquote>
+                        <ul>
+                            <li>X Radius
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Controls the radius of the chart on the X axis.</li>
+                                </ul>
+                            </li>
+                            <li>Y Radius
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Controls the radius of the chart on the Y axis.</li>
+                                </ul>
+                            </li>
+                            <li>Height
+                                <ul>
+                                    <li>&lt;integer&gt;</li>
+                                    <li>Controls the thickness of the chart.</li>
+                                </ul>
+                            </li>
+                            <li>Inner Radius
+                                <ul>
+                                    <li>&lt;float&gt;</li>
+                                    <li>Controls the width of the donut hole.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+                <div style="width:24%;display:inline-block;vertical-align:text-top;">
+                    <h3>Drilldown</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Drilldown
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>Allow drilldown into results.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                    <h3>Debug</h3>
+                    <blockquote>
+                        <ul>
+                            <li>Javascript Logging
+                                <ul>
+                                    <li>Yes, No</li>
+                                    <li>Disables or enables the logging of debug information for the visualization.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </blockquote>
+                </div>
+            </html>
+        </panel>
+    </row>
+</dashboard>

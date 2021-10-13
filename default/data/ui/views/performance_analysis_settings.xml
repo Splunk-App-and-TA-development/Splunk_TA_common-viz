@@ -1,0 +1,170 @@
+<dashboard script="token-via-links.js">
+  <init>
+		<set token="default-thresholds">general</set>
+  </init>
+  <label>Settings</label>
+  <description>How to use settings to customize the visualization.</description>
+  <row>
+    <panel>
+      <html>
+        <style>
+          .button, .button:hover {
+    background-color: white;
+    border: 2px solid #5C8EB1!important;
+    color: #5C8EB1;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    .on, .on:hover{
+    background-color: #5C8EB1!important; /* Green */
+    color: white!important;
+    font-weight:bold;
+    border: 2px solid #5C8EB1!important; /* Green */
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    }
+    
+    h2{border-bottom: 1px solid #999999;    width: auto;    }
+    h2.dashboard-title{border:none;}
+    </style>
+    <body>
+      <h4>Settings</h4>
+
+<button class="button on" data-on-class="on" data-off-class="button" data-set-token="default-thresholds" data-unset-token="options,colours,downtime-range,time-format,tokens" data-value="default-thresholds">Default Thresholds</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="options" data-unset-token="default-thresholds,colours,downtime-range,time-format,tokens" data-value="options">Options</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="colours" data-unset-token="options,default-thresholds,downtime-range,time-format,tokens" data-value="colours">Colours</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="downtime-range" data-unset-token="options,colours,default-thresholds,time-format,tokens" data-value="downtime-range">Downtime Range</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="time-format" data-unset-token="options,colours,downtime-range,default-thresholds,tokens" data-value="time-format">Time Format</button>
+<button class="button" data-on-class="on" data-off-class="button" data-set-token="tokens" data-unset-token="options,default-thresholds,colours,downtime-range,time-format,default-thresholds" data-value="tokens">Tokens</button>
+
+    </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$default-thresholds$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-default-thresholds.png"/>
+            </td>
+            <td valign="top">The default thresholds will be used for all rows if you don't specify any thresholds in your search query.<br/>
+            This value controls the background color of the cells, where green indicates that the value is normal, yellow indicates a warning, and red indicates a critical state.<br/>
+            You can set these valuse in the search query by using an <code>eval</code> statement:<br/>
+            <code>...| eval warning_threshold = case(name=="windows_server", 60,name=="unix_server", 65, 1==1, 70)<br/>
+            | eval critical_threshold = case(name=="windows_server", 80,name=="unix_server", 85, 1==1, 90)</code>
+            <br /><br />
+			<p>If you would like to show critical at lower values than OK, choose the threshold direction as "Critical is lowest value". This would be the case if you were showing sales per hour - where a lower sales figure represents a Critical status, and a higher figure represents an OK status.</p>
+			<p>The default is for OK to be a low value, and Critical to be a high value, e.g. with CPU use, Memory use, Response times, and error rates.</p>
+		  </td></tr>
+          </table>
+        </html>
+    </panel>
+    <panel depends="$options$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-options.png"/>
+            </td>
+            <td valign="top">
+              <p><b>Granularity</b> sets the duration of each cell, in minutes. <br/> 5 = 5 minute intervals.<br/>30 = half-hour intervals.<br/>60 = 1 hour intervals.</p><br/>
+              
+            <p><b>Show Legend</b> turns the legend on and off. When set to 'show' the visualization will have a legend at the bottom left.</p>
+              
+            <p><b>Status Format</b> determines what sort of decoration goes in the middle of the cells. Select 'Text' for textual values (GREEN / AMBER / RED) and 'Numerical' to show a number instead.</p>
+            <p>For the Text option, the following strings can be used for the status field:</p>
+            <table width="260" cellpadding="2" cellspacing="0" border="1" style="border: 1px solid #cccccc; border-collapse:collapse;">
+              <tr><td align="center"><strong>Icon</strong></td><td align="center"><strong>Status</strong></td></tr>
+              <tr><td align="center"><img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_green.png" alt="Green" /></td><td align="center">green<br />ok<br />pass<br />low</td></tr>
+              <tr><td align="center"><img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_amber.png" alt="Amber" /></td><td align="center">amber<br />warn<br />warning<br />caution</td></tr>
+              <tr><td align="center"><img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_red.png" alt="Red" /></td><td align="center">red<br />critical<br />severe<br />fail</td></tr>
+            </table>
+           
+		   <br />
+		   
+		   <p><b>Sort Order</b> changes the order of the names on the left of the visualization. The choices are:
+			<ul><li>Default - names will generally appear as they do in the search results. </li>
+			<li>A-Z - Names will be sorted alphanumerically: 0,1,2,3...a,b,c,d </li>
+			<li>Z-A - Names will be sorted reverse alphanumerically: d,c,b,a....3,2,1,0</li>
+			</ul>
+		  
+		  
+		  </p></td></tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$colours$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-colours.png"/>
+            </td>
+            <td valign="top">
+              <b>Colours</b> allows you to choose the colour scheme for the values (cell background colours).</td>
+          </tr>
+          </table>
+      </html>
+    </panel>
+    <panel depends="$downtime-range$">
+      <html>  <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-downtime-range.png"/>
+            </td>
+            <td valign="top">
+              <b>Downtime Range</b> lets you indicate when there is regular scheduled downtime for your environment. Use 24 hour format: 0 = Midnight, 12 = Midday, 22 = 10 PM.<br/>
+            Downtime is indicated by showing a grayed out cell. You can still see the value and status, however the downtime indication lets you know that downtime was in effect.
+            </td>
+          </tr>
+          </table>
+            
+            </html>
+    </panel>
+    <panel depends="$time-format$">
+      <html>  
+          <table cellpadding="10">
+      <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-time-format.png"/>
+            </td>
+            <td valign="top">
+              <b>Time Format</b> lets you choose how the times are displayed at the top of the visualization. </td>
+          </tr>
+      </table>
+      
+            </html>
+    </panel>
+     <panel depends="$tokens$">
+      <html>
+      <table cellpadding="10">
+        <tr>
+            <td valign="top">
+              <img src="/static/app/Splunk_TA_common-viz/images/performance-analysis_about-tokens.png"/>
+            </td>
+            <td valign="top"><p>When you click on a cell, the Performance Analysis Viz will create three tokens:</p>
+
+<ul><li>pa_name: The label for this row, e.g. "LNXPRODDB01"</li>
+<li>pa_earliest: The timestamp for the start of the cell's time period</li>
+<li>pa_latest: The timestamp for the end of the cell's time period</li>
+</ul><p>You can then use these tokens to filter the source data and feed that into a second Performance Analysis Viz on your dashboard.</p>
+<p>The names of these tokens are customizable to allow you to manipulate tokens without affecting other Performance Analysis Viz panels.</p>
+
+
+<p>See the <a href="drill_down_and_token_examples">Drill Down and Token Examples</a> dashboard to learn more.</p>
+            </td>
+          </tr>
+          </table>
+        </html>
+    </panel>
+  </row>
+</dashboard>

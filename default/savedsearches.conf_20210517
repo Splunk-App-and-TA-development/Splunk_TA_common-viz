@@ -1,0 +1,612 @@
+# splunk TA - Splunk_TA_Common-VIZ
+# default/savedsearches.conf
+# © 2017-2021 SwissTXT Security
+#########################################
+# ------------------------------------- #
+# Splunk TA with the collection of the  #
+# most used Splunk Visualizations.      #
+# ------------------------------------- #
+# Declare default App Saved Searches.   #
+#########################################
+
+[default]
+## Custom Animated Chart Viz
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.chartType = bar
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.playSpeed = normal
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.autoPlay = true
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.title = 
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.showTimeline = true
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.showTimeSlice = true
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.alignTitle = center
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisLabel = 
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMax = none
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMin = none
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMaxCustom = 0
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.yAxisMinCustom = 100
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.xAxisLabel =
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.colorTheme = bright
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.customColors = #c23531,#2f4554,#61a0a8,#d48265,#91c7ae,#749f83,#ca8622,#bda29a,#6e7074,#546570,#c4ccd3
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.dateFormat =  dd-mmm-yyyy hh:mm:ss
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.tokenName = ac_name_token
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.tokenValue = ac_value_token
+display.visualizations.custom.animated_chart_viz.animated_chart_viz.tokentime = ac_time_token
+
+## Custom Bullet Graph Viz
+display.visualizations.custom.bullet_graph_app.bullet_graph.bulletColor = #333
+display.visualizations.custom.bullet_graph_app.bullet_graph.targetMarkerColor = #333
+display.visualizations.custom.bullet_graph_app.bullet_graph.rangeLowColor = #cccccc
+display.visualizations.custom.bullet_graph_app.bullet_graph.rangeMidColor = #c6c6c6
+display.visualizations.custom.bullet_graph_app.bullet_graph.rangeHighColor = #a4a4a4
+
+## Custom Calendar Heatmap Viz
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.cellSize = 10
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.cellPadding = 2
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.cellStyle = square
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.legendType = independent
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.showLegend = true
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.minColor = #dae667
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.maxColor = #269489
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.numOfBins = 6
+display.visualizations.custom.calendar_heatmap_app.calendar_heatmap.splitMonths = true 
+
+## Custom Carrousel Viz
+default.visualizations.custom.carousel-viz.carousel-viz.slidesToShow = 3
+default.visualizations.custom.carousel-viz.carousel-viz.autoplay = true
+default.visualizations.custom.carousel-viz.carousel-viz.autoplaySpeed = normal
+default.visualizations.custom.carousel-viz.carousel-viz.forceAllCaps = false
+default.visualizations.custom.carousel-viz.carousel-viz.defaultCaption = 
+default.visualizations.custom.carousel-viz.carousel-viz.numDecimalPlaces = 0
+default.visualizations.custom.carousel-viz.carousel-viz.thousandsSeparator = false
+default.visualizations.custom.carousel-viz.carousel-viz.unit = 
+default.visualizations.custom.carousel-viz.carousel-viz.unitPosition = after
+default.visualizations.custom.carousel-viz.carousel-viz.size = automatic
+default.visualizations.custom.carousel-viz.carousel-viz.colorMode = foreground
+default.visualizations.custom.carousel-viz.carousel-viz.showDots = false
+default.visualizations.custom.carousel-viz.carousel-viz.orientation = horizontal
+default.visualizations.custom.carousel-viz.carousel-viz.direction = left
+#1.0.1 Tokens
+default.visualizations.custom.carousel-viz.carousel-viz.tokenRawValue = cv_raw_value
+default.visualizations.custom.carousel-viz.carousel-viz.tokenFormattedValue = cv_formatted_value
+default.visualizations.custom.carousel-viz.carousel-viz.tokenCaption = cv_caption
+default.visualizations.custom.carousel-viz.carousel-viz.tokenUnit = cv_unit
+
+## Custom Circlepack Viz
+display.visualizations.custom.circlepack_viz.circlepack_viz.onclick = none
+display.visualizations.custom.circlepack_viz.circlepack_viz.colormode = depth
+display.visualizations.custom.circlepack_viz.circlepack_viz.labels = show
+display.visualizations.custom.circlepack_viz.circlepack_viz.labelsize = 100
+display.visualizations.custom.circlepack_viz.circlepack_viz.labelcolor = #000000
+display.visualizations.custom.circlepack_viz.circlepack_viz.color = schemeCategory10
+display.visualizations.custom.circlepack_viz.circlepack_viz.coloroverride = 
+display.visualizations.custom.circlepack_viz.circlepack_viz.shadow = show
+display.visualizations.custom.circlepack_viz.circlepack_viz.packing = circle
+display.visualizations.custom.circlepack_viz.circlepack_viz.labelwrap = on
+display.visualizations.custom.circlepack_viz.circlepack_viz.labeltruncate = off
+display.visualizations.custom.circlepack_viz.circlepack_viz.maxrows = 1500
+
+## Custom Clock Viz
+display.visualizations.custom.clock_viz.clock_viz.style = d
+display.visualizations.custom.clock_viz.clock_viz.timezone = 
+display.visualizations.custom.clock_viz.clock_viz.subtext = 
+display.visualizations.custom.clock_viz.clock_viz.size = 
+display.visualizations.custom.clock_viz.clock_viz.caption = 
+display.visualizations.custom.clock_viz.clock_viz.captsize = 0.3
+display.visualizations.custom.clock_viz.clock_viz.showdate = false
+display.visualizations.custom.clock_viz.clock_viz.datesize = 0.2
+display.visualizations.custom.clock_viz.clock_viz.seconds = bounce
+display.visualizations.custom.clock_viz.clock_viz.numerals = false
+display.visualizations.custom.clock_viz.clock_viz.format = h:mm:ss a
+display.visualizations.custom.clock_viz.clock_viz.font = bold
+display.visualizations.custom.clock_viz.clock_viz.datefmt = Do MMMM YYYY
+
+## Custom Clustermap Viz
+display.visualizations.custom.viz_clustermap.clustermap.lat = 25.799891182088334
+display.visualizations.custom.viz_clustermap.clustermap.lng = -0.52734375
+display.visualizations.custom.viz_clustermap.clustermap.zoom = 2
+display.visualizations.custom.viz_clustermap.clustermap.tiles = light
+display.visualizations.custom.viz_clustermap.clustermap.maxClusters = 120
+display.visualizations.custom.viz_clustermap.clustermap.markerColor1 = #008cff
+display.visualizations.custom.viz_clustermap.clustermap.markerColor2 = #ffbf00
+display.visualizations.custom.viz_clustermap.clustermap.markerColor3 = #ff0000
+display.visualizations.custom.viz_clustermap.clustermap.markerColor4 = #ff00ed
+display.visualizations.custom.viz_clustermap.clustermap.numberFormat_min_0 = 0.[0]
+display.visualizations.custom.viz_clustermap.clustermap.numberFormat_min_1000 = 1.1a
+display.visualizations.custom.viz_clustermap.clustermap.numberFormat_min_10000 = 1a
+display.visualizations.custom.viz_clustermap.clustermap.numberFormat_min_1000000 = 1.1a
+
+## Custom Radar Chart Viz
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.chartHeight = 400
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.chartWidth = 400
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.maxValue = 1
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.format = 
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.levels = 8
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.isRounded = 1
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.fullScreen = 0
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendEnabled = 1
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendSymbol = cross
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendToggleSymbol = circle
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendFontSize = 12
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendPositionX = 25
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendPositionY = 25
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.legendFontColor = #000000
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.axesLineColor = white
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.axesLegendFontSize = 12
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.axesLabelFontSize = 12
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.axesLabelFontColor = #737373
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.axesLegendFontColor = #000000
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.circlesColor = #CDCDCD
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.circlesFillColor = #CDCDCD
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.areasOpacity = 0.35
+display.visualizations.custom.custom-radar-chart-viz.radar_chart.circlesOpacity = 0.1
+
+## Custom Donut Viz
+display.visualizations.custom.aplura_viz_donut.donut.chartType = 2D
+display.visualizations.custom.aplura_viz_donut.donut.log = true
+display.visualizations.custom.aplura_viz_donut.donut.drilldown = Yes
+display.visualizations.custom.aplura_viz_donut.donut.donutWidth = 20
+display.visualizations.custom.aplura_viz_donut.donut.min_percent = 1
+display.visualizations.custom.aplura_viz_donut.donut.use_min_percent = true
+display.visualizations.custom.aplura_viz_donut.donut.xradius = 30
+display.visualizations.custom.aplura_viz_donut.donut.yradius = 30
+display.visualizations.custom.aplura_viz_donut.donut.height = 20
+display.visualizations.custom.aplura_viz_donut.donut.iradius = 0.8
+display.visualizations.custom.aplura_viz_donut.donut.show_legend = true
+display.visualizations.custom.aplura_viz_donut.donut.legend_position = right
+display.visualizations.custom.aplura_viz_donut.donut.legend_text_size = 12
+display.visualizations.custom.aplura_viz_donut.donut.legend_item_width = 200
+display.visualizations.custom.aplura_viz_donut.donut.color_scheme = predefined
+display.visualizations.custom.aplura_viz_donut.donut.color_category = 10
+display.visualizations.custom.aplura_viz_donut.donut.color_csv = #00ffff,#0000ff,#ff00ff,#808080,#008000,#00ff00,#800000,#000080,#808000,#800080,#ff0000,#c0c0c0,#008080,#ffff00
+
+## Custom Markdown viz
+display.visualizations.custom.aplura_viz_markdown.markdown.app_name = aplura_viz_markdown
+display.visualizations.custom.aplura_viz_markdown.markdown.path_name = visualizations/markdown
+display.visualizations.custom.aplura_viz_markdown.markdown.file_name = README
+display.visualizations.custom.aplura_viz_markdown.markdown.log = false
+display.visualizations.custom.aplura_viz_markdown.markdown.cross_domain = false
+display.visualizations.custom.aplura_viz_markdown.markdown.dalek = Maruku
+display.visualizations.custom.aplura_viz_markdown.markdown.sonic_screwdriver = local_file
+display.visualizations.custom.aplura_viz_markdown_markdown.markdown.html_id = "aplura_viz_markdown"
+display.visualizations.custom.aplura_viz_markdown_markdown.markdown.search_field = "markdown"
+
+## Custom Scatterplot Matrix Viz
+display.visualizations.custom.aplura_viz.scatterplot_matrix.log = false
+display.visualizations.custom.aplura_viz.scatterplot_matrix.show_trend = true
+display.visualizations.custom.aplura_viz.scatterplot_matrix.trendline_color = #000000
+display.visualizations.custom.aplura_viz.scatterplot_matrix.trendline_width = 1
+display.visualizations.custom.aplura_viz.scatterplot_matrix.show_r = r
+display.visualizations.custom.aplura_viz.scatterplot_matrix.show_legend = true
+display.visualizations.custom.aplura_viz.scatterplot_matrix.legend_position = left
+display.visualizations.custom.aplura_viz.scatterplot_matrix.show_self = 1
+display.visualizations.custom.aplura_viz.scatterplot_matrix.override_trellis = false
+
+## Custom Dendrogram Viz
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.layout = horizontal
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.tidy = yes
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.zoom = no
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.label_size = 10
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.node_size = 4
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.node_sibling_spacing = 30
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.node_ancestor_spacing = 100
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.radius = 300
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.delimiter = /
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.max_rows = 1000
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.html = no
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.color1 = #171d21
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.color2 = #ffffff
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.nodecolor = #999999
+display.visualizations.custom.dendrogram_viz.dendrogram_viz.linkcolor = #555555
+
+## Custom Departures Board Viz
+default.visualizations.custom.departures-board-viz.departures-board-viz.num_characters = 10
+default.visualizations.custom.departures-board-viz.departures-board-viz.timing = 500
+default.visualizations.custom.departures-board-viz.departures-board-viz.auto_refresh = true
+default.visualizations.custom.departures-board-viz.departures-board-viz.auto_refresh_period = 5
+default.visualizations.custom.departures-board-viz.departures-board-viz.theme = light
+default.visualizations.custom.departures-board-viz.departures-board-viz.size = XL
+default.visualizations.custom.departures-board-viz.departures-board-viz.force_all_caps = false
+default.visualizations.custom.departures-board-viz.departures-board-viz.is_fixed_length = false
+default.visualizations.custom.departures-board-viz.departures-board-viz.align=left
+default.visualizations.custom.departures-board-viz.departures-board-viz.text_align=left
+default.visualizations.custom.departures-board-viz.departures-board-viz.token_term = dbv_term
+default.visualizations.custom.departures-board-viz.departures-board-viz.token_id = dbv_id
+default.visualizations.custom.departures-board-viz.departures-board-viz.label=
+default.visualizations.custom.departures-board-viz.departures-board-viz.customColor = "#ffffff"
+
+## Custom Event Timeline viz
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.orientation = "bottom"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.allowOverlap = false
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tooltipDateFormat = "DD-MMM-YYYY"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tooltipTimeFormat = "hh:mm:ss"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.zoomMax = "315360000000000"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.zoomMin = "10"
+#Tokens
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tokenStart = "tok_et_start"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tokenEnd = "tok_et_end"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tokenLabel = "tok_et_label"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tokenData = "tok_et_data"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.tokenAllVisible = "tok_et_all_visible"
+#Colors
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.backgroundColor = "#ffffff"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.eventColor = "#d5ddf6"
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.textColor = "#000000"
+#New as of 1.3.0
+# Can sort groups by name or time
+default.visualizations.custom.event-timeline-viz.event-timeline-viz.sortGroupsBy = "name"
+
+## Custom Flow Map Viz
+display.visualizations.custom.flow_map_viz.flow_map_viz.maxnodes = 100
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_repel_force = 1000
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_center_force = 0.1
+display.visualizations.custom.flow_map_viz.flow_map_viz.positions = 
+display.visualizations.custom.flow_map_viz.flow_map_viz.coarse_positions = yes
+display.visualizations.custom.flow_map_viz.flow_map_viz.labels_as_html = no
+display.visualizations.custom.flow_map_viz.flow_map_viz.background_mode = custom
+display.visualizations.custom.flow_map_viz.flow_map_viz.background_color = #ffffff
+display.visualizations.custom.flow_map_viz.flow_map_viz.renderer = webgl
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_speed = 90
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_opacity = 0.5
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_distance = 200
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_width = 1
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_color = #cccccc
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_label_color = #000000
+display.visualizations.custom.flow_map_viz.flow_map_viz.link_text_size = 10
+display.visualizations.custom.flow_map_viz.flow_map_viz.line_style = solid
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_limit = 60
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_good_color = #1a9035
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_warn_color = #d16f18
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_error_color = #b22b32
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_spread = 5
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_size = 3
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_blur = 0
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_domain = 
+display.visualizations.custom.flow_map_viz.flow_map_viz.particle_slow = 
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_width = 120
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_height = 30
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_bg_color = #cccccc
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_border_color = #000000
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_border_mode = darker1
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_border_width = 1
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_shadow_mode = custom
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_shadow_color = #000000
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_text_color = #000000
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_text_size = 12
+display.visualizations.custom.flow_map_viz.flow_map_viz.node_radius = 2
+display.visualizations.custom.flow_map_viz.flow_map_viz.width = 
+
+## Custom Force Directed Viz
+display.visualizations.custom.force_directed_viz.force_directed.theme = light
+display.visualizations.custom.force_directed_viz.force_directed.circleSize = 5
+display.visualizations.custom.force_directed_viz.force_directed.AttractForceStrength = -300
+display.visualizations.custom.force_directed_viz.force_directed.AttractDistanceMax = 200
+display.visualizations.custom.force_directed_viz.force_directed.AttractDistanceMin = 60
+display.visualizations.custom.force_directed_viz.force_directed.RepelForceStrength = -140
+display.visualizations.custom.force_directed_viz.force_directed.RepelDistanceMax = 50
+display.visualizations.custom.force_directed_viz.force_directed.RepelDistanceMin = 10
+display.visualizations.custom.force_directed_viz.force_directed.LinkDistance = 100
+display.visualizations.custom.force_directed_viz.force_directed.CollisionStrength = 0.7
+display.visualizations.custom.force_directed_viz.force_directed.CollisionRadius = 30
+display.visualizations.custom.force_directed_viz.force_directed.ForceCollision = 29
+display.visualizations.custom.force_directed_viz.force_directed.CollisionIterations = 1
+display.visualizations.custom.force_directed_viz.force_directed.LinkLength = 1
+display.visualizations.custom.force_directed_viz.force_directed.arrows = disabled
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange1 = 100
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange2 = 500
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange3 = 1000
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange4 = 10000
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange5 = 50000
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange1Code = #65a637
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange2Code = #6db7c6
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange3Code = #f7bc38
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange4Code = #f58f39
+display.visualizations.custom.force_directed_viz.force_directed.ColorRange5Code = #d93f3c
+display.visualizations.custom.force_directed_viz.force_directed.LineColor = disabled
+display.visualizations.custom.force_directed_viz.force_directed.SWRange1 =  1
+display.visualizations.custom.force_directed_viz.force_directed.SWRange2 =  1
+display.visualizations.custom.force_directed_viz.force_directed.SWRange3 =  1
+display.visualizations.custom.force_directed_viz.force_directed.SWRange4 =  1
+display.visualizations.custom.force_directed_viz.force_directed.SWRange5 = 1
+display.visualizations.custom.force_directed_viz.force_directed.PanZoom = disabled
+display.visualizations.custom.force_directed_viz.force_directed.lowerRange = 5
+display.visualizations.custom.force_directed_viz.force_directed.upperRange = 5
+
+## Custom Heat Map Viz
+default.visualizations.custom.heat-map-viz.heat-map-viz.colorLow = "#53A051"
+default.visualizations.custom.heat-map-viz.heat-map-viz.colorMedium = "#F8BE34"
+default.visualizations.custom.heat-map-viz.heat-map-viz.colorHigh = "#F1813F"
+default.visualizations.custom.heat-map-viz.heat-map-viz.colorCritical = "#DC4E41"
+default.visualizations.custom.heat-map-viz.heat-map-viz.valLow = 30
+default.visualizations.custom.heat-map-viz.heat-map-viz.valMedium = 60
+default.visualizations.custom.heat-map-viz.heat-map-viz.valHigh = 85
+default.visualizations.custom.heat-map-viz.heat-map-viz.legendText = "categories"
+default.visualizations.custom.heat-map-viz.heat-map-viz.showValues = false
+default.visualizations.custom.heat-map-viz.heat-map-viz.shape = "square"
+default.visualizations.custom.heat-map-viz.heat-map-viz.enableShades = true
+default.visualizations.custom.heat-map-viz.heat-map-viz.showLegend = true
+default.visualizations.custom.heat-map-viz.heat-map-viz.legendPosition = "top"
+default.visualizations.custom.heat-map-viz.heat-map-viz.yaxiswidth = "auto"
+default.visualizations.custom.heat-map-viz.heat-map-viz.yaxiswidthpx = 250
+default.visualizations.custom.heat-map-viz.heat-map-viz.tokenValue = "hm_token_value"
+default.visualizations.custom.heat-map-viz.heat-map-viz.tokenLabel = "hm_token_label"
+default.visualizations.custom.heat-map-viz.heat-map-viz.tokenTime = "hm_token_time"
+# Version 1.1.0
+default.visualizations.custom.heat-map-viz.heat-map-viz.enableAnimation = true
+default.visualizations.custom.heat-map-viz.heat-map-viz.showDateInTooltip = true
+default.visualizations.custom.heat-map-viz.heat-map-viz.tooltipDateFormat = "dd-mm-yyyy hh:ss"
+# Version 1.2.0
+default.visualizations.custom.heat-map-viz.heat-map-viz.labelFontSize = 18
+# Version 1.3.0
+default.visualizations.custom.heat-map-viz.heat-map-viz.labelLow = "Low"
+default.visualizations.custom.heat-map-viz.heat-map-viz.labelMedium = "Medium"
+default.visualizations.custom.heat-map-viz.heat-map-viz.labelHigh = "High"
+default.visualizations.custom.heat-map-viz.heat-map-viz.labelCritical = "Critical"
+default.visualizations.custom.heat-map-viz.heat-map-viz.reverseNegativeShade = "false"
+default.visualizations.custom.heat-map-viz.heat-map-viz.hideCellBorders =  false
+# Version 1.3.1
+display.visualizations.custom.heat-map-viz.heat-map-viz.convertTimeToUTC = false
+
+
+## Custom Horizon Chart Viz App
+display.visualizations.custom.horizon_chart_app.horizon_chart.relative = true
+display.visualizations.custom.horizon_chart_app.horizon_chart.showChangeInPercent = true
+display.visualizations.custom.horizon_chart_app.horizon_chart.smoothen = true
+display.visualizations.custom.horizon_chart_app.horizon_chart.positiveColor = #6db7c6
+display.visualizations.custom.horizon_chart_app.horizon_chart.negativeColor = #d93f3c
+display.visualizations.custom.horizon_chart_app.horizon_chart.numBands = 3
+
+## Custom Link Analysis Viz App
+display.visualizations.custom.link_analysis_app.link_analysis.layoutStyle = fcose
+display.visualizations.custom.link_analysis_app.link_analysis.directed = false
+display.visualizations.custom.link_analysis_app.link_analysis.pathAlgo = dijkstra
+display.visualizations.custom.link_analysis_app.link_analysis.recursiveLookup = true
+
+## Custom Missile Map Viz
+display.visualizations.custom.missile_map.missile_map.tileSet = splunk
+display.visualizations.custom.missile_map.missile_map.staticColor = #65a637
+display.visualizations.custom.missile_map.missile_map.lineThickness = 1
+display.visualizations.custom.missile_map.missile_map.mapLatitude = 35
+display.visualizations.custom.missile_map.missile_map.mapLongitude = -95
+display.visualizations.custom.missile_map.missile_map.mapZoom = 4
+display.visualizations.custom.missile_map.missile_map.scrollWheelZoom = 1
+
+## Network Diagram Viz
+display.visualizations.network-diagram-viz.network-diagram-viz.enablePhysics = true
+display.visualizations.network-diagram-viz.network-diagram-viz.draggableNodes = true
+display.visualizations.network-diagram-viz.network-diagram-viz.hideEdgesOnDrag = false
+display.visualizations.network-diagram-viz.network-diagram-viz.smoothEdges = true
+display.visualizations.network-diagram-viz.network-diagram-viz.hierarchy = false
+display.visualizations.network-diagram-viz.network-diagram-viz.hierarchyDirection = DU
+display.visualizations.network-diagram-viz.network-diagram-viz.hierarchySortMethod = hubSize
+display.visualizations.network-diagram-viz.network-diagram-viz.clusterBy = none
+display.visualizations.network-diagram-viz.network-diagram-viz.tokenValue = nd_value_token
+display.visualizations.network-diagram-viz.network-diagram-viz.tokenNode = nd_node_token
+#1.1.0
+display.visualizations.network-diagram-viz.network-diagram-viz.designLayoutDashboard = false
+#1.1.1
+display.visualizations.network-diagram-viz.network-diagram-viz.canZoom = true
+display.visualizations.network-diagram-viz.network-diagram-viz.tokenToNode = nd_to_node_token
+display.visualizations.network-diagram-viz.network-diagram-viz.defaultNodeType = circle
+#1.5.0
+display.visualizations.network-diagram-viz.network-diagram-viz.linkTextSize = medium
+display.visualizations.network-diagram-viz.network-diagram-viz.nodeTextSize = medium
+#1.6.0
+display.visualizations.network-diagram-viz.network-diagram-viz.tokenToolTip =nd_tooltip_token
+display.visualizations.network-diagram-viz.network-diagram-viz.arrowLocation =none
+display.visualizations.network-diagram-viz.network-diagram-viz.smoothEdgeType =dynamic
+#1.7.0
+display.visualizations.network-diagram-viz.network-diagram-viz.levelSeparation = 150
+display.visualizations.network-diagram-viz.network-diagram-viz.nodeSpacing = 100
+display.visualizations.network-diagram-viz.network-diagram-viz.defaultLinkLength = 150
+#1.8.0
+display.visualizations.network-diagram-viz.network-diagram-viz.drilldownClick = singleOrDouble
+#1.9.0
+display.visualizations.network-diagram-viz.network-diagram-viz.shakeTowards = roots
+
+
+## Custom Number Display Viz
+display.visualizations.custom.number_display_viz.number_display_viz.style = g1
+display.visualizations.custom.number_display_viz.number_display_viz.padding = 10
+display.visualizations.custom.number_display_viz.number_display_viz.size = 
+display.visualizations.custom.number_display_viz.number_display_viz.min = 0
+display.visualizations.custom.number_display_viz.number_display_viz.max = 100
+display.visualizations.custom.number_display_viz.number_display_viz.maxrows = 200
+display.visualizations.custom.number_display_viz.number_display_viz.autopanelheight = 
+display.visualizations.custom.number_display_viz.number_display_viz.nodatacolor = #0178c7
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol1 = #1a9035
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol2 = #d16f18
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol3 = #b22b32
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol4 = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol5 = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdcol6 = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdval2 = 70
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdval3 = 90
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdval4 = 
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdval5 = 
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdval6 = 
+display.visualizations.custom.number_display_viz.number_display_viz.colorprimarymode = auto
+display.visualizations.custom.number_display_viz.number_display_viz.colorprimary = #000000
+display.visualizations.custom.number_display_viz.number_display_viz.colorsecondarymode = darker1
+display.visualizations.custom.number_display_viz.number_display_viz.colorsecondary = #000000
+display.visualizations.custom.number_display_viz.number_display_viz.sparkorder = bg
+display.visualizations.custom.number_display_viz.number_display_viz.sparkstyle = area
+display.visualizations.custom.number_display_viz.number_display_viz.sparkcolormodeline = auto
+display.visualizations.custom.number_display_viz.number_display_viz.sparkcolorline = #0178c7
+display.visualizations.custom.number_display_viz.number_display_viz.sparkcolormodefill = auto
+display.visualizations.custom.number_display_viz.number_display_viz.sparkcolorfill = #009DD9
+display.visualizations.custom.number_display_viz.number_display_viz.sparkmin = 0
+display.visualizations.custom.number_display_viz.number_display_viz.sparkmax = 
+display.visualizations.custom.number_display_viz.number_display_viz.sparkalign = 5
+display.visualizations.custom.number_display_viz.number_display_viz.sparkalignv = 70
+display.visualizations.custom.number_display_viz.number_display_viz.sparkHeight = 30
+display.visualizations.custom.number_display_viz.number_display_viz.sparkWidth = 90
+display.visualizations.custom.number_display_viz.number_display_viz.sparknulls = gaps
+display.visualizations.custom.number_display_viz.number_display_viz.textshow = yes
+display.visualizations.custom.number_display_viz.number_display_viz.textmode = static
+display.visualizations.custom.number_display_viz.number_display_viz.textcolor = #000000
+display.visualizations.custom.number_display_viz.number_display_viz.textalign = center
+display.visualizations.custom.number_display_viz.number_display_viz.textalignv = 50
+display.visualizations.custom.number_display_viz.number_display_viz.textsize = 100
+display.visualizations.custom.number_display_viz.number_display_viz.textduration = 300
+display.visualizations.custom.number_display_viz.number_display_viz.textprecision = 1
+display.visualizations.custom.number_display_viz.number_display_viz.textprocessing = 
+display.visualizations.custom.number_display_viz.number_display_viz.textunit = 
+display.visualizations.custom.number_display_viz.number_display_viz.textunitsize = 50
+display.visualizations.custom.number_display_viz.number_display_viz.textunitposition = after
+display.visualizations.custom.number_display_viz.number_display_viz.textfont = 
+display.visualizations.custom.number_display_viz.number_display_viz.textdrop = yes
+display.visualizations.custom.number_display_viz.number_display_viz.textdropcolor = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.titletext = 
+display.visualizations.custom.number_display_viz.number_display_viz.titlealign = center
+display.visualizations.custom.number_display_viz.number_display_viz.titlealignv = 30
+display.visualizations.custom.number_display_viz.number_display_viz.titlesize = 45
+display.visualizations.custom.number_display_viz.number_display_viz.titlecolormode = static
+display.visualizations.custom.number_display_viz.number_display_viz.titlecolor = #5C6773
+display.visualizations.custom.number_display_viz.number_display_viz.titlefont = 
+display.visualizations.custom.number_display_viz.number_display_viz.titledrop = yes
+display.visualizations.custom.number_display_viz.number_display_viz.titledropcolor = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.subtitletext = 
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlealign = center
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlealignv = 70
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlesize = 40
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlecolormode = static
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlecolor = #5C6773
+display.visualizations.custom.number_display_viz.number_display_viz.subtitlefont = 
+display.visualizations.custom.number_display_viz.number_display_viz.subtitledrop = yes
+display.visualizations.custom.number_display_viz.number_display_viz.subtitledropcolor = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.shadowcolor = #F2F4F5
+display.visualizations.custom.number_display_viz.number_display_viz.bordercolor = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.bordersize = 2
+display.visualizations.custom.number_display_viz.number_display_viz.thickness = 50
+display.visualizations.custom.number_display_viz.number_display_viz.thresholdsize = 20
+display.visualizations.custom.number_display_viz.number_display_viz.spinnerspeedmin = 1
+display.visualizations.custom.number_display_viz.number_display_viz.spinnerspeedmax = 20
+display.visualizations.custom.number_display_viz.number_display_viz.shapetexture = solid
+display.visualizations.custom.number_display_viz.number_display_viz.shapeshadow = yes
+display.visualizations.custom.number_display_viz.number_display_viz.shapedropcolor = #ffffff
+display.visualizations.custom.number_display_viz.number_display_viz.shapebordercolormode = static
+display.visualizations.custom.number_display_viz.number_display_viz.shapebordercolor = #FFFFFF
+display.visualizations.custom.number_display_viz.number_display_viz.shapebordersize = 1
+display.visualizations.custom.number_display_viz.number_display_viz.pulserate = 4
+
+## Custom Parallel Coordinates Viz App
+display.visualizations.custom.parallel_coordinates_app.parallel_coordinates.hideTicks = false
+display.visualizations.custom.parallel_coordinates_app.parallel_coordinates.colorMode = categorical
+display.visualizations.custom.parallel_coordinates_app.parallel_coordinates.maxColor = #3fc77a
+display.visualizations.custom.parallel_coordinates_app.parallel_coordinates.minColor = #d93f3c
+display.visualizations.custom.parallel_coordinates_app.parallel_coordinates.maxCategories = 25
+
+## Custom Performance Analysis Viz App
+default.visualizations.custom.performance-analysis.performance_analysis.granularity = 15.0
+default.visualizations.custom.performance-analysis.performance_analysis.okColour = #78B24A
+default.visualizations.custom.performance-analysis.performance_analysis.warningColour = #E0C135
+default.visualizations.custom.performance-analysis.performance_analysis.criticalColour = #DD0000
+default.visualizations.custom.performance-analysis.performance_analysis.noDataColour = #c9c9c9
+default.visualizations.custom.performance-analysis.performance_analysis.warningThreshold = 8.0
+default.visualizations.custom.performance-analysis.performance_analysis.criticalThreshold = 12.0
+default.visualizations.custom.performance-analysis.performance_analysis.downTimeStart = 0.0
+default.visualizations.custom.performance-analysis.performance_analysis.downTimeEnd = 0.0
+default.visualizations.custom.performance-analysis.performance_analysis.timeFormat = h:mm A 
+default.visualizations.custom.performance-analysis.performance_analysis.showLegend = true
+default.visualizations.custom.performance-analysis.performance_analysis.showStatusAsText = true
+# v1.1 - introduced tokens
+default.visualizations.custom.performance-analysis.performance_analysis.tokenName = pa_name
+default.visualizations.custom.performance-analysis.performance_analysis.tokenEarliest = pa_earliest
+default.visualizations.custom.performance-analysis.performance_analysis.tokenLatest = pa_latest
+# v1.2
+default.visualizations.custom.performance-analysis.performance_analysis.OKisLoworHigh = low
+default.visualizations.custom.performance-analysis.performance_analysis.sortOrder = default
+
+## Custom Punchchard Viz App
+display.visualizations.custom.punchcard_app.punchcard.radiusScale = local
+display.visualizations.custom.punchcard_app.punchcard.useColors = false 
+display.visualizations.custom.punchcard_app.punchcard.colorMode = categorical
+display.visualizations.custom.punchcard_app.punchcard.minColor = #d93f3c
+display.visualizations.custom.punchcard_app.punchcard.maxColor = #3fc77a
+display.visualizations.custom.punchcard_app.punchcard.numOfBins = 6
+display.visualizations.custom.punchcard_app.punchcard.labelRotation = horizontal
+
+## Custom Region Chart Viz
+display.visualizations.custom.region_chart_viz.region_chart_viz.type = curve
+display.visualizations.custom.region_chart_viz.region_chart_viz.nulls = gap
+display.visualizations.custom.region_chart_viz.region_chart_viz.last_text = hide
+display.visualizations.custom.region_chart_viz.region_chart_viz.summ_text = hide
+display.visualizations.custom.region_chart_viz.region_chart_viz.xtitle_show = hide
+display.visualizations.custom.region_chart_viz.region_chart_viz.xtitle_text = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.ytitle_show = hide
+display.visualizations.custom.region_chart_viz.region_chart_viz.status_dots = hide
+display.visualizations.custom.region_chart_viz.region_chart_viz.ytitle_text = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.multi_series = shaded
+display.visualizations.custom.region_chart_viz.region_chart_viz.line_size = 3
+display.visualizations.custom.region_chart_viz.region_chart_viz.shadow = 0
+display.visualizations.custom.region_chart_viz.region_chart_viz.line_color = #000000
+display.visualizations.custom.region_chart_viz.region_chart_viz.min = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.max = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.text_precision = -1
+display.visualizations.custom.region_chart_viz.region_chart_viz.text_thousands = no
+display.visualizations.custom.region_chart_viz.region_chart_viz.text_unit = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.text_unit_position = after
+display.visualizations.custom.region_chart_viz.region_chart_viz.region_opacity = 35
+display.visualizations.custom.region_chart_viz.region_chart_viz.region_comparison = 
+display.visualizations.custom.region_chart_viz.region_chart_viz.row_limit = 5000
+
+## Custom Sankey diagram Viz App
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.showLabels = true
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.showLegend = true
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.showTooltip = true
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.useColors = true
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.colorMode = categorical
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.minColor = #d93f3c
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.maxColor = #3fc77a
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.numOfBins = 6
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.showSelf = false
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.showBackwards = false
+display.visualizations.custom.sankey_diagram_app.sankey_diagram.styleBackwards = false
+
+## Custom timeline Viz App
+display.visualizations.custom.timeline_app.timeline.useColors = 0
+display.visualizations.custom.timeline_app.timeline.colorMode = categorical
+display.visualizations.custom.timeline_app.timeline.maxColor = #DA5C5C
+display.visualizations.custom.timeline_app.timeline.minColor = #FFE8E8
+display.visualizations.custom.timeline_app.timeline.numOfBins = 6
+display.visualizations.custom.timeline_app.timeline.axisTimeFormat = SECONDS
+display.visualizations.custom.timeline_app.timeline.tooltipTimeFormat = SECONDS
+
+## Custom Status Indicatdo Viz app
+display.visualizations.custom.status_indicator_app.status_indicator.showOption = 3
+display.visualizations.custom.status_indicator_app.status_indicator.icon = fix_icon
+display.visualizations.custom.status_indicator_app.status_indicator.fixIcon = warning
+display.visualizations.custom.status_indicator_app.status_indicator.useColors = true
+display.visualizations.custom.status_indicator_app.status_indicator.colorBy = static_color
+display.visualizations.custom.status_indicator_app.status_indicator.staticColor = #555
+display.visualizations.custom.status_indicator_app.status_indicator.precision = 0
+display.visualizations.custom.status_indicator_app.status_indicator.useThousandSeparator = true
+
+## Custom Sunbrust Viz
+display.visualizations.custom.sunburst_viz.sunburst_viz.mode = static
+display.visualizations.custom.sunburst_viz.sunburst_viz.labels = show
+display.visualizations.custom.sunburst_viz.sunburst_viz.breadcrumbs = hide
+display.visualizations.custom.sunburst_viz.sunburst_viz.labelsize = 100
+display.visualizations.custom.sunburst_viz.sunburst_viz.labelwidth = 100
+display.visualizations.custom.sunburst_viz.sunburst_viz.labelcolor = #000000
+display.visualizations.custom.sunburst_viz.sunburst_viz.color = schemeCategory10
+display.visualizations.custom.sunburst_viz.sunburst_viz.colormode = root
+display.visualizations.custom.sunburst_viz.sunburst_viz.coloroverride = 
+display.visualizations.custom.sunburst_viz.sunburst_viz.maxrows = 1500
+
+## Custom Treemap Viz
+display.visualizations.custom.treemap_app.treemap.useZoom = true
+display.visualizations.custom.treemap_app.treemap.showLabels = true
+display.visualizations.custom.treemap_app.treemap.showLegend = true
+display.visualizations.custom.treemap_app.treemap.showTooltip = true
+display.visualizations.custom.treemap_app.treemap.maxCategories = 10
+display.visualizations.custom.treemap_app.treemap.useColors = true
+display.visualizations.custom.treemap_app.treemap.colorMode = categorical
+display.visualizations.custom.treemap_app.treemap.minColor = #d93f3c
+display.visualizations.custom.treemap_app.treemap.maxColor = #3fc77a
+display.visualizations.custom.treemap_app.treemap.numOfBins = 6
+
+## Semicircle Viz
+display.visualizations.custom.semicircle_donut.semicircle_donut.type = "half"
+display.visualizations.custom.semicircle_donut.semicircle_donut.legendPosition = "top"
+display.visualizations.custom.semicircle_donut.semicircle_donut.cutoutPercentage = "50"
+display.visualizations.custom.semicircle_donut.semicircle_donut.colorField = ""

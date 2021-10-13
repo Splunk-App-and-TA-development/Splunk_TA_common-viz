@@ -1,0 +1,237 @@
+<dashboard script="design-layout.js">
+  <label>Create Layouts</label>
+  <row>
+    <panel>
+      <html>
+        <h1>Rearrange the diagram until you are happy with how it looks. Then copy the search below to reuse the layout you have designed on your own dashboards.</h1>
+        <h2>Note - you need to use the following settings to keep your design:</h2>
+        <ul>
+          <li>General &gt; Enable Physics: False</li>
+		  <li>Hierarchy &gt; Hierarchy View = false: False</li>
+        </ul>
+        <h2>You can stop users changing your design by also setting:</h2>
+        <ul>
+          <li>General &gt; Draggable Nodes: False</li>
+        </ul>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="lefthand1">
+      <html>
+        <center>
+          <button type="button" class="btn btn-primary btn-lg round"> 1 </button>
+        </center>
+      </html>
+    </panel>
+    <panel id="righthand1">
+      <title>Paste your search here:</title>
+      <html>
+        <table style="width: 100%" cellpadding="10">
+          <tr>
+            <td>
+              
+        <textarea id="originalSearch" style="width: 100%; height: 80px;">| makeresults count=12 
+    | streamstats count as id 
+    | eval from=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") 
+    | eval to=case(id=1,"Web 1",id=2,"Web 2",id=3,"Web 3", id=4,"App Server 1",id=5,"App Server 2", id=6, "App Server 1",id=7,"App Server 2", id=8,"App Server 1",id=9,"App Server 2",id=10,"Database Server",id=11,"Database Server",id=12, "") 
+    | eval value=case(id=1,"Load Balancer",id=2,"Load Balancer",id=3,"Load Balancer", id=4,"Web 1",id=5,"Web 1", id=6, "Web 2",id=7,"Web 2", id=8,"Web 3",id=9,"Web 3",id=10,"App Server 1",id=11,"App Server 2",id=12, "Database Server") 
+    | eval type=case(id=1,"sitemap",id=4,"server", id=6, "server",id=8,"server",id=10,"server",id=11,"server",id=12, "database") 
+    | eval host=from 
+    | eval color="green"
+    | fields from, to, value, type, color, CPU,Mem,host |  search to=* OR from=* | table from, to, value, type, color</textarea>
+        </td>
+            <td width="100" valign="middle">
+              <button id="runSearch" type="button" class="btn btn-primary btn-lg gradient">Run Search</button>
+            </td>
+        </tr>
+        </table>
+        
+        
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="lefthand2">
+      <html>
+        <center>
+          <button type="button" class="btn btn-primary btn-lg round"> 2 </button>
+        </center>
+      </html>
+    </panel>
+    <panel id="righthand4" rejects="$search$">
+      <html>
+        <h2>Paste in a search above, or try out the sample search by clicking 'Run Search'.</h2>
+  <h2>When the Network Diagram appears, drag the nodes around to create your desired layout.</h2>
+          </html>
+    </panel>
+    <panel id="righthand2" depends="$search$">
+      <title>Drag the nodes around to create your layout:</title>
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>$search$</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">421</option>
+        <option name="network-diagram-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="network-diagram-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hideEdgesOnDrag">left</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="network-diagram-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="network-diagram-viz.network-diagram-viz.designLayoutDashboard">true</option>
+        <option name="network-diagram-viz.network-diagram-viz.smoothEdges">false</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="network-diagram-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel id="lefthand3">
+      <html>
+        <center>
+          <button type="button" class="btn btn-primary btn-lg round"> 3 </button>
+        </center>
+      </html>
+    </panel>
+    <panel id="righthand5" rejects="$nd_token_positions$">
+      <html>
+		 <h1>Once you have created your layout, a new search will appear here for you to use in your dashboards.</h1>
+	</html>
+    </panel>
+    <panel id="righthand3" depends="$nd_token_positions$">
+      <html>
+        <style>
+	  
+	  /**************************
+  DEFAULT BOOTSTRAP STYLES
+**************************/
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+  
+.btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+/***********************
+  GRADIENT BUTTONS
+************************/
+.btn-primary.gradient {
+    background: -moz-linear-gradient(top,  #33a6cc 50%, #0099cc 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#33a6cc), color-stop(50%,#0099cc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #33a6cc 50%,#0099cc 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33a6cc', endColorstr='#0099cc',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary.gradient:hover, .btn-primary.gradient:focus, .btn-primary.gradient:active, .btn-primary.gradient.active, .open &gt; .dropdown-toggle.btn-primary {
+    background: -moz-linear-gradient(top,  #66b2cc 50%, #33a6cc 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#66b2cc), color-stop(50%,#33a6cc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #66b2cc 50%,#33a6cc 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66b2cc', endColorstr='#33a6cc',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary.gradient:active, .btn-primary.gradient.active {
+    background: -moz-linear-gradient(top,  #267c99 50%, #007299 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#267c99), color-stop(50%,#007299)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #267c99 50%,#007299 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open &gt; .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+#lefthand1,#lefthand2,#lefthand3{width: 10%!important;}
+#righthand1,#righthand2,#righthand3,#righthand4,#righthand5{width: 90%!important;}
+
+h2.panel-title{font-size: 22px!important; font-weight:bold!important;}
+
+#originalSearch {width: 100%; margin: 15px 0px 15px 0px; height: 80px;}
+	  #newSearch {width: 100%; margin: 15px 0px 15px 0px; height: 80px;}
+	  
+	  </style>
+        <h1>Replace your search with the following to keep the layout:</h1>
+      <textarea id="newSearch">$search$
+      $nd_token_positions$</textarea>
+      <p>
+          <strong>Rember to set: General &gt; Enable Physics: False</strong>
+        </p>
+      <img src="/static/app/Splunk_TA_common-viz/images/disable-physics-netdiag.png"/>
+      </html>
+    </panel>
+  </row>
+</dashboard>

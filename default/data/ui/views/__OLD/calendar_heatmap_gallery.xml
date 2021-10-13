@@ -1,0 +1,106 @@
+<dashboard>
+  <label>Calendar Heat Map Gallery</label>
+  <description>Usage data from bikeshare program Washington DC (https://www.capitalbikeshare.com)</description>
+  <row>
+    <panel>
+      <title>1 day timespan, months</title>
+      <viz type="Splunk_TA_common-viz.calendar_heatmap">
+        <search>
+          <query>|inputlookup 2015.RideStartsByHour.csv | timechart span=1d sum(Casual) sum(Member)</query>
+        </search>
+        <option name="height">290</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">10</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">independent</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#269489</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#dae667</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">5</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">true</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>1 day timespan, years</title>
+      <viz type="Splunk_TA_common-viz.calendar_heatmap">
+        <search>
+          <query>|inputlookup 2015.RideStartsByHour.csv | timechart span=1d sum(Casual) sum(Member)</query>
+        </search>
+        <option name="height">290</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">10</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">independent</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#269489</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#dae667</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">5</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">false</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>1 hour timespan</title>
+      <viz type="Splunk_TA_common-viz.calendar_heatmap">
+        <search>
+          <query>|inputlookup 2015.RideStartsByHour.csv | timechart span=1h sum(Casual) sum(Member)</query>
+        </search>
+        <option name="height">265</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">10</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">independent</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#269489</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#dae667</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">5</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">false</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>1 minute timespan</title>
+      <viz type="Splunk_TA_common-viz.calendar_heatmap">
+        <search>
+          <query>| inputlookup 2015.Dec31.Starts12h.csv | timechart span=1m sum(rides)</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="height">260</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">10</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">square</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">independent</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#269489</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#dae667</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">5</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">false</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Style options set</title>
+      <viz type="Splunk_TA_common-viz.calendar_heatmap">
+        <search>
+          <query>|inputlookup 2015.RideStartsByHour.csv | timechart span=1d sum(Casual) sum(Member)</query>
+        </search>
+        <option name="height">430</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellPadding">2</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellSize">18</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.cellStyle">circle</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.legendType">independent</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.maxColor">#6db7c6</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.minColor">#555</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.numOfBins">5</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.showLegend">true</option>
+        <option name="calendar_heatmap_app.calendar_heatmap.splitMonths">true</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

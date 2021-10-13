@@ -1,0 +1,6 @@
+<dashboard>
+  <label>Markdown</label>
+  <row>
+    <panel ref="Aplura_Viz_-_Markdown" app="Splunk_TA_common-viz"></panel>
+  </row>
+</dashboard>

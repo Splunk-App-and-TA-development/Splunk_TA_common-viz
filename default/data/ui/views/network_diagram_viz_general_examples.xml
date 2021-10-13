@@ -1,0 +1,210 @@
+<dashboard version="1.1">
+  <label>General Examples</label>
+  <row>
+    <panel>
+      <html>
+      <h1>Hierarchy</h1>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="narrow_1">
+      <html>
+        <h2>Configuration:</h2>
+    <ul>
+    <li>Enable Physics: False</li>
+    <li>Hierarchy Direction: Top-Down</li>
+    <li>Level Separation: 125</li>
+    <li>Node Spacing: 175</li>
+    <li>Smooth Edges: True</li>
+    <li>Smooth Edge Type: Dynamic</li>
+        </ul>
+    </html>
+    </panel>
+    <panel id="wide_1">
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>|makeresults
+| eval raw="from=splunkd, to=\"file_monitor_input\", color=green, type= type=indexer, value= ### from=splunkd, to=\"index_processor\", color=green, type= type=indexer, value=  ### from=splunkd, to=\"search_scheduler\", color=green, type= type=indexer, value=  ### from=splunkd, to=\"workload_management\", color=green, type= type=indexer, value=  ### from=\"file_monitor_input\", to=\"batchreader-0\", color=green, type= type=folder, value=  ### from=\"file_monitor_input\", to=\"tailreader-0\", color=, type= type=folder, value=  ### from=\"index_processor\", to=buckets, color=, type= type=folder, value=  ### from=\"index_processor\", to=\"disk_space\",color=green, type= type=folder, value=  ### from=\"index_processor\", to=\"index_optimization\", color=green, type= type=folder, value=  ### from=\"search_scheduler\", to=\"search_lag\",linkcolor=green, color=yellow, type= type=folder, value=  ### from=\"search_scheduler\", to=\"searches_delayed\",linkcolor=red, color=yellow, type= type=folder, value=  ### from=\"search_scheduler\", to=\"searches_skipped\",linkcolor=green, color=yellow, type= type=folder, value=  ### from=\"workload_management\", to=\"configuration_check\", color=green , type= type=folder, value=  ### from=\"workload_management\", to=\"system_check\", color=green, type= type=folder, value=  ### from=\"batchreader-0\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=buckets, to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"configuration_check\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"disk_space\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"index_optimization\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"search_lag\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"searches_delayed\", to=, color=red, type=\"times-circle\", value=\"Status: red at \" ### from=\"searches_skipped\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"system_check\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### from=\"tailreader-0\", to=, color=green, type=\"check-circle\", value=\"Status: green at \" ### "
+|makemv delim="###" raw
+| mvexpand raw
+| rename raw as _raw
+| extract
+| eval time = strftime(now(),"%d %b, %H:%M:%S")| eval value = value ." ". time</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">end</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">file</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">125</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">175</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.shakeTowards">leaves</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">dyanmic</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+      <h1>Multiple Links Between Nodes</h1>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="narrow_2">
+      <html>
+        <h2>Configuration:</h2>
+    <p>Set up the initial X,Y coordinates on the <a href="create_designs" title="Go to the Create Layouts Dashboard. ">Create Layouts</a> dashboard, then enable physics: Partial with long link lengths.</p>
+    <ul>
+          <li>Enable Physics: Partial</li>
+    <li>Smooth Edges: True</li>
+    <li>Smooth Edge Type: Dynamic</li>
+    <li>Default Link Length: 1000</li>
+    </ul>
+    </html>
+    </panel>
+    <panel id="wide_2">
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>| makeresults count=5
+|streamstats count as id
+| eval from="Source", to="Destination"
+| eval linktext = "Line #" + id
+| eval linklength = 100 * id
+| table from, to, linktext, linklength
+|  append [ 
+ |  makeresults 
+ |  eval raw="from=\"Source\", x=\"-382\", y=\"17\" ### from=\"Destination\", x=\"-369\", y=\"-166\""
+ |  makemv delim="###" raw 
+ |  mvexpand raw 
+ |  rename raw  as  _raw 
+ |  extract 
+ |  table from, x, y]</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">1000</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">box</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleOrDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">partial</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">false</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Top-Down</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">150</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">middle</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.shakeTowards">roots</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">dyanmic</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+        <h1>Network Paths</h1>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel id="narrow_3">
+      <html>
+     <h2>Configuration:</h2>
+    <ul>
+          <li>Enable Physics: True</li>
+    <li>Hierarchy Direction: Left-Righ</li>
+    <li>Smooth Edge Type: Continuous</li>
+    </ul>
+  </html>
+    </panel>
+    <panel id="wide_3">
+      <viz type="Splunk_TA_common-viz.network-diagram-viz">
+        <search>
+          <query>|makeresults
+| eval raw = "from=\"10x.152.100.10\", to=\"20x.115.136.144\", nodetext=\"10x.152.100.10\", linkcolor=red, linktext=\"4.39 ms\" ~ from=\"10x.152.100.10\", to=\"20x.115.136.59\", nodetext=\"10x.152.100.10\", linkcolor=green, linktext=\"3.07 ms\" ~ from=\"10x.152.100.10\", to=\"6x.115.191.0\", nodetext=\"10x.152.100.10\", linkcolor=green, linktext=\"0.28 ms\" ~ from=\"10x.152.100.10\", to=, nodetext=\"10x.152.100.10\",  linktext=, value=\"10x.152.100.10\", type=\"network-wired\" ~ from=\"10x.152.100.12\", to=\"20x.115.136.144\", nodetext=\"10x.152.100.12\", linkcolor=red, linktext=\"4.39 ms\" ~ from=\"10x.152.100.12\", to=\"20x.115.136.59\", nodetext=\"10x.152.100.12\", linkcolor=green, linktext=\"3.07 ms\" ~ from=\"10x.152.100.12\", to=\"6x.115.191.0\", nodetext=\"10x.152.100.12\", linkcolor=green, linktext=\"0.28 ms\" ~ from=\"10x.152.100.12\", to=, nodetext=\"10x.152.100.12\",  linktext=, value=\"10x.152.100.12\", type=\"network-wired\" ~ from=\"10x.152.100.14\", to=\"20x.115.136.144\", nodetext=\"10x.152.100.14\", linkcolor=red, linktext=\"4.39 ms\" ~ from=\"10x.152.100.14\", to=\"20x.115.136.59\", nodetext=\"10x.152.100.14\", linkcolor=green, linktext=\"3.07 ms\" ~ from=\"10x.152.100.14\", to=\"6x.115.191.0\", nodetext=\"10x.152.100.14\", linkcolor=green, linktext=\"0.28 ms\" ~ from=\"10x.152.100.14\", to=, nodetext=\"10x.152.100.14\",  linktext=, value=\"10x.152.100.14\", type=\"network-wired\" ~ from=\"10x.152.100.8\", to=\"20x.115.136.144\", nodetext=\"10x.152.100.8\", linkcolor=red, linktext=\"4.39 ms\" ~ from=\"10x.152.100.8\", to=\"20x.115.136.59\", nodetext=\"10x.152.100.8\", linkcolor=green, linktext=\"3.07 ms\" ~ from=\"10x.152.100.8\", to=\"6x.115.191.0\", nodetext=\"10x.152.100.8\", linkcolor=green, linktext=\"0.28 ms\" ~ from=\"10x.152.100.8\", to=, nodetext=\"10x.152.100.8\",  linktext=, value=\"10x.152.100.8\", type=\"network-wired\" ~ from=\"20x.182.219.253\", to=\"10x.152.100.10\", nodetext=\"20x.182.219.253\", linkcolor=green, linktext=\"0.19 ms\" ~ from=\"20x.182.219.253\", to=\"10x.152.100.12\", nodetext=\"20x.182.219.253\", linkcolor=green, linktext=\"1.41 ms\" ~ from=\"20x.182.219.253\", to=\"10x.152.100.14\", nodetext=\"20x.182.219.253\", linkcolor=green, linktext=\"0.44 ms\" ~ from=\"20x.182.219.253\", to=\"10x.152.100.8\", nodetext=\"20x.182.219.253\", linkcolor=green, linktext=\"0.33 ms\" ~ from=\"20x.182.219.253\", to=, nodetext=\"20x.182.219.253\",  linktext=, value=\"20x.182.219.253\", type=\"network-wired\" ~ from=\"20x.182.219.254\", to=\"10x.152.100.10\", nodetext=\"20x.182.219.254\", linkcolor=green, linktext=\"0.19 ms\" ~ from=\"20x.182.219.254\", to=\"10x.152.100.12\", nodetext=\"20x.182.219.254\", linkcolor=green, linktext=\"1.41 ms\" ~ from=\"20x.182.219.254\", to=\"10x.152.100.14\", nodetext=\"20x.182.219.254\", linkcolor=green, linktext=\"0.44 ms\" ~ from=\"20x.182.219.254\", to=\"10x.152.100.8\", nodetext=\"20x.182.219.254\", linkcolor=green, linktext=\"0.33 ms\" ~ from=\"20x.182.219.254\", to=, nodetext=\"20x.182.219.254\",  linktext=, value=\"20x.182.219.254\", type=\"network-wired\" ~ from=\"6x.115.191.0\", to=\"19x.229.225.133\", nodetext=\"6x.115.191.0\", linkcolor=green, linktext=\"2.90 ms\" ~ from=\"6x.115.191.0\", to=\"19x.229.227.133\", nodetext=\"6x.115.191.0\", linkcolor=green, linktext=\"2.23 ms\" ~ from=\"6x.115.191.0\", to=\"20x.115.136.144\", nodetext=\"6x.115.191.0\", linkcolor=red, linktext=\"4.39 ms\" ~ from=\"6x.115.191.0\", to=\"20x.115.136.59\", nodetext=\"6x.115.191.0\", linkcolor=green, linktext=\"3.07 ms\" ~ from=\"6x.115.191.0\", to=, nodetext=\"6x.115.191.0\",  linktext=, value=\"6x.115.191.0\", type=\"network-wired\" ~ from=\"origin.example.com\", to=\"20x.182.219.253\", nodetext=\"origin.example.com\", linkcolor=green, linktext=\"0.93 ms\" ~ from=\"origin.example.com\", to=\"20x.182.219.254\", nodetext=\"origin.example.com\", linkcolor=green, linktext=\"0.37 ms\" ~"
+| makemv delim="~" raw
+| mvexpand raw 
+| rename raw  as  _raw 
+| extract</query>
+          <earliest>1612962000</earliest>
+          <latest>1613048400</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="height">359</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.arrowLocation">end</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.canZoom">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.clusterBy">none</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultLinkLength">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.defaultNodeType">server</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.draggableNodes">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.drilldownClick">singleAndDouble</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.enablePhysics">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchy">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchyDirection">Left-Right</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.hierarchySortMethod">directed</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.levelSeparation">300</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextLocation">bottom</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.linkTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeSpacing">100</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.nodeTextSize">medium</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.shakeTowards">roots</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdgeType">continuous</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.smoothEdges">true</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenNode">nd_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToNode">nd_to_node_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenToolTip">nd_tooltip_token</option>
+        <option name="Splunk_TA_common-viz.network-diagram-viz.tokenValue">nd_value_token</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+      </viz>
+    </panel>
+  </row>
+  <row depends="$CSS_ONLY$">
+    <panel>
+      <html>
+        <p>This hidden panel has sytle information.</p>
+        <style>div[id^='narrow']{width: 30%!important;} div[id^='wide']{width:70%!important;}</style>
+      </html>
+    </panel>
+  </row>
+</dashboard>

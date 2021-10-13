@@ -1,0 +1,20 @@
+Category,start,end,label,data
+Release,Oct 30 2012,,Splunk 5.0 Released, Will be supported until 7.0 is Released
+Release,Oct 1 2013,,Splunk 6.0 Released,Will be supported until 8.0 is Released
+Release,May 6 2014,,Splunk 6.1 Released,Will be supported until 8.0 is Released
+Release,Oct 7 2014,,Splunk 6.2 Released,Will be supported until 8.0 is Released
+Release,Sept. 22 2015,,Splunk 6.3 Released,Will be supported until 8.0 is Released
+Release,April 5 2016,,Splunk 6.4 Released,Will be supported until 8.0 is Released
+Release,Sept. 27 2016,,Splunk 6.5 Released,Will be supported until 8.0 is Released
+Release,2 May 17,,Splunk 6.6 Released,Will be supported until 8.0 is Released
+Release,Sept 26 2017,,Splunk 7.0 Released,Will be supported until 24 months after release
+Release,April 24 2018,,Splunk 7.1 Released,Will be supported until 24 months after release
+Release,Oct 2 2018,,Splunk 7.2 Released,Will be supported until 24 months after release
+.conf,Oct 7 2014,Oct 9 2014, Splunk .conf2014,Held in Las Vegas
+.conf,Sep 22 2015,Sep 24 2015,Splunk .conf2015,Held in Las Vegas
+.conf,Sep 26 2016,Sep 29 2016,Splunk .conf2016,Held in Orlando
+.conf,Sep 25 2017,Sep 27 2017,Splunk .conf2017,Held in Washingtion DC
+.conf,Oct 4 2018,Oct 6 2018,Splunk .conf2018,Held in Orlando
+Release,June 4 2019,,Splunk 7.3 Released,Will be supported until 24 months after release
+.conf,October 22 2019,,Splunk .conf2019,Held in Las Vegas
+Release,October 22 2019,,Splunk 8.0 Released,Will be supported until 24 months after release
