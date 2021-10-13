@@ -1302,7 +1302,7 @@ Activity for each resource appears in a separate timeline lane.
 - If an activity start time and duration are available for a particular resource, the timeline shows a duration interval as a horizontal bar in the lane.
 - If only the start time is available, the timeline shows a circle at that time.
 
-![example-Timeline](https://https://prod.cdn.apps.splunk.com/media/public/screenshots/7f7eaf5c-f8a2-11e5-bf53-064614758881.png)
+![example-Timeline](https://prod.cdn.apps.splunk.com/media/public/screenshots/7f7eaf5c-f8a2-11e5-bf53-064614758881.png)
 
 
 
