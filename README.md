@@ -100,7 +100,7 @@ List of the Active Visualization addons within this release.
 - **Arc Globe Visualisation** version 1.0
 - **Bullet Graph - Custom Visualization** version 1.4.0
 - **Calendar Custom Viz** version 1.0.0
-- **Calendar Heat Map** version 1.4.0
+- **Calendar Heat Map** version 1.5.0
 - **Carousel Viz** version 1.1.3
 - **Circlepack Viz** version 1.1.4
 - **Clock Viz** version 1.0.3
@@ -259,7 +259,7 @@ The calendar custom visualization displays event counts on a calendar. 3 views a
 
 
 ## **Calendar Heat Map** 
-- Version 1.4.0
+- Version 1.5.0
 - Author: Splunk Inc.
 - https://splunkbase.splunk.com/app/3162/
 
