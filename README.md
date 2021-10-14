@@ -1410,6 +1410,7 @@ https://splunkbase.splunk.com/app/3674/
 
 
 ## **Support**
+Support is not guaranteed and will be provided on a best effort basis.
 Please use Github to open issues or feature requests:
 - **https://github.com/Splunk-App-and-TA-development/Splunk_TA_common-viz/issues**
 
@@ -1430,8 +1431,7 @@ This app is supported by Patrick Vanreck (SwissTXT). Contact us under: **[yoyone
 
 
 #### Software License
-See attached **LICENSE** file ...
-
+Please find the license for this software here: https://github.com/Splunk-App-and-TA-development/Splunk-TA_Custom-Logo-and-Favicon/blob/main/LICENSE
 
 #### Copyrights
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),<br>
