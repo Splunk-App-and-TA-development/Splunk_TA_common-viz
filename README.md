@@ -184,6 +184,8 @@ This can be useful if you want to populate another panel on the dashboard with a
 | ***Value*** | This is the value of the selected item you clicked. | Default value: `$ac_value_token$` |
 | ***Time Slice*** | This is the current time slice of the visualisation. | Default value: `$ac_time_token$` |
 
+![example-animated-chart](https://prod.cdn.apps.splunk.com/media/public/screenshots/27d8131a-86dc-11eb-80e8-0ac6592faf19.gif)
+
 
 ## **Arc Globe Visualisation** 
 - Version 1.0
@@ -229,6 +231,8 @@ This can be useful if you want to populate another panel on the dashboard with a
 
 - **Label text**: This is the name of the selected group. Default value: `$pc_label_token$`
 - **Value**: This is the value of the selected group you clicked. Default value: `$pc_value_token$`
+
+![example-arc-globe](https://prod.cdn.apps.splunk.com/media/public/screenshots/ee4003c2-4d77-11ea-8cf5-068887039288.png)
 
 
   
@@ -386,6 +390,8 @@ sourcetype=access_combined | iplocation clientip | geostats count
 sourcetype=gps_locations | fields lat lng signal_strength | geostats avg(signal_strength) latfield=lat longfield=lng maxzoomlevel=18
 ```
 
+![example-clustermap](https://prod.cdn.apps.splunk.com/media/public/screenshots/ddfcec72-fae3-11e5-89eb-0ae1b57a553f.png)
+
 
   
 ## **Custom Radar Chart Visualization** 
@@ -418,7 +424,7 @@ Plot multivariate data on a two dimensional chart across axes.
 ```
 
 
-
+![example-custom-radar-chart](https://help.qlik.com/en-US/sense/August2021/Subsystems/Hub/Content/Resources/Images/radar2_726x489.png)
 
 
 ## **Custom Viz - Donut** 
@@ -612,7 +618,7 @@ This visualization generates the following tokens on click:
 
 Note: all token names are customisable in the visualization settings menu.
 
-![event-timeline](https://cdn.apps.splunk.com/media/public/docimages/5b70cbbe-2139-11e9-8fae-0283f5373402.png)
+![example-event-timeline](https://cdn.apps.splunk.com/media/public/docimages/5b70cbbe-2139-11e9-8fae-0283f5373402.png)
 
 
 
@@ -641,7 +647,7 @@ The node data will have a node field.
 
 Note that nodes are automatically created.
 
-![example-1](https://cdn.apps.splunk.com/media/public/docimages/b896838e-c72d-11e9-90ac-06a3434e669e.png)
+![example-flow-map](https://cdn.apps.splunk.com/media/public/docimages/b896838e-c72d-11e9-90ac-06a3434e669e.png)
 
 
 #### Example 2, same output using path field
@@ -738,7 +744,7 @@ This can be useful if you want to populate another panel on the dashboard with a
 - **Label:** This is the field name for the cell you clicked. Default value: $hm_token_label$
 - **Time:** This is the '_time' field for the selection. Default value: $hm_token_time$
 
-![heatmap-viz](https://prod.cdn.apps.splunk.com/media/public/screenshots/c83e05d4-5ab1-11e9-8d85-02819f655fde.png)
+![example-heatmap-viz](https://prod.cdn.apps.splunk.com/media/public/screenshots/c83e05d4-5ab1-11e9-8d85-02819f655fde.png)
 
 
 
@@ -753,7 +759,7 @@ This can be useful if you want to populate another panel on the dashboard with a
 ### How to use Horizon Chart
 A horizon chart shows metric behavior over time in relation to a baseline or horizon. You can track metric changes above and below a horizon for several data series in a one chart.
 
-![Horizon-Chart](https://prod.cdn.apps.splunk.com/media/public/screenshots/414b7ee4-f894-11e5-b7b7-064614758881.png)
+![Example-Horizon-Chart](https://prod.cdn.apps.splunk.com/media/public/screenshots/414b7ee4-f894-11e5-b7b7-064614758881.png)
 
 
 
@@ -784,7 +790,7 @@ This app provides a seperate visualisation framework for doing force directed vi
 - **preFilter** - Allows you to prefilter your graph and remove all nodes that are connected to the node specified in the field.
 ***Delete all nodes from the graph that are not children of 192.168.1.1***
 
-![Link-Analysis-App](https://prod.cdn.apps.splunk.com/media/public/screenshots/f1f63de0-d038-11e9-96fd-0221886c508c.png)
+![Example-Link-Analysis-App](https://prod.cdn.apps.splunk.com/media/public/screenshots/f1f63de0-d038-11e9-96fd-0221886c508c.png)
 
 
 
@@ -834,7 +840,7 @@ The following options are available to customise:
  	* Longitude: Starting longitude to load
  	* Zoom: Starting zoom level to load
 
-![Missile-Map](https://prod.cdn.apps.splunk.com/media/public/screenshots/08c03218-1e95-11e7-ac94-0adcf4f224ab.png)
+![Example-Missile-Map](https://prod.cdn.apps.splunk.com/media/public/screenshots/08c03218-1e95-11e7-ac94-0adcf4f224ab.png)
 
 
 
@@ -894,7 +900,7 @@ This can be useful if you want to populate another panel on the dashboard with a
 
 To use it in your dashboards, simply install the app, and create a search that provides the values you want to display.
 
-![how-app-works](https://cdn.apps.splunk.com/media/public/docimages/faea5a92-4dc7-11e9-b8b7-0664dcf8166e.png)
+![Example-Network-Diagram](https://prod.cdn.apps.splunk.com/media/public/screenshots/644caae6-ae13-11eb-bcf2-022786c46691.png)
 
 
 
@@ -950,7 +956,7 @@ These are the fields that can be overridden in data:
 
 ![screenshot](https://raw.githubusercontent.com/ChrisYounger/number_display_viz/master/static/demo.png)
 
-![number-display-viz](https://cdn.apps.splunk.com/media/public/docimages/f569b50e-8a4e-11e9-8815-0667a25d8762.png)
+![example-number-display-viz](https://prod.cdn.apps.splunk.com/media/public/screenshots/df2ad804-8a4e-11e9-a71e-0667a25d8762.png)
 
 
 
@@ -984,7 +990,7 @@ Here is a parallel coordinates query tracking fat and calorie information for di
 | inputlookup nutrients.csv | head 2500   | stats count by group, "fat (g)", "calories"
 ```
 
-![parallel-coordinates-viz](https://docs.splunk.com/images/thumb/d/da/Customviz_parallel_coord.png/700px-Customviz_parallel_coord.png)
+![example-parallel-coordinates-viz](https://prod.cdn.apps.splunk.com/media/public/screenshots/dd084dbe-0819-11e6-8c5f-0adb680b0a7f.png)
 
 
 
