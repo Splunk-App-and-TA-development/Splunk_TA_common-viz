@@ -660,7 +660,7 @@ This visualization generates the following tokens on click:
 
 Note: all token names are customisable in the visualization settings menu.
 
-![example-event-timeline](https://cdn.apps.splunk.com/media/public/docimages/5b70cbbe-2139-11e9-8fae-0283f5373402.png)
+![example-event-timeline](https://prod.cdn.apps.splunk.com/media/public/screenshots/1a5218fa-2138-11e9-99e6-0a7dd926fc04.png)
 
 
 
