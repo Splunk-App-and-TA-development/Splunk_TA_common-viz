@@ -88,6 +88,48 @@ To use it in your dashboards, simply install the app, and create a search that p
 - The visualization is bound by the follwoing limits:
 - Total results: 1000
 
+## Dependencies
+Once you have installed the TA, you can delete all other additionally installed visualization Addons like **timeline visualization**.<br>
+Compare the List shown in chapter **Active Visualization addons** and remove all additional installed.
+
+After uninstalling all old visualization addons, you may need to adapt the path of the visualization in the dashboards.
+Otherwise Splunk cannot find the correct path where the Visualisation is installed.
+
+In our case the path where the new app ***Splunk_TA_common-viz*** is installed.
+
+Here an example what to migrate in case that you used the **timeline visualization** in the past.
+
+**Search From:** `timeline.timeline`
+```xml
+...
+....
+<option name="timeline.timeline.axisTimeFormat">MINUTES</option>
+<option name="timeline.timeline.colorMode">categorical</option>
+<option name="timeline.timeline.maxColor">#dc4e41</option>
+<option name="timeline.timeline.minColor">#53a051</option>
+<option name="timeline.timeline.numOfBins">3</option>
+<option name="timeline.timeline.tooltipTimeFormat">MINUTES</option>
+<option name="timeline.timeline.useColors">1</option>
+...
+```
+
+**Migrate/Change To:** `Splunk_TA_common-viz.timeline`
+```xml
+...
+....
+<option name="Splunk_TA_common-viz.timeline.axisTimeFormat">MINUTES</option>
+<option name="Splunk_TA_common-viz.timeline.colorMode">categorical</option>
+<option name="Splunk_TA_common-viz.timeline.maxColor">#dc4e41</option>
+<option name="Splunk_TA_common-viz.timeline.minColor">#53a051</option>
+<option name="Splunk_TA_common-viz.timeline.numOfBins">3</option>
+<option name="Splunk_TA_common-viz.timeline.tooltipTimeFormat">MINUTES</option>
+<option name="Splunk_TA_common-viz.timeline.useColors">1</option>
+...
+```
+
+### Restart your Splunk instance!
+You'll need to restart your Splunk daemon after this change. 
+
 
 # **Status of Active/Inactive Visualization addons**
 This TA contains a collection of Visualization addons for Splunk 8.0.x to 8.2.x Enterprise Versions.
