@@ -11,7 +11,7 @@
   "author": "Splunk",
   "license": "MIT",
   "devDependencies": {
-    "imports-loader": "^0.6.5",
+    "imports-loader": "^4.0.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
